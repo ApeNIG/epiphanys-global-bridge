@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Heart, MapPin, Building2, Award } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const features = [
   {
@@ -73,9 +74,11 @@ const DiasporaFocus = () => {
               ))}
             </div>
             
-            <Button variant="hero" size="lg">
-              Join Our Community
-            </Button>
+            <Link to="/auth">
+              <Button variant="hero" size="lg">
+                Join Our Community
+              </Button>
+            </Link>
           </div>
           
           {/* Stats Card */}
