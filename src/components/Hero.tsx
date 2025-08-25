@@ -29,7 +29,7 @@ const Hero = () => {
           </h1>
           
           {/* Subheading */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">Unlocking networks, investment, and growth opportunity -  empowering underrepresented founders and professionals to access capital, mentorship, and global markets.</p>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">Unlocking networks, investment, and growth opportunities -  empowering underrepresented founders and professionals to access capital, mentorship, and global markets.</p>
           
           {/* Stats */}
           <div className="flex flex-wrap justify-center gap-8 mb-10">
