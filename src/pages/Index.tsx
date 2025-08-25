@@ -1,8 +1,12 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import PrinciplesBar from "@/components/PrinciplesBar";
 import OpportunityCategories from "@/components/OpportunityCategories";
 import OpportunityHub from "@/components/OpportunityHub";
+import ImpactDashboard from "@/components/ImpactDashboard";
 import DiasporaFocus from "@/components/DiasporaFocus";
+import TrustIndicators from "@/components/TrustIndicators";
+import QuickOnboarding from "@/components/QuickOnboarding";
 import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
 
@@ -11,9 +15,13 @@ const Index = () => {
     <div className="min-h-screen">
       <Header />
       <Hero />
+      <PrinciplesBar />
       <OpportunityCategories />
       <OpportunityHub />
+      <ImpactDashboard />
       <DiasporaFocus />
+      <TrustIndicators />
+      <QuickOnboarding />
       <CallToAction />
       <Footer />
     </div>
