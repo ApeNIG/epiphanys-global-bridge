@@ -1,37 +1,33 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import businessIcon from "@/assets/business-icon.png";
-import careerIcon from "@/assets/career-icon.png";
-import investmentIcon from "@/assets/investment-icon.png";
-import collaborationIcon from "@/assets/collaboration-icon.png";
+import { ArrowRight, Briefcase, Users, TrendingUp, Globe } from "lucide-react";
 
 const categories = [
   {
     title: "Business Opportunities",
     description: "Access curated business opportunities from public and private sectors. Find partnerships, contracts, and growth initiatives.",
-    icon: businessIcon,
+    icon: Briefcase,
     count: "1,250+",
     color: "from-primary to-blue-600"
   },
   {
     title: "Career Development",
     description: "Discover career opportunities that value cultural diversity and global perspectives. Build your professional network.",
-    icon: careerIcon,
+    icon: Users,
     count: "850+",
     color: "from-purple-500 to-purple-700"
   },
   {
     title: "Investment Platforms",
     description: "Connect with investment opportunities and funding sources that understand diaspora markets and cultural capital.",
-    icon: investmentIcon,
+    icon: TrendingUp,
     count: "420+",
     color: "from-accent to-orange-500"
   },
   {
     title: "Global Collaboration",
     description: "Partner with organizations worldwide. Leverage diaspora networks for international business and cultural exchange.",
-    icon: collaborationIcon,
+    icon: Globe,
     count: "680+",
     color: "from-green-500 to-emerald-600"
   }
@@ -54,43 +50,44 @@ const OpportunityCategories = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categories.map((category, index) => (
-            <Card 
-              key={index} 
-              className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 bg-card/80 backdrop-blur-sm border-border/50 hover:border-primary/30"
-            >
-              <div className="p-6">
-                <div className="relative mb-6">
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${category.color} p-3 group-hover:scale-110 transition-transform duration-300`}>
-                    <img 
-                      src={category.icon} 
-                      alt={category.title}
-                      className="w-full h-full object-contain filter brightness-0 invert"
-                    />
+          {categories.map((category, index) => {
+            const IconComponent = category.icon;
+            return (
+              <Card 
+                key={index} 
+                className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 bg-card/80 backdrop-blur-sm border-border/50 hover:border-primary/30"
+              >
+                <div className="p-6">
+                  <div className="relative mb-6">
+                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${category.color} p-3 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center`}>
+                      <IconComponent 
+                        className="w-10 h-10 text-white"
+                      />
+                    </div>
+                    <div className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-xs font-bold px-2 py-1 rounded-full">
+                      {category.count}
+                    </div>
                   </div>
-                  <div className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-xs font-bold px-2 py-1 rounded-full">
-                    {category.count}
-                  </div>
+                  
+                  <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
+                    {category.title}
+                  </h3>
+                  
+                  <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
+                    {category.description}
+                  </p>
+                  
+                  <Button 
+                    variant="ghost" 
+                    className="w-full group-hover:bg-primary/10 group-hover:text-primary transition-all duration-300"
+                  >
+                    Explore
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Button>
                 </div>
-                
-                <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
-                  {category.title}
-                </h3>
-                
-                <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
-                  {category.description}
-                </p>
-                
-                <Button 
-                  variant="ghost" 
-                  className="w-full group-hover:bg-primary/10 group-hover:text-primary transition-all duration-300"
-                >
-                  Explore
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </div>
-            </Card>
-          ))}
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>
