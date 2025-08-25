@@ -34,14 +34,14 @@ const Auth = () => {
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Home</span>
           </Link>
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-sm">EF</span>
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
               Epiphiny Flow
             </span>
-          </div>
+          </Link>
         </div>
       </header>
 
