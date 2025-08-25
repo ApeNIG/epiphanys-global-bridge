@@ -33,8 +33,7 @@ const Hero = () => {
           
           {/* Subheading */}
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Connect with global opportunities in business, careers, and investment. 
-            Bridge cultures, unlock networks, and drive inclusive economic growth worldwide.
+            Unlocking networks, investment, and growth without borders — empowering underrepresented founders and professionals to access capital, mentorship, and global markets.
           </p>
           
           {/* Stats */}
