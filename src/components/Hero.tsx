@@ -1,15 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Globe, Users, TrendingUp } from "lucide-react";
 import heroBackground from "@/assets/hero-background.jpg";
-
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBackground})` }}
-      >
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: `url(${heroBackground})`
+    }}>
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/95"></div>
       </div>
       
@@ -32,9 +29,7 @@ const Hero = () => {
           </h1>
           
           {/* Subheading */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Unlocking networks, investment, and growth without borders — empowering underrepresented founders and professionals to access capital, mentorship, and global markets.
-          </p>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">Unlocking networks, investment, and growth opportunity -  empowering underrepresented founders and professionals to access capital, mentorship, and global markets.</p>
           
           {/* Stats */}
           <div className="flex flex-wrap justify-center gap-8 mb-10">
@@ -75,8 +70,6 @@ const Hero = () => {
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
