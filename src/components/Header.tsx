@@ -20,6 +20,12 @@ const Header = () => {
                   <span className="text-white drop-shadow-sm">E</span>
                   <span className="text-orange-200 drop-shadow-sm">F</span>
                 </span>
+                {/* Dropdown indicator lines */}
+                <div className="absolute bottom-1 right-1 flex flex-col space-y-0.5">
+                  <div className="w-2 h-0.5 bg-white/60 rounded"></div>
+                  <div className="w-2 h-0.5 bg-white/60 rounded"></div>
+                  <div className="w-2 h-0.5 bg-white/60 rounded"></div>
+                </div>
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
                 Epiphiny Flow
