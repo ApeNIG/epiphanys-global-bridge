@@ -19,7 +19,7 @@ const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 border border-primary/20">
             <Globe className="w-4 h-4" />
-            World's First EBB SAGAS Platform
+            Global Diaspora Platform
           </div>
           
           {/* Main Heading */}

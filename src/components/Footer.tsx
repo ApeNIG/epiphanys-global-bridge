@@ -28,8 +28,7 @@ const Footer = () => {
             </div>
             
             <p className="text-muted-foreground mb-6 max-w-md">
-              The world's first EBB SAGAS platform connecting diaspora communities 
-              with global opportunities in business, careers, and investment.
+              Connecting diaspora communities with global opportunities in business, careers, and investment.
             </p>
             
             <div className="flex items-center gap-4">
