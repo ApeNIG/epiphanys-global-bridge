@@ -39,9 +39,9 @@ const Header = () => {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <a href="#opportunities" className="w-full">
+              <Link to="/opportunities" className="w-full">
                 Opportunities
-              </a>
+              </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <a href="#community" className="w-full">
@@ -67,9 +67,9 @@ const Header = () => {
         </DropdownMenu>
         
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="#opportunities" className="text-foreground hover:text-primary transition-colors">
+          <Link to="/opportunities" className="text-foreground hover:text-primary transition-colors">
             Opportunities
-          </a>
+          </Link>
           <a href="#community" className="text-foreground hover:text-primary transition-colors">
             Community
           </a>
