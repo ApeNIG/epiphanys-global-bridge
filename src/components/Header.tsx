@@ -14,8 +14,12 @@ const Header = () => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Link to="/" className="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity">
-              <div className="w-8 h-8 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">EF</span>
+              <div className="relative w-10 h-10 bg-gradient-to-br from-primary via-purple-600 to-accent rounded-xl flex items-center justify-center shadow-lg transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-xl"></div>
+                <span className="relative text-white font-bold text-lg tracking-tight">
+                  <span className="text-white drop-shadow-sm">E</span>
+                  <span className="text-orange-200 drop-shadow-sm">F</span>
+                </span>
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
                 Epiphiny Flow
