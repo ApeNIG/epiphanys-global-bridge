@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Globe, Users, TrendingUp } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroBackground from "@/assets/hero-background.jpg";
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -49,13 +50,17 @@ const Hero = () => {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="hero" size="xl" className="group">
-              Join the Platform
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button variant="glass" size="xl">
-              Explore Opportunities
-            </Button>
+            <Link to="/auth">
+              <Button variant="hero" size="xl" className="group">
+                Join the Platform
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+            <a href="#opportunities">
+              <Button variant="glass" size="xl">
+                Explore Opportunities
+              </Button>
+            </a>
           </div>
           
           {/* Trust Indicator */}
