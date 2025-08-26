@@ -207,37 +207,46 @@ const Community = () => {
         </div>
       </section>
 
-      {/* Community Stats */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {communityStats.map((stat, index) => (
-              <Card key={index} className="text-center hover:shadow-elegant transition-all duration-300 group relative overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-br ${
-                  index === 0 ? 'from-coral-50/50 to-sunset-50/50 dark:from-coral-950/10 dark:to-sunset-950/10' :
-                  index === 1 ? 'from-lavender-50/50 to-purple-50/50 dark:from-lavender-950/10 dark:to-purple-950/10' :
-                  index === 2 ? 'from-mint-50/50 to-ocean-50/50 dark:from-mint-950/10 dark:to-ocean-950/10' :
-                  'from-sunset-50/50 to-coral-50/50 dark:from-sunset-950/10 dark:to-coral-950/10'
-                } opacity-0 group-hover:opacity-100 transition-opacity`} />
-                <CardContent className="pt-6 relative">
-                  <div className={`w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center ${
-                    index === 0 ? 'bg-gradient-to-r from-coral-100 to-sunset-100 dark:from-coral-900 dark:to-sunset-900' :
-                    index === 1 ? 'bg-gradient-to-r from-lavender-100 to-purple-100 dark:from-lavender-900 dark:to-purple-900' :
-                    index === 2 ? 'bg-gradient-to-r from-mint-100 to-ocean-100 dark:from-mint-900 dark:to-ocean-900' :
-                    'bg-gradient-to-r from-sunset-100 to-coral-100 dark:from-sunset-900 dark:to-coral-900'
-                  }`}>
-                    <stat.icon className={`h-6 w-6 ${
-                      index === 0 ? 'text-coral-600 dark:text-coral-400' :
-                      index === 1 ? 'text-lavender-600 dark:text-lavender-400' :
-                      index === 2 ? 'text-mint-600 dark:text-mint-400' :
-                      'text-sunset-600 dark:text-sunset-400'
-                    }`} />
-                  </div>
-                  <div className="text-3xl font-bold text-foreground mb-2">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </CardContent>
-              </Card>
-            ))}
+      {/* Enhanced Community Stats with Epiphiny Colors */}
+      <section className="py-24 px-4 bg-gradient-to-br from-cool-grey/30 to-royal-blue/5 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-40 h-40 bg-gradient-to-r from-emerald-green/10 to-royal-blue/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 right-20 w-48 h-48 bg-gradient-to-r from-sunset-orange/10 to-gold-amber/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}} />
+        </div>
+        
+        <div className="container mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-6">
+              Community Impact
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Join a thriving ecosystem of diaspora professionals making real impact across the globe.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {communityStats.map((stat, index) => {
+              const brandStyles = [
+                { gradient: 'bg-gradient-primary', shadow: 'shadow-elegant', icon: 'text-white' },
+                { gradient: 'bg-gradient-success', shadow: 'shadow-glow', icon: 'text-white' },
+                { gradient: 'bg-gradient-secondary', shadow: 'shadow-orange', icon: 'text-white' },
+                { gradient: 'bg-gradient-community', shadow: 'shadow-community', icon: 'text-white' }
+              ];
+              const currentStyle = brandStyles[index % brandStyles.length];
+              return (
+                <Card key={index} className={`text-center hover:${currentStyle.shadow} transition-all duration-300 group relative overflow-hidden border-2 hover:border-gradient-subtle transform hover:scale-105`}>
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent dark:from-white/5 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  
+                  <CardContent className="pt-8 pb-6 relative">
+                    <div className={`w-16 h-16 mx-auto mb-6 rounded-xl flex items-center justify-center ${currentStyle.gradient} ${currentStyle.shadow}`}>
+                      <stat.icon className={`h-8 w-8 ${currentStyle.icon}`} />
+                    </div>
+                    <div className="text-4xl font-bold text-foreground mb-3">{stat.value}</div>
+                    <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{stat.label}</div>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -254,75 +263,73 @@ const Community = () => {
             </TabsList>
 
             <TabsContent value="overview" className="space-y-12">
-              {/* Community Features */}
+              {/* Enhanced Community Features with Epiphiny Colors */}
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 bg-gradient-to-r from-coral-600 via-lavender-600 to-mint-600 bg-clip-text text-transparent">
+                <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 bg-gradient-accent bg-clip-text text-transparent">
                   Why Diaspora Communities Choose Us
                 </h2>
-                <p className="text-lg text-muted-foreground text-center mb-12 max-w-3xl mx-auto">
+                <p className="text-lg md:text-xl text-muted-foreground text-center mb-16 max-w-4xl mx-auto leading-relaxed">
                   We understand that your cultural heritage is your strength, not a barrier. Our platform amplifies your unique perspective and global networks.
                 </p>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {communityFeatures.map((feature, index) => (
-                    <Card key={index} className="hover:shadow-elegant transition-all duration-300 group relative overflow-hidden">
-                      <div className={`absolute inset-0 bg-gradient-to-br ${
-                        index === 0 ? 'from-coral-50/50 to-sunset-50/50 dark:from-coral-950/10 dark:to-sunset-950/10' :
-                        index === 1 ? 'from-lavender-50/50 to-purple-50/50 dark:from-lavender-950/10 dark:to-purple-950/10' :
-                        index === 2 ? 'from-mint-50/50 to-ocean-50/50 dark:from-mint-950/10 dark:to-ocean-950/10' :
-                        'from-sunset-50/50 to-coral-50/50 dark:from-sunset-950/10 dark:to-coral-950/10'
-                      } opacity-0 group-hover:opacity-100 transition-opacity`} />
-                      <CardHeader className="relative">
-                        <div className={`w-12 h-12 mb-4 rounded-xl flex items-center justify-center ${
-                          index === 0 ? 'bg-gradient-to-r from-coral-100 to-sunset-100 dark:from-coral-900 dark:to-sunset-900' :
-                          index === 1 ? 'bg-gradient-to-r from-lavender-100 to-purple-100 dark:from-lavender-900 dark:to-purple-900' :
-                          index === 2 ? 'bg-gradient-to-r from-mint-100 to-ocean-100 dark:from-mint-900 dark:to-ocean-900' :
-                          'bg-gradient-to-r from-sunset-100 to-coral-100 dark:from-sunset-900 dark:to-coral-900'
-                        }`}>
-                          <feature.icon className={`h-6 w-6 ${
-                            index === 0 ? 'text-coral-600 dark:text-coral-400' :
-                            index === 1 ? 'text-lavender-600 dark:text-lavender-400' :
-                            index === 2 ? 'text-mint-600 dark:text-mint-400' :
-                            'text-sunset-600 dark:text-sunset-400'
-                          }`} />
-                        </div>
-                        <CardTitle className="text-lg">{feature.title}</CardTitle>
-                      </CardHeader>
-                      <CardContent className="relative">
-                        <CardDescription>{feature.description}</CardDescription>
-                      </CardContent>
-                    </Card>
-                  ))}
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {communityFeatures.map((feature, index) => {
+                    const brandStyles = [
+                      { gradient: 'bg-gradient-primary', shadow: 'shadow-elegant', hover: 'from-royal-blue/5 to-emerald-green/5', border: 'border-royal-blue/20' },
+                      { gradient: 'bg-gradient-success', shadow: 'shadow-glow', hover: 'from-emerald-green/5 to-sunset-orange/5', border: 'border-emerald-green/20' },
+                      { gradient: 'bg-gradient-secondary', shadow: 'shadow-orange', hover: 'from-sunset-orange/5 to-gold-amber/5', border: 'border-sunset-orange/20' },
+                      { gradient: 'bg-gradient-community', shadow: 'shadow-community', hover: 'from-magenta/5 to-royal-blue/5', border: 'border-magenta/20' }
+                    ];
+                    const currentStyle = brandStyles[index % brandStyles.length];
+                    return (
+                      <Card key={index} className={`hover:${currentStyle.shadow} transition-all duration-300 group relative overflow-hidden border-2 ${currentStyle.border} hover:scale-105`}>
+                        <div className={`absolute inset-0 bg-gradient-to-br ${currentStyle.hover} opacity-0 group-hover:opacity-100 transition-opacity`} />
+                        <CardHeader className="relative pb-3">
+                          <div className={`w-16 h-16 mb-6 rounded-xl flex items-center justify-center ${currentStyle.gradient} ${currentStyle.shadow}`}>
+                            <feature.icon className="h-8 w-8 text-white" />
+                          </div>
+                          <CardTitle className="text-xl font-bold text-deep-navy">{feature.title}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="relative pt-0">
+                          <CardDescription className="text-muted-foreground leading-relaxed">{feature.description}</CardDescription>
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
                 </div>
               </div>
 
-              {/* Core Values */}
-              <div className="bg-gradient-to-r from-coral-50/50 via-lavender-50/30 to-mint-50/50 dark:from-coral-950/10 dark:via-lavender-950/10 dark:to-mint-950/10 rounded-2xl p-8 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-subtle opacity-50" />
+              {/* Enhanced Core Values Section */}
+              <div className="bg-gradient-to-br from-cool-grey/20 to-royal-blue/5 dark:from-deep-navy/20 dark:to-royal-blue/10 rounded-3xl p-12 relative overflow-hidden">
+                <div className="absolute inset-0">
+                  <div className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-r from-emerald-green/10 to-royal-blue/10 rounded-full blur-3xl" />
+                  <div className="absolute bottom-10 left-10 w-24 h-24 bg-gradient-to-r from-sunset-orange/10 to-magenta/10 rounded-full blur-3xl" />
+                </div>
+                
                 <div className="relative">
-                  <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 bg-gradient-to-r from-coral-600 via-lavender-600 to-mint-600 bg-clip-text text-transparent">
+                  <h3 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-premium bg-clip-text text-transparent">
                     Our Community Values
                   </h3>
-                  <div className="grid md:grid-cols-3 gap-8">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-r from-coral-100 to-sunset-100 dark:from-coral-900 dark:to-sunset-900 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-soft">
-                        <Heart className="h-8 w-8 text-coral-600 dark:text-coral-400" />
+                  <div className="grid md:grid-cols-3 gap-10">
+                    <div className="text-center group">
+                      <div className="w-20 h-20 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-elegant group-hover:scale-110 transition-transform duration-300">
+                        <Heart className="h-10 w-10 text-white" />
                       </div>
-                      <h4 className="font-semibold mb-2 text-lg">Cultural Pride</h4>
-                      <p className="text-muted-foreground">Celebrate and leverage your heritage as a competitive advantage in the global economy.</p>
+                      <h4 className="font-bold mb-4 text-xl text-deep-navy">Cultural Pride</h4>
+                      <p className="text-muted-foreground leading-relaxed">Celebrate and leverage your heritage as a competitive advantage in the global economy.</p>
                     </div>
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-r from-lavender-100 to-purple-100 dark:from-lavender-900 dark:to-purple-900 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-soft">
-                        <Handshake className="h-8 w-8 text-lavender-600 dark:text-lavender-400" />
+                    <div className="text-center group">
+                      <div className="w-20 h-20 bg-gradient-success rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-glow group-hover:scale-110 transition-transform duration-300">
+                        <Handshake className="h-10 w-10 text-white" />
                       </div>
-                      <h4 className="font-semibold mb-2 text-lg">Authentic Connection</h4>
-                      <p className="text-muted-foreground">Build meaningful relationships based on shared experiences and mutual understanding.</p>
+                      <h4 className="font-bold mb-4 text-xl text-deep-navy">Authentic Connection</h4>
+                      <p className="text-muted-foreground leading-relaxed">Build meaningful relationships based on shared experiences and mutual understanding.</p>
                     </div>
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-r from-mint-100 to-ocean-100 dark:from-mint-900 dark:to-ocean-900 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-soft">
-                        <TrendingUp className="h-8 w-8 text-mint-600 dark:text-mint-400" />
+                    <div className="text-center group">
+                      <div className="w-20 h-20 bg-gradient-secondary rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-orange group-hover:scale-110 transition-transform duration-300">
+                        <TrendingUp className="h-10 w-10 text-white" />
                       </div>
-                      <h4 className="font-semibold mb-2 text-lg">Inclusive Growth</h4>
-                      <p className="text-muted-foreground">Create opportunities that benefit both individual success and community advancement.</p>
+                      <h4 className="font-bold mb-4 text-xl text-deep-navy">Inclusive Growth</h4>
+                      <p className="text-muted-foreground leading-relaxed">Create opportunities that benefit both individual success and community advancement.</p>
                     </div>
                   </div>
                 </div>
@@ -457,62 +464,101 @@ const Community = () => {
             </TabsContent>
 
             <TabsContent value="events" className="space-y-8">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold mb-4">Connect & Collaborate</h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Join our regular events designed to foster connections, share knowledge, and celebrate diaspora achievements.
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-premium bg-clip-text text-transparent">Connect & Collaborate</h2>
+                <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  Join our regular events designed to foster connections, share knowledge, and celebrate diaspora achievements across the globe.
                 </p>
               </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {upcomingEvents.map((event, index) => (
-                  <Card key={index} className="hover:shadow-lg transition-shadow">
-                    <CardHeader>
-                      <CardTitle className="text-lg">{event.title}</CardTitle>
-                      <CardDescription>{event.focus}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-2 text-sm">
-                          <Calendar className="h-4 w-4 text-muted-foreground" />
-                          <span>{event.date}</span>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {upcomingEvents.map((event, index) => {
+                  const brandStyles = [
+                    { gradient: 'bg-gradient-primary', shadow: 'shadow-elegant', accent: 'royal-blue' },
+                    { gradient: 'bg-gradient-success', shadow: 'shadow-glow', accent: 'emerald-green' },
+                    { gradient: 'bg-gradient-secondary', shadow: 'shadow-orange', accent: 'sunset-orange' }
+                  ];
+                  const currentStyle = brandStyles[index % brandStyles.length];
+                  return (
+                    <Card key={index} className={`hover:${currentStyle.shadow} transition-all duration-300 transform hover:scale-105 border-2 hover:border-${currentStyle.accent}/20 group relative overflow-hidden`}>
+                      <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-royal-blue to-emerald-green" />
+                      
+                      <CardHeader className="pt-6">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className={`w-12 h-12 ${currentStyle.gradient} rounded-xl flex items-center justify-center ${currentStyle.shadow}`}>
+                            <Calendar className="h-6 w-6 text-white" />
+                          </div>
+                          <Badge className="bg-gradient-to-r from-cool-grey to-royal-blue/10 text-deep-navy px-3 py-1 font-semibold">
+                            Upcoming
+                          </Badge>
                         </div>
-                        <div className="flex items-center gap-2 text-sm">
-                          <MapPin className="h-4 w-4 text-muted-foreground" />
-                          <span>{event.location}</span>
+                        <CardTitle className="text-xl font-bold text-deep-navy">{event.title}</CardTitle>
+                        <CardDescription className="text-base font-medium">{event.focus}</CardDescription>
+                      </CardHeader>
+                      
+                      <CardContent>
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-3 text-sm">
+                            <div className={`w-8 h-8 ${currentStyle.gradient} rounded-lg flex items-center justify-center`}>
+                              <Calendar className="h-4 w-4 text-white" />
+                            </div>
+                            <span className="font-medium">{event.date}</span>
+                          </div>
+                          <div className="flex items-center gap-3 text-sm">
+                            <div className="w-8 h-8 bg-gradient-success rounded-lg flex items-center justify-center">
+                              <MapPin className="h-4 w-4 text-white" />
+                            </div>
+                            <span className="font-medium">{event.location}</span>
+                          </div>
+                          <div className="flex items-center gap-3 text-sm">
+                            <div className="w-8 h-8 bg-gradient-community rounded-lg flex items-center justify-center">
+                              <Users className="h-4 w-4 text-white" />
+                            </div>
+                            <span className="font-medium">{event.attendees}</span>
+                          </div>
+                          <Button className={`w-full mt-6 ${currentStyle.gradient} hover:${currentStyle.shadow} text-white font-semibold transform hover:scale-105 transition-all duration-300`}>
+                            Register Now
+                            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                          </Button>
                         </div>
-                        <div className="flex items-center gap-2 text-sm">
-                          <Users className="h-4 w-4 text-muted-foreground" />
-                          <span>{event.attendees}</span>
-                        </div>
-                        <Button className="w-full mt-4">
-                          Register Now
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                      </CardContent>
+                    </Card>
+                  );
+                })}
               </div>
             </TabsContent>
           </Tabs>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-20 px-4 bg-gradient-to-r from-coral-600 via-lavender-600 to-mint-600 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/20" />
+      {/* Enhanced Call to Action with Epiphiny Colors */}
+      <section className="py-24 px-4 bg-gradient-hero relative overflow-hidden">
+        <div className="absolute inset-0 bg-deep-navy/95 backdrop-blur-sm" />
+        
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-48 h-48 bg-gradient-to-r from-royal-blue/20 to-emerald-green/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 right-20 w-40 h-40 bg-gradient-to-r from-sunset-orange/15 to-gold-amber/15 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}} />
+          <div className="absolute top-1/2 right-1/3 w-32 h-32 bg-gradient-to-r from-magenta/15 to-royal-blue/15 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}} />
+        </div>
+        
         <div className="container mx-auto text-center text-white relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Join Our Community?</h2>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Connect with thousands of diaspora professionals, entrepreneurs, and leaders who share your vision for success.
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-accent bg-clip-text text-transparent">
+            Ready to Join Our Community?
+          </h2>
+          <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto opacity-90 leading-relaxed">
+            Connect with thousands of diaspora professionals, entrepreneurs, and leaders who share your vision for 
+            <span className="text-emerald-green font-semibold"> cultural pride</span> and 
+            <span className="text-sunset-orange font-semibold"> economic success</span>.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link to="/auth">
-              <Button size="lg" variant="secondary" className="bg-white text-foreground hover:bg-white/90 shadow-lg">
+              <Button size="lg" className="bg-gradient-primary hover:shadow-elegant text-white transform hover:scale-105 transition-all duration-300 px-8 py-4 font-semibold">
                 <Users className="w-5 h-5 mr-2" />
                 Start Your Journey
               </Button>
             </Link>
-            <Button size="lg" variant="ghost" className="text-white border-white/30 hover:bg-white/10">
+            <Button size="lg" variant="outline" className="border-2 border-emerald-green text-emerald-green hover:bg-emerald-green hover:text-white hover:shadow-glow transform hover:scale-105 transition-all duration-300 px-8 py-4 font-semibold">
+              <Globe className="w-5 h-5 mr-2" />
               Learn More
             </Button>
           </div>
