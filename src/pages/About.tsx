@@ -94,12 +94,13 @@ const About = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-background via-card/30 to-background">
-        <div className="container mx-auto px-4 text-center">
-          <Badge variant="secondary" className="mb-6">
+      <section className="pt-24 pb-16 bg-gradient-rainbow relative overflow-hidden">
+        <div className="absolute inset-0 bg-background/90 backdrop-blur-sm"></div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <Badge variant="secondary" className="mb-6 bg-accent/20 text-accent-foreground border-accent/30">
             About Epiphiny Flow
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-rainbow bg-clip-text text-transparent mb-6">
             Empowering Diaspora Communities
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -108,6 +109,9 @@ const About = () => {
             diaspora communities in the UK.
           </p>
         </div>
+        <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-purple/20 blur-xl"></div>
+        <div className="absolute bottom-10 right-10 w-32 h-32 rounded-full bg-teal/20 blur-xl"></div>
+        <div className="absolute top-1/2 left-1/4 w-16 h-16 rounded-full bg-orange/20 blur-xl"></div>
       </section>
 
       {/* Mission Statement */}
@@ -122,27 +126,27 @@ const About = () => {
               strengthen economies.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-              <Card className="p-6 text-center hover:shadow-elegant transition-all duration-300">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Target className="w-6 h-6 text-primary" />
+              <Card className="p-6 text-center hover:shadow-purple transition-all duration-300 hover:scale-105 bg-gradient-purple/10 border-purple/20">
+                <div className="w-12 h-12 bg-purple/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Target className="w-6 h-6 text-purple" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">Purpose-Driven</h3>
                 <p className="text-sm text-muted-foreground">
                   Every feature serves our mission of diaspora empowerment
                 </p>
               </Card>
-              <Card className="p-6 text-center hover:shadow-elegant transition-all duration-300">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-6 h-6 text-primary" />
+              <Card className="p-6 text-center hover:shadow-teal transition-all duration-300 hover:scale-105 bg-gradient-teal/10 border-teal/20">
+                <div className="w-12 h-12 bg-teal/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-6 h-6 text-teal" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">Community-Centric</h3>
                 <p className="text-sm text-muted-foreground">
                   Built by the community, for the community
                 </p>
               </Card>
-              <Card className="p-6 text-center hover:shadow-elegant transition-all duration-300">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Globe className="w-6 h-6 text-primary" />
+              <Card className="p-6 text-center hover:shadow-orange transition-all duration-300 hover:scale-105 bg-gradient-orange/10 border-orange/20">
+                <div className="w-12 h-12 bg-orange/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Globe className="w-6 h-6 text-orange" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">Globally Connected</h3>
                 <p className="text-sm text-muted-foreground">
@@ -166,25 +170,29 @@ const About = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {visionPoints.map((point, index) => (
-              <Card key={index} className="p-6 hover:shadow-elegant transition-all duration-300">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <point.icon className="w-6 h-6 text-primary" />
+            {visionPoints.map((point, index) => {
+              const colors = ['purple', 'teal', 'orange', 'pink'];
+              const currentColor = colors[index % colors.length];
+              return (
+                <Card key={index} className={`p-6 hover:shadow-${currentColor} transition-all duration-300 hover:scale-102 bg-gradient-${currentColor}/5 border-${currentColor}/20`}>
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">
+                      <div className={`w-12 h-12 bg-${currentColor}/20 rounded-lg flex items-center justify-center`}>
+                        <point.icon className={`w-6 h-6 text-${currentColor}`} />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-foreground mb-2">
+                        {point.title}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {point.description}
+                      </p>
                     </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-foreground mb-2">
-                      {point.title}
-                    </h3>
-                    <p className="text-muted-foreground">
-                      {point.description}
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            ))}
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -200,19 +208,23 @@ const About = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
-              <Card key={index} className="p-6 text-center hover:shadow-elegant transition-all duration-300 hover:scale-105">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <value.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
-                  {value.title}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {value.description}
-                </p>
-              </Card>
-            ))}
+            {values.map((value, index) => {
+              const colors = ['purple', 'teal', 'orange', 'emerald'];
+              const currentColor = colors[index % colors.length];
+              return (
+                <Card key={index} className={`p-6 text-center hover:shadow-${currentColor} transition-all duration-300 hover:scale-105 bg-gradient-${currentColor}/10 border-${currentColor}/30`}>
+                  <div className={`w-12 h-12 bg-${currentColor}/20 rounded-lg flex items-center justify-center mx-auto mb-4`}>
+                    <value.icon className={`w-6 h-6 text-${currentColor}`} />
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">
+                    {value.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {value.description}
+                  </p>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -228,34 +240,39 @@ const About = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {expertiseAreas.map((area, index) => (
-              <Card key={index} className="p-6 hover:shadow-elegant transition-all duration-300">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <area.icon className="w-6 h-6 text-primary" />
+            {expertiseAreas.map((area, index) => {
+              const colors = ['teal', 'purple', 'emerald', 'orange'];
+              const currentColor = colors[index % colors.length];
+              return (
+                <Card key={index} className={`p-6 hover:shadow-${currentColor} transition-all duration-300 hover:scale-102 bg-gradient-${currentColor}/5 border-${currentColor}/20`}>
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">
+                      <div className={`w-12 h-12 bg-${currentColor}/20 rounded-lg flex items-center justify-center`}>
+                        <area.icon className={`w-6 h-6 text-${currentColor}`} />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-foreground mb-2">
+                        {area.title}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {area.description}
+                      </p>
                     </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-foreground mb-2">
-                      {area.title}
-                    </h3>
-                    <p className="text-muted-foreground">
-                      {area.description}
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            ))}
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Why We Exist */}
-      <section className="py-16 bg-gradient-to-r from-primary/10 via-purple-500/10 to-primary/10">
-        <div className="container mx-auto px-4">
+      <section className="py-16 bg-gradient-rainbow relative overflow-hidden">
+        <div className="absolute inset-0 bg-background/95 backdrop-blur-sm"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-foreground mb-8">Why We Exist</h2>
+            <h2 className="text-3xl font-bold bg-gradient-rainbow bg-clip-text text-transparent mb-8">Why We Exist</h2>
             <div className="prose prose-lg max-w-none text-muted-foreground">
               <p className="mb-6">
                 Diaspora communities represent incredible untapped potential. With deep cultural knowledge, 
@@ -276,16 +293,18 @@ const About = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/community">
-                <Button variant="default" size="lg">
+                <Button variant="default" size="lg" className="bg-gradient-purple hover:shadow-purple transition-all duration-300 hover:scale-105">
                   Join Our Community
                 </Button>
               </Link>
               <Link to="/opportunities">
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="lg" className="border-teal text-teal hover:bg-teal hover:text-background hover:shadow-teal transition-all duration-300 hover:scale-105">
                   Explore Opportunities
                 </Button>
               </Link>
             </div>
+            <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-purple/10 blur-3xl"></div>
+            <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-teal/10 blur-3xl"></div>
           </div>
         </div>
       </section>

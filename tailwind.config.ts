@@ -61,7 +61,33 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Vibrant personality colors
+				purple: 'hsl(var(--purple))',
+				'purple-light': 'hsl(var(--purple-light))',
+				teal: 'hsl(var(--teal))',
+				'teal-light': 'hsl(var(--teal-light))',
+				orange: 'hsl(var(--orange))',
+				'orange-light': 'hsl(var(--orange-light))',
+				pink: 'hsl(var(--pink))',
+				'pink-light': 'hsl(var(--pink-light))',
+				emerald: 'hsl(var(--emerald))',
+				'emerald-light': 'hsl(var(--emerald-light))'
+			},
+			backgroundImage: {
+				'gradient-purple': 'var(--gradient-purple)',
+				'gradient-teal': 'var(--gradient-teal)',
+				'gradient-orange': 'var(--gradient-orange)',
+				'gradient-pink': 'var(--gradient-pink)',
+				'gradient-emerald': 'var(--gradient-emerald)',
+				'gradient-rainbow': 'var(--gradient-rainbow)'
+			},
+			boxShadow: {
+				'elegant': 'var(--shadow-elegant)',
+				'glow': 'var(--shadow-glow)',
+				'purple': 'var(--shadow-purple)',
+				'teal': 'var(--shadow-teal)',
+				'orange': 'var(--shadow-orange)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
