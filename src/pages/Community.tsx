@@ -138,37 +138,71 @@ const Community = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative py-20 px-4 overflow-hidden">
+      <section className="relative py-24 px-4 overflow-hidden">
+        {/* Animated Background Layers */}
         <div className="absolute inset-0 bg-gradient-to-br from-coral-50/50 via-lavender-50/30 to-mint-50/50 dark:from-coral-950/20 dark:via-lavender-950/20 dark:to-mint-950/20" />
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-r from-coral-400/20 to-sunset-600/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-lavender-400/20 to-purple-600/20 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-mint-400/15 to-ocean-500/15 rounded-full blur-3xl" />
+          <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-r from-coral-400/20 to-sunset-600/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-lavender-400/20 to-purple-600/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}} />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-mint-400/15 to-ocean-500/15 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}} />
+          
+          {/* Floating Elements */}
+          <div className="absolute top-32 right-1/4 w-3 h-3 bg-coral-400 rounded-full animate-bounce" style={{animationDelay: '0.5s'}} />
+          <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-lavender-400 rounded-full animate-bounce" style={{animationDelay: '1.5s'}} />
+          <div className="absolute top-1/3 left-1/6 w-4 h-4 bg-mint-400/60 rounded-full animate-bounce" style={{animationDelay: '2.5s'}} />
         </div>
         
         <div className="relative container mx-auto text-center z-10">
-          <Badge className="mb-6 bg-gradient-to-r from-coral-100 to-lavender-100 text-foreground border-0 shadow-soft">
-            <Users className="w-4 h-4 mr-2" />
+          {/* Enhanced Badge with Icon Animation */}
+          <Badge className="mb-8 bg-gradient-to-r from-coral-100 to-lavender-100 text-foreground border-0 shadow-soft hover:shadow-elegant transition-all duration-300 px-6 py-2">
+            <Users className="w-4 h-4 mr-2 animate-pulse" />
             Diaspora-First Community Platform
           </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight bg-gradient-to-r from-coral-600 via-lavender-600 to-mint-600 bg-clip-text text-transparent">
+          
+          {/* Enhanced Typography with Gradient Animation */}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight bg-gradient-to-r from-coral-600 via-lavender-600 to-mint-600 bg-clip-text text-transparent animate-fade-in">
             Where Cultural Heritage
             <br />
-            Meets Economic Opportunity
+            <span className="bg-gradient-to-r from-sunset-600 via-purple-600 to-ocean-600 bg-clip-text text-transparent">
+              Meets Economic Opportunity
+            </span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Join the UK's largest diaspora-focused professional community. Connect with your roots while building your future through authentic relationships and shared experiences.
+          
+          {/* Enhanced Description with Better Typography */}
+          <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-4xl mx-auto leading-relaxed font-medium">
+            Join the UK's largest diaspora-focused professional community. Connect with your roots while building your future through 
+            <span className="text-coral-600 dark:text-coral-400 font-semibold"> authentic relationships</span> and 
+            <span className="text-lavender-600 dark:text-lavender-400 font-semibold"> shared experiences</span>.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          
+          {/* Enhanced CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
             <Link to="/auth">
-              <Button size="lg" className="bg-gradient-to-r from-coral-500 to-sunset-600 hover:from-coral-600 hover:to-sunset-700 text-white shadow-sunset hover:shadow-xl transition-all duration-300">
+              <Button size="lg" className="bg-gradient-to-r from-coral-500 to-sunset-600 hover:from-coral-600 hover:to-sunset-700 text-white shadow-sunset hover:shadow-xl transition-all duration-300 transform hover:scale-105 px-8 py-4">
                 Join Our Community
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Button variant="outline" size="lg" className="border-2 hover:bg-gradient-to-r hover:from-coral-50 hover:to-lavender-50">
+            <Button variant="outline" size="lg" className="border-2 border-gradient-to-r from-coral-500 to-lavender-500 hover:bg-gradient-to-r hover:from-coral-50 hover:to-lavender-50 transform hover:scale-105 transition-all duration-300 px-8 py-4">
+              <Star className="mr-2 h-5 w-5" />
               Explore Success Stories
             </Button>
+          </div>
+          
+          {/* Trust Indicators */}
+          <div className="flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <CheckCircle className="h-4 w-4 text-green-500" />
+              <span>Verified Community</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Globe className="h-4 w-4 text-blue-500" />
+              <span>47 Countries</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Award className="h-4 w-4 text-purple-500" />
+              <span>Award Winning Platform</span>
+            </div>
           </div>
         </div>
       </section>
@@ -296,36 +330,56 @@ const Community = () => {
             </TabsContent>
 
             <TabsContent value="regions" className="space-y-8">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold mb-4">Thriving Diaspora Communities</h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Each region brings unique strengths, networks, and opportunities to our global community.
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-coral-600 via-lavender-600 to-mint-600 bg-clip-text text-transparent">
+                  Thriving Diaspora Communities
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  Each region brings unique strengths, networks, and opportunities to our global community. 
+                  Discover the power of cultural connection and professional growth.
                 </p>
               </div>
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-8">
                 {diasporaRegions.map((region, index) => (
-                  <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-                    <div className={`h-2 ${region.color}`}></div>
-                    <CardHeader>
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <CardTitle className="text-xl">{region.name}</CardTitle>
-                          <CardDescription className="mt-2">{region.featured}</CardDescription>
+                  <Card key={index} className="group overflow-hidden hover:shadow-elegant transition-all duration-500 transform hover:-translate-y-2 border-2 border-transparent hover:border-gradient-subtle">
+                    {/* Animated Top Border */}
+                    <div className={`h-3 ${region.color} relative overflow-hidden`}>
+                      <div className="absolute inset-0 bg-white/20 transform -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
+                    </div>
+                    
+                    <CardHeader className="pb-4">
+                      <div className="flex justify-between items-start mb-4">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className={`w-3 h-3 rounded-full ${region.color} animate-pulse`} />
+                            <CardTitle className="text-xl bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent font-bold">
+                              {region.name}
+                            </CardTitle>
+                          </div>
+                          <CardDescription className="text-base leading-relaxed">{region.featured}</CardDescription>
                         </div>
-                        <Badge variant="secondary" className="bg-green-100 text-green-800">
+                        <Badge variant="secondary" className="bg-gradient-to-r from-green-100 to-emerald-100 text-green-800 px-3 py-1 font-semibold shadow-soft">
+                          <TrendingUp className="w-3 h-3 mr-1" />
                           {region.growth} growth
                         </Badge>
                       </div>
                     </CardHeader>
-                    <CardContent>
+                    
+                    <CardContent className="pt-0">
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <Users className="h-5 w-5 text-muted-foreground" />
-                          <span className="font-semibold">{region.members} members</span>
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-gradient-to-r from-muted to-accent rounded-full flex items-center justify-center shadow-soft">
+                            <Users className="h-5 w-5 text-primary" />
+                          </div>
+                          <div>
+                            <span className="font-bold text-lg text-foreground">{region.members}</span>
+                            <p className="text-sm text-muted-foreground">active members</p>
+                          </div>
                         </div>
                         <Link to="/auth">
-                          <Button variant="outline" size="sm">
+                          <Button variant="outline" size="sm" className="hover:bg-gradient-to-r hover:from-coral-50 hover:to-lavender-50 transform hover:scale-105 transition-all duration-300 px-6">
                             Join Community
+                            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                           </Button>
                         </Link>
                       </div>
@@ -336,30 +390,63 @@ const Community = () => {
             </TabsContent>
 
             <TabsContent value="stories" className="space-y-8">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold mb-4">Success Stories That Inspire</h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Real people, real journeys, real impact. See how our community members have transformed opportunities into success.
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-coral-600 via-lavender-600 to-mint-600 bg-clip-text text-transparent">
+                  Success Stories That Inspire
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  Real people, real journeys, real impact. See how our community members have transformed opportunities into success through authentic connections and cultural pride.
                 </p>
               </div>
-              <div className="space-y-6">
+              <div className="space-y-8">
                 {successStories.map((story, index) => (
-                  <Card key={index} className="hover:shadow-lg transition-shadow">
-                    <CardContent className="p-6">
-                      <div className="flex flex-col md:flex-row gap-6">
-                        <div className="md:w-1/3">
-                          <h3 className="font-bold text-lg">{story.name}</h3>
-                          <p className="text-primary font-medium">{story.title}</p>
-                          <div className="flex items-center gap-2 mt-2 text-muted-foreground">
-                            <MapPin className="h-4 w-4" />
-                            <span className="text-sm">{story.origin}</span>
+                  <Card key={index} className="group hover:shadow-elegant transition-all duration-500 transform hover:-translate-y-1 border-2 border-transparent hover:border-gradient-subtle overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-coral-500 via-lavender-500 to-mint-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                    
+                    <CardContent className="p-8 relative">
+                      <div className="flex flex-col lg:flex-row gap-8">
+                        <div className="lg:w-1/3 space-y-4">
+                          {/* Profile Section */}
+                          <div className="flex items-center gap-4">
+                            <div className="w-16 h-16 bg-gradient-to-r from-coral-100 to-lavender-100 dark:from-coral-900 dark:to-lavender-900 rounded-full flex items-center justify-center shadow-soft">
+                              <Star className="h-8 w-8 text-coral-600 dark:text-coral-400" />
+                            </div>
+                            <div>
+                              <h3 className="font-bold text-xl text-foreground">{story.name}</h3>
+                              <p className="text-primary font-semibold text-lg">{story.title}</p>
+                            </div>
+                          </div>
+                          
+                          {/* Origin Badge */}
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-gradient-to-r from-mint-100 to-ocean-100 dark:from-mint-900 dark:to-ocean-900 rounded-full flex items-center justify-center shadow-soft">
+                              <MapPin className="h-5 w-5 text-mint-600 dark:text-mint-400" />
+                            </div>
+                            <div>
+                              <Badge variant="outline" className="px-4 py-2 bg-gradient-to-r from-mint-50 to-ocean-50 border-mint-200 text-mint-700 font-medium">
+                                {story.origin}
+                              </Badge>
+                            </div>
                           </div>
                         </div>
-                        <div className="md:w-2/3">
-                          <p className="text-muted-foreground mb-4">{story.story}</p>
-                          <div className="flex items-center gap-2">
-                            <CheckCircle className="h-5 w-5 text-green-500" />
-                            <span className="font-medium text-green-700">{story.impact}</span>
+                        
+                        <div className="lg:w-2/3 space-y-6">
+                          {/* Story Content */}
+                          <div className="bg-gradient-to-r from-muted/30 to-accent/20 dark:from-muted/10 dark:to-accent/10 rounded-xl p-6">
+                            <p className="text-foreground leading-relaxed text-base font-medium italic">
+                              "{story.story}"
+                            </p>
+                          </div>
+                          
+                          {/* Impact Section */}
+                          <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 rounded-xl border border-green-200/50 dark:border-green-800/30">
+                            <div className="w-8 h-8 bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900 dark:to-emerald-900 rounded-full flex items-center justify-center shadow-soft">
+                              <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400" />
+                            </div>
+                            <div>
+                              <h4 className="font-semibold text-green-800 dark:text-green-200 mb-1">Impact Achievement</h4>
+                              <span className="font-medium text-green-700 dark:text-green-300">{story.impact}</span>
+                            </div>
                           </div>
                         </div>
                       </div>
