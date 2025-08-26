@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -152,10 +153,12 @@ const Community = () => {
             Join the UK's largest diaspora-focused professional community. Connect with your roots while building your future through authentic relationships and shared experiences.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="outline" className="bg-white text-primary hover:bg-white/90">
-              Join Our Community
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <Link to="/auth">
+              <Button size="lg" variant="outline" className="bg-white text-primary hover:bg-white/90">
+                Join Our Community
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
             <Button size="lg" variant="ghost" className="text-white border-white/30 hover:bg-white/10">
               Explore Success Stories
             </Button>
@@ -264,9 +267,11 @@ const Community = () => {
                           <Users className="h-5 w-5 text-muted-foreground" />
                           <span className="font-semibold">{region.members} members</span>
                         </div>
-                        <Button variant="outline" size="sm">
-                          Join Community
-                        </Button>
+                        <Link to="/auth">
+                          <Button variant="outline" size="sm">
+                            Join Community
+                          </Button>
+                        </Link>
                       </div>
                     </CardContent>
                   </Card>
@@ -357,9 +362,11 @@ const Community = () => {
             Connect with thousands of diaspora professionals, entrepreneurs, and leaders who share your vision for success.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="outline" className="bg-white text-primary hover:bg-white/90">
-              Start Your Journey
-            </Button>
+            <Link to="/auth">
+              <Button size="lg" variant="outline" className="bg-white text-primary hover:bg-white/90">
+                Start Your Journey
+              </Button>
+            </Link>
             <Button size="lg" variant="ghost" className="text-white border-white/30 hover:bg-white/10">
               Learn More
             </Button>
