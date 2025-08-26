@@ -62,24 +62,24 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Epiphiny Flow Brand Colors
-				'deep-navy': 'hsl(var(--deep-navy))',
-				'royal-blue': 'hsl(var(--royal-blue))',
-				'emerald-green': 'hsl(var(--emerald-green))',
-				'sunset-orange': 'hsl(var(--sunset-orange))',
-				'gold-amber': 'hsl(var(--gold-amber))',
-				'magenta': 'hsl(var(--magenta))',
-				'cool-grey': 'hsl(var(--cool-grey))',
+				// Flow-inspired Brand Colors
+				'flow-teal': 'hsl(var(--flow-teal))',
+				'flow-purple': 'hsl(var(--flow-purple))',
+				'flow-dark': 'hsl(var(--flow-dark))',
+				'flow-light': 'hsl(var(--flow-light))',
+				'flow-grey': 'hsl(var(--flow-grey))',
+				'flow-white': 'hsl(var(--flow-white))',
+				'flow-border': 'hsl(var(--flow-border))',
 				'charcoal-black': 'hsl(var(--charcoal-black))',
 				'cloud-grey': 'hsl(var(--cloud-grey))',
 				
-				// Epiphiny Flow Semantic Colors
-				'epiphiny-primary': 'hsl(var(--epiphiny-primary))',
-				'epiphiny-secondary': 'hsl(var(--epiphiny-secondary))',
-				'epiphiny-accent': 'hsl(var(--epiphiny-accent))',
-				'epiphiny-premium': 'hsl(var(--epiphiny-premium))',
-				'epiphiny-community': 'hsl(var(--epiphiny-community))',
-				'epiphiny-foundation': 'hsl(var(--epiphiny-foundation))'
+				// Flow-inspired Semantic Colors
+				'flow-primary': 'hsl(var(--flow-primary))',
+				'flow-secondary': 'hsl(var(--flow-secondary))',
+				'flow-accent': 'hsl(var(--flow-accent))',
+				'flow-premium': 'hsl(var(--flow-premium))',
+				'flow-community': 'hsl(var(--flow-community))',
+				'flow-foundation': 'hsl(var(--flow-foundation))'
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
@@ -93,7 +93,7 @@ export default {
 			boxShadow: {
 				'elegant': 'var(--shadow-elegant)',
 				'glow': 'var(--shadow-glow)',
-				'orange': 'var(--shadow-orange)',
+				'purple': 'var(--shadow-purple)',
 				'premium': 'var(--shadow-premium)',
 				'community': 'var(--shadow-community)'
 			},

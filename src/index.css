@@ -8,74 +8,68 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: var(--flow-dark);
+    --foreground: var(--flow-white);
 
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --card: 220 13% 12%;
+    --card-foreground: var(--flow-white);
 
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 220 13% 12%;
+    --popover-foreground: var(--flow-white);
 
-    --primary: 221 83% 53%;
-    --primary-foreground: 0 0% 98%;
+    --primary: var(--flow-teal);
+    --primary-foreground: var(--flow-dark);
 
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: var(--flow-purple);
+    --secondary-foreground: var(--flow-white);
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 220 13% 15%;
+    --muted-foreground: 220 9% 65%;
 
-    --accent: 42 96% 69%;
-    --accent-foreground: 240 10% 3.9%;
+    --accent: var(--flow-teal);
+    --accent-foreground: var(--flow-dark);
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: var(--flow-white);
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 221 83% 53%;
+    --border: 220 13% 20%;
+    --input: 220 13% 20%;
+    --ring: var(--flow-teal);
 
-    /* Epiphiny Flow Brand Color Palette */
-    --deep-navy: 223 78% 16%;
-    --royal-blue: 224 100% 56%;
-    --emerald-green: 172 87% 42%;
-    --sunset-orange: 16 100% 60%;
-    --gold-amber: 42 100% 50%;
-    --magenta: 340 69% 48%;
-    --cool-grey: 210 14% 97%;
-    --charcoal-black: 0 0% 17%;
-    --cloud-grey: 0 0% 90%;
+    /* Flow-inspired Brand Color Palette */
+    --flow-teal: 164 100% 46%;     /* #00E7C3 - Primary accent */
+    --flow-purple: 260 65% 65%;    /* Purple gradient element */
+    --flow-dark: 220 13% 9%;       /* Dark text */
+    --flow-light: 220 14% 98%;     /* Light background */
+    --flow-grey: 220 9% 46%;       /* Muted text */
+    --flow-white: 0 0% 100%;       /* Pure white */
+    --flow-border: 220 13% 91%;    /* Subtle borders */
+    --charcoal-black: 220 13% 9%;
+    --cloud-grey: 220 14% 96%;
 
-    /* Epiphiny Flow Design Tokens */
-    --epiphiny-primary: var(--royal-blue);
-    --epiphiny-secondary: var(--emerald-green);
-    --epiphiny-accent: var(--sunset-orange);
-    --epiphiny-premium: var(--gold-amber);
-    --epiphiny-community: var(--magenta);
-    --epiphiny-foundation: var(--deep-navy);
+    /* Flow-inspired Design Tokens */
+    --flow-primary: var(--flow-teal);
+    --flow-secondary: var(--flow-purple);
+    --flow-accent: var(--flow-teal);
+    --flow-premium: var(--flow-purple);
+    --flow-community: var(--flow-teal);
+    --flow-foundation: var(--flow-dark);
     
-    /* Epiphiny Flow Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--royal-blue)) 0%, hsl(var(--emerald-green)) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(var(--sunset-orange)) 0%, hsl(var(--gold-amber)) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(var(--deep-navy)) 0%, hsl(var(--royal-blue)) 100%);
-    --gradient-community: linear-gradient(135deg, hsl(var(--magenta)) 0%, hsl(var(--royal-blue)) 100%);
-    --gradient-success: linear-gradient(135deg, hsl(var(--emerald-green)) 0%, hsl(var(--royal-blue)) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(var(--sunset-orange)) 0%, hsl(var(--magenta)) 100%);
-    --gradient-premium: linear-gradient(135deg, hsl(var(--gold-amber)) 0%, hsl(var(--sunset-orange)) 100%);
+    /* Flow-inspired Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--flow-teal)) 0%, hsl(var(--flow-purple)) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--flow-purple)) 0%, hsl(var(--flow-teal)) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--flow-purple)) 0%, hsl(var(--flow-teal)) 100%);
+    --gradient-community: linear-gradient(135deg, hsl(var(--flow-teal)) 0%, hsl(var(--flow-purple)) 50%);
+    --gradient-success: linear-gradient(135deg, hsl(var(--flow-teal)) 0%, hsl(164 80% 35%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--flow-teal)) 0%, hsl(var(--flow-purple)) 100%);
+    --gradient-premium: linear-gradient(135deg, hsl(var(--flow-purple)) 0%, hsl(var(--flow-teal)) 100%);
     
-    /* Epiphiny Flow Shadows */
-    --shadow-elegant: 0 10px 30px -10px hsl(var(--royal-blue) / 0.3);
-    --shadow-glow: 0 0 40px hsl(var(--emerald-green) / 0.2);
-    --shadow-orange: 0 8px 32px hsl(var(--sunset-orange) / 0.3);
-    --shadow-premium: 0 8px 32px hsl(var(--gold-amber) / 0.3);
-    --shadow-community: 0 8px 32px hsl(var(--magenta) / 0.3);
-    
-    --shadow-elegant: 0 10px 30px -10px hsl(221 83% 53% / 0.3);
-    --shadow-glow: 0 0 40px hsl(42 96% 69% / 0.2);
-    --shadow-purple: 0 8px 32px hsl(var(--purple) / 0.3);
-    --shadow-teal: 0 8px 32px hsl(var(--teal) / 0.3);
-    --shadow-orange: 0 8px 32px hsl(var(--orange) / 0.3);
+    /* Flow-inspired Shadow System */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--flow-teal) / 0.2);
+    --shadow-glow: 0 0 40px hsl(var(--flow-teal) / 0.3);
+    --shadow-purple: 0 10px 30px -10px hsl(var(--flow-purple) / 0.2);
+    --shadow-premium: 0 20px 50px -15px hsl(var(--flow-purple) / 0.3);
+    --shadow-community: 0 15px 40px -12px hsl(var(--flow-teal) / 0.2);
     
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -100,33 +94,33 @@ All colors MUST be HSL.
   }
 
   .light {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --background: var(--flow-light);
+    --foreground: var(--flow-dark);
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card: var(--flow-white);
+    --card-foreground: var(--flow-dark);
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover: var(--flow-white);
+    --popover-foreground: var(--flow-dark);
 
-    --primary: 221 83% 53%;
-    --primary-foreground: 0 0% 98%;
+    --primary: var(--flow-teal);
+    --primary-foreground: var(--flow-white);
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 240 10% 3.9%;
+    --secondary: var(--flow-purple);
+    --secondary-foreground: var(--flow-white);
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: var(--flow-light);
+    --muted-foreground: var(--flow-grey);
 
-    --accent: 42 96% 69%;
-    --accent-foreground: 240 10% 3.9%;
+    --accent: var(--flow-teal);
+    --accent-foreground: var(--flow-white);
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221 83% 53%;
+    --border: var(--flow-border);
+    --input: var(--flow-border);
+    --ring: var(--flow-teal);
 
     /* Light mode gradients */
     --hero-gradient: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(221 83% 53% / 0.05) 100%);
@@ -149,5 +143,37 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Flow-inspired geometric background pattern */
+  .flow-wireframe-bg {
+    background-image: 
+      linear-gradient(to right, hsl(var(--flow-border)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--flow-border)) 1px, transparent 1px),
+      linear-gradient(135deg, transparent 25%, hsl(var(--flow-teal) / 0.02) 50%, transparent 75%);
+    background-size: 40px 40px, 40px 40px, 200px 200px;
+    position: relative;
+  }
+  
+  .flow-wireframe-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, hsl(var(--flow-purple) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, hsl(var(--flow-teal) / 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  
+  /* Flow-inspired geometric shapes */
+  .flow-geometric-shape {
+    position: absolute;
+    border: 2px solid hsl(var(--flow-teal) / 0.3);
+    background: linear-gradient(135deg, hsl(var(--flow-teal) / 0.1), hsl(var(--flow-purple) / 0.1));
   }
 }

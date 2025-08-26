@@ -14,8 +14,8 @@ export const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-gradient-to-r from-primary to-purple-600 text-primary-foreground hover:shadow-glow hover:scale-105 transition-all duration-300 font-semibold",
-        accent: "bg-gradient-to-r from-accent to-orange-400 text-accent-foreground hover:shadow-glow hover:scale-105 transition-all duration-300 font-semibold",
+        hero: "bg-flow-teal text-white hover:bg-flow-teal/90 hover:shadow-glow hover:scale-105 transition-all duration-300 font-semibold",
+        accent: "bg-gradient-primary text-white hover:shadow-glow hover:scale-105 transition-all duration-300 font-semibold",
         glass: "bg-background/20 backdrop-blur-sm border border-white/20 text-foreground hover:bg-background/30 transition-all duration-300",
       },
       size: {

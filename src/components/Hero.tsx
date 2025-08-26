@@ -1,80 +1,61 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Globe, Users, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroBackground from "@/assets/hero-background.jpg";
+
 const Hero = () => {
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
-      backgroundImage: `url(${heroBackground})`
-    }}>
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/95"></div>
-      </div>
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden flow-wireframe-bg">
+      {/* Geometric decorative elements */}
+      <div className="flow-geometric-shape w-32 h-32 rotate-45 top-20 left-10 opacity-60" />
+      <div className="flow-geometric-shape w-24 h-24 rotate-12 top-40 right-20 opacity-40" />
+      <div className="flow-geometric-shape w-40 h-40 -rotate-12 bottom-32 left-20 opacity-30" />
+      <div className="flow-geometric-shape w-28 h-28 rotate-45 bottom-20 right-32 opacity-50" />
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
-        <div className="max-w-4xl mx-auto">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 border border-primary/20">
-            <Globe className="w-4 h-4" />
-            Global Diaspora Platform
-          </div>
-          
+        <div className="max-w-5xl mx-auto space-y-8">
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            Empowering 
-            <span className="bg-gradient-to-r from-primary via-purple-600 to-accent bg-clip-text text-transparent">
-              {" "}Diaspora{" "}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight">
+            <span className="block text-foreground mb-4">BUILD THE NEXT</span>
+            <span className="block bg-gradient-primary bg-clip-text text-transparent">
+              KILLER APP
             </span>
-            Communities
           </h1>
           
-          {/* Subheading */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">Unlocking networks, investment, and growth opportunities -  empowering underrepresented founders and professionals to access capital, mentorship, and global markets.</p>
-          
-          {/* Stats */}
-          <div className="flex flex-wrap justify-center gap-8 mb-10">
-            <div className="flex items-center gap-2 text-foreground">
-              <Users className="w-5 h-5 text-primary" />
-              <span className="font-semibold">50M+ Diaspora</span>
-            </div>
-            <div className="flex items-center gap-2 text-foreground">
-              <TrendingUp className="w-5 h-5 text-accent" />
-              <span className="font-semibold">£2.5T Economic Impact</span>
-            </div>
-            <div className="flex items-center gap-2 text-foreground">
-              <Globe className="w-5 h-5 text-purple-500" />
-              <span className="font-semibold">Global Network</span>
-            </div>
-          </div>
-          
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link to="/auth">
-              <Button variant="hero" size="xl" className="group">
-                Join the Platform
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-            <a href="#opportunities">
-              <Button variant="glass" size="xl">
-                Explore Opportunities
-              </Button>
-            </a>
-          </div>
-          
-          {/* Trust Indicator */}
-          <p className="text-sm text-muted-foreground mt-8">
-            Trusted by leading organizations across the UK and beyond
+          {/* Subtitle */}
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-medium">
+            Epiphiny Flow provides the tools and infrastructure to build 
+            and scale apps faster and better than anywhere else.
           </p>
+          
+          {/* CTA Button */}
+          <div className="pt-8">
+            <Button 
+              asChild 
+              variant="hero" 
+              size="xl"
+              className="text-lg px-12 py-6 rounded-xl font-bold shadow-glow"
+            >
+              <Link to="/auth">Start Building</Link>
+            </Button>
+          </div>
+          
+          {/* Partners/Companies */}
+          <div className="pt-16">
+            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-8 font-semibold">
+              POWERING APPS FROM BRANDS AND COMPANIES ACROSS THE WORLD
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60">
+              <div className="text-2xl font-bold text-muted-foreground">NBA</div>
+              <div className="text-2xl font-bold text-muted-foreground">Disney</div>
+              <div className="text-2xl font-bold text-muted-foreground">LaLiga</div>
+              <div className="text-2xl font-bold text-muted-foreground">UFC</div>
+              <div className="text-2xl font-bold text-muted-foreground">CryptoKitties</div>
+            </div>
+          </div>
         </div>
       </div>
-      
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;
