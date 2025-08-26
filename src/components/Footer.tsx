@@ -52,19 +52,19 @@ const Footer = () => {
             <h4 className="font-semibold mb-4 text-foreground">Platform</h4>
             <div className="space-y-3">
               {[
-                "Business Opportunities",
-                "Career Development",
-                "Investment Hub",
-                "Global Collaboration",
-                "Community Forum"
+                { name: "Business Opportunities", href: "/opportunities" },
+                { name: "Career Development", href: "/opportunities" },
+                { name: "Investment Hub", href: "/investment-hub" },
+                { name: "Global Collaboration", href: "/community" },
+                { name: "Community Forum", href: "/community" }
               ].map((link, index) => (
                 <a 
                   key={index}
-                  href="#" 
+                  href={link.href} 
                   className="block text-muted-foreground hover:text-primary transition-colors text-sm group"
                 >
                   <span className="flex items-center gap-1">
-                    {link}
+                    {link.name}
                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </span>
                 </a>
