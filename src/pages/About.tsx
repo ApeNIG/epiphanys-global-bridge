@@ -94,8 +94,8 @@ const About = () => {
       <Header />
       
       {/* Enhanced Hero Section with Epiphiny Flow Colors */}
-      <section className="pt-24 pb-16 bg-gradient-hero relative overflow-hidden">
-        <div className="absolute inset-0 bg-deep-navy/95 backdrop-blur-sm"></div>
+      <section className="pt-24 pb-16 bg-gradient-to-br from-background to-muted/30 relative overflow-hidden">
+        <div className="absolute inset-0 bg-background/60 backdrop-blur-sm"></div>
         
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
@@ -113,12 +113,12 @@ const About = () => {
           <Badge variant="secondary" className="mb-8 bg-gradient-to-r from-cool-grey to-royal-blue/20 text-deep-navy border-0 shadow-elegant px-6 py-2 font-semibold">
             About Epiphiny Flow
           </Badge>
-          <h1 className="text-5xl md:text-7xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-8 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-8 leading-tight">
             Empowering Diaspora
             <br />
-            <span className="bg-gradient-secondary bg-clip-text text-transparent">Communities</span>
+            <span className="bg-gradient-primary bg-clip-text text-transparent">Communities</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed font-medium">
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-medium">
             We're building the world's leading digital platform that connects businesses, organizations, 
             and individuals with public and private sector opportunities, with a strong focus on serving 
             <span className="text-emerald-green font-semibold"> diaspora communities</span> in the UK.
@@ -305,8 +305,8 @@ const About = () => {
       </section>
 
       {/* Enhanced Final Section with Epiphiny Flow Colors */}
-      <section className="py-20 bg-gradient-hero relative overflow-hidden">
-        <div className="absolute inset-0 bg-deep-navy/95 backdrop-blur-sm"></div>
+      <section className="py-20 bg-gradient-to-br from-muted/20 to-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
         
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
