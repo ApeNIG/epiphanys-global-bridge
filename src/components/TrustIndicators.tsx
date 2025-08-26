@@ -30,10 +30,13 @@ const trustFeatures = [
 ];
 
 const partnerships = [
-  { name: "UK Government", type: "Official Partner" },
-  { name: "Greater Manchester Combined Authority", type: "Regional Partner" },
-  { name: "Innovate UK", type: "Innovation Partner" },
-  { name: "British Council", type: "Cultural Partner" }
+  { name: "MCC", type: "Strategic Partner" },
+  { name: "GMCA", type: "Regional Partner" },
+  { name: "GC Angels", type: "Investment Partner" },
+  { name: "GM Growth Hub", type: "Growth Partner" },
+  { name: "UK Black Tech", type: "Community Partner" },
+  { name: "Our Business GM", type: "Business Partner" },
+  { name: "University Salford", type: "Academic Partner" }
 ];
 
 const TrustIndicators = () => {
