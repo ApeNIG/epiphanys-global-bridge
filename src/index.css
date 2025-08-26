@@ -36,31 +36,40 @@ All colors MUST be HSL.
     --input: 240 3.7% 15.9%;
     --ring: 221 83% 53%;
 
-    /* Vibrant color palette */
-    --purple: 262 83% 58%;
-    --purple-light: 270 91% 85%;
-    --teal: 180 84% 50%;
-    --teal-light: 180 84% 85%;
-    --orange: 25 95% 53%;
-    --orange-light: 25 95% 85%;
-    --pink: 340 82% 52%;
-    --pink-light: 340 82% 85%;
-    --emerald: 155 100% 40%;
-    --emerald-light: 155 100% 85%;
+    /* Epiphiny Flow Brand Color Palette */
+    --deep-navy: 223 78% 16%;
+    --royal-blue: 224 100% 56%;
+    --emerald-green: 172 87% 42%;
+    --sunset-orange: 16 100% 60%;
+    --gold-amber: 42 100% 50%;
+    --magenta: 340 69% 48%;
+    --cool-grey: 210 14% 97%;
+    --charcoal-black: 0 0% 17%;
+    --cloud-grey: 0 0% 90%;
 
-    /* Custom design tokens */
-    --primary-gradient: linear-gradient(135deg, hsl(221 83% 53%), hsl(262 83% 58%));
-    --accent-gradient: linear-gradient(135deg, hsl(42 96% 69%), hsl(38 92% 62%));
-    --hero-gradient: linear-gradient(135deg, hsl(240 10% 3.9%) 0%, hsl(221 83% 53% / 0.1) 100%);
-    --card-gradient: linear-gradient(135deg, hsl(240 3.7% 15.9% / 0.5), hsl(240 3.7% 15.9% / 0.8));
+    /* Epiphiny Flow Design Tokens */
+    --epiphiny-primary: var(--royal-blue);
+    --epiphiny-secondary: var(--emerald-green);
+    --epiphiny-accent: var(--sunset-orange);
+    --epiphiny-premium: var(--gold-amber);
+    --epiphiny-community: var(--magenta);
+    --epiphiny-foundation: var(--deep-navy);
     
-    /* Vibrant gradients for personality */
-    --gradient-purple: linear-gradient(135deg, hsl(var(--purple)) 0%, hsl(var(--primary)) 100%);
-    --gradient-teal: linear-gradient(135deg, hsl(var(--teal)) 0%, hsl(var(--primary)) 100%);
-    --gradient-orange: linear-gradient(135deg, hsl(var(--orange)) 0%, hsl(var(--accent)) 100%);
-    --gradient-pink: linear-gradient(135deg, hsl(var(--pink)) 0%, hsl(var(--purple)) 100%);
-    --gradient-emerald: linear-gradient(135deg, hsl(var(--emerald)) 0%, hsl(var(--teal)) 100%);
-    --gradient-rainbow: linear-gradient(135deg, hsl(var(--purple)) 0%, hsl(var(--primary)) 25%, hsl(var(--teal)) 50%, hsl(var(--emerald)) 75%, hsl(var(--accent)) 100%);
+    /* Epiphiny Flow Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--royal-blue)) 0%, hsl(var(--emerald-green)) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--sunset-orange)) 0%, hsl(var(--gold-amber)) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--deep-navy)) 0%, hsl(var(--royal-blue)) 100%);
+    --gradient-community: linear-gradient(135deg, hsl(var(--magenta)) 0%, hsl(var(--royal-blue)) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(var(--emerald-green)) 0%, hsl(var(--royal-blue)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--sunset-orange)) 0%, hsl(var(--magenta)) 100%);
+    --gradient-premium: linear-gradient(135deg, hsl(var(--gold-amber)) 0%, hsl(var(--sunset-orange)) 100%);
+    
+    /* Epiphiny Flow Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--royal-blue) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--emerald-green) / 0.2);
+    --shadow-orange: 0 8px 32px hsl(var(--sunset-orange) / 0.3);
+    --shadow-premium: 0 8px 32px hsl(var(--gold-amber) / 0.3);
+    --shadow-community: 0 8px 32px hsl(var(--magenta) / 0.3);
     
     --shadow-elegant: 0 10px 30px -10px hsl(221 83% 53% / 0.3);
     --shadow-glow: 0 0 40px hsl(42 96% 69% / 0.2);

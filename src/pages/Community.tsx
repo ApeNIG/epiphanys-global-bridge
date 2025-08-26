@@ -139,68 +139,68 @@ const Community = () => {
       
       {/* Hero Section */}
       <section className="relative py-24 px-4 overflow-hidden">
-        {/* Animated Background Layers */}
-        <div className="absolute inset-0 bg-gradient-to-br from-coral-50/50 via-lavender-50/30 to-mint-50/50 dark:from-coral-950/20 dark:via-lavender-950/20 dark:to-mint-950/20" />
+        {/* Animated Background Layers with Epiphiny Colors */}
+        <div className="absolute inset-0 bg-gradient-to-br from-cool-grey/80 via-royal-blue/5 to-emerald-green/5 dark:from-deep-navy/90 dark:via-royal-blue/20 dark:to-emerald-green/10" />
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-r from-coral-400/20 to-sunset-600/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-lavender-400/20 to-purple-600/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}} />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-mint-400/15 to-ocean-500/15 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}} />
+          <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-r from-royal-blue/20 to-emerald-green/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-sunset-orange/15 to-gold-amber/15 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}} />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-magenta/10 to-royal-blue/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}} />
           
-          {/* Floating Elements */}
-          <div className="absolute top-32 right-1/4 w-3 h-3 bg-coral-400 rounded-full animate-bounce" style={{animationDelay: '0.5s'}} />
-          <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-lavender-400 rounded-full animate-bounce" style={{animationDelay: '1.5s'}} />
-          <div className="absolute top-1/3 left-1/6 w-4 h-4 bg-mint-400/60 rounded-full animate-bounce" style={{animationDelay: '2.5s'}} />
+          {/* Floating Elements with Brand Colors */}
+          <div className="absolute top-32 right-1/4 w-3 h-3 bg-emerald-green rounded-full animate-bounce" style={{animationDelay: '0.5s'}} />
+          <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-sunset-orange rounded-full animate-bounce" style={{animationDelay: '1.5s'}} />
+          <div className="absolute top-1/3 left-1/6 w-4 h-4 bg-magenta/60 rounded-full animate-bounce" style={{animationDelay: '2.5s'}} />
         </div>
         
         <div className="relative container mx-auto text-center z-10">
           {/* Enhanced Badge with Icon Animation */}
-          <Badge className="mb-8 bg-gradient-to-r from-coral-100 to-lavender-100 text-foreground border-0 shadow-soft hover:shadow-elegant transition-all duration-300 px-6 py-2">
-            <Users className="w-4 h-4 mr-2 animate-pulse" />
+          <Badge className="mb-8 bg-gradient-to-r from-cool-grey to-royal-blue/10 text-deep-navy border-0 shadow-elegant hover:shadow-glow transition-all duration-300 px-6 py-2 font-semibold">
+            <Users className="w-4 h-4 mr-2 animate-pulse text-royal-blue" />
             Diaspora-First Community Platform
           </Badge>
           
-          {/* Enhanced Typography with Gradient Animation */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight bg-gradient-to-r from-coral-600 via-lavender-600 to-mint-600 bg-clip-text text-transparent animate-fade-in">
+          {/* Enhanced Typography with Epiphiny Brand Gradients */}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight bg-gradient-primary bg-clip-text text-transparent animate-fade-in">
             Where Cultural Heritage
             <br />
-            <span className="bg-gradient-to-r from-sunset-600 via-purple-600 to-ocean-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-secondary bg-clip-text text-transparent">
               Meets Economic Opportunity
             </span>
           </h1>
           
-          {/* Enhanced Description with Better Typography */}
+          {/* Enhanced Description with Epiphiny Colors */}
           <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-4xl mx-auto leading-relaxed font-medium">
             Join the UK's largest diaspora-focused professional community. Connect with your roots while building your future through 
-            <span className="text-coral-600 dark:text-coral-400 font-semibold"> authentic relationships</span> and 
-            <span className="text-lavender-600 dark:text-lavender-400 font-semibold"> shared experiences</span>.
+            <span className="text-emerald-green font-semibold"> authentic relationships</span> and 
+            <span className="text-sunset-orange font-semibold"> shared experiences</span>.
           </p>
           
-          {/* Enhanced CTA Buttons */}
+          {/* Enhanced CTA Buttons with Brand Colors */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
             <Link to="/auth">
-              <Button size="lg" className="bg-gradient-to-r from-coral-500 to-sunset-600 hover:from-coral-600 hover:to-sunset-700 text-white shadow-sunset hover:shadow-xl transition-all duration-300 transform hover:scale-105 px-8 py-4">
+              <Button size="lg" className="bg-gradient-primary hover:shadow-elegant text-white transition-all duration-300 transform hover:scale-105 px-8 py-4 font-semibold">
                 Join Our Community
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Button variant="outline" size="lg" className="border-2 border-gradient-to-r from-coral-500 to-lavender-500 hover:bg-gradient-to-r hover:from-coral-50 hover:to-lavender-50 transform hover:scale-105 transition-all duration-300 px-8 py-4">
+            <Button variant="outline" size="lg" className="border-2 border-royal-blue text-royal-blue hover:bg-royal-blue hover:text-white transform hover:scale-105 transition-all duration-300 px-8 py-4 font-semibold">
               <Star className="mr-2 h-5 w-5" />
               Explore Success Stories
             </Button>
           </div>
           
-          {/* Trust Indicators */}
+          {/* Trust Indicators with Brand Colors */}
           <div className="flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
-              <CheckCircle className="h-4 w-4 text-green-500" />
+              <CheckCircle className="h-4 w-4 text-emerald-green" />
               <span>Verified Community</span>
             </div>
             <div className="flex items-center gap-2">
-              <Globe className="h-4 w-4 text-blue-500" />
+              <Globe className="h-4 w-4 text-royal-blue" />
               <span>47 Countries</span>
             </div>
             <div className="flex items-center gap-2">
-              <Award className="h-4 w-4 text-purple-500" />
+              <Award className="h-4 w-4 text-gold-amber" />
               <span>Award Winning Platform</span>
             </div>
           </div>

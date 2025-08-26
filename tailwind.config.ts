@@ -62,32 +62,40 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Vibrant personality colors
-				purple: 'hsl(var(--purple))',
-				'purple-light': 'hsl(var(--purple-light))',
-				teal: 'hsl(var(--teal))',
-				'teal-light': 'hsl(var(--teal-light))',
-				orange: 'hsl(var(--orange))',
-				'orange-light': 'hsl(var(--orange-light))',
-				pink: 'hsl(var(--pink))',
-				'pink-light': 'hsl(var(--pink-light))',
-				emerald: 'hsl(var(--emerald))',
-				'emerald-light': 'hsl(var(--emerald-light))'
+				// Epiphiny Flow Brand Colors
+				'deep-navy': 'hsl(var(--deep-navy))',
+				'royal-blue': 'hsl(var(--royal-blue))',
+				'emerald-green': 'hsl(var(--emerald-green))',
+				'sunset-orange': 'hsl(var(--sunset-orange))',
+				'gold-amber': 'hsl(var(--gold-amber))',
+				'magenta': 'hsl(var(--magenta))',
+				'cool-grey': 'hsl(var(--cool-grey))',
+				'charcoal-black': 'hsl(var(--charcoal-black))',
+				'cloud-grey': 'hsl(var(--cloud-grey))',
+				
+				// Epiphiny Flow Semantic Colors
+				'epiphiny-primary': 'hsl(var(--epiphiny-primary))',
+				'epiphiny-secondary': 'hsl(var(--epiphiny-secondary))',
+				'epiphiny-accent': 'hsl(var(--epiphiny-accent))',
+				'epiphiny-premium': 'hsl(var(--epiphiny-premium))',
+				'epiphiny-community': 'hsl(var(--epiphiny-community))',
+				'epiphiny-foundation': 'hsl(var(--epiphiny-foundation))'
 			},
 			backgroundImage: {
-				'gradient-purple': 'var(--gradient-purple)',
-				'gradient-teal': 'var(--gradient-teal)',
-				'gradient-orange': 'var(--gradient-orange)',
-				'gradient-pink': 'var(--gradient-pink)',
-				'gradient-emerald': 'var(--gradient-emerald)',
-				'gradient-rainbow': 'var(--gradient-rainbow)'
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-secondary': 'var(--gradient-secondary)',
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-community': 'var(--gradient-community)',
+				'gradient-success': 'var(--gradient-success)',
+				'gradient-accent': 'var(--gradient-accent)',
+				'gradient-premium': 'var(--gradient-premium)'
 			},
 			boxShadow: {
 				'elegant': 'var(--shadow-elegant)',
 				'glow': 'var(--shadow-glow)',
-				'purple': 'var(--shadow-purple)',
-				'teal': 'var(--shadow-teal)',
-				'orange': 'var(--shadow-orange)'
+				'orange': 'var(--shadow-orange)',
+				'premium': 'var(--shadow-premium)',
+				'community': 'var(--shadow-community)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
