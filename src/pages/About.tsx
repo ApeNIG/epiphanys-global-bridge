@@ -147,7 +147,7 @@ const About = () => {
                 <div className="w-16 h-16 bg-gradient-primary rounded-xl flex items-center justify-center mx-auto mb-6 shadow-elegant">
                   <Target className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-deep-navy">Purpose-Driven</h3>
+                <h3 className="text-2xl font-black text-foreground mb-4 group-hover:scale-105 transition-all duration-300">Purpose-Driven</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Every feature serves our mission of diaspora empowerment and economic inclusion
                 </p>
@@ -156,7 +156,7 @@ const About = () => {
                 <div className="w-16 h-16 bg-gradient-success rounded-xl flex items-center justify-center mx-auto mb-6 shadow-glow">
                   <Users className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-deep-navy">Community-Centric</h3>
+                <h3 className="text-2xl font-black text-foreground mb-4 group-hover:scale-105 transition-all duration-300">Community-Centric</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Built by the community, for the community, with authentic cultural understanding
                 </p>
@@ -165,7 +165,7 @@ const About = () => {
                 <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mx-auto mb-6 shadow-orange">
                   <Globe className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-deep-navy">Globally Connected</h3>
+                <h3 className="text-2xl font-black text-foreground mb-4 group-hover:scale-105 transition-all duration-300">Globally Connected</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Linking local communities to worldwide opportunities and global networks
                 </p>
@@ -244,9 +244,9 @@ const About = () => {
               ];
               const currentStyle = brandStyles[index % brandStyles.length];
               return (
-                <Card key={index} className={`p-6 text-center hover:${currentStyle.shadow} transition-all duration-300 hover:scale-105 bg-white/80 dark:bg-deep-navy/20 border-2 hover:border-${currentStyle.color.split('-')[1]}/30 group`}>
-                  <div className={`w-16 h-16 ${currentStyle.gradient} rounded-xl flex items-center justify-center mx-auto mb-6 shadow-elegant`}>
-                    <value.icon className="w-8 h-8 text-white" />
+                <Card key={index} className={`p-6 text-center hover:${currentStyle.shadow} transition-all duration-300 hover:scale-105 bg-white/90 dark:bg-charcoal-black/90 border-2 hover:border-${currentStyle.color.split('-')[1]}/30 group`}>
+                  <div className={`w-16 h-16 bg-charcoal-black dark:${currentStyle.gradient} rounded-xl flex items-center justify-center mx-auto mb-6 shadow-elegant`}>
+                    <value.icon className={`w-8 h-8 text-white`} />
                   </div>
                   <h3 className="text-xl font-black text-foreground mb-4 group-hover:scale-105 transition-all duration-300">
                     {value.title}
