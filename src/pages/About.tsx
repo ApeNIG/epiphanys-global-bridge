@@ -245,8 +245,8 @@ const About = () => {
               const currentStyle = brandStyles[index % brandStyles.length];
               return (
                 <Card key={index} className={`p-6 text-center hover:${currentStyle.shadow} transition-all duration-300 hover:scale-105 bg-white/90 dark:bg-charcoal-black/90 border-2 hover:border-${currentStyle.color.split('-')[1]}/30 group`}>
-                  <div className={`w-16 h-16 bg-charcoal-black dark:${currentStyle.gradient} rounded-xl flex items-center justify-center mx-auto mb-6 shadow-elegant`}>
-                    <value.icon className={`w-8 h-8 text-white`} />
+                  <div className={`w-16 h-16 ${currentStyle.gradient} rounded-xl flex items-center justify-center mx-auto mb-6 shadow-elegant`}>
+                    <value.icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-xl font-black text-foreground mb-4 group-hover:scale-105 transition-all duration-300">
                     {value.title}
