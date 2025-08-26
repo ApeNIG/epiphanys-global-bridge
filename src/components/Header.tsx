@@ -27,9 +27,8 @@ const Header = () => {
                   <div className="w-2 h-0.5 bg-white/60 rounded"></div>
                 </div>
               </div>
-              <span className="text-xl font-bold text-foreground">
-                <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">Epiphiny</span>
-                <span className="ml-1 text-foreground">Flow</span>
+              <span className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+                Epiphiny Flow
               </span>
             </Link>
           </DropdownMenuTrigger>
