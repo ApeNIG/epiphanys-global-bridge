@@ -138,28 +138,35 @@ const Community = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative py-20 px-4 bg-gradient-to-br from-primary via-purple-600 to-accent overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative container mx-auto text-center text-white">
-          <Badge className="mb-6 bg-white/20 text-white border-white/30">
-            🌍 Diaspora-First Community Platform
+      <section className="relative py-20 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-coral-50/50 via-lavender-50/30 to-mint-50/50 dark:from-coral-950/20 dark:via-lavender-950/20 dark:to-mint-950/20" />
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-r from-coral-400/20 to-sunset-600/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-lavender-400/20 to-purple-600/20 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-mint-400/15 to-ocean-500/15 rounded-full blur-3xl" />
+        </div>
+        
+        <div className="relative container mx-auto text-center z-10">
+          <Badge className="mb-6 bg-gradient-to-r from-coral-100 to-lavender-100 text-foreground border-0 shadow-soft">
+            <Users className="w-4 h-4 mr-2" />
+            Diaspora-First Community Platform
           </Badge>
-          <h1 className="text-5xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight bg-gradient-to-r from-coral-600 via-lavender-600 to-mint-600 bg-clip-text text-transparent">
             Where Cultural Heritage
             <br />
             Meets Economic Opportunity
           </h1>
-          <p className="text-xl mb-8 max-w-3xl mx-auto text-white/90">
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
             Join the UK's largest diaspora-focused professional community. Connect with your roots while building your future through authentic relationships and shared experiences.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/auth">
-              <Button size="lg" variant="outline" className="bg-white text-primary hover:bg-white/90">
+              <Button size="lg" className="bg-gradient-to-r from-coral-500 to-sunset-600 hover:from-coral-600 hover:to-sunset-700 text-white shadow-sunset hover:shadow-xl transition-all duration-300">
                 Join Our Community
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-            <Button size="lg" variant="ghost" className="text-white border-white/30 hover:bg-white/10">
+            <Button variant="outline" size="lg" className="border-2 hover:bg-gradient-to-r hover:from-coral-50 hover:to-lavender-50">
               Explore Success Stories
             </Button>
           </div>
@@ -167,13 +174,31 @@ const Community = () => {
       </section>
 
       {/* Community Stats */}
-      <section className="py-16 px-4">
+      <section className="py-20 px-4">
         <div className="container mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {communityStats.map((stat, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="pt-6">
-                  <stat.icon className="h-8 w-8 mx-auto mb-4 text-primary" />
+              <Card key={index} className="text-center hover:shadow-elegant transition-all duration-300 group relative overflow-hidden">
+                <div className={`absolute inset-0 bg-gradient-to-br ${
+                  index === 0 ? 'from-coral-50/50 to-sunset-50/50 dark:from-coral-950/10 dark:to-sunset-950/10' :
+                  index === 1 ? 'from-lavender-50/50 to-purple-50/50 dark:from-lavender-950/10 dark:to-purple-950/10' :
+                  index === 2 ? 'from-mint-50/50 to-ocean-50/50 dark:from-mint-950/10 dark:to-ocean-950/10' :
+                  'from-sunset-50/50 to-coral-50/50 dark:from-sunset-950/10 dark:to-coral-950/10'
+                } opacity-0 group-hover:opacity-100 transition-opacity`} />
+                <CardContent className="pt-6 relative">
+                  <div className={`w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center ${
+                    index === 0 ? 'bg-gradient-to-r from-coral-100 to-sunset-100 dark:from-coral-900 dark:to-sunset-900' :
+                    index === 1 ? 'bg-gradient-to-r from-lavender-100 to-purple-100 dark:from-lavender-900 dark:to-purple-900' :
+                    index === 2 ? 'bg-gradient-to-r from-mint-100 to-ocean-100 dark:from-mint-900 dark:to-ocean-900' :
+                    'bg-gradient-to-r from-sunset-100 to-coral-100 dark:from-sunset-900 dark:to-coral-900'
+                  }`}>
+                    <stat.icon className={`h-6 w-6 ${
+                      index === 0 ? 'text-coral-600 dark:text-coral-400' :
+                      index === 1 ? 'text-lavender-600 dark:text-lavender-400' :
+                      index === 2 ? 'text-mint-600 dark:text-mint-400' :
+                      'text-sunset-600 dark:text-sunset-400'
+                    }`} />
+                  </div>
                   <div className="text-3xl font-bold text-foreground mb-2">{stat.value}</div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
                 </CardContent>
@@ -197,18 +222,38 @@ const Community = () => {
             <TabsContent value="overview" className="space-y-12">
               {/* Community Features */}
               <div>
-                <h2 className="text-3xl font-bold text-center mb-4">Why Diaspora Communities Choose Us</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 bg-gradient-to-r from-coral-600 via-lavender-600 to-mint-600 bg-clip-text text-transparent">
+                  Why Diaspora Communities Choose Us
+                </h2>
                 <p className="text-lg text-muted-foreground text-center mb-12 max-w-3xl mx-auto">
                   We understand that your cultural heritage is your strength, not a barrier. Our platform amplifies your unique perspective and global networks.
                 </p>
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {communityFeatures.map((feature, index) => (
-                    <Card key={index} className="hover:shadow-lg transition-shadow">
-                      <CardHeader>
-                        <feature.icon className="h-10 w-10 text-primary mb-4" />
+                    <Card key={index} className="hover:shadow-elegant transition-all duration-300 group relative overflow-hidden">
+                      <div className={`absolute inset-0 bg-gradient-to-br ${
+                        index === 0 ? 'from-coral-50/50 to-sunset-50/50 dark:from-coral-950/10 dark:to-sunset-950/10' :
+                        index === 1 ? 'from-lavender-50/50 to-purple-50/50 dark:from-lavender-950/10 dark:to-purple-950/10' :
+                        index === 2 ? 'from-mint-50/50 to-ocean-50/50 dark:from-mint-950/10 dark:to-ocean-950/10' :
+                        'from-sunset-50/50 to-coral-50/50 dark:from-sunset-950/10 dark:to-coral-950/10'
+                      } opacity-0 group-hover:opacity-100 transition-opacity`} />
+                      <CardHeader className="relative">
+                        <div className={`w-12 h-12 mb-4 rounded-xl flex items-center justify-center ${
+                          index === 0 ? 'bg-gradient-to-r from-coral-100 to-sunset-100 dark:from-coral-900 dark:to-sunset-900' :
+                          index === 1 ? 'bg-gradient-to-r from-lavender-100 to-purple-100 dark:from-lavender-900 dark:to-purple-900' :
+                          index === 2 ? 'bg-gradient-to-r from-mint-100 to-ocean-100 dark:from-mint-900 dark:to-ocean-900' :
+                          'bg-gradient-to-r from-sunset-100 to-coral-100 dark:from-sunset-900 dark:to-coral-900'
+                        }`}>
+                          <feature.icon className={`h-6 w-6 ${
+                            index === 0 ? 'text-coral-600 dark:text-coral-400' :
+                            index === 1 ? 'text-lavender-600 dark:text-lavender-400' :
+                            index === 2 ? 'text-mint-600 dark:text-mint-400' :
+                            'text-sunset-600 dark:text-sunset-400'
+                          }`} />
+                        </div>
                         <CardTitle className="text-lg">{feature.title}</CardTitle>
                       </CardHeader>
-                      <CardContent>
+                      <CardContent className="relative">
                         <CardDescription>{feature.description}</CardDescription>
                       </CardContent>
                     </Card>
@@ -217,23 +262,34 @@ const Community = () => {
               </div>
 
               {/* Core Values */}
-              <div className="bg-gradient-to-r from-primary/5 to-purple-500/5 rounded-2xl p-8">
-                <h3 className="text-2xl font-bold text-center mb-8">Our Community Values</h3>
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div className="text-center">
-                    <Heart className="h-12 w-12 text-primary mx-auto mb-4" />
-                    <h4 className="font-semibold mb-2">Cultural Pride</h4>
-                    <p className="text-muted-foreground">Celebrate and leverage your heritage as a competitive advantage in the global economy.</p>
-                  </div>
-                  <div className="text-center">
-                    <Handshake className="h-12 w-12 text-primary mx-auto mb-4" />
-                    <h4 className="font-semibold mb-2">Authentic Connection</h4>
-                    <p className="text-muted-foreground">Build meaningful relationships based on shared experiences and mutual understanding.</p>
-                  </div>
-                  <div className="text-center">
-                    <TrendingUp className="h-12 w-12 text-primary mx-auto mb-4" />
-                    <h4 className="font-semibold mb-2">Inclusive Growth</h4>
-                    <p className="text-muted-foreground">Create opportunities that benefit both individual success and community advancement.</p>
+              <div className="bg-gradient-to-r from-coral-50/50 via-lavender-50/30 to-mint-50/50 dark:from-coral-950/10 dark:via-lavender-950/10 dark:to-mint-950/10 rounded-2xl p-8 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-subtle opacity-50" />
+                <div className="relative">
+                  <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 bg-gradient-to-r from-coral-600 via-lavender-600 to-mint-600 bg-clip-text text-transparent">
+                    Our Community Values
+                  </h3>
+                  <div className="grid md:grid-cols-3 gap-8">
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-gradient-to-r from-coral-100 to-sunset-100 dark:from-coral-900 dark:to-sunset-900 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-soft">
+                        <Heart className="h-8 w-8 text-coral-600 dark:text-coral-400" />
+                      </div>
+                      <h4 className="font-semibold mb-2 text-lg">Cultural Pride</h4>
+                      <p className="text-muted-foreground">Celebrate and leverage your heritage as a competitive advantage in the global economy.</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-gradient-to-r from-lavender-100 to-purple-100 dark:from-lavender-900 dark:to-purple-900 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-soft">
+                        <Handshake className="h-8 w-8 text-lavender-600 dark:text-lavender-400" />
+                      </div>
+                      <h4 className="font-semibold mb-2 text-lg">Authentic Connection</h4>
+                      <p className="text-muted-foreground">Build meaningful relationships based on shared experiences and mutual understanding.</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-gradient-to-r from-mint-100 to-ocean-100 dark:from-mint-900 dark:to-ocean-900 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-soft">
+                        <TrendingUp className="h-8 w-8 text-mint-600 dark:text-mint-400" />
+                      </div>
+                      <h4 className="font-semibold mb-2 text-lg">Inclusive Growth</h4>
+                      <p className="text-muted-foreground">Create opportunities that benefit both individual success and community advancement.</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -355,15 +411,17 @@ const Community = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 px-4 bg-gradient-to-r from-primary to-purple-600">
-        <div className="container mx-auto text-center text-white">
-          <h2 className="text-3xl font-bold mb-4">Ready to Join Our Community?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-white/90">
+      <section className="py-20 px-4 bg-gradient-to-r from-coral-600 via-lavender-600 to-mint-600 relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="container mx-auto text-center text-white relative z-10">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Join Our Community?</h2>
+          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-90">
             Connect with thousands of diaspora professionals, entrepreneurs, and leaders who share your vision for success.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/auth">
-              <Button size="lg" variant="outline" className="bg-white text-primary hover:bg-white/90">
+              <Button size="lg" variant="secondary" className="bg-white text-foreground hover:bg-white/90 shadow-lg">
+                <Users className="w-5 h-5 mr-2" />
                 Start Your Journey
               </Button>
             </Link>
