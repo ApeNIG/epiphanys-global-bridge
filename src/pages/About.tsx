@@ -204,7 +204,7 @@ const About = () => {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-deep-navy mb-3">
+                      <h3 className="text-2xl font-black text-foreground mb-3 group-hover:text-deep-navy transition-colors">
                         {point.title}
                       </h3>
                       <p className="text-muted-foreground leading-relaxed">
@@ -248,7 +248,7 @@ const About = () => {
                   <div className={`w-16 h-16 ${currentStyle.gradient} rounded-xl flex items-center justify-center mx-auto mb-6 shadow-elegant`}>
                     <value.icon className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className={`text-lg font-bold mb-3 ${currentStyle.color}`}>
+                  <h3 className="text-xl font-black text-foreground mb-4 group-hover:scale-105 transition-all duration-300">
                     {value.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -289,7 +289,7 @@ const About = () => {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-deep-navy mb-3">
+                      <h3 className="text-2xl font-black text-foreground mb-3 group-hover:text-deep-navy transition-colors">
                         {area.title}
                       </h3>
                       <p className="text-muted-foreground leading-relaxed">
