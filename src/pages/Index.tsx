@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import PrinciplesBar from "@/components/PrinciplesBar";
 import OpportunityCategories from "@/components/OpportunityCategories";
 import OpportunityHub from "@/components/OpportunityHub";
+import DiasporaLeadersCarousel from "@/components/DiasporaLeadersCarousel";
 import ImpactDashboard from "@/components/ImpactDashboard";
 import DiasporaFocus from "@/components/DiasporaFocus";
 import TrustIndicators from "@/components/TrustIndicators";
@@ -16,6 +17,7 @@ const Index = () => {
       <Header />
       <Hero />
       <PrinciplesBar />
+      <DiasporaLeadersCarousel />
       <OpportunityCategories />
       <OpportunityHub />
       <ImpactDashboard />
