@@ -3,28 +3,28 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden flow-wireframe-bg">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
       {/* Geometric decorative elements */}
-      <div className="flow-geometric-shape w-32 h-32 rotate-45 top-20 left-10 opacity-60" />
-      <div className="flow-geometric-shape w-24 h-24 rotate-12 top-40 right-20 opacity-40" />
-      <div className="flow-geometric-shape w-40 h-40 -rotate-12 bottom-32 left-20 opacity-30" />
-      <div className="flow-geometric-shape w-28 h-28 rotate-45 bottom-20 right-32 opacity-50" />
+      <div className="flow-geometric-shape w-32 h-32 rotate-45 top-20 left-10 opacity-30" />
+      <div className="flow-geometric-shape w-24 h-24 rotate-12 top-40 right-20 opacity-20" />
+      <div className="flow-geometric-shape w-40 h-40 -rotate-12 bottom-32 left-20 opacity-15" />
+      <div className="flow-geometric-shape w-28 h-28 rotate-45 bottom-20 right-32 opacity-25" />
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-5xl mx-auto space-y-8">
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight">
-            <span className="block text-foreground mb-4">BUILD THE NEXT</span>
+            <span className="block text-flow-dark mb-4">EMPOWERING</span>
             <span className="block bg-gradient-primary bg-clip-text text-transparent">
-              KILLER APP
+              DIASPORA COMMUNITIES
             </span>
           </h1>
           
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-medium">
-            Epiphiny Flow provides the tools and infrastructure to build 
-            and scale apps faster and better than anywhere else.
+          <p className="text-lg md:text-xl text-flow-grey max-w-3xl mx-auto leading-relaxed font-medium">
+            Connecting businesses, organisations, and individuals with transformative opportunities 
+            in business, careers, investment, and global collaboration through Epiphiny Flow.
           </p>
           
           {/* CTA Button */}
@@ -35,21 +35,23 @@ const Hero = () => {
               size="xl"
               className="text-lg px-12 py-6 rounded-xl font-bold shadow-glow"
             >
-              <Link to="/auth">Start Building</Link>
+              <Link to="/auth">Join Our Platform</Link>
             </Button>
           </div>
           
-          {/* Partners/Companies */}
-          <div className="pt-16">
-            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-8 font-semibold">
-              POWERING APPS FROM BRANDS AND COMPANIES ACROSS THE WORLD
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60">
-              <div className="text-2xl font-bold text-muted-foreground">NBA</div>
-              <div className="text-2xl font-bold text-muted-foreground">Disney</div>
-              <div className="text-2xl font-bold text-muted-foreground">LaLiga</div>
-              <div className="text-2xl font-bold text-muted-foreground">UFC</div>
-              <div className="text-2xl font-bold text-muted-foreground">CryptoKitties</div>
+          {/* Stats */}
+          <div className="pt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-black text-flow-teal mb-2">250M+</div>
+              <div className="text-flow-grey font-medium">Diaspora Population</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-black text-flow-purple mb-2">£685B</div>
+              <div className="text-flow-grey font-medium">Annual Economic Impact</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-black text-flow-teal mb-2">190+</div>
+              <div className="text-flow-grey font-medium">Global Network Reach</div>
             </div>
           </div>
         </div>
