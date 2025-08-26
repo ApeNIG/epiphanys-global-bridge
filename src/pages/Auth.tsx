@@ -6,27 +6,30 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Shield, Users, TrendingUp, Globe } from "lucide-react";
-
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [fullName, setFullName] = useState("");
-
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: Implement login logic
-    console.log("Login:", { email, password });
+    console.log("Login:", {
+      email,
+      password
+    });
   };
-
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: Implement signup logic
-    console.log("Signup:", { fullName, email, password, confirmPassword });
+    console.log("Signup:", {
+      fullName,
+      email,
+      password,
+      confirmPassword
+    });
   };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background/80 to-primary/5">
+  return <div className="min-h-screen bg-gradient-to-br from-background via-background/80 to-primary/5">
       {/* Header */}
       <header className="border-b border-border bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -53,9 +56,7 @@ const Auth = () => {
         <div className="max-w-4xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-purple-600 to-orange-500 bg-clip-text text-transparent">
-              Join the Diaspora Opportunity Hub
-            </h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-purple-600 to-orange-500 bg-clip-text text-transparent">Join the Epiphiny Flow Opportunity Hub</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
               Connect with global opportunities in business, careers, and investment. 
               Unlock your cultural capital and join a trusted community of diaspora leaders.
@@ -106,47 +107,19 @@ const Auth = () => {
                     <form onSubmit={handleSignup} className="space-y-4">
                       <div className="space-y-2">
                         <Label htmlFor="fullName">Full Name</Label>
-                        <Input
-                          id="fullName"
-                          type="text"
-                          placeholder="Enter your full name"
-                          value={fullName}
-                          onChange={(e) => setFullName(e.target.value)}
-                          required
-                        />
+                        <Input id="fullName" type="text" placeholder="Enter your full name" value={fullName} onChange={e => setFullName(e.target.value)} required />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email">Email</Label>
-                        <Input
-                          id="email"
-                          type="email"
-                          placeholder="Enter your email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          required
-                        />
+                        <Input id="email" type="email" placeholder="Enter your email" value={email} onChange={e => setEmail(e.target.value)} required />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="password">Password</Label>
-                        <Input
-                          id="password"
-                          type="password"
-                          placeholder="Create a password"
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                          required
-                        />
+                        <Input id="password" type="password" placeholder="Create a password" value={password} onChange={e => setPassword(e.target.value)} required />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="confirmPassword">Confirm Password</Label>
-                        <Input
-                          id="confirmPassword"
-                          type="password"
-                          placeholder="Confirm your password"
-                          value={confirmPassword}
-                          onChange={(e) => setConfirmPassword(e.target.value)}
-                          required
-                        />
+                        <Input id="confirmPassword" type="password" placeholder="Confirm your password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required />
                       </div>
                       <Button type="submit" variant="hero" className="w-full" size="lg">
                         Join Epiphiny Flow
@@ -172,25 +145,11 @@ const Auth = () => {
                     <form onSubmit={handleLogin} className="space-y-4">
                       <div className="space-y-2">
                         <Label htmlFor="loginEmail">Email</Label>
-                        <Input
-                          id="loginEmail"
-                          type="email"
-                          placeholder="Enter your email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          required
-                        />
+                        <Input id="loginEmail" type="email" placeholder="Enter your email" value={email} onChange={e => setEmail(e.target.value)} required />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="loginPassword">Password</Label>
-                        <Input
-                          id="loginPassword"
-                          type="password"
-                          placeholder="Enter your password"
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                          required
-                        />
+                        <Input id="loginPassword" type="password" placeholder="Enter your password" value={password} onChange={e => setPassword(e.target.value)} required />
                       </div>
                       <div className="flex items-center justify-between">
                         <label className="flex items-center space-x-2 text-sm">
@@ -223,8 +182,6 @@ const Auth = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Auth;
