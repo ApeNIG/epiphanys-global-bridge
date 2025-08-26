@@ -49,9 +49,9 @@ const Header = () => {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <a href="#about" className="w-full">
+              <Link to="/about" className="w-full">
                 About
-              </a>
+              </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <a href="#contact" className="w-full">
@@ -73,9 +73,9 @@ const Header = () => {
           <Link to="/community" className="text-foreground hover:text-primary transition-colors">
             Community
           </Link>
-          <a href="#about" className="text-foreground hover:text-primary transition-colors">
+          <Link to="/about" className="text-foreground hover:text-primary transition-colors">
             About
-          </a>
+          </Link>
           <a href="#contact" className="text-foreground hover:text-primary transition-colors">
             Contact
           </a>
