@@ -56,7 +56,10 @@ const Auth = () => {
         <div className="max-w-4xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-purple-600 to-orange-500 bg-clip-text text-transparent">Join the Epiphiny Flow Opportunity Hub</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-purple-600 to-orange-500 bg-clip-text text-transparent">Join the Epiphiny Flow 
+Opportunity Hub
+
+          </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
               Connect with global opportunities in business, careers, and investment. 
               Unlock your cultural capital and join a trusted community of diaspora leaders.
