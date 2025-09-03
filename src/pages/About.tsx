@@ -318,21 +318,21 @@ const About = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold bg-gradient-accent bg-clip-text text-transparent mb-12">Why We Exist</h2>
-            <div className="space-y-6 text-white/90">
-              <p className="text-lg md:text-xl leading-relaxed">
+            <div className="space-y-6 text-foreground mb-12">
+              <p className="text-lg md:text-xl leading-relaxed font-medium">
                 Diaspora communities represent incredible untapped potential. With deep cultural knowledge, 
                 global networks, and unique perspectives, these communities are perfectly positioned to drive 
                 economic growth and innovation. Yet traditional platforms often overlook their specific needs 
                 and challenges.
               </p>
-              <p className="text-lg md:text-xl leading-relaxed">
-                We founded <span className="text-emerald-green font-semibold">Epiphiny Flow</span> because we believe that by creating a platform specifically designed 
+              <p className="text-lg md:text-xl leading-relaxed font-medium">
+                We founded Epiphiny Flow because we believe that by creating a platform specifically designed 
                 for diaspora communities, we can unlock opportunities that benefit not just individuals, but 
                 entire communities and economies.
               </p>
-              <p className="text-lg md:text-xl leading-relaxed mb-12">
-                Our platform serves as a bridge - connecting <span className="text-sunset-orange font-semibold">heritage with opportunity</span>, tradition with innovation, 
-                and local communities with global possibilities.
+              <p className="text-lg md:text-xl leading-relaxed font-medium">
+                Our platform serves as a bridge - connecting heritage with opportunity, tradition with 
+                innovation, and local communities with global possibilities.
               </p>
             </div>
             
