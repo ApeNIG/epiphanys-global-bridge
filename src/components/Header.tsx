@@ -39,13 +39,23 @@ const Header = () => {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link to="/opportunities" className="w-full">
-                Opportunities
+              <Link to="/advisory" className="w-full">
+                Advisory
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link to="/investment-hub" className="w-full">
+                Investment
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <Link to="/community" className="w-full">
                 Community
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link to="/global" className="w-full">
+                Global
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
@@ -67,18 +77,21 @@ const Header = () => {
         </DropdownMenu>
         
         <nav className="hidden md:flex items-center space-x-8">
-          <Link to="/opportunities" className="text-foreground hover:text-primary transition-colors">
-            Opportunities
+          <Link to="/advisory" className="text-foreground hover:text-primary transition-colors">
+            Advisory
+          </Link>
+          <Link to="/investment-hub" className="text-foreground hover:text-primary transition-colors">
+            Investment
           </Link>
           <Link to="/community" className="text-foreground hover:text-primary transition-colors">
             Community
           </Link>
+          <Link to="/global" className="text-foreground hover:text-primary transition-colors">
+            Global
+          </Link>
           <Link to="/about" className="text-foreground hover:text-primary transition-colors">
             About
           </Link>
-          <a href="#contact" className="text-foreground hover:text-primary transition-colors">
-            Contact
-          </a>
         </nav>
 
         <div className="flex items-center space-x-4">
