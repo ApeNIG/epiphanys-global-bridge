@@ -10,6 +10,7 @@ import Opportunities from "./pages/Opportunities";
 import Community from "./pages/Community";
 import About from "./pages/About";
 import InvestmentHub from "./pages/InvestmentHub";
+import Global from "./pages/Global";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/community" element={<Community />} />
           <Route path="/about" element={<About />} />
           <Route path="/investment-hub" element={<InvestmentHub />} />
+          <Route path="/global" element={<Global />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
