@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,23 +13,47 @@ const Auth = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [fullName, setFullName] = useState("");
-  const handleLogin = (e: React.FormEvent) => {
+  const [isLoading, setIsLoading] = useState(false);
+  
+  const { user, signUp, signIn } = useAuth();
+  const navigate = useNavigate();
+
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (user) {
+      navigate('/dashboard');
+    }
+  }, [user, navigate]);
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement login logic
-    console.log("Login:", {
-      email,
-      password
-    });
+    setIsLoading(true);
+    
+    const { error } = await signIn(email, password);
+    
+    if (!error) {
+      navigate('/dashboard');
+    }
+    
+    setIsLoading(false);
   };
-  const handleSignup = (e: React.FormEvent) => {
+
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement signup logic
-    console.log("Signup:", {
-      fullName,
-      email,
-      password,
-      confirmPassword
-    });
+    
+    if (password !== confirmPassword) {
+      return;
+    }
+    
+    setIsLoading(true);
+    
+    const { error } = await signUp(email, password, fullName);
+    
+    if (!error) {
+      // User will be redirected after email confirmation
+    }
+    
+    setIsLoading(false);
   };
   return <div className="min-h-screen bg-gradient-to-br from-background via-background/80 to-primary/5">
       {/* Header */}
@@ -124,8 +150,8 @@ Opportunity Hub
                         <Label htmlFor="confirmPassword">Confirm Password</Label>
                         <Input id="confirmPassword" type="password" placeholder="Confirm your password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required />
                       </div>
-                      <Button type="submit" variant="hero" className="w-full" size="lg">
-                        Join Epiphiny Flow
+                      <Button type="submit" variant="hero" className="w-full" size="lg" disabled={isLoading}>
+                        {isLoading ? "Creating Account..." : "Join Epiphiny Flow"}
                       </Button>
                       <p className="text-xs text-muted-foreground text-center">
                         By signing up, you agree to our Terms of Service and Privacy Policy. 
@@ -163,8 +189,8 @@ Opportunity Hub
                           Forgot password?
                         </a>
                       </div>
-                      <Button type="submit" variant="hero" className="w-full" size="lg">
-                        Sign In
+                      <Button type="submit" variant="hero" className="w-full" size="lg" disabled={isLoading}>
+                        {isLoading ? "Signing In..." : "Sign In"}
                       </Button>
                     </form>
                   </CardContent>
