@@ -68,21 +68,6 @@ export type Database = {
         }
         Relationships: []
       }
-      "Opportunity Hub": {
-        Row: {
-          created_at: string
-          id: number
-        }
-        Insert: {
-          created_at?: string
-          id?: number
-        }
-        Update: {
-          created_at?: string
-          id?: number
-        }
-        Relationships: []
-      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -110,21 +95,6 @@ export type Database = {
           updated_at?: string | null
           username?: string | null
           website?: string | null
-        }
-        Relationships: []
-      }
-      "Sign in": {
-        Row: {
-          created_at: string
-          id: number
-        }
-        Insert: {
-          created_at?: string
-          id?: number
-        }
-        Update: {
-          created_at?: string
-          id?: number
         }
         Relationships: []
       }

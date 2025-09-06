@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -17,6 +18,7 @@ const Auth = () => {
   
   const { user, signUp, signIn } = useAuth();
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   // Redirect if already authenticated
   useEffect(() => {
@@ -42,6 +44,20 @@ const Auth = () => {
     e.preventDefault();
     
     if (password !== confirmPassword) {
+      toast({
+        title: "Password mismatch",
+        description: "Passwords do not match. Please try again.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (password.length < 6) {
+      toast({
+        title: "Password too short",
+        description: "Password must be at least 6 characters long.",
+        variant: "destructive",
+      });
       return;
     }
     
@@ -50,7 +66,11 @@ const Auth = () => {
     const { error } = await signUp(email, password, fullName);
     
     if (!error) {
-      // User will be redirected after email confirmation
+      // Clear form after successful signup
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+      setFullName("");
     }
     
     setIsLoading(false);

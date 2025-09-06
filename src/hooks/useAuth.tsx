@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       const redirectUrl = `${window.location.origin}/dashboard`;
       
-      const { error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
@@ -61,10 +61,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           description: error.message,
           variant: "destructive",
         });
-      } else {
+      } else if (data.user && !data.user.email_confirmed_at) {
         toast({
           title: "Check your email",
-          description: "We've sent you a confirmation link to complete your registration.",
+          description: "We've sent you a confirmation link. Please check your email and click the link to complete your registration.",
+          duration: 10000,
+        });
+      } else if (data.user && data.user.email_confirmed_at) {
+        toast({
+          title: "Account created!",
+          description: "Your account has been created successfully. Welcome to Epiphiny Flow!",
         });
       }
 
