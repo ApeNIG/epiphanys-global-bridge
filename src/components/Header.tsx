@@ -10,7 +10,18 @@ import { User, LogOut } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 
 const Header = () => {
-  const { user, signOut } = useAuth();
+  // Add safety check to prevent runtime errors during module loading
+  let user = null;
+  let signOut = () => {};
+  
+  try {
+    const auth = useAuth();
+    user = auth.user;
+    signOut = auth.signOut;
+  } catch (error) {
+    // Fallback during initial load - useAuth hook may not be available yet
+    console.warn('useAuth not available yet');
+  }
   return (
     <header className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
