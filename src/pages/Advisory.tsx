@@ -193,11 +193,6 @@ const Advisory = () => {
                         ))}
                       </ul>
                     </div>
-                    
-                    <div className="pt-4 border-t border-border">
-                      <div className="text-xs font-medium text-primary mb-1">Proven Results:</div>
-                      <div className="text-sm text-muted-foreground">{service.outcomes}</div>
-                    </div>
                   </div>
                 </CardContent>
               </Card>

@@ -136,7 +136,7 @@ const Consultation = () => {
     
     try {
       // Store consultation request in database using raw SQL to avoid type issues
-      const { error } = await supabase.rpc('insert_consultation_request', {
+      const { error } = await (supabase as any).rpc('insert_consultation_request', {
         p_full_name: data.fullName,
         p_email: data.email,
         p_phone: data.phone,
