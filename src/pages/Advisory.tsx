@@ -144,7 +144,7 @@ const Advisory = () => {
               startups, scale-ups, SMEs, enterprises, and government organizations.
             </p>
             <Button asChild variant="hero" size="xl" className="text-lg px-12 py-6">
-              <Link to="/auth">Book Strategic Consultation</Link>
+              <Link to="/consultation">Book Strategic Consultation</Link>
             </Button>
           </div>
         </div>
@@ -286,7 +286,7 @@ const Advisory = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild variant="hero" size="xl" className="text-lg px-8">
-                <Link to="/auth">Schedule Free Consultation</Link>
+                <Link to="/consultation">Schedule Free Consultation</Link>
               </Button>
               <Button asChild variant="outline" size="xl" className="text-lg px-8">
                 <Link to="/about">Learn More About Us</Link>

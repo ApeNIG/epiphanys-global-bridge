@@ -13,6 +13,7 @@ import Community from "./pages/Community";
 import About from "./pages/About";
 import InvestmentHub from "./pages/InvestmentHub";
 import Global from "./pages/Global";
+import Consultation from "./pages/Consultation";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/investment-hub" element={<InvestmentHub />} />
             <Route path="/global" element={<Global />} />
+            <Route path="/consultation" element={<Consultation />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
