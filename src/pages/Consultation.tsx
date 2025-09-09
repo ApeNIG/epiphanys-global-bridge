@@ -135,24 +135,21 @@ const Consultation = () => {
     setIsSubmitting(true);
     
     try {
-      // Store consultation request in database
-      const { error } = await supabase
-        .from('consultation_requests')
-        .insert([{
-          full_name: data.fullName,
-          email: data.email,
-          phone: data.phone,
-          company: data.company,
-          position: data.position,
-          organization_type: data.organizationType,
-          industry_focus: data.industryFocus,
-          consultation_goals: data.consultationGoals,
-          current_challenges: data.currentChallenges,
-          budget_range: data.budgetRange,
-          timeframe: data.timeframe,
-          hear_about_us: data.hearAboutUs,
-          status: 'pending'
-        }]);
+      // Store consultation request in database using raw SQL to avoid type issues
+      const { error } = await supabase.rpc('insert_consultation_request', {
+        p_full_name: data.fullName,
+        p_email: data.email,
+        p_phone: data.phone,
+        p_company: data.company,
+        p_position: data.position,
+        p_organization_type: data.organizationType,
+        p_industry_focus: data.industryFocus,
+        p_consultation_goals: data.consultationGoals,
+        p_current_challenges: data.currentChallenges,
+        p_budget_range: data.budgetRange,
+        p_timeframe: data.timeframe,
+        p_hear_about_us: data.hearAboutUs || ''
+      });
 
       if (error) {
         throw error;

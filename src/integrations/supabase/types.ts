@@ -14,6 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
+      consultation_requests: {
+        Row: {
+          budget_range: string
+          company: string
+          consultation_goals: string
+          created_at: string
+          current_challenges: string
+          email: string
+          full_name: string
+          hear_about_us: string | null
+          id: string
+          industry_focus: string
+          organization_type: string
+          phone: string
+          position: string
+          status: string
+          timeframe: string
+          updated_at: string
+        }
+        Insert: {
+          budget_range: string
+          company: string
+          consultation_goals: string
+          created_at?: string
+          current_challenges: string
+          email: string
+          full_name: string
+          hear_about_us?: string | null
+          id?: string
+          industry_focus: string
+          organization_type: string
+          phone: string
+          position: string
+          status?: string
+          timeframe: string
+          updated_at?: string
+        }
+        Update: {
+          budget_range?: string
+          company?: string
+          consultation_goals?: string
+          created_at?: string
+          current_challenges?: string
+          email?: string
+          full_name?: string
+          hear_about_us?: string | null
+          id?: string
+          industry_focus?: string
+          organization_type?: string
+          phone?: string
+          position?: string
+          status?: string
+          timeframe?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       opportunities: {
         Row: {
           category: string
