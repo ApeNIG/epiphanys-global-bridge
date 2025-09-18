@@ -15,7 +15,7 @@ const Hero = () => {
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight">
             <span className="block text-flow-dark mb-4">
           </span>
-            <span className="block bg-gradient-primary bg-clip-text text-transparent">GROW | SCALE | BOOST</span>
+            <span className="block bg-gradient-primary bg-clip-text text-transparent">GROW  SCALE  BOOST</span>
           </h1>
           
           {/* Subtitle */}
