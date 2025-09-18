@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
       {/* Geometric decorative elements */}
       <div className="flow-geometric-shape w-32 h-32 rotate-45 top-20 left-10 opacity-30" />
       <div className="flow-geometric-shape w-24 h-24 rotate-12 top-40 right-20 opacity-20" />
@@ -15,26 +13,17 @@ const Hero = () => {
         <div className="max-w-5xl mx-auto space-y-8">
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight">
-            <span className="block text-flow-dark mb-4">EMPOWERING</span>
-            <span className="block bg-gradient-primary bg-clip-text text-transparent">
-              DIASPORA COMMUNITIES
-            </span>
+            <span className="block text-flow-dark mb-4">
+          </span>
+            <span className="block bg-gradient-primary bg-clip-text text-transparent">GROW | SCALE | BOOST</span>
           </h1>
           
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-flow-grey max-w-3xl mx-auto leading-relaxed font-medium">
-            Connecting businesses, organisations, and individuals with transformative opportunities 
-            in business, careers, investment, and global collaboration through Epiphiny Flow.
-          </p>
+          <p className="text-lg md:text-xl text-flow-grey max-w-3xl mx-auto leading-relaxed font-medium">Empowering Diasporic Community businesses, organisations, and entrepreneurs with transformative opportunities for investment, funding, careers and global collaboration through Epiphiny Flow.</p>
           
           {/* CTA Button */}
           <div className="pt-8">
-            <Button 
-              asChild 
-              variant="hero" 
-              size="xl"
-              className="text-lg px-12 py-6 rounded-xl font-bold shadow-glow"
-            >
+            <Button asChild variant="hero" size="xl" className="text-lg px-12 py-6 rounded-xl font-bold shadow-glow">
               <Link to="/auth">Join Our Platform</Link>
             </Button>
           </div>
@@ -56,8 +45,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
