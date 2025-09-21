@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import InvestmentExplorer from "@/components/InvestmentExplorer";
 import { 
   TrendingUp, 
   Building2, 
@@ -317,10 +318,11 @@ const InvestmentHub = () => {
                       </div>
                     ))}
                   </div>
-                  <Button variant="outline" size="sm" className="w-full mt-6 group-hover:bg-gradient-to-r group-hover:from-emerald-50 group-hover:to-violet-50">
-                    Explore Options
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
+                  <InvestmentExplorer 
+                    category={opportunity.category}
+                    description={opportunity.description}
+                    examples={opportunity.examples}
+                  />
                 </CardContent>
               </Card>
             ))}
