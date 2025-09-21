@@ -14,6 +14,300 @@ export type Database = {
   }
   public: {
     Tables: {
+      companies: {
+        Row: {
+          business_model: string | null
+          created_at: string
+          id: string
+          legal_structure: string | null
+          location: string | null
+          name: string
+          sector: string | null
+          stage: string | null
+          updated_at: string
+          user_id: string
+          website: string | null
+          year_founded: number | null
+        }
+        Insert: {
+          business_model?: string | null
+          created_at?: string
+          id?: string
+          legal_structure?: string | null
+          location?: string | null
+          name: string
+          sector?: string | null
+          stage?: string | null
+          updated_at?: string
+          user_id: string
+          website?: string | null
+          year_founded?: number | null
+        }
+        Update: {
+          business_model?: string | null
+          created_at?: string
+          id?: string
+          legal_structure?: string | null
+          location?: string | null
+          name?: string
+          sector?: string | null
+          stage?: string | null
+          updated_at?: string
+          user_id?: string
+          website?: string | null
+          year_founded?: number | null
+        }
+        Relationships: []
+      }
+      company_funding: {
+        Row: {
+          company_id: string
+          created_at: string
+          current_funding_goal: string | null
+          funding_type: string | null
+          id: string
+          previous_funding: string | null
+          updated_at: string
+          use_of_funds: string | null
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          current_funding_goal?: string | null
+          funding_type?: string | null
+          id?: string
+          previous_funding?: string | null
+          updated_at?: string
+          use_of_funds?: string | null
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          current_funding_goal?: string | null
+          funding_type?: string | null
+          id?: string
+          previous_funding?: string | null
+          updated_at?: string
+          use_of_funds?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "company_funding_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      company_impact: {
+        Row: {
+          company_id: string
+          created_at: string
+          diversity_inclusion: string | null
+          esg_alignment: string | null
+          id: string
+          mission_driven: boolean | null
+          sdg_alignment: string[] | null
+          updated_at: string
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          diversity_inclusion?: string | null
+          esg_alignment?: string | null
+          id?: string
+          mission_driven?: boolean | null
+          sdg_alignment?: string[] | null
+          updated_at?: string
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          diversity_inclusion?: string | null
+          esg_alignment?: string | null
+          id?: string
+          mission_driven?: boolean | null
+          sdg_alignment?: string[] | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "company_impact_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      company_market: {
+        Row: {
+          company_id: string
+          created_at: string
+          current_markets: string[] | null
+          desired_markets: string[] | null
+          id: string
+          problem_statement: string | null
+          target_customers: string | null
+          updated_at: string
+          usp: string | null
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          current_markets?: string[] | null
+          desired_markets?: string[] | null
+          id?: string
+          problem_statement?: string | null
+          target_customers?: string | null
+          updated_at?: string
+          usp?: string | null
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          current_markets?: string[] | null
+          desired_markets?: string[] | null
+          id?: string
+          problem_statement?: string | null
+          target_customers?: string | null
+          updated_at?: string
+          usp?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "company_market_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      company_strategic_fit: {
+        Row: {
+          company_id: string
+          created_at: string
+          id: string
+          investor_type: string[] | null
+          partnership_interest: string | null
+          preferred_investor_location: string[] | null
+          updated_at: string
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          id?: string
+          investor_type?: string[] | null
+          partnership_interest?: string | null
+          preferred_investor_location?: string[] | null
+          updated_at?: string
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          id?: string
+          investor_type?: string[] | null
+          partnership_interest?: string | null
+          preferred_investor_location?: string[] | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "company_strategic_fit_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      company_team: {
+        Row: {
+          advisors: string[] | null
+          company_id: string
+          created_at: string
+          founder_name: string | null
+          id: string
+          role: string | null
+          team_size: number | null
+          updated_at: string
+        }
+        Insert: {
+          advisors?: string[] | null
+          company_id: string
+          created_at?: string
+          founder_name?: string | null
+          id?: string
+          role?: string | null
+          team_size?: number | null
+          updated_at?: string
+        }
+        Update: {
+          advisors?: string[] | null
+          company_id?: string
+          created_at?: string
+          founder_name?: string | null
+          id?: string
+          role?: string | null
+          team_size?: number | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "company_team_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      company_traction: {
+        Row: {
+          awards: string[] | null
+          company_id: string
+          created_at: string
+          customers: number | null
+          id: string
+          key_metrics: Json | null
+          revenue_model: string | null
+          revenue_range: string | null
+          updated_at: string
+        }
+        Insert: {
+          awards?: string[] | null
+          company_id: string
+          created_at?: string
+          customers?: number | null
+          id?: string
+          key_metrics?: Json | null
+          revenue_model?: string | null
+          revenue_range?: string | null
+          updated_at?: string
+        }
+        Update: {
+          awards?: string[] | null
+          company_id?: string
+          created_at?: string
+          customers?: number | null
+          id?: string
+          key_metrics?: Json | null
+          revenue_model?: string | null
+          revenue_range?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "company_traction_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       consultation_requests: {
         Row: {
           budget_range: string
