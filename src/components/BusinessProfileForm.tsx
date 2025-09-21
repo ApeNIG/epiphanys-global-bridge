@@ -9,6 +9,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { Building, Target, TrendingUp, DollarSign, Users, Handshake, Heart } from "lucide-react";
 
@@ -22,46 +24,48 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
   
   const form = useForm({
     defaultValues: {
-      // Company
+      // Company Profile
       name: "",
       website: "",
-      location: "",
+      hq_location: "",
       year_founded: "",
       legal_structure: "",
       stage: "",
       sector: "",
       business_model: "",
-      // Market
+      // Market & Offering
       problem_statement: "",
       target_customers: "",
-      usp: "",
+      key_differentiator: "",
       current_markets: "",
-      desired_markets: "",
+      expansion_markets: "",
       // Traction
-      revenue_range: "",
       revenue_model: "",
+      annual_revenue: "",
+      has_customers: "",
+      customer_details: "",
       key_metrics: "",
-      customers: "",
-      awards: "",
-      // Funding
+      awards_grants: "",
+      // Funding Needs
       previous_funding: "",
+      previous_funding_amount: "",
+      previous_investors: "",
       current_funding_goal: "",
       funding_type: "",
-      use_of_funds: "",
+      use_of_funds: [] as string[],
       // Team
-      founder_name: "",
-      role: "",
+      founder_names_roles: "",
       team_size: "",
-      advisors: "",
+      advisory_board: "",
       // Strategic Fit
-      investor_type: [],
-      preferred_investor_location: "",
-      partnership_interest: "",
-      // Impact
-      esg_alignment: "",
-      sdg_alignment: [],
+      investor_types: [] as string[],
+      preferred_geography: "",
+      open_to_partnerships: "",
+      partnership_type: "",
+      // Impact & Values
+      esg_sdg_alignment: [] as string[],
       diversity_inclusion: "",
-      mission_driven: false,
+      mission_driven: "",
     },
   });
 
@@ -79,7 +83,7 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
           user_id: user.id,
           name: data.name,
           website: data.website,
-          location: data.location,
+          location: data.hq_location,
           year_founded: data.year_founded ? parseInt(data.year_founded) : null,
           legal_structure: data.legal_structure,
           stage: data.stage,
@@ -100,54 +104,54 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
           company_id: companyId,
           problem_statement: data.problem_statement,
           target_customers: data.target_customers,
-          usp: data.usp,
+          usp: data.key_differentiator,
           current_markets: data.current_markets ? data.current_markets.split(",").map((m: string) => m.trim()) : [],
-          desired_markets: data.desired_markets ? data.desired_markets.split(",").map((m: string) => m.trim()) : [],
+          desired_markets: data.expansion_markets ? data.expansion_markets.split(",").map((m: string) => m.trim()) : [],
         }),
         
         // Traction data
         supabase.from("company_traction").insert({
           company_id: companyId,
-          revenue_range: data.revenue_range,
+          revenue_range: data.annual_revenue,
           revenue_model: data.revenue_model,
-          key_metrics: data.key_metrics ? JSON.parse(data.key_metrics) : null,
-          customers: data.customers ? parseInt(data.customers) : null,
-          awards: data.awards ? data.awards.split(",").map((a: string) => a.trim()) : [],
+          key_metrics: data.key_metrics ? { metrics: data.key_metrics } : null,
+          customers: data.has_customers === "yes" ? 1 : 0,
+          awards: data.awards_grants ? data.awards_grants.split(",").map((a: string) => a.trim()) : [],
         }),
         
         // Funding data
         supabase.from("company_funding").insert({
           company_id: companyId,
-          previous_funding: data.previous_funding,
+          previous_funding: data.previous_funding === "yes" ? data.previous_funding_amount : null,
           current_funding_goal: data.current_funding_goal,
           funding_type: data.funding_type,
-          use_of_funds: data.use_of_funds,
+          use_of_funds: data.use_of_funds.join(", "),
         }),
         
         // Team data
         supabase.from("company_team").insert({
           company_id: companyId,
-          founder_name: data.founder_name,
-          role: data.role,
+          founder_name: data.founder_names_roles,
+          role: "Founder",
           team_size: data.team_size ? parseInt(data.team_size) : null,
-          advisors: data.advisors ? data.advisors.split(",").map((a: string) => a.trim()) : [],
+          advisors: data.advisory_board ? data.advisory_board.split(",").map((a: string) => a.trim()) : [],
         }),
         
         // Strategic fit data
         supabase.from("company_strategic_fit").insert({
           company_id: companyId,
-          investor_type: data.investor_type,
-          preferred_investor_location: data.preferred_investor_location ? data.preferred_investor_location.split(",").map((l: string) => l.trim()) : [],
-          partnership_interest: data.partnership_interest,
+          investor_type: data.investor_types,
+          preferred_investor_location: data.preferred_geography ? data.preferred_geography.split(",").map((l: string) => l.trim()) : [],
+          partnership_interest: data.open_to_partnerships === "yes" ? data.partnership_type : null,
         }),
         
         // Impact data
         supabase.from("company_impact").insert({
           company_id: companyId,
-          esg_alignment: data.esg_alignment,
-          sdg_alignment: data.sdg_alignment,
+          esg_alignment: data.esg_sdg_alignment.join(", "),
+          sdg_alignment: data.esg_sdg_alignment,
           diversity_inclusion: data.diversity_inclusion,
-          mission_driven: data.mission_driven,
+          mission_driven: data.mission_driven === "yes",
         }),
       ]);
 
@@ -169,6 +173,30 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
     { id: "team", label: "Team", icon: Users },
     { id: "strategic", label: "Strategic Fit", icon: Handshake },
     { id: "impact", label: "Impact", icon: Heart },
+  ];
+
+  const sectorOptions = [
+    "FinTech", "HealthTech", "EdTech", "PropTech", "CleanTech", "AgriTech", 
+    "RetailTech", "FoodTech", "TravelTech", "LegalTech", "HRTech", 
+    "MarketingTech", "CyberSecurity", "AI/ML", "Blockchain", "IoT", 
+    "E-commerce", "SaaS", "Marketplace", "Manufacturing", "Other"
+  ];
+
+  const useOfFundsOptions = [
+    "R&D", "Team Growth", "Market Expansion", "Operations", "Marketing", "Technology Development", "Other"
+  ];
+
+  const investorTypeOptions = [
+    "Angel Investors", "Venture Capital", "Corporate VC", "Family Office", "Impact Investors", "Government Grants", "Crowdfunding", "Other"
+  ];
+
+  const esgSdgOptions = [
+    "No Poverty", "Zero Hunger", "Good Health and Well-being", "Quality Education", 
+    "Gender Equality", "Clean Water and Sanitation", "Affordable and Clean Energy", 
+    "Decent Work and Economic Growth", "Industry Innovation and Infrastructure", 
+    "Reduced Inequalities", "Sustainable Cities and Communities", "Responsible Consumption and Production", 
+    "Climate Action", "Life Below Water", "Life on Land", "Peace Justice and Strong Institutions", 
+    "Partnerships for the Goals"
   ];
 
   return (
@@ -193,6 +221,7 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
               </TabsList>
 
               <TabsContent value="company" className="space-y-4">
+                <h3 className="text-lg font-semibold">Section 1: Company Profile</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <FormField
                     control={form.control}
@@ -222,10 +251,10 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
                   />
                   <FormField
                     control={form.control}
-                    name="location"
+                    name="hq_location"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Location</FormLabel>
+                        <FormLabel>HQ Location</FormLabel>
                         <FormControl>
                           <Input {...field} placeholder="London, UK" />
                         </FormControl>
@@ -254,11 +283,11 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
                         <FormLabel>Legal Structure</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
-                            <SelectTrigger>
+                            <SelectTrigger className="bg-background">
                               <SelectValue placeholder="Select legal structure" />
                             </SelectTrigger>
                           </FormControl>
-                          <SelectContent>
+                          <SelectContent className="bg-background border z-50">
                             <SelectItem value="limited_company">Limited Company</SelectItem>
                             <SelectItem value="llp">Limited Liability Partnership</SelectItem>
                             <SelectItem value="sole_trader">Sole Trader</SelectItem>
@@ -275,22 +304,20 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
                     name="stage"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Company Stage</FormLabel>
+                        <FormLabel>Stage</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
-                            <SelectTrigger>
+                            <SelectTrigger className="bg-background">
                               <SelectValue placeholder="Select stage" />
                             </SelectTrigger>
                           </FormControl>
-                          <SelectContent>
+                          <SelectContent className="bg-background border z-50">
                             <SelectItem value="idea">Idea</SelectItem>
                             <SelectItem value="pre_seed">Pre-Seed</SelectItem>
                             <SelectItem value="seed">Seed</SelectItem>
                             <SelectItem value="series_a">Series A</SelectItem>
-                            <SelectItem value="series_b">Series B</SelectItem>
-                            <SelectItem value="series_c">Series C+</SelectItem>
                             <SelectItem value="growth">Growth</SelectItem>
-                            <SelectItem value="ipo_ready">IPO Ready</SelectItem>
+                            <SelectItem value="established_sme">Established SME</SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
@@ -302,10 +329,19 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
                     name="sector"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Sector</FormLabel>
-                        <FormControl>
-                          <Input {...field} placeholder="e.g., FinTech, HealthTech, EdTech" />
-                        </FormControl>
+                        <FormLabel>Sector/Industry</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger className="bg-background">
+                              <SelectValue placeholder="Select sector" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent className="bg-background border z-50">
+                            {sectorOptions.map((sector) => (
+                              <SelectItem key={sector} value={sector.toLowerCase().replace(/\//g, "_")}>{sector}</SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -316,9 +352,20 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Business Model</FormLabel>
-                        <FormControl>
-                          <Input {...field} placeholder="e.g., SaaS, Marketplace, B2B" />
-                        </FormControl>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger className="bg-background">
+                              <SelectValue placeholder="Select business model" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent className="bg-background border z-50">
+                            <SelectItem value="b2b">B2B</SelectItem>
+                            <SelectItem value="b2c">B2C</SelectItem>
+                            <SelectItem value="saas">SaaS</SelectItem>
+                            <SelectItem value="marketplace">Marketplace</SelectItem>
+                            <SelectItem value="other">Other</SelectItem>
+                          </SelectContent>
+                        </Select>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -327,14 +374,15 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
               </TabsContent>
 
               <TabsContent value="market" className="space-y-4">
+                <h3 className="text-lg font-semibold">Section 2: Market & Offering</h3>
                 <FormField
                   control={form.control}
                   name="problem_statement"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Problem Statement</FormLabel>
+                      <FormLabel>Problem you are solving</FormLabel>
                       <FormControl>
-                        <Textarea {...field} placeholder="What problem does your company solve?" />
+                        <Textarea {...field} placeholder="Describe the problem your company solves..." />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -345,9 +393,9 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
                   name="target_customers"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Target Customers</FormLabel>
+                      <FormLabel>Who are your target customers?</FormLabel>
                       <FormControl>
-                        <Textarea {...field} placeholder="Describe your target customer segments" />
+                        <Textarea {...field} placeholder="Describe your target customer segments..." />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -355,10 +403,10 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
                 />
                 <FormField
                   control={form.control}
-                  name="usp"
+                  name="key_differentiator"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Unique Selling Proposition</FormLabel>
+                      <FormLabel>Key differentiator / USP</FormLabel>
                       <FormControl>
                         <Textarea {...field} placeholder="What makes your solution unique?" />
                       </FormControl>
@@ -372,7 +420,7 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
                     name="current_markets"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Current Markets</FormLabel>
+                        <FormLabel>Current markets active in</FormLabel>
                         <FormControl>
                           <Input {...field} placeholder="UK, EU (comma separated)" />
                         </FormControl>
@@ -382,10 +430,10 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
                   />
                   <FormField
                     control={form.control}
-                    name="desired_markets"
+                    name="expansion_markets"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Desired Markets</FormLabel>
+                        <FormLabel>Markets you want to expand into</FormLabel>
                         <FormControl>
                           <Input {...field} placeholder="US, APAC (comma separated)" />
                         </FormControl>
@@ -397,32 +445,8 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
               </TabsContent>
 
               <TabsContent value="traction" className="space-y-4">
+                <h3 className="text-lg font-semibold">Section 3: Traction</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <FormField
-                    control={form.control}
-                    name="revenue_range"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Revenue Range</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Select revenue range" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="0-10k">0-10k</SelectItem>
-                            <SelectItem value="10k-50k">10k-50k</SelectItem>
-                            <SelectItem value="50k-100k">50k-100k</SelectItem>
-                            <SelectItem value="100k-500k">100k-500k</SelectItem>
-                            <SelectItem value="500k-1M">500k-1M</SelectItem>
-                            <SelectItem value="1M+">1M+</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
                   <FormField
                     control={form.control}
                     name="revenue_model"
@@ -430,7 +454,7 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
                       <FormItem>
                         <FormLabel>Revenue Model</FormLabel>
                         <FormControl>
-                          <Input {...field} placeholder="e.g., Subscription, Transactional" />
+                          <Input {...field} placeholder="e.g., Subscription, Transaction-based" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -438,69 +462,163 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
                   />
                   <FormField
                     control={form.control}
-                    name="key_metrics"
+                    name="annual_revenue"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Key Metrics (JSON format)</FormLabel>
-                        <FormControl>
-                          <Textarea {...field} placeholder='e.g., { "ARR": "500k", "MoM Growth": "10%" }' />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="customers"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Number of Customers</FormLabel>
-                        <FormControl>
-                          <Input {...field} type="number" placeholder="e.g., 1000" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="awards"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Awards & Recognition</FormLabel>
-                        <FormControl>
-                          <Input {...field} placeholder="e.g., Best Startup, Innovation Award" />
-                        </FormControl>
+                        <FormLabel>Annual Revenue</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger className="bg-background">
+                              <SelectValue placeholder="Select revenue range" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent className="bg-background border z-50">
+                            <SelectItem value="0-100k">£0 - £100k</SelectItem>
+                            <SelectItem value="100k-500k">£100k - £500k</SelectItem>
+                            <SelectItem value="500k-1m">£500k - £1m</SelectItem>
+                            <SelectItem value="1m+">£1m+</SelectItem>
+                          </SelectContent>
+                        </Select>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
                 </div>
-              </TabsContent>
+                
+                <FormField
+                  control={form.control}
+                  name="has_customers"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Customers / contracts signed</FormLabel>
+                      <FormControl>
+                        <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex space-x-4">
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="yes" id="customers-yes" />
+                            <Label htmlFor="customers-yes">Yes</Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="no" id="customers-no" />
+                            <Label htmlFor="customers-no">No</Label>
+                          </div>
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              <TabsContent value="funding" className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {form.watch("has_customers") === "yes" && (
                   <FormField
                     control={form.control}
-                    name="previous_funding"
+                    name="customer_details"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Previous Funding</FormLabel>
+                        <FormLabel>Customer Details</FormLabel>
                         <FormControl>
-                          <Input {...field} placeholder="e.g., $500k Seed Round" />
+                          <Textarea {...field} placeholder="Provide details about your customers or contracts..." />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
+                )}
+
+                <FormField
+                  control={form.control}
+                  name="key_metrics"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Key Performance Metrics</FormLabel>
+                      <FormControl>
+                        <Textarea {...field} placeholder="ARR, GMV, users, growth rate, etc." />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="awards_grants"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Awards, grants, or accelerators joined</FormLabel>
+                      <FormControl>
+                        <Input {...field} placeholder="List any awards, grants, or accelerator programs" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </TabsContent>
+
+              <TabsContent value="funding" className="space-y-4">
+                <h3 className="text-lg font-semibold">Section 4: Funding Needs</h3>
+                
+                <FormField
+                  control={form.control}
+                  name="previous_funding"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Have you raised funding before?</FormLabel>
+                      <FormControl>
+                        <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex space-x-4">
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="yes" id="funding-yes" />
+                            <Label htmlFor="funding-yes">Yes</Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="no" id="funding-no" />
+                            <Label htmlFor="funding-no">No</Label>
+                          </div>
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {form.watch("previous_funding") === "yes" && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name="previous_funding_amount"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Previous Funding Amount</FormLabel>
+                          <FormControl>
+                            <Input {...field} placeholder="£250k" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="previous_investors"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Previous Investors</FormLabel>
+                          <FormControl>
+                            <Input {...field} placeholder="List previous investors" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                )}
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <FormField
                     control={form.control}
                     name="current_funding_goal"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Current Funding Goal</FormLabel>
+                        <FormLabel>Current fundraising goal</FormLabel>
                         <FormControl>
-                          <Input {...field} placeholder="e.g., $2M Series A" />
+                          <Input {...field} placeholder="£500k" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -511,307 +629,300 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
                     name="funding_type"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Funding Type</FormLabel>
+                        <FormLabel>Type of funding sought</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
-                            <SelectTrigger>
+                            <SelectTrigger className="bg-background">
                               <SelectValue placeholder="Select funding type" />
                             </SelectTrigger>
                           </FormControl>
-                          <SelectContent>
-                            <SelectItem value="seed">Seed</SelectItem>
-                            <SelectItem value="series_a">Series A</SelectItem>
-                            <SelectItem value="series_b">Series B</SelectItem>
-                            <SelectItem value="series_c">Series C+</SelectItem>
-                            <SelectItem value="venture_debt">Venture Debt</SelectItem>
+                          <SelectContent className="bg-background border z-50">
+                            <SelectItem value="equity">Equity</SelectItem>
+                            <SelectItem value="debt">Debt</SelectItem>
                             <SelectItem value="grant">Grant</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
+                            <SelectItem value="strategic_partnership">Strategic Partnership</SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  <FormField
-                    control={form.control}
-                    name="use_of_funds"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Use of Funds</FormLabel>
-                        <FormControl>
-                          <Textarea {...field} placeholder="e.g., Product Development, Marketing" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
                 </div>
+
+                <FormField
+                  control={form.control}
+                  name="use_of_funds"
+                  render={() => (
+                    <FormItem>
+                      <FormLabel>Use of funds (select all that apply)</FormLabel>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                        {useOfFundsOptions.map((option) => (
+                          <FormField
+                            key={option}
+                            control={form.control}
+                            name="use_of_funds"
+                            render={({ field }) => {
+                              return (
+                                <FormItem
+                                  key={option}
+                                  className="flex flex-row items-start space-x-3 space-y-0"
+                                >
+                                  <FormControl>
+                                    <Checkbox
+                                      checked={field.value?.includes(option)}
+                                      onCheckedChange={(checked) => {
+                                        return checked
+                                          ? field.onChange([...field.value, option])
+                                          : field.onChange(
+                                              field.value?.filter(
+                                                (value) => value !== option
+                                              )
+                                            )
+                                      }}
+                                    />
+                                  </FormControl>
+                                  <FormLabel className="text-sm font-normal">
+                                    {option}
+                                  </FormLabel>
+                                </FormItem>
+                              )
+                            }}
+                          />
+                        ))}
+                      </div>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </TabsContent>
 
               <TabsContent value="team" className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <FormField
-                    control={form.control}
-                    name="founder_name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Founder Name</FormLabel>
-                        <FormControl>
-                          <Input {...field} placeholder="e.g., John Doe" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="role"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Role</FormLabel>
-                        <FormControl>
-                          <Input {...field} placeholder="e.g., CEO, CTO" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="team_size"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Team Size</FormLabel>
-                        <FormControl>
-                          <Input {...field} type="number" placeholder="e.g., 10" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="advisors"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Advisors</FormLabel>
-                        <FormControl>
-                          <Input {...field} placeholder="e.g., Dr. Smith, Mr. Jones" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
+                <h3 className="text-lg font-semibold">Section 5: Team</h3>
+                <FormField
+                  control={form.control}
+                  name="founder_names_roles"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Founder names & roles</FormLabel>
+                      <FormControl>
+                        <Textarea {...field} placeholder="John Smith - CEO, Jane Doe - CTO" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="team_size"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Team Size</FormLabel>
+                      <FormControl>
+                        <Input {...field} type="number" placeholder="5" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="advisory_board"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Advisory board / mentors (optional)</FormLabel>
+                      <FormControl>
+                        <Textarea {...field} placeholder="List key advisors or mentors" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </TabsContent>
 
               <TabsContent value="strategic" className="space-y-4">
+                <h3 className="text-lg font-semibold">Section 6: Strategic Fit</h3>
                 <FormField
                   control={form.control}
-                  name="investor_type"
-                  render={({ field }) => (
+                  name="investor_types"
+                  render={() => (
                     <FormItem>
-                      <FormLabel>Preferred Investor Type</FormLabel>
-                      <div className="flex flex-wrap gap-2">
-                        <FormField
-                          control={form.control}
-                          name="investor_type"
-                          render={({ field }) => (
-                            <FormItem className="flex flex-row items-center space-x-1 space-y-0">
-                              <FormControl>
-                                <Checkbox
-                                  checked={field.value?.includes("angel")}
-                                  onCheckedChange={(checked) => {
-                                    return checked
-                                      ? field.onChange([...field.value || [], "angel"])
-                                      : field.onChange(field.value?.filter((value) => value !== "angel"))
-                                  }}
-                                />
-                              </FormControl>
-                              <FormLabel className="text-sm font-normal">Angel</FormLabel>
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="investor_type"
-                          render={({ field }) => (
-                            <FormItem className="flex flex-row items-center space-x-1 space-y-0">
-                              <FormControl>
-                                <Checkbox
-                                  checked={field.value?.includes("vc")}
-                                  onCheckedChange={(checked) => {
-                                    return checked
-                                      ? field.onChange([...field.value || [], "vc"])
-                                      : field.onChange(field.value?.filter((value) => value !== "vc"))
-                                  }}
-                                />
-                              </FormControl>
-                              <FormLabel className="text-sm font-normal">VC</FormLabel>
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="investor_type"
-                          render={({ field }) => (
-                            <FormItem className="flex flex-row items-center space-x-1 space-y-0">
-                              <FormControl>
-                                <Checkbox
-                                  checked={field.value?.includes("private_equity")}
-                                  onCheckedChange={(checked) => {
-                                    return checked
-                                      ? field.onChange([...field.value || [], "private_equity"])
-                                      : field.onChange(field.value?.filter((value) => value !== "private_equity"))
-                                  }}
-                                />
-                              </FormControl>
-                              <FormLabel className="text-sm font-normal">Private Equity</FormLabel>
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="investor_type"
-                          render={({ field }) => (
-                            <FormItem className="flex flex-row items-center space-x-1 space-y-0">
-                              <FormControl>
-                                <Checkbox
-                                  checked={field.value?.includes("corporate")}
-                                  onCheckedChange={(checked) => {
-                                    return checked
-                                      ? field.onChange([...field.value || [], "corporate"])
-                                      : field.onChange(field.value?.filter((value) => value !== "corporate"))
-                                  }}
-                                />
-                              </FormControl>
-                              <FormLabel className="text-sm font-normal">Corporate</FormLabel>
-                            </FormItem>
-                          )}
-                        />
+                      <FormLabel>What type of investors are you seeking?</FormLabel>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                        {investorTypeOptions.map((option) => (
+                          <FormField
+                            key={option}
+                            control={form.control}
+                            name="investor_types"
+                            render={({ field }) => {
+                              return (
+                                <FormItem
+                                  key={option}
+                                  className="flex flex-row items-start space-x-3 space-y-0"
+                                >
+                                  <FormControl>
+                                    <Checkbox
+                                      checked={field.value?.includes(option)}
+                                      onCheckedChange={(checked) => {
+                                        return checked
+                                          ? field.onChange([...field.value, option])
+                                          : field.onChange(
+                                              field.value?.filter(
+                                                (value) => value !== option
+                                              )
+                                            )
+                                      }}
+                                    />
+                                  </FormControl>
+                                  <FormLabel className="text-sm font-normal">
+                                    {option}
+                                  </FormLabel>
+                                </FormItem>
+                              )
+                            }}
+                          />
+                        ))}
                       </div>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+
                 <FormField
                   control={form.control}
-                  name="preferred_investor_location"
+                  name="preferred_geography"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Preferred Investor Location</FormLabel>
+                      <FormLabel>Preferred investor geography</FormLabel>
                       <FormControl>
-                        <Input {...field} placeholder="e.g., Silicon Valley, New York" />
+                        <Input {...field} placeholder="Local, Regional, Global, Diaspora networks" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+
                 <FormField
                   control={form.control}
-                  name="partnership_interest"
+                  name="open_to_partnerships"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Partnership Interest</FormLabel>
+                      <FormLabel>Open to partnerships?</FormLabel>
                       <FormControl>
-                        <Textarea {...field} placeholder="e.g., Joint Ventures, Distribution Agreements" />
+                        <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex space-x-4">
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="yes" id="partnerships-yes" />
+                            <Label htmlFor="partnerships-yes">Yes</Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="no" id="partnerships-no" />
+                            <Label htmlFor="partnerships-no">No</Label>
+                          </div>
+                        </RadioGroup>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+
+                {form.watch("open_to_partnerships") === "yes" && (
+                  <FormField
+                    control={form.control}
+                    name="partnership_type"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Type of partnership</FormLabel>
+                        <FormControl>
+                          <Input {...field} placeholder="Strategic, Distribution, Technology, etc." />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                )}
               </TabsContent>
 
               <TabsContent value="impact" className="space-y-4">
+                <h3 className="text-lg font-semibold">Section 7: Impact & Values (Optional)</h3>
+                
                 <FormField
                   control={form.control}
-                  name="esg_alignment"
-                  render={({ field }) => (
+                  name="esg_sdg_alignment"
+                  render={() => (
                     <FormItem>
-                      <FormLabel>ESG Alignment</FormLabel>
-                      <FormControl>
-                        <Textarea {...field} placeholder="Describe your company's ESG alignment" />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="sdg_alignment"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>SDG Alignment</FormLabel>
-                      <div className="flex flex-wrap gap-2">
-                        <FormField
-                          control={form.control}
-                          name="sdg_alignment"
-                          render={({ field }) => (
-                            <FormItem className="flex flex-row items-center space-x-1 space-y-0">
-                              <FormControl>
-                                <Checkbox
-                                  checked={field.value?.includes("sdg1")}
-                                  onCheckedChange={(checked) => {
-                                    return checked
-                                      ? field.onChange([...field.value || [], "sdg1"])
-                                      : field.onChange(field.value?.filter((value) => value !== "sdg1"))
-                                  }}
-                                />
-                              </FormControl>
-                              <FormLabel className="text-sm font-normal">SDG 1: No Poverty</FormLabel>
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="sdg_alignment"
-                          render={({ field }) => (
-                            <FormItem className="flex flex-row items-center space-x-1 space-y-0">
-                              <FormControl>
-                                <Checkbox
-                                  checked={field.value?.includes("sdg2")}
-                                  onCheckedChange={(checked) => {
-                                    return checked
-                                      ? field.onChange([...field.value || [], "sdg2"])
-                                      : field.onChange(field.value?.filter((value) => value !== "sdg2"))
-                                  }}
-                                />
-                              </FormControl>
-                              <FormLabel className="text-sm font-normal">SDG 2: Zero Hunger</FormLabel>
-                            </FormItem>
-                          )}
-                        />
-                        {/* Add more SDG options as needed */}
+                      <FormLabel>Are you aligned with any ESG/SDG goals?</FormLabel>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-60 overflow-y-auto">
+                        {esgSdgOptions.map((option) => (
+                          <FormField
+                            key={option}
+                            control={form.control}
+                            name="esg_sdg_alignment"
+                            render={({ field }) => {
+                              return (
+                                <FormItem
+                                  key={option}
+                                  className="flex flex-row items-start space-x-3 space-y-0"
+                                >
+                                  <FormControl>
+                                    <Checkbox
+                                      checked={field.value?.includes(option)}
+                                      onCheckedChange={(checked) => {
+                                        return checked
+                                          ? field.onChange([...field.value, option])
+                                          : field.onChange(
+                                              field.value?.filter(
+                                                (value) => value !== option
+                                              )
+                                            )
+                                      }}
+                                    />
+                                  </FormControl>
+                                  <FormLabel className="text-sm font-normal">
+                                    {option}
+                                  </FormLabel>
+                                </FormItem>
+                              )
+                            }}
+                          />
+                        ))}
                       </div>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+
                 <FormField
                   control={form.control}
                   name="diversity_inclusion"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Diversity & Inclusion</FormLabel>
+                      <FormLabel>Diversity & inclusion approach</FormLabel>
                       <FormControl>
-                        <Textarea {...field} placeholder="Describe your company's diversity and inclusion initiatives" />
+                        <Textarea {...field} placeholder="Describe your approach to diversity and inclusion..." />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+
                 <FormField
                   control={form.control}
                   name="mission_driven"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-center space-x-3 space-y-0">
+                    <FormItem>
+                      <FormLabel>Social enterprise / mission-driven?</FormLabel>
                       <FormControl>
-                        <Checkbox
-                          checked={field.value}
-                          onCheckedChange={field.onChange}
-                        />
+                        <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex space-x-4">
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="yes" id="mission-yes" />
+                            <Label htmlFor="mission-yes">Yes</Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="no" id="mission-no" />
+                            <Label htmlFor="mission-no">No</Label>
+                          </div>
+                        </RadioGroup>
                       </FormControl>
-                      <FormLabel className="text-sm font-normal">Mission-Driven</FormLabel>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />

@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { 
   User, 
   Building2, 
@@ -21,7 +22,9 @@ import {
   Clock,
   Upload,
   Camera,
-  X
+  X,
+  ChevronDown,
+  FileText
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -308,12 +311,31 @@ const Profile = () => {
                   </div>
                 </div>
               </div>
-              <Link to="/dashboard">
-                <Button variant="outline" className="flex items-center gap-2">
-                  <Edit className="w-4 h-4" />
-                  Edit Profile
-                </Button>
-              </Link>
+              <div className="flex gap-2">
+                <Link to="/dashboard">
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <Edit className="w-4 h-4" />
+                    Edit Profile
+                  </Button>
+                </Link>
+                
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" className="flex items-center gap-2">
+                      <FileText className="w-4 h-4" />
+                      Business Profile
+                      <ChevronDown className="w-4 h-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="bg-background border z-50">
+                    <DropdownMenuItem asChild>
+                      <Link to="/business-onboarding" className="w-full cursor-pointer">
+                        Complete Detailed Business Profile
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             </div>
           </div>
 
