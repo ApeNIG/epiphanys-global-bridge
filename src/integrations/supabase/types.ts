@@ -139,6 +139,7 @@ export type Database = {
           interests: string[] | null
           investment_stage: string | null
           location: string | null
+          profile_image_url: string | null
           updated_at: string | null
           user_category: string | null
           username: string | null
@@ -158,6 +159,7 @@ export type Database = {
           interests?: string[] | null
           investment_stage?: string | null
           location?: string | null
+          profile_image_url?: string | null
           updated_at?: string | null
           user_category?: string | null
           username?: string | null
@@ -177,6 +179,7 @@ export type Database = {
           interests?: string[] | null
           investment_stage?: string | null
           location?: string | null
+          profile_image_url?: string | null
           updated_at?: string | null
           user_category?: string | null
           username?: string | null

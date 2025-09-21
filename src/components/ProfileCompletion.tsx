@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
-import { Building2, User, Target, Globe } from "lucide-react";
+import { Building2, User, Target, Globe, Upload, Camera, X } from "lucide-react";
 
 interface ProfileData {
   business_name?: string;
@@ -22,13 +22,16 @@ interface ProfileData {
   years_of_experience?: number;
   company_size?: string;
   funding_raised?: string;
+  profile_image_url?: string;
 }
 
 const ProfileCompletion = () => {
   const { user } = useAuth();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
   const [profileData, setProfileData] = useState<ProfileData>({});
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const investmentStages = [
     "Pre-seed",
@@ -118,8 +121,76 @@ const ProfileCompletion = () => {
         bio: data.bio || '',
         years_of_experience: data.years_of_experience || 0,
         company_size: data.company_size || '',
-        funding_raised: data.funding_raised || ''
+        funding_raised: data.funding_raised || '',
+        profile_image_url: data.profile_image_url || ''
       });
+    }
+  };
+
+  const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file || !user) return;
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      toast({
+        title: "Error",
+        description: "Please select an image file.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Validate file size (5MB max)
+    if (file.size > 5 * 1024 * 1024) {
+      toast({
+        title: "Error", 
+        description: "Image must be less than 5MB.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setUploadingImage(true);
+
+    try {
+      // Create unique filename
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${user.id}/profile.${fileExt}`;
+
+      // Upload to storage
+      const { error: uploadError } = await supabase.storage
+        .from('profile-images')
+        .upload(fileName, file, { 
+          upsert: true,
+          contentType: file.type
+        });
+
+      if (uploadError) throw uploadError;
+
+      // Get public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from('profile-images')
+        .getPublicUrl(fileName);
+
+      // Update local state
+      setProfileData(prev => ({ ...prev, profile_image_url: publicUrl }));
+
+      toast({
+        title: "Success",
+        description: "Profile image uploaded successfully!",
+        variant: "default"
+      });
+
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      toast({
+        title: "Error",
+        description: "Failed to upload image. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setUploadingImage(false);
     }
   };
 
@@ -183,6 +254,75 @@ const ProfileCompletion = () => {
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Profile Image Upload */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 mb-3">
+              <User className="w-4 h-4 text-primary" />
+              <h3 className="text-lg font-semibold">Profile Picture</h3>
+            </div>
+            
+            <div className="flex items-center gap-4">
+              <div className="relative">
+                {profileData.profile_image_url ? (
+                  <img 
+                    src={profileData.profile_image_url} 
+                    alt="Profile" 
+                    className="w-20 h-20 rounded-full object-cover border-2 border-border"
+                  />
+                ) : (
+                  <div className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                    {user?.user_metadata?.full_name?.[0] || user?.email?.[0]?.toUpperCase() || 'U'}
+                  </div>
+                )}
+                
+                {/* Upload overlay */}
+                <div className="absolute inset-0 bg-black/40 rounded-full opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer">
+                  <Camera 
+                    className="w-6 h-6 text-white" 
+                    onClick={() => fileInputRef.current?.click()}
+                  />
+                </div>
+
+                {/* Remove button */}
+                {profileData.profile_image_url && (
+                  <button
+                    type="button"
+                    onClick={() => setProfileData(prev => ({ ...prev, profile_image_url: '' }))}
+                    className="absolute -top-2 -right-2 w-6 h-6 bg-destructive rounded-full flex items-center justify-center text-white hover:bg-destructive/80"
+                  >
+                    <X className="w-3 h-3" />
+                  </button>
+                )}
+              </div>
+
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                className="hidden"
+                disabled={uploadingImage}
+              />
+
+              <div className="flex flex-col gap-2">
+                <Button 
+                  type="button"
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={uploadingImage}
+                  className="flex items-center gap-2"
+                >
+                  <Upload className="w-4 h-4" />
+                  {uploadingImage ? 'Uploading...' : 'Upload Photo'}
+                </Button>
+                <p className="text-xs text-muted-foreground">
+                  JPG, PNG up to 5MB
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Basic Business Information */}
           <div className="space-y-4">
             <div className="flex items-center gap-2 mb-3">

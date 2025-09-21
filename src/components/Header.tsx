@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,8 +9,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { User, LogOut } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
 
 const Header = () => {
+  const [profileImage, setProfileImage] = useState<string | null>(null);
+  
   // Add safety check to prevent runtime errors during module loading
   let user = null;
   let signOut = () => {};
@@ -22,6 +26,29 @@ const Header = () => {
     // Fallback during initial load - useAuth hook may not be available yet
     console.warn('useAuth not available yet');
   }
+
+  // Fetch profile image when user changes
+  useEffect(() => {
+    if (user) {
+      fetchProfileImage();
+    } else {
+      setProfileImage(null);
+    }
+  }, [user]);
+
+  const fetchProfileImage = async () => {
+    if (!user) return;
+    
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('profile_image_url')
+      .eq('id', user.id)
+      .maybeSingle();
+
+    if (!error && data?.profile_image_url) {
+      setProfileImage(data.profile_image_url);
+    }
+  };
   return (
     <header className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -122,7 +149,15 @@ const Header = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" size="sm" className="flex items-center space-x-2">
-                  <User className="w-4 h-4" />
+                  {profileImage ? (
+                    <img 
+                      src={profileImage} 
+                      alt="Profile" 
+                      className="w-6 h-6 rounded-full object-cover"
+                    />
+                  ) : (
+                    <User className="w-4 h-4" />
+                  )}
                   <span>{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
                 </Button>
               </DropdownMenuTrigger>

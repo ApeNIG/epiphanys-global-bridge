@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/Header";
@@ -18,9 +18,13 @@ import {
   Briefcase,
   Target,
   Award,
-  Clock
+  Clock,
+  Upload,
+  Camera,
+  X
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 interface ProfileData {
   id: string;
@@ -38,14 +42,18 @@ interface ProfileData {
   years_of_experience?: number;
   company_size?: string;
   funding_raised?: string;
+  profile_image_url?: string;
   created_at?: string;
   updated_at?: string;
 }
 
 const Profile = () => {
   const { user } = useAuth();
+  const { toast } = useToast();
   const [profile, setProfile] = useState<ProfileData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (user) {
@@ -70,6 +78,128 @@ const Profile = () => {
     }
     
     setLoading(false);
+  };
+
+  const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file || !user) return;
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      toast({
+        title: "Error",
+        description: "Please select an image file.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Validate file size (5MB max)
+    if (file.size > 5 * 1024 * 1024) {
+      toast({
+        title: "Error", 
+        description: "Image must be less than 5MB.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setUploadingImage(true);
+
+    try {
+      // Create unique filename
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${user.id}/profile.${fileExt}`;
+
+      // Upload to storage
+      const { data: uploadData, error: uploadError } = await supabase.storage
+        .from('profile-images')
+        .upload(fileName, file, { 
+          upsert: true,
+          contentType: file.type
+        });
+
+      if (uploadError) throw uploadError;
+
+      // Get public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from('profile-images')
+        .getPublicUrl(fileName);
+
+      // Update profile with new image URL
+      const { error: updateError } = await supabase
+        .from('profiles')
+        .upsert({
+          id: user.id,
+          profile_image_url: publicUrl,
+          updated_at: new Date().toISOString()
+        });
+
+      if (updateError) throw updateError;
+
+      // Update local state
+      setProfile(prev => prev ? { ...prev, profile_image_url: publicUrl } : null);
+
+      toast({
+        title: "Success",
+        description: "Profile image updated successfully!",
+        variant: "default"
+      });
+
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      toast({
+        title: "Error",
+        description: "Failed to upload image. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setUploadingImage(false);
+    }
+  };
+
+  const removeImage = async () => {
+    if (!user || !profile?.profile_image_url) return;
+
+    setUploadingImage(true);
+
+    try {
+      // Remove from storage
+      const fileName = `${user.id}/profile.${profile.profile_image_url.split('.').pop()}`;
+      await supabase.storage
+        .from('profile-images')
+        .remove([fileName]);
+
+      // Update profile to remove image URL
+      const { error: updateError } = await supabase
+        .from('profiles')
+        .upsert({
+          id: user.id,
+          profile_image_url: null,
+          updated_at: new Date().toISOString()
+        });
+
+      if (updateError) throw updateError;
+
+      // Update local state
+      setProfile(prev => prev ? { ...prev, profile_image_url: undefined } : null);
+
+      toast({
+        title: "Success",
+        description: "Profile image removed successfully!",
+        variant: "default"
+      });
+
+    } catch (error) {
+      console.error('Error removing image:', error);
+      toast({
+        title: "Error",
+        description: "Failed to remove image. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setUploadingImage(false);
+    }
   };
 
   if (loading) {
@@ -112,19 +242,70 @@ const Profile = () => {
           <div className="mb-8">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
               <div className="flex items-center gap-4">
-                <div className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white text-2xl font-bold">
-                  {profile?.full_name?.[0] || user?.user_metadata?.full_name?.[0] || user?.email?.[0]?.toUpperCase() || 'U'}
+                <div className="relative">
+                  {profile?.profile_image_url ? (
+                    <img 
+                      src={profile.profile_image_url} 
+                      alt="Profile" 
+                      className="w-20 h-20 rounded-full object-cover border-2 border-border"
+                    />
+                  ) : (
+                    <div className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                      {profile?.full_name?.[0] || user?.user_metadata?.full_name?.[0] || user?.email?.[0]?.toUpperCase() || 'U'}
+                    </div>
+                  )}
+                  
+                  {/* Upload overlay */}
+                  <div className="absolute inset-0 bg-black/40 rounded-full opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer group">
+                    <Camera 
+                      className="w-6 h-6 text-white" 
+                      onClick={() => fileInputRef.current?.click()}
+                    />
+                  </div>
+
+                  {/* Remove button */}
+                  {profile?.profile_image_url && (
+                    <button
+                      onClick={removeImage}
+                      disabled={uploadingImage}
+                      className="absolute -top-2 -right-2 w-6 h-6 bg-destructive rounded-full flex items-center justify-center text-white hover:bg-destructive/80"
+                    >
+                      <X className="w-3 h-3" />
+                    </button>
+                  )}
                 </div>
+
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="hidden"
+                  disabled={uploadingImage}
+                />
+
                 <div>
                   <h1 className="text-3xl font-bold">
                     {profile?.full_name || user?.user_metadata?.full_name || 'User Profile'}
                   </h1>
                   <p className="text-muted-foreground">{user?.email}</p>
-                  {profile?.user_category && (
-                    <Badge variant="secondary" className="mt-2">
-                      {profile.user_category}
-                    </Badge>
-                  )}
+                  <div className="flex items-center gap-2 mt-2">
+                    {profile?.user_category && (
+                      <Badge variant="secondary">
+                        {profile.user_category}
+                      </Badge>
+                    )}
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={() => fileInputRef.current?.click()}
+                      disabled={uploadingImage}
+                      className="flex items-center gap-1"
+                    >
+                      <Upload className="w-3 h-3" />
+                      {uploadingImage ? 'Uploading...' : 'Change Photo'}
+                    </Button>
+                  </div>
                 </div>
               </div>
               <Link to="/dashboard">
