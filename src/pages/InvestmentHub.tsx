@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InvestmentExplorer from "@/components/InvestmentExplorer";
+import { Link } from "react-router-dom";
 import { 
   TrendingUp, 
   Building2, 
@@ -366,6 +367,55 @@ const InvestmentHub = () => {
               </Card>
             ))}
           </div>
+
+          {/* List Your Business CTA */}
+          <div className="mt-12">
+            <Card className="relative overflow-hidden bg-gradient-to-r from-emerald-50 to-violet-50 dark:from-emerald-950/20 dark:to-violet-950/20 border-2 border-dashed border-emerald-200 dark:border-emerald-800">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-violet-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <FileText className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">List Your Business</h3>
+                <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                  Get discovered by relevant investors through our comprehensive business listing. 
+                  Complete our detailed questionnaire to showcase your company, traction, and funding needs.
+                </p>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-3xl mx-auto">
+                  <div className="text-center">
+                    <div className="w-8 h-8 bg-emerald-100 dark:bg-emerald-900 rounded-lg flex items-center justify-center mx-auto mb-2">
+                      <Building2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                    </div>
+                    <span className="text-sm text-muted-foreground">Company Profile</span>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-8 h-8 bg-violet-100 dark:bg-violet-900 rounded-lg flex items-center justify-center mx-auto mb-2">
+                      <Target className="w-4 h-4 text-violet-600 dark:text-violet-400" />
+                    </div>
+                    <span className="text-sm text-muted-foreground">Market Analysis</span>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-8 h-8 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center mx-auto mb-2">
+                      <TrendingUp className="w-4 h-4 text-orange-600 dark:text-orange-400" />
+                    </div>
+                    <span className="text-sm text-muted-foreground">Traction & Metrics</span>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-8 h-8 bg-emerald-100 dark:bg-emerald-900 rounded-lg flex items-center justify-center mx-auto mb-2">
+                      <DollarSign className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                    </div>
+                    <span className="text-sm text-muted-foreground">Funding Needs</span>
+                  </div>
+                </div>
+                <Link to="/business-onboarding">
+                  <Button size="lg" className="bg-gradient-to-r from-emerald-500 to-violet-500 hover:from-emerald-600 hover:to-violet-600 text-white">
+                    <Briefcase className="w-5 h-5 mr-2" />
+                    Start Business Listing
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
@@ -386,10 +436,12 @@ const InvestmentHub = () => {
                 <Users className="w-5 h-5 mr-2" />
                 Join as Investor
               </Button>
-              <Button size="lg" variant="ghost" className="text-white border-white hover:bg-white/10">
-                <Handshake className="w-5 h-5 mr-2" />
-                List Your Business
-              </Button>
+              <Link to="/business-onboarding">
+                <Button size="lg" variant="ghost" className="text-white border-white hover:bg-white/10">
+                  <Handshake className="w-5 h-5 mr-2" />
+                  List Your Business
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
