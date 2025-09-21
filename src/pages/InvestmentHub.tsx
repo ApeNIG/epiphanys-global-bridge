@@ -70,7 +70,7 @@ const InvestmentHub = () => {
     {
       icon: <Target className="w-6 h-6" />,
       title: "Smart Matching",
-      description: "AI-powered algorithm matches investors with suitable opportunities based on criteria, risk profile, and investment thesis."
+      description: "AI-powered algorithm matches investors with suitable business opportunities including startups, scale-ups, and SMEs based on criteria, risk profile, investment thesis, and business demographics."
     },
     {
       icon: <Shield className="w-6 h-6" />,
