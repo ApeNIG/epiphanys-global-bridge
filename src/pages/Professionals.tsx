@@ -126,9 +126,9 @@ const Professionals = () => {
     const matchesSearch = opportunity.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          opportunity.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          opportunity.company_name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = !selectedCategory || opportunity.category === selectedCategory;
-    const matchesSector = !selectedSector || opportunity.sector === selectedSector;
-    const matchesLocation = !selectedLocation || opportunity.location?.toLowerCase().includes(selectedLocation.toLowerCase());
+    const matchesCategory = !selectedCategory || selectedCategory === "all" || opportunity.category === selectedCategory;
+    const matchesSector = !selectedSector || selectedSector === "all" || opportunity.sector === selectedSector;
+    const matchesLocation = !selectedLocation || selectedLocation === "all" || opportunity.location?.toLowerCase().includes(selectedLocation.toLowerCase());
     
     return matchesSearch && matchesCategory && matchesSector && matchesLocation;
   });
@@ -151,10 +151,10 @@ const Professionals = () => {
 
   const clearFilters = () => {
     setSearchTerm("");
-    setSelectedCategory("");
-    setSector("");
-    setSelectedLocation("");
-    setExperienceLevel("");
+    setSelectedCategory("all");
+    setSector("all");
+    setSelectedLocation("all");
+    setExperienceLevel("all");
   };
 
   if (loading) {
@@ -219,7 +219,7 @@ const Professionals = () => {
                   <SelectValue placeholder="All categories" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All categories</SelectItem>
+                  <SelectItem value="all">All categories</SelectItem>
                   {categories.map((category) => (
                     <SelectItem key={category} value={category}>
                       {category}
@@ -236,7 +236,7 @@ const Professionals = () => {
                   <SelectValue placeholder="All sectors" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All sectors</SelectItem>
+                  <SelectItem value="all">All sectors</SelectItem>
                   {sectors.map((sector) => (
                     <SelectItem key={sector} value={sector}>
                       {sector}
@@ -253,7 +253,7 @@ const Professionals = () => {
                   <SelectValue placeholder="All locations" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All locations</SelectItem>
+                  <SelectItem value="all">All locations</SelectItem>
                   {locations.map((location) => (
                     <SelectItem key={location} value={location}>
                       {location}
@@ -270,7 +270,7 @@ const Professionals = () => {
                   <SelectValue placeholder="All levels" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All levels</SelectItem>
+                  <SelectItem value="all">All levels</SelectItem>
                   {experienceLevels.map((level) => (
                     <SelectItem key={level} value={level}>
                       {level}
