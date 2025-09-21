@@ -169,40 +169,55 @@ const Professionals = () => {
     setLoading(true);
     
     try {
-      // Store professional profile data in consultation_requests table for now
-      // In a real app, you'd want a dedicated professionals table
+      // Store professional profile data in the new professional_profiles table
       const { error } = await supabase
-        .from('consultation_requests')
-        .insert({
-          full_name: `${user.user_metadata?.full_name || user.email}`,
-          email: user.email,
-          phone: formData.start_date_availability, // Temporary field mapping
-          company: formData.professional_title,
-          position: formData.current_employment_status,
-          organization_type: "Professional",
-          industry_focus: formData.industry_expertise.join(', '),
-          consultation_goals: formData.professional_summary,
-          current_challenges: formData.key_achievements,
-          budget_range: formData.salary_expectation,
-          timeframe: formData.notice_period,
-          status: "professional_profile"
+        .from('professional_profiles')
+        .upsert({
+          user_id: user.id,
+          professional_title: formData.professional_title,
+          years_experience: formData.years_experience,
+          current_employment_status: formData.current_employment_status,
+          availability: formData.availability,
+          core_skills: formData.core_skills,
+          industry_expertise: formData.industry_expertise,
+          certifications: formData.certifications,
+          languages_spoken: formData.languages_spoken,
+          work_type_preference: formData.work_type_preference,
+          location_preference: formData.location_preference,
+          salary_expectation: formData.salary_expectation,
+          willing_to_relocate: formData.willing_to_relocate === 'yes',
+          notice_period: formData.notice_period,
+          highest_qualification: formData.highest_qualification,
+          university_institution: formData.university_institution,
+          professional_summary: formData.professional_summary,
+          key_achievements: formData.key_achievements,
+          start_date_availability: formData.start_date_availability,
+          interview_availability: formData.interview_availability,
+          visa_status: formData.visa_status,
+          security_clearance: formData.security_clearance,
+          references_available: formData.references_available === 'yes',
+          portfolio_website: formData.portfolio_website,
+          linkedin_profile: formData.linkedin_profile,
+          diversity_background: formData.diversity_background,
+          accessibility_requirements: formData.accessibility_requirements,
+          professional_memberships: formData.professional_memberships
         });
 
       if (error) throw error;
 
       toast({
         title: "Success",
-        description: "Professional profile submitted successfully!",
+        description: "Professional profile saved successfully!",
         variant: "default"
       });
       
     } catch (error) {
       toast({
         title: "Error", 
-        description: "Failed to submit profile. Please try again.",
+        description: "Failed to save profile. Please try again.",
         variant: "destructive"
       });
-      console.error('Error submitting profile:', error);
+      console.error('Error saving profile:', error);
     }
     
     setLoading(false);

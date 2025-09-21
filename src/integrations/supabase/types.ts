@@ -419,6 +419,108 @@ export type Database = {
         }
         Relationships: []
       }
+      professional_profiles: {
+        Row: {
+          accessibility_requirements: string | null
+          availability: string | null
+          certifications: string | null
+          core_skills: string[] | null
+          created_at: string
+          current_employment_status: string | null
+          diversity_background: string | null
+          highest_qualification: string | null
+          id: string
+          industry_expertise: string[] | null
+          interview_availability: string | null
+          key_achievements: string | null
+          languages_spoken: string[] | null
+          linkedin_profile: string | null
+          location_preference: string | null
+          notice_period: string | null
+          portfolio_website: string | null
+          professional_memberships: string | null
+          professional_summary: string | null
+          professional_title: string | null
+          references_available: boolean | null
+          salary_expectation: string | null
+          security_clearance: string | null
+          start_date_availability: string | null
+          university_institution: string | null
+          updated_at: string
+          user_id: string
+          visa_status: string | null
+          willing_to_relocate: boolean | null
+          work_type_preference: string | null
+          years_experience: string | null
+        }
+        Insert: {
+          accessibility_requirements?: string | null
+          availability?: string | null
+          certifications?: string | null
+          core_skills?: string[] | null
+          created_at?: string
+          current_employment_status?: string | null
+          diversity_background?: string | null
+          highest_qualification?: string | null
+          id?: string
+          industry_expertise?: string[] | null
+          interview_availability?: string | null
+          key_achievements?: string | null
+          languages_spoken?: string[] | null
+          linkedin_profile?: string | null
+          location_preference?: string | null
+          notice_period?: string | null
+          portfolio_website?: string | null
+          professional_memberships?: string | null
+          professional_summary?: string | null
+          professional_title?: string | null
+          references_available?: boolean | null
+          salary_expectation?: string | null
+          security_clearance?: string | null
+          start_date_availability?: string | null
+          university_institution?: string | null
+          updated_at?: string
+          user_id: string
+          visa_status?: string | null
+          willing_to_relocate?: boolean | null
+          work_type_preference?: string | null
+          years_experience?: string | null
+        }
+        Update: {
+          accessibility_requirements?: string | null
+          availability?: string | null
+          certifications?: string | null
+          core_skills?: string[] | null
+          created_at?: string
+          current_employment_status?: string | null
+          diversity_background?: string | null
+          highest_qualification?: string | null
+          id?: string
+          industry_expertise?: string[] | null
+          interview_availability?: string | null
+          key_achievements?: string | null
+          languages_spoken?: string[] | null
+          linkedin_profile?: string | null
+          location_preference?: string | null
+          notice_period?: string | null
+          portfolio_website?: string | null
+          professional_memberships?: string | null
+          professional_summary?: string | null
+          professional_title?: string | null
+          references_available?: boolean | null
+          salary_expectation?: string | null
+          security_clearance?: string | null
+          start_date_availability?: string | null
+          university_institution?: string | null
+          updated_at?: string
+          user_id?: string
+          visa_status?: string | null
+          willing_to_relocate?: boolean | null
+          work_type_preference?: string | null
+          years_experience?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null

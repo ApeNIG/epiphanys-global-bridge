@@ -29,7 +29,8 @@ import {
   DollarSign,
   Users,
   Handshake,
-  Heart
+  Heart,
+  GraduationCap
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -65,11 +66,45 @@ interface BusinessProfile {
   impact: any;
 }
 
+interface ProfessionalProfile {
+  id: string;
+  professional_title?: string;
+  years_experience?: string;
+  current_employment_status?: string;
+  availability?: string;
+  core_skills?: string[];
+  industry_expertise?: string[];
+  certifications?: string;
+  languages_spoken?: string[];
+  work_type_preference?: string;
+  location_preference?: string;
+  salary_expectation?: string;
+  willing_to_relocate?: boolean;
+  notice_period?: string;
+  highest_qualification?: string;
+  university_institution?: string;
+  professional_summary?: string;
+  key_achievements?: string;
+  start_date_availability?: string;
+  interview_availability?: string;
+  visa_status?: string;
+  security_clearance?: string;
+  references_available?: boolean;
+  portfolio_website?: string;
+  linkedin_profile?: string;
+  diversity_background?: string;
+  accessibility_requirements?: string;
+  professional_memberships?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
 const Profile = () => {
   const { user } = useAuth();
   const { toast } = useToast();
   const [profile, setProfile] = useState<ProfileData | null>(null);
   const [businessProfile, setBusinessProfile] = useState<BusinessProfile | null>(null);
+  const [professionalProfile, setProfessionalProfile] = useState<ProfessionalProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [uploadingImage, setUploadingImage] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -78,6 +113,7 @@ const Profile = () => {
     if (user) {
       fetchProfile();
       fetchBusinessProfile();
+      fetchProfessionalProfile();
     }
   }, [user]);
 
@@ -142,6 +178,27 @@ const Profile = () => {
       });
     } catch (error) {
       console.error('Error fetching business profile:', error);
+    }
+  };
+
+  const fetchProfessionalProfile = async () => {
+    if (!user) return;
+
+    try {
+      const { data, error } = await supabase
+        .from('professional_profiles')
+        .select('*')
+        .eq('user_id', user.id)
+        .maybeSingle();
+
+      if (error && error.code !== 'PGRST116') {
+        console.error('Error fetching professional profile:', error);
+        return;
+      }
+
+      setProfessionalProfile(data);
+    } catch (error) {
+      console.error('Error fetching professional profile:', error);
     }
   };
 
@@ -393,6 +450,11 @@ const Profile = () => {
                     <DropdownMenuItem asChild>
                       <Link to="/business-onboarding" className="w-full cursor-pointer">
                         Complete Detailed Business Profile
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link to="/professionals" className="w-full cursor-pointer">
+                        Complete Professional Profile
                       </Link>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
@@ -847,6 +909,250 @@ const Profile = () => {
                                   {businessProfile.impact.mission_driven ? "Yes" : "No"}
                                 </Badge>
                               </p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                  </CardContent>
+                </Card>
+              )}
+
+              {/* Professional Profile */}
+              {professionalProfile && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <User className="w-5 h-5" />
+                      Professional Profile
+                    </CardTitle>
+                    <CardDescription>
+                      Detailed professional information and career preferences
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    
+                    {/* Professional Identity */}
+                    <div>
+                      <h4 className="font-semibold mb-3 flex items-center gap-2">
+                        <Briefcase className="w-4 h-4" />
+                        Professional Identity
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pl-6">
+                        {professionalProfile.professional_title && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Professional Title</label>
+                            <p className="text-sm">{professionalProfile.professional_title}</p>
+                          </div>
+                        )}
+                        {professionalProfile.years_experience && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Years of Experience</label>
+                            <p className="text-sm">
+                              <Badge variant="secondary">{professionalProfile.years_experience}</Badge>
+                            </p>
+                          </div>
+                        )}
+                        {professionalProfile.current_employment_status && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Employment Status</label>
+                            <p className="text-sm">{professionalProfile.current_employment_status}</p>
+                          </div>
+                        )}
+                        {professionalProfile.work_type_preference && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Work Preference</label>
+                            <p className="text-sm">{professionalProfile.work_type_preference}</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Skills & Expertise */}
+                    <div>
+                      <h4 className="font-semibold mb-3 flex items-center gap-2">
+                        <Award className="w-4 h-4" />
+                        Skills & Expertise
+                      </h4>
+                      <div className="space-y-3 pl-6">
+                        {professionalProfile.core_skills && professionalProfile.core_skills.length > 0 && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Core Skills</label>
+                            <div className="flex flex-wrap gap-1 mt-1">
+                              {professionalProfile.core_skills.map((skill: string, index: number) => (
+                                <Badge key={index} variant="default" className="text-xs">{skill}</Badge>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                        {professionalProfile.industry_expertise && professionalProfile.industry_expertise.length > 0 && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Industry Expertise</label>
+                            <div className="flex flex-wrap gap-1 mt-1">
+                              {professionalProfile.industry_expertise.map((industry: string, index: number) => (
+                                <Badge key={index} variant="secondary" className="text-xs">{industry}</Badge>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                        {professionalProfile.certifications && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Certifications</label>
+                            <p className="text-sm">{professionalProfile.certifications}</p>
+                          </div>
+                        )}
+                        {professionalProfile.languages_spoken && professionalProfile.languages_spoken.length > 0 && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Languages</label>
+                            <div className="flex flex-wrap gap-1 mt-1">
+                              {professionalProfile.languages_spoken.map((language: string, index: number) => (
+                                <Badge key={index} variant="outline" className="text-xs">{language}</Badge>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Work Preferences */}
+                    <div>
+                      <h4 className="font-semibold mb-3 flex items-center gap-2">
+                        <MapPin className="w-4 h-4" />
+                        Work Preferences
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pl-6">
+                        {professionalProfile.location_preference && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Location Preference</label>
+                            <p className="text-sm">{professionalProfile.location_preference}</p>
+                          </div>
+                        )}
+                        {professionalProfile.salary_expectation && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Salary Expectation</label>
+                            <p className="text-sm">
+                              <Badge variant="outline">{professionalProfile.salary_expectation}</Badge>
+                            </p>
+                          </div>
+                        )}
+                        {professionalProfile.willing_to_relocate !== null && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Willing to Relocate</label>
+                            <p className="text-sm">
+                              <Badge variant={professionalProfile.willing_to_relocate ? "default" : "secondary"}>
+                                {professionalProfile.willing_to_relocate ? "Yes" : "No"}
+                              </Badge>
+                            </p>
+                          </div>
+                        )}
+                        {professionalProfile.notice_period && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Notice Period</label>
+                            <p className="text-sm">{professionalProfile.notice_period}</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Education & Background */}
+                    <div>
+                      <h4 className="font-semibold mb-3 flex items-center gap-2">
+                        <GraduationCap className="w-4 h-4" />
+                        Education & Background
+                      </h4>
+                      <div className="space-y-3 pl-6">
+                        {professionalProfile.highest_qualification && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Highest Qualification</label>
+                            <p className="text-sm">{professionalProfile.highest_qualification}</p>
+                          </div>
+                        )}
+                        {professionalProfile.university_institution && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">University/Institution</label>
+                            <p className="text-sm">{professionalProfile.university_institution}</p>
+                          </div>
+                        )}
+                        {professionalProfile.professional_summary && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Professional Summary</label>
+                            <p className="text-sm">{professionalProfile.professional_summary}</p>
+                          </div>
+                        )}
+                        {professionalProfile.key_achievements && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Key Achievements</label>
+                            <p className="text-sm">{professionalProfile.key_achievements}</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* References & Portfolio */}
+                    <div>
+                      <h4 className="font-semibold mb-3 flex items-center gap-2">
+                        <FileText className="w-4 h-4" />
+                        References & Portfolio
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pl-6">
+                        {professionalProfile.references_available !== null && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">References Available</label>
+                            <p className="text-sm">
+                              <Badge variant={professionalProfile.references_available ? "default" : "secondary"}>
+                                {professionalProfile.references_available ? "Yes" : "No"}
+                              </Badge>
+                            </p>
+                          </div>
+                        )}
+                        {professionalProfile.portfolio_website && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Portfolio Website</label>
+                            <p className="text-sm">
+                              <a href={professionalProfile.portfolio_website} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                                {professionalProfile.portfolio_website}
+                              </a>
+                            </p>
+                          </div>
+                        )}
+                        {professionalProfile.linkedin_profile && (
+                          <div className="md:col-span-2">
+                            <label className="text-sm font-medium text-muted-foreground">LinkedIn Profile</label>
+                            <p className="text-sm">
+                              <a href={professionalProfile.linkedin_profile} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                                {professionalProfile.linkedin_profile}
+                              </a>
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Additional Information */}
+                    {(professionalProfile.diversity_background || professionalProfile.accessibility_requirements || professionalProfile.professional_memberships) && (
+                      <div>
+                        <h4 className="font-semibold mb-3 flex items-center gap-2">
+                          <Globe className="w-4 h-4" />
+                          Additional Information
+                        </h4>
+                        <div className="space-y-3 pl-6">
+                          {professionalProfile.diversity_background && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Diversity Background</label>
+                              <p className="text-sm">{professionalProfile.diversity_background}</p>
+                            </div>
+                          )}
+                          {professionalProfile.accessibility_requirements && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Accessibility Requirements</label>
+                              <p className="text-sm">{professionalProfile.accessibility_requirements}</p>
+                            </div>
+                          )}
+                          {professionalProfile.professional_memberships && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Professional Memberships</label>
+                              <p className="text-sm">{professionalProfile.professional_memberships}</p>
                             </div>
                           )}
                         </div>
