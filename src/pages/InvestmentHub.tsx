@@ -16,7 +16,13 @@ import {
   ArrowRight,
   CheckCircle,
   Rocket,
-  Network
+  Network,
+  CreditCard,
+  Banknote,
+  PiggyBank,
+  Landmark,
+  Briefcase,
+  FileText
 } from "lucide-react";
 
 const InvestmentHub = () => {
@@ -78,6 +84,81 @@ const InvestmentHub = () => {
       icon: <Network className="w-6 h-6" />,
       title: "Global Network",
       description: "Connect with diaspora entrepreneurs, local market experts, and international business networks."
+    }
+  ];
+
+  const investmentOpportunities = [
+    {
+      category: "Angel Investors",
+      icon: <Users className="w-6 h-6" />,
+      description: "Individual investors providing capital and mentorship",
+      examples: [
+        "UK Angel Investment Network - £10K-£500K seed funding",
+        "Diaspora Angel Collective - Cultural expertise + capital",
+        "Tech Angel Syndicate - Industry-specific knowledge",
+        "Impact Angels - ESG-focused investments"
+      ],
+      color: "from-blue-400 to-indigo-600"
+    },
+    {
+      category: "Innovation Loans",
+      icon: <Rocket className="w-6 h-6" />,
+      description: "Government-backed loans for innovation and R&D",
+      examples: [
+        "Innovate UK Loans - £100K-£2M for R&D projects",
+        "Future Fund Breakthrough - High-growth potential",
+        "SBRI Innovation Vouchers - Proof of concept funding",
+        "Regional Innovation Grants - Location-specific support"
+      ],
+      color: "from-green-400 to-emerald-600"
+    },
+    {
+      category: "Business Banking",
+      icon: <Landmark className="w-6 h-6" />,
+      description: "Traditional and alternative banking solutions",
+      examples: [
+        "HSBC Start-up Banking - Fee-free business accounts",
+        "Starling Bank - Digital-first business banking",
+        "Metro Bank - Community-focused lending",
+        "Funding Circle - SME lending marketplace"
+      ],
+      color: "from-purple-400 to-violet-600"
+    },
+    {
+      category: "Alternative Finance",
+      icon: <CreditCard className="w-6 h-6" />,
+      description: "Modern financing solutions beyond traditional banks",
+      examples: [
+        "Crowdcube - Equity crowdfunding platform",
+        "Seedrs - Investment in early-stage businesses",
+        "Iwoca - Revenue-based business loans",
+        "Tide - SME-focused financial services"
+      ],
+      color: "from-orange-400 to-red-600"
+    },
+    {
+      category: "Government Grants",
+      icon: <FileText className="w-6 h-6" />,
+      description: "Public sector funding and support schemes",
+      examples: [
+        "Start Up Loans - £500-£25K government-backed loans",
+        "Export Development Guarantee - International trade",
+        "Green Business Grants - Sustainability initiatives",
+        "Diversity & Inclusion Funds - Underrepresented groups"
+      ],
+      color: "from-teal-400 to-cyan-600"
+    },
+    {
+      category: "Corporate Ventures",
+      icon: <Briefcase className="w-6 h-6" />,
+      description: "Strategic investments from established corporations",
+      examples: [
+        "Barclays Accelerator - Fintech partnerships",
+        "Shell Ventures - Energy and mobility solutions",
+        "Unilever Ventures - Consumer goods innovation",
+        "BT Innovation Partners - Tech infrastructure"
+      ],
+      color: "from-rose-400 to-pink-600"
     }
   ];
 
@@ -183,6 +264,48 @@ const InvestmentHub = () => {
                       </div>
                     ))}
                   </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Explore Investment Opportunities */}
+      <section className="py-20 px-4 bg-gradient-to-r from-slate-50/50 to-gray-50/50 dark:from-slate-950/10 dark:to-gray-950/10">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Explore Investment Opportunities</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Discover diverse funding sources from angel investors to government grants, innovation loans to corporate ventures. 
+              Find the perfect financial solution for your business growth.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {investmentOpportunities.map((opportunity, index) => (
+              <Card key={index} className="relative overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                <div className={`absolute inset-0 bg-gradient-to-br ${opportunity.color} opacity-5 group-hover:opacity-10 transition-opacity`} />
+                <CardHeader className="relative">
+                  <div className={`w-14 h-14 bg-gradient-to-r ${opportunity.color} rounded-xl flex items-center justify-center mb-4 text-white shadow-lg`}>
+                    {opportunity.icon}
+                  </div>
+                  <CardTitle className="text-xl">{opportunity.category}</CardTitle>
+                  <CardDescription className="text-base">{opportunity.description}</CardDescription>
+                </CardHeader>
+                <CardContent className="relative">
+                  <div className="space-y-3">
+                    {opportunity.examples.map((example, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        <DollarSign className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-muted-foreground leading-relaxed">{example}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Button variant="outline" size="sm" className="w-full mt-6 group-hover:bg-gradient-to-r group-hover:from-emerald-50 group-hover:to-violet-50">
+                    Explore Options
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
                 </CardContent>
               </Card>
             ))}
