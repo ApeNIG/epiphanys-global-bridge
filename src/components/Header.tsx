@@ -126,11 +126,17 @@ const Header = () => {
                   <span>{user.user_metadata?.full_name || user.email?.split('@')[0]}</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
+               <DropdownMenuContent align="end" className="w-48">
                 <DropdownMenuItem asChild>
                   <Link to="/dashboard" className="flex items-center cursor-pointer">
                     <User className="w-4 h-4 mr-2" />
                     Dashboard
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/profile" className="flex items-center cursor-pointer">
+                    <User className="w-4 h-4 mr-2" />
+                    Profile
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem 

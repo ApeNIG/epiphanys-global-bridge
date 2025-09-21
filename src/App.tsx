@@ -15,6 +15,7 @@ import InvestmentHub from "./pages/InvestmentHub";
 import Global from "./pages/Global";
 import Consultation from "./pages/Consultation";
 import Professionals from "./pages/Professionals";
+import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/global" element={<Global />} />
             <Route path="/consultation" element={<Consultation />} />
             <Route path="/professionals" element={<Professionals />} />
+            <Route path="/profile" element={<Profile />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
