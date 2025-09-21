@@ -25,9 +25,10 @@ const Auth = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  // Check if user is coming from password reset
+  // Check if user is coming from password reset or investor signup
   const urlParams = new URLSearchParams(window.location.search);
   const isPasswordReset = urlParams.get('type') === 'recovery';
+  const userRole = urlParams.get('role');
 
   // Redirect if already authenticated
   useEffect(() => {
@@ -72,7 +73,7 @@ const Auth = () => {
     
     setIsLoading(true);
     
-    const { error } = await signUp(email, password, fullName);
+    const { error } = await signUp(email, password, fullName, userRole || 'general');
     
     if (!error) {
       // Clear form after successful signup
@@ -271,11 +272,16 @@ const Auth = () => {
           {/* Hero Section */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-purple-600 to-orange-500 bg-clip-text text-transparent">
-              Join the Epiphiny Flow Opportunity Hub
+              {userRole === 'investor' 
+                ? 'Join as an Investor' 
+                : 'Join the Epiphiny Flow Opportunity Hub'
+              }
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-              Connect with global opportunities in business, careers, and investment. 
-              Unlock your cultural capital and join a trusted community of diaspora leaders.
+              {userRole === 'investor'
+                ? 'Discover vetted investment opportunities from diaspora entrepreneurs and growing businesses. Join our exclusive network of impact investors.'
+                : 'Connect with global opportunities in business, careers, and investment. Unlock your cultural capital and join a trusted community of diaspora leaders.'
+              }
             </p>
             
             {/* Benefits Grid */}
@@ -376,9 +382,14 @@ const Auth = () => {
                 <TabsContent value="signup">
                   <Card className="shadow-elegant">
                     <CardHeader>
-                      <CardTitle className="text-2xl">Create Your Account</CardTitle>
+                      <CardTitle className="text-2xl">
+                        {userRole === 'investor' ? 'Create Investor Account' : 'Create Your Account'}
+                      </CardTitle>
                       <CardDescription>
-                        Start your journey to economic empowerment. Join thousands of diaspora entrepreneurs, investors, and professionals.
+                        {userRole === 'investor'
+                          ? 'Join our exclusive network of verified investors and access curated investment opportunities from diaspora-led businesses.'
+                          : 'Start your journey to economic empowerment. Join thousands of diaspora entrepreneurs, investors, and professionals.'
+                        }
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -428,7 +439,7 @@ const Auth = () => {
                           />
                         </div>
                         <Button type="submit" variant="hero" className="w-full" size="lg" disabled={isLoading}>
-                          {isLoading ? "Creating Account..." : "Join Epiphiny Flow"}
+                          {isLoading ? "Creating Account..." : userRole === 'investor' ? "Join as Investor" : "Join Epiphiny Flow"}
                         </Button>
                         <p className="text-xs text-muted-foreground text-center">
                           By signing up, you agree to our Terms of Service and Privacy Policy. 

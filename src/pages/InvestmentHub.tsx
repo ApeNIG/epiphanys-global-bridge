@@ -432,10 +432,12 @@ const InvestmentHub = () => {
               Start building meaningful partnerships that drive sustainable growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="bg-white text-foreground hover:bg-white/90">
-                <Users className="w-5 h-5 mr-2" />
-                Join as Investor
-              </Button>
+              <Link to="/auth?role=investor">
+                <Button size="lg" variant="secondary" className="bg-white text-foreground hover:bg-white/90">
+                  <Users className="w-5 h-5 mr-2" />
+                  Join as Investor
+                </Button>
+              </Link>
               <Link to="/business-onboarding">
                 <Button size="lg" variant="ghost" className="text-white border-white hover:bg-white/10">
                   <Handshake className="w-5 h-5 mr-2" />
