@@ -62,8 +62,7 @@ const ProfileCompletion = () => {
     "Scale-up",
     "SME",
     "Enterprise",
-    "Public Sector",
-    "Private Sector"
+    "Professional"
   ];
 
   const companySizes = [
