@@ -14,6 +14,7 @@ import About from "./pages/About";
 import InvestmentHub from "./pages/InvestmentHub";
 import Global from "./pages/Global";
 import Consultation from "./pages/Consultation";
+import Professionals from "./pages/Professionals";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/investment-hub" element={<InvestmentHub />} />
             <Route path="/global" element={<Global />} />
             <Route path="/consultation" element={<Consultation />} />
+            <Route path="/professionals" element={<Professionals />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -63,6 +63,11 @@ const Header = () => {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
+              <Link to="/professionals" className="w-full">
+                Professionals
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
               <Link to="/community" className="w-full">
                 Community
               </Link>
@@ -96,6 +101,9 @@ const Header = () => {
           </Link>
           <Link to="/investment-hub" className="text-foreground hover:text-primary transition-colors">
             Investment
+          </Link>
+          <Link to="/professionals" className="text-foreground hover:text-primary transition-colors">
+            Professionals
           </Link>
           <Link to="/community" className="text-foreground hover:text-primary transition-colors">
             Community
