@@ -22,7 +22,8 @@ import {
   PiggyBank,
   Landmark,
   Briefcase,
-  FileText
+  FileText,
+  TrendingDown
 } from "lucide-react";
 
 const InvestmentHub = () => {
@@ -88,6 +89,20 @@ const InvestmentHub = () => {
   ];
 
   const investmentOpportunities = [
+    {
+      category: "Venture Capital",
+      icon: <TrendingDown className="w-6 h-6" />,
+      description: "Professional investment firms for high-growth startups",
+      examples: [
+        "Index Ventures - Pre-seed to Series A (£1M-£15M)",
+        "Balderton Capital - Series A/B focused (£5M-£25M)",
+        "Accel Partners - Early to growth stage (£2M-£50M)",
+        "Atomico - Series A to later stage (£10M-£100M+)",
+        "Connect Ventures - Pre-seed specialist (£250K-£2M)",
+        "Forward Partners - Seed stage ecommerce (£500K-£5M)"
+      ],
+      color: "from-indigo-400 to-purple-600"
+    },
     {
       category: "Angel Investors",
       icon: <Users className="w-6 h-6" />,
