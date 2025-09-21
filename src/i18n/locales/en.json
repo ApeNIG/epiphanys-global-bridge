@@ -1,0 +1,117 @@
+{
+  "hero": {
+    "title": "Empowering Diaspora Communities Globally",
+    "subtitle": "Connect with opportunities, bridge cultures, and unlock your global network through our comprehensive platform designed for diaspora communities worldwide.",
+    "cta": "Join Our Community",
+    "stats": {
+      "population": "60M+ UK Diaspora Population",
+      "impact": "£150B+ Annual Economic Impact",
+      "network": "200+ Countries Global Network"
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "opportunities": "Opportunities",
+    "professionals": "Professionals",
+    "investment": "Investment Hub",
+    "community": "Community",
+    "about": "About",
+    "profile": "Profile",
+    "dashboard": "Dashboard",
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  },
+  "principles": {
+    "title": "Built on Four Core Principles",
+    "inclusivity": {
+      "title": "Inclusivity",
+      "description": "Diaspora & underrepresented founders at the centre"
+    },
+    "trust": {
+      "title": "Trust",
+      "description": "KYC verification & community credibility"
+    },
+    "accessibility": {
+      "title": "Accessibility",
+      "description": "Mobile-first, low-barrier access"
+    },
+    "impact": {
+      "title": "Impact",
+      "description": "Trackable outcomes & measurable growth"
+    }
+  },
+  "diasporaFocus": {
+    "badge": "Diaspora-First Platform",
+    "title": "Connecting Communities, Creating Opportunities",
+    "description": "Our platform is specifically designed to serve diaspora communities worldwide, providing access to opportunities that bridge cultures and unlock economic potential.",
+    "features": {
+      "culturalIdentity": {
+        "title": "Cultural Identity",
+        "description": "Celebrate and leverage your cultural heritage as a strategic advantage"
+      },
+      "economicEmpowerment": {
+        "title": "Economic Empowerment",
+        "description": "Access funding, mentorship, and market opportunities tailored to your community"
+      }
+    },
+    "cta": "Join Our Community",
+    "impact": {
+      "title": "Our Global Impact",
+      "stats": {
+        "communities": "150+ UK Diaspora Communities",
+        "opportunities": "10,000+ Opportunities Created",
+        "funding": "£50M+ in Funding Facilitated"
+      },
+      "testimonial": "This platform has transformed how we connect diaspora entrepreneurs with global opportunities. The impact on our community has been extraordinary."
+    }
+  },
+  "callToAction": {
+    "title": "Ready to unlock your potential?",
+    "description": "Join thousands of diaspora professionals, entrepreneurs, and organizations already making their mark through our platform.",
+    "benefits": [
+      "Access to exclusive opportunities",
+      "Connect with your diaspora network",
+      "Showcase your cultural identity",
+      "Track your global impact"
+    ],
+    "emailPlaceholder": "Enter your email address",
+    "joinWaitlist": "Join Waitlist",
+    "bookDemo": "Book a Demo",
+    "learnMore": "Learn More"
+  },
+  "footer": {
+    "description": "Empowering diaspora communities worldwide through opportunities, connections, and cultural celebration.",
+    "platform": {
+      "title": "Platform",
+      "businessOpportunities": "Business Opportunities",
+      "careerDevelopment": "Career Development",
+      "investmentHub": "Investment Hub",
+      "globalCollaboration": "Global Collaboration"
+    },
+    "support": {
+      "title": "Support",
+      "helpCenter": "Help Center",
+      "communityGuidelines": "Community Guidelines",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "contactUs": "Contact Us"
+    },
+    "contact": {
+      "location": "London, United Kingdom",
+      "email": "hello@epiphinyflow.com"
+    },
+    "copyright": "© 2024 Epiphiny Flow. All rights reserved."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "save": "Save",
+    "continue": "Continue",
+    "back": "Back",
+    "next": "Next",
+    "finish": "Finish",
+    "language": "Language"
+  }
+}

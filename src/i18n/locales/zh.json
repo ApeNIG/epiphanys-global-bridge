@@ -1,0 +1,117 @@
+{
+  "hero": {
+    "title": "全球赋能侨民社区",
+    "subtitle": "通过我们专为全球侨民社区设计的综合平台，连接机会、连接文化、释放您的全球网络。",
+    "cta": "加入我们的社区",
+    "stats": {
+      "population": "英国侨民人口6000万+",
+      "impact": "年度经济影响£1500亿+",
+      "network": "全球网络200+国家"
+    }
+  },
+  "navigation": {
+    "home": "首页",
+    "opportunities": "机会",
+    "professionals": "专业人士",
+    "investment": "投资中心",
+    "community": "社区",
+    "about": "关于",
+    "profile": "个人资料",
+    "dashboard": "仪表板",
+    "signIn": "登录",
+    "signUp": "注册"
+  },
+  "principles": {
+    "title": "建立在四个核心原则之上",
+    "inclusivity": {
+      "title": "包容性",
+      "description": "侨民和代表性不足的创始人处于中心地位"
+    },
+    "trust": {
+      "title": "信任",
+      "description": "KYC验证和社区可信度"
+    },
+    "accessibility": {
+      "title": "可访问性",
+      "description": "移动优先，低门槛访问"
+    },
+    "impact": {
+      "title": "影响",
+      "description": "可追踪的结果和可衡量的增长"
+    }
+  },
+  "diasporaFocus": {
+    "badge": "侨民优先平台",
+    "title": "连接社区，创造机会",
+    "description": "我们的平台专门为全球侨民社区设计，提供连接文化和释放经济潜力的机会。",
+    "features": {
+      "culturalIdentity": {
+        "title": "文化认同",
+        "description": "庆祝并利用您的文化遗产作为战略优势"
+      },
+      "economicEmpowerment": {
+        "title": "经济赋权",
+        "description": "获得为您的社区量身定制的资金、指导和市场机会"
+      }
+    },
+    "cta": "加入我们的社区",
+    "impact": {
+      "title": "我们的全球影响",
+      "stats": {
+        "communities": "英国侨民社区150+",
+        "opportunities": "创造的机会10,000+",
+        "funding": "促成的资金£5000万+"
+      },
+      "testimonial": "这个平台改变了我们将侨民企业家与全球机会联系起来的方式。对我们社区的影响是非凡的。"
+    }
+  },
+  "callToAction": {
+    "title": "准备好释放您的潜力了吗？",
+    "description": "加入成千上万已经通过我们平台留下印记的侨民专业人士、企业家和组织。",
+    "benefits": [
+      "获得独家机会",
+      "连接您的侨民网络",
+      "展示您的文化身份",
+      "追踪您的全球影响"
+    ],
+    "emailPlaceholder": "输入您的电子邮件地址",
+    "joinWaitlist": "加入等候名单",
+    "bookDemo": "预约演示",
+    "learnMore": "了解更多"
+  },
+  "footer": {
+    "description": "通过机会、连接和文化庆祝，在全球范围内赋能侨民社区。",
+    "platform": {
+      "title": "平台",
+      "businessOpportunities": "商业机会",
+      "careerDevelopment": "职业发展",
+      "investmentHub": "投资中心",
+      "globalCollaboration": "全球合作"
+    },
+    "support": {
+      "title": "支持",
+      "helpCenter": "帮助中心",
+      "communityGuidelines": "社区指南",
+      "privacyPolicy": "隐私政策",
+      "termsOfService": "服务条款",
+      "contactUs": "联系我们"
+    },
+    "contact": {
+      "location": "英国伦敦",
+      "email": "hello@epiphinyflow.com"
+    },
+    "copyright": "© 2024 Epiphiny Flow. 保留所有权利。"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "发生错误",
+    "retry": "重试",
+    "cancel": "取消",
+    "save": "保存",
+    "continue": "继续",
+    "back": "返回",
+    "next": "下一步",
+    "finish": "完成",
+    "language": "语言"
+  }
+}

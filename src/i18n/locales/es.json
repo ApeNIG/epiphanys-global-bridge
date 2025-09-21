@@ -1,0 +1,117 @@
+{
+  "hero": {
+    "title": "Empoderando Comunidades de la Diáspora Globalmente",
+    "subtitle": "Conéctate con oportunidades, une culturas y desbloquea tu red global a través de nuestra plataforma integral diseñada para comunidades de la diáspora en todo el mundo.",
+    "cta": "Únete a Nuestra Comunidad",
+    "stats": {
+      "population": "60M+ Población de la Diáspora del Reino Unido",
+      "impact": "£150B+ Impacto Económico Anual",
+      "network": "200+ Países Red Global"
+    }
+  },
+  "navigation": {
+    "home": "Inicio",
+    "opportunities": "Oportunidades",
+    "professionals": "Profesionales",
+    "investment": "Centro de Inversión",
+    "community": "Comunidad",
+    "about": "Acerca de",
+    "profile": "Perfil",
+    "dashboard": "Panel de Control",
+    "signIn": "Iniciar Sesión",
+    "signUp": "Registrarse"
+  },
+  "principles": {
+    "title": "Construido sobre Cuatro Principios Fundamentales",
+    "inclusivity": {
+      "title": "Inclusividad",
+      "description": "Diáspora y fundadores subrepresentados en el centro"
+    },
+    "trust": {
+      "title": "Confianza",
+      "description": "Verificación KYC y credibilidad comunitaria"
+    },
+    "accessibility": {
+      "title": "Accesibilidad",
+      "description": "Móvil primero, acceso de baja barrera"
+    },
+    "impact": {
+      "title": "Impacto",
+      "description": "Resultados rastreables y crecimiento medible"
+    }
+  },
+  "diasporaFocus": {
+    "badge": "Plataforma Diáspora Primero",
+    "title": "Conectando Comunidades, Creando Oportunidades",
+    "description": "Nuestra plataforma está específicamente diseñada para servir a las comunidades de la diáspora en todo el mundo, proporcionando acceso a oportunidades que unen culturas y desbloquean el potencial económico.",
+    "features": {
+      "culturalIdentity": {
+        "title": "Identidad Cultural",
+        "description": "Celebra y aprovecha tu herencia cultural como una ventaja estratégica"
+      },
+      "economicEmpowerment": {
+        "title": "Empoderamiento Económico",
+        "description": "Accede a financiamiento, mentoría y oportunidades de mercado adaptadas a tu comunidad"
+      }
+    },
+    "cta": "Únete a Nuestra Comunidad",
+    "impact": {
+      "title": "Nuestro Impacto Global",
+      "stats": {
+        "communities": "150+ Comunidades de la Diáspora del Reino Unido",
+        "opportunities": "10,000+ Oportunidades Creadas",
+        "funding": "£50M+ en Financiamiento Facilitado"
+      },
+      "testimonial": "Esta plataforma ha transformado cómo conectamos a los empresarios de la diáspora con oportunidades globales. El impacto en nuestra comunidad ha sido extraordinario."
+    }
+  },
+  "callToAction": {
+    "title": "¿Listo para desbloquear tu potencial?",
+    "description": "Únete a miles de profesionales, empresarios y organizaciones de la diáspora que ya están dejando su huella a través de nuestra plataforma.",
+    "benefits": [
+      "Acceso a oportunidades exclusivas",
+      "Conéctate con tu red de la diáspora",
+      "Muestra tu identidad cultural",
+      "Rastrea tu impacto global"
+    ],
+    "emailPlaceholder": "Ingresa tu dirección de correo electrónico",
+    "joinWaitlist": "Únete a la Lista de Espera",
+    "bookDemo": "Reservar una Demo",
+    "learnMore": "Aprender Más"
+  },
+  "footer": {
+    "description": "Empoderando comunidades de la diáspora en todo el mundo a través de oportunidades, conexiones y celebración cultural.",
+    "platform": {
+      "title": "Plataforma",
+      "businessOpportunities": "Oportunidades de Negocio",
+      "careerDevelopment": "Desarrollo Profesional",
+      "investmentHub": "Centro de Inversión",
+      "globalCollaboration": "Colaboración Global"
+    },
+    "support": {
+      "title": "Soporte",
+      "helpCenter": "Centro de Ayuda",
+      "communityGuidelines": "Directrices de la Comunidad",
+      "privacyPolicy": "Política de Privacidad",
+      "termsOfService": "Términos de Servicio",
+      "contactUs": "Contáctanos"
+    },
+    "contact": {
+      "location": "Londres, Reino Unido",
+      "email": "hello@epiphinyflow.com"
+    },
+    "copyright": "© 2024 Epiphiny Flow. Todos los derechos reservados."
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "retry": "Reintentar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "continue": "Continuar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "finish": "Finalizar",
+    "language": "Idioma"
+  }
+}

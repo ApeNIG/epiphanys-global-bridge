@@ -10,6 +10,7 @@ import {
 import { User, LogOut } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
   const [profileImage, setProfileImage] = useState<string | null>(null);
@@ -143,8 +144,9 @@ const Header = () => {
           </Link>
         </nav>
 
-        {/* Authentication */}
+        {/* Language Switcher and Authentication */}
         <div className="flex items-center space-x-3">
+          <LanguageSwitcher />
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

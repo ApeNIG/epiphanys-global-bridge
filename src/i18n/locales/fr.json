@@ -1,0 +1,117 @@
+{
+  "hero": {
+    "title": "Autonomiser les Communautés de la Diaspora Mondiale",
+    "subtitle": "Connectez-vous aux opportunités, créez des ponts culturels et débloquez votre réseau mondial grâce à notre plateforme complète conçue pour les communautés de la diaspora du monde entier.",
+    "cta": "Rejoindre Notre Communauté",
+    "stats": {
+      "population": "60M+ Population de la Diaspora UK",
+      "impact": "£150Md+ Impact Économique Annuel",
+      "network": "200+ Pays Réseau Mondial"
+    }
+  },
+  "navigation": {
+    "home": "Accueil",
+    "opportunities": "Opportunités",
+    "professionals": "Professionnels",
+    "investment": "Hub d'Investissement",
+    "community": "Communauté",
+    "about": "À Propos",
+    "profile": "Profil",
+    "dashboard": "Tableau de Bord",
+    "signIn": "Se Connecter",
+    "signUp": "S'Inscrire"
+  },
+  "principles": {
+    "title": "Basé sur Quatre Principes Fondamentaux",
+    "inclusivity": {
+      "title": "Inclusivité",
+      "description": "La diaspora et les fondateurs sous-représentés au centre"
+    },
+    "trust": {
+      "title": "Confiance",
+      "description": "Vérification KYC et crédibilité communautaire"
+    },
+    "accessibility": {
+      "title": "Accessibilité",
+      "description": "Mobile d'abord, accès à faible barrière"
+    },
+    "impact": {
+      "title": "Impact",
+      "description": "Résultats traçables et croissance mesurable"
+    }
+  },
+  "diasporaFocus": {
+    "badge": "Plateforme Diaspora d'Abord",
+    "title": "Connecter les Communautés, Créer des Opportunités",
+    "description": "Notre plateforme est spécifiquement conçue pour servir les communautés de la diaspora mondiale, offrant l'accès aux opportunités qui créent des ponts culturels et libèrent le potentiel économique.",
+    "features": {
+      "culturalIdentity": {
+        "title": "Identité Culturelle",
+        "description": "Célébrez et exploitez votre héritage culturel comme avantage stratégique"
+      },
+      "economicEmpowerment": {
+        "title": "Autonomisation Économique",
+        "description": "Accédez au financement, mentorat et opportunités de marché adaptés à votre communauté"
+      }
+    },
+    "cta": "Rejoindre Notre Communauté",
+    "impact": {
+      "title": "Notre Impact Mondial",
+      "stats": {
+        "communities": "150+ Communautés de la Diaspora UK",
+        "opportunities": "10 000+ Opportunités Créées",
+        "funding": "£50M+ de Financement Facilité"
+      },
+      "testimonial": "Cette plateforme a transformé la façon dont nous connectons les entrepreneurs de la diaspora aux opportunités mondiales. L'impact sur notre communauté a été extraordinaire."
+    }
+  },
+  "callToAction": {
+    "title": "Prêt à débloquer votre potentiel?",
+    "description": "Rejoignez des milliers de professionnels, entrepreneurs et organisations de la diaspora qui marquent déjà leur empreinte grâce à notre plateforme.",
+    "benefits": [
+      "Accès aux opportunités exclusives",
+      "Connectez-vous à votre réseau diaspora",
+      "Mettez en valeur votre identité culturelle",
+      "Suivez votre impact mondial"
+    ],
+    "emailPlaceholder": "Entrez votre adresse email",
+    "joinWaitlist": "Rejoindre la Liste d'Attente",
+    "bookDemo": "Réserver une Démo",
+    "learnMore": "En Savoir Plus"
+  },
+  "footer": {
+    "description": "Autonomiser les communautés de la diaspora mondiale grâce aux opportunités, connexions et célébration culturelle.",
+    "platform": {
+      "title": "Plateforme",
+      "businessOpportunities": "Opportunités d'Affaires",
+      "careerDevelopment": "Développement de Carrière",
+      "investmentHub": "Hub d'Investissement",
+      "globalCollaboration": "Collaboration Mondiale"
+    },
+    "support": {
+      "title": "Support",
+      "helpCenter": "Centre d'Aide",
+      "communityGuidelines": "Directives Communautaires",
+      "privacyPolicy": "Politique de Confidentialité",
+      "termsOfService": "Conditions d'Utilisation",
+      "contactUs": "Nous Contacter"
+    },
+    "contact": {
+      "location": "Londres, Royaume-Uni",
+      "email": "hello@epiphinyflow.com"
+    },
+    "copyright": "© 2024 Epiphiny Flow. Tous droits réservés."
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "retry": "Réessayer",
+    "cancel": "Annuler",
+    "save": "Sauvegarder",
+    "continue": "Continuer",
+    "back": "Retour",
+    "next": "Suivant",
+    "finish": "Terminer",
+    "language": "Langue"
+  }
+}

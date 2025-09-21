@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 const Hero = () => {
+  const { t } = useTranslation();
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
       {/* Geometric decorative elements */}
       <div className="flow-geometric-shape w-32 h-32 rotate-45 top-20 left-10 opacity-30" />
@@ -19,12 +21,12 @@ const Hero = () => {
           </h1>
           
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-flow-grey max-w-3xl mx-auto leading-relaxed font-medium">Empowering Diasporic Community businesses, organisations, and entrepreneurs with transformative opportunities for investment, funding, careers and global collaboration through Epiphiny Flow.</p>
+          <p className="text-lg md:text-xl text-flow-grey max-w-3xl mx-auto leading-relaxed font-medium">{t('hero.subtitle')}</p>
           
           {/* CTA Button */}
           <div className="pt-8">
             <Button asChild variant="hero" size="xl" className="text-lg px-12 py-6 rounded-xl font-bold shadow-glow">
-              <Link to="/auth">Join Our Platform</Link>
+              <Link to="/auth">{t('hero.cta')}</Link>
             </Button>
           </div>
           
@@ -32,15 +34,15 @@ const Hero = () => {
           <div className="pt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-black text-flow-teal mb-2">250M+</div>
-              <div className="text-flow-grey font-medium">Diaspora Population</div>
+              <div className="text-flow-grey font-medium">{t('hero.stats.population').replace('60M+ UK', '250M+')}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-black text-flow-purple mb-2">£685B</div>
-              <div className="text-flow-grey font-medium">Annual Economic Impact</div>
+              <div className="text-flow-grey font-medium">{t('hero.stats.impact').replace('£150B+', '£685B')}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-black text-flow-teal mb-2">190+</div>
-              <div className="text-flow-grey font-medium">Global Network Reach</div>
+              <div className="text-flow-grey font-medium">{t('hero.stats.network').replace('200+', '190+')}</div>
             </div>
           </div>
         </div>
