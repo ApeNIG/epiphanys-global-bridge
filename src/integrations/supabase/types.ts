@@ -128,30 +128,60 @@ export type Database = {
       profiles: {
         Row: {
           avatar_url: string | null
+          bio: string | null
+          business_name: string | null
+          business_sector: string | null
+          company_size: string | null
           created_at: string | null
           full_name: string | null
+          funding_raised: string | null
           id: string
+          interests: string[] | null
+          investment_stage: string | null
+          location: string | null
           updated_at: string | null
+          user_category: string | null
           username: string | null
           website: string | null
+          years_of_experience: number | null
         }
         Insert: {
           avatar_url?: string | null
+          bio?: string | null
+          business_name?: string | null
+          business_sector?: string | null
+          company_size?: string | null
           created_at?: string | null
           full_name?: string | null
+          funding_raised?: string | null
           id: string
+          interests?: string[] | null
+          investment_stage?: string | null
+          location?: string | null
           updated_at?: string | null
+          user_category?: string | null
           username?: string | null
           website?: string | null
+          years_of_experience?: number | null
         }
         Update: {
           avatar_url?: string | null
+          bio?: string | null
+          business_name?: string | null
+          business_sector?: string | null
+          company_size?: string | null
           created_at?: string | null
           full_name?: string | null
+          funding_raised?: string | null
           id?: string
+          interests?: string[] | null
+          investment_stage?: string | null
+          location?: string | null
           updated_at?: string | null
+          user_category?: string | null
           username?: string | null
           website?: string | null
+          years_of_experience?: number | null
         }
         Relationships: []
       }

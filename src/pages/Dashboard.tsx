@@ -23,6 +23,7 @@ import {
   Target
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import ProfileCompletion from "@/components/ProfileCompletion";
 
 const Dashboard = () => {
   const { user, loading } = useAuth();
@@ -306,23 +307,8 @@ const Dashboard = () => {
                 ))}
               </div>
 
-              {/* Profile Completion Prompt */}
-              <Card className="mt-6 bg-gradient-to-r from-primary/10 to-accent/10">
-                <CardContent className="pt-6">
-                  <div className="text-center">
-                    <Star className="w-8 h-8 text-primary mx-auto mb-3" />
-                    <h4 className="font-medium mb-2">Complete Your Profile</h4>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      Add more details to unlock personalized opportunities
-                    </p>
-                    <Progress value={userStats.profileCompletion} className="mb-4" />
-                    <Button variant="outline" size="sm">
-                      Complete Profile
-                      <ChevronRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+              {/* Profile Completion Form */}
+              <ProfileCompletion />
             </div>
           </div>
         </div>
