@@ -24,7 +24,12 @@ import {
   Camera,
   X,
   ChevronDown,
-  FileText
+  FileText,
+  TrendingUp,
+  DollarSign,
+  Users,
+  Handshake,
+  Heart
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -50,10 +55,21 @@ interface ProfileData {
   updated_at?: string;
 }
 
+interface BusinessProfile {
+  company: any;
+  market: any;
+  traction: any;
+  funding: any;
+  team: any;
+  strategic_fit: any;
+  impact: any;
+}
+
 const Profile = () => {
   const { user } = useAuth();
   const { toast } = useToast();
   const [profile, setProfile] = useState<ProfileData | null>(null);
+  const [businessProfile, setBusinessProfile] = useState<BusinessProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [uploadingImage, setUploadingImage] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -61,6 +77,7 @@ const Profile = () => {
   useEffect(() => {
     if (user) {
       fetchProfile();
+      fetchBusinessProfile();
     }
   }, [user]);
 
@@ -81,6 +98,51 @@ const Profile = () => {
     }
     
     setLoading(false);
+  };
+
+  const fetchBusinessProfile = async () => {
+    if (!user) return;
+
+    try {
+      // Fetch company data and related information
+      const { data: company, error: companyError } = await supabase
+        .from('companies')
+        .select('*')
+        .eq('user_id', user.id)
+        .maybeSingle();
+
+      if (companyError && companyError.code !== 'PGRST116') {
+        console.error('Error fetching company:', companyError);
+        return;
+      }
+
+      if (!company) {
+        setBusinessProfile(null);
+        return;
+      }
+
+      // Fetch all related business data
+      const [marketData, tractionData, fundingData, teamData, strategicFitData, impactData] = await Promise.all([
+        supabase.from('company_market').select('*').eq('company_id', company.id).maybeSingle(),
+        supabase.from('company_traction').select('*').eq('company_id', company.id).maybeSingle(),
+        supabase.from('company_funding').select('*').eq('company_id', company.id).maybeSingle(),
+        supabase.from('company_team').select('*').eq('company_id', company.id).maybeSingle(),
+        supabase.from('company_strategic_fit').select('*').eq('company_id', company.id).maybeSingle(),
+        supabase.from('company_impact').select('*').eq('company_id', company.id).maybeSingle(),
+      ]);
+
+      setBusinessProfile({
+        company,
+        market: marketData.data,
+        traction: tractionData.data,
+        funding: fundingData.data,
+        team: teamData.data,
+        strategic_fit: strategicFitData.data,
+        impact: impactData.data,
+      });
+    } catch (error) {
+      console.error('Error fetching business profile:', error);
+    }
   };
 
   const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -471,6 +533,326 @@ const Profile = () => {
                         </p>
                       </div>
                     )}
+                  </CardContent>
+                </Card>
+                )}
+
+              {/* Detailed Business Profile */}
+              {businessProfile?.company && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Briefcase className="w-5 h-5" />
+                      Detailed Business Profile
+                    </CardTitle>
+                    <CardDescription>
+                      Complete business information from questionnaire
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    
+                    {/* Company Profile */}
+                    <div>
+                      <h4 className="font-semibold mb-3 flex items-center gap-2">
+                        <Building2 className="w-4 h-4" />
+                        Company Profile
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pl-6">
+                        <div>
+                          <label className="text-sm font-medium text-muted-foreground">Company Name</label>
+                          <p className="text-sm">{businessProfile.company.name}</p>
+                        </div>
+                        {businessProfile.company.website && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Website</label>
+                            <p className="text-sm">
+                              <a href={businessProfile.company.website} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                                {businessProfile.company.website}
+                              </a>
+                            </p>
+                          </div>
+                        )}
+                        {businessProfile.company.location && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">HQ Location</label>
+                            <p className="text-sm">{businessProfile.company.location}</p>
+                          </div>
+                        )}
+                        {businessProfile.company.year_founded && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Year Founded</label>
+                            <p className="text-sm">{businessProfile.company.year_founded}</p>
+                          </div>
+                        )}
+                        {businessProfile.company.legal_structure && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Legal Structure</label>
+                            <p className="text-sm">{businessProfile.company.legal_structure.replace(/_/g, ' ')}</p>
+                          </div>
+                        )}
+                        {businessProfile.company.stage && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Stage</label>
+                            <p className="text-sm">
+                              <Badge variant="secondary">{businessProfile.company.stage.replace(/_/g, ' ')}</Badge>
+                            </p>
+                          </div>
+                        )}
+                        {businessProfile.company.sector && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Sector</label>
+                            <p className="text-sm">{businessProfile.company.sector}</p>
+                          </div>
+                        )}
+                        {businessProfile.company.business_model && (
+                          <div>
+                            <label className="text-sm font-medium text-muted-foreground">Business Model</label>
+                            <p className="text-sm">{businessProfile.company.business_model}</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Market & Offering */}
+                    {businessProfile.market && (
+                      <div>
+                        <h4 className="font-semibold mb-3 flex items-center gap-2">
+                          <Target className="w-4 h-4" />
+                          Market & Offering
+                        </h4>
+                        <div className="space-y-3 pl-6">
+                          {businessProfile.market.problem_statement && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Problem Statement</label>
+                              <p className="text-sm">{businessProfile.market.problem_statement}</p>
+                            </div>
+                          )}
+                          {businessProfile.market.target_customers && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Target Customers</label>
+                              <p className="text-sm">{businessProfile.market.target_customers}</p>
+                            </div>
+                          )}
+                          {businessProfile.market.usp && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Key Differentiator</label>
+                              <p className="text-sm">{businessProfile.market.usp}</p>
+                            </div>
+                          )}
+                          {businessProfile.market.current_markets && businessProfile.market.current_markets.length > 0 && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Current Markets</label>
+                              <div className="flex flex-wrap gap-1 mt-1">
+                                {businessProfile.market.current_markets.map((market: string, index: number) => (
+                                  <Badge key={index} variant="outline" className="text-xs">{market}</Badge>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                          {businessProfile.market.desired_markets && businessProfile.market.desired_markets.length > 0 && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Expansion Markets</label>
+                              <div className="flex flex-wrap gap-1 mt-1">
+                                {businessProfile.market.desired_markets.map((market: string, index: number) => (
+                                  <Badge key={index} variant="secondary" className="text-xs">{market}</Badge>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Traction */}
+                    {businessProfile.traction && (
+                      <div>
+                        <h4 className="font-semibold mb-3 flex items-center gap-2">
+                          <TrendingUp className="w-4 h-4" />
+                          Traction
+                        </h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pl-6">
+                          {businessProfile.traction.revenue_model && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Revenue Model</label>
+                              <p className="text-sm">{businessProfile.traction.revenue_model}</p>
+                            </div>
+                          )}
+                          {businessProfile.traction.revenue_range && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Annual Revenue</label>
+                              <p className="text-sm">
+                                <Badge variant="outline">{businessProfile.traction.revenue_range}</Badge>
+                              </p>
+                            </div>
+                          )}
+                          {businessProfile.traction.customers !== null && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Customers</label>
+                              <p className="text-sm">{businessProfile.traction.customers > 0 ? 'Yes' : 'No'}</p>
+                            </div>
+                          )}
+                          {businessProfile.traction.awards && businessProfile.traction.awards.length > 0 && (
+                            <div className="md:col-span-2">
+                              <label className="text-sm font-medium text-muted-foreground">Awards & Recognition</label>
+                              <div className="flex flex-wrap gap-1 mt-1">
+                                {businessProfile.traction.awards.map((award: string, index: number) => (
+                                  <Badge key={index} variant="secondary" className="text-xs">{award}</Badge>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Funding */}
+                    {businessProfile.funding && (
+                      <div>
+                        <h4 className="font-semibold mb-3 flex items-center gap-2">
+                          <DollarSign className="w-4 h-4" />
+                          Funding
+                        </h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pl-6">
+                          {businessProfile.funding.previous_funding && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Previous Funding</label>
+                              <p className="text-sm">{businessProfile.funding.previous_funding}</p>
+                            </div>
+                          )}
+                          {businessProfile.funding.current_funding_goal && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Current Goal</label>
+                              <p className="text-sm">
+                                <Badge variant="outline">{businessProfile.funding.current_funding_goal}</Badge>
+                              </p>
+                            </div>
+                          )}
+                          {businessProfile.funding.funding_type && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Funding Type</label>
+                              <p className="text-sm">{businessProfile.funding.funding_type}</p>
+                            </div>
+                          )}
+                          {businessProfile.funding.use_of_funds && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Use of Funds</label>
+                              <p className="text-sm">{businessProfile.funding.use_of_funds}</p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Team */}
+                    {businessProfile.team && (
+                      <div>
+                        <h4 className="font-semibold mb-3 flex items-center gap-2">
+                          <Users className="w-4 h-4" />
+                          Team
+                        </h4>
+                        <div className="space-y-3 pl-6">
+                          {businessProfile.team.founder_name && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Founders & Roles</label>
+                              <p className="text-sm">{businessProfile.team.founder_name}</p>
+                            </div>
+                          )}
+                          {businessProfile.team.team_size && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Team Size</label>
+                              <p className="text-sm">{businessProfile.team.team_size} people</p>
+                            </div>
+                          )}
+                          {businessProfile.team.advisors && businessProfile.team.advisors.length > 0 && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Advisory Board</label>
+                              <div className="flex flex-wrap gap-1 mt-1">
+                                {businessProfile.team.advisors.map((advisor: string, index: number) => (
+                                  <Badge key={index} variant="outline" className="text-xs">{advisor}</Badge>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Strategic Fit */}
+                    {businessProfile.strategic_fit && (
+                      <div>
+                        <h4 className="font-semibold mb-3 flex items-center gap-2">
+                          <Handshake className="w-4 h-4" />
+                          Strategic Fit
+                        </h4>
+                        <div className="space-y-3 pl-6">
+                          {businessProfile.strategic_fit.investor_type && businessProfile.strategic_fit.investor_type.length > 0 && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Seeking Investors</label>
+                              <div className="flex flex-wrap gap-1 mt-1">
+                                {businessProfile.strategic_fit.investor_type.map((type: string, index: number) => (
+                                  <Badge key={index} variant="secondary" className="text-xs">{type}</Badge>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                          {businessProfile.strategic_fit.preferred_investor_location && businessProfile.strategic_fit.preferred_investor_location.length > 0 && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Preferred Geography</label>
+                              <div className="flex flex-wrap gap-1 mt-1">
+                                {businessProfile.strategic_fit.preferred_investor_location.map((location: string, index: number) => (
+                                  <Badge key={index} variant="outline" className="text-xs">{location}</Badge>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                          {businessProfile.strategic_fit.partnership_interest && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Partnership Interest</label>
+                              <p className="text-sm">{businessProfile.strategic_fit.partnership_interest}</p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Impact & Values */}
+                    {businessProfile.impact && (
+                      <div>
+                        <h4 className="font-semibold mb-3 flex items-center gap-2">
+                          <Heart className="w-4 h-4" />
+                          Impact & Values
+                        </h4>
+                        <div className="space-y-3 pl-6">
+                          {businessProfile.impact.sdg_alignment && businessProfile.impact.sdg_alignment.length > 0 && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">ESG/SDG Alignment</label>
+                              <div className="flex flex-wrap gap-1 mt-1">
+                                {businessProfile.impact.sdg_alignment.map((goal: string, index: number) => (
+                                  <Badge key={index} variant="secondary" className="text-xs">{goal}</Badge>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                          {businessProfile.impact.diversity_inclusion && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Diversity & Inclusion</label>
+                              <p className="text-sm">{businessProfile.impact.diversity_inclusion}</p>
+                            </div>
+                          )}
+                          {businessProfile.impact.mission_driven !== null && (
+                            <div>
+                              <label className="text-sm font-medium text-muted-foreground">Mission-Driven</label>
+                              <p className="text-sm">
+                                <Badge variant={businessProfile.impact.mission_driven ? "default" : "outline"}>
+                                  {businessProfile.impact.mission_driven ? "Yes" : "No"}
+                                </Badge>
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
                   </CardContent>
                 </Card>
               )}
