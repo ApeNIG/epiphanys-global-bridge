@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { User, LogOut } from "lucide-react";
+import { User, LogOut, Target } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -178,12 +178,18 @@ const Header = () => {
                     Dashboard
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/profile" className="flex items-center cursor-pointer">
-                    <User className="w-4 h-4 mr-2" />
-                    Profile
-                  </Link>
-                </DropdownMenuItem>
+                 <DropdownMenuItem asChild>
+                   <Link to="/profile" className="flex items-center cursor-pointer">
+                     <User className="w-4 h-4 mr-2" />
+                     Profile
+                   </Link>
+                 </DropdownMenuItem>
+                 <DropdownMenuItem asChild>
+                   <Link to="/goals" className="flex items-center cursor-pointer">
+                     <Target className="w-4 h-4 mr-2" />
+                     Goals
+                   </Link>
+                 </DropdownMenuItem>
                 <DropdownMenuItem 
                   onClick={() => signOut()}
                   className="flex items-center cursor-pointer text-destructive"
