@@ -91,11 +91,6 @@ const Header = () => {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link to="/deal-flow-platform" className="w-full">
-                Deal Flow Platform
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
               <Link to="/community" className="w-full">
                 Community
               </Link>
