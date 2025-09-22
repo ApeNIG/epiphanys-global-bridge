@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Briefcase, Users, TrendingUp, Globe } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const categories = [
   {
@@ -8,28 +9,32 @@ const categories = [
     description: "Access curated business opportunities from public and private sectors. Find partnerships, contracts, and growth initiatives.",
     icon: Briefcase,
     count: "1,250+",
-    color: "from-primary to-blue-600"
+    color: "from-primary to-blue-600",
+    link: "/opportunities"
   },
   {
-    title: "Career Development",
+    title: "Career Development", 
     description: "Discover career opportunities that value cultural diversity and global perspectives. Build your professional network.",
     icon: Users,
     count: "850+",
-    color: "from-purple-500 to-purple-700"
+    color: "from-purple-500 to-purple-700",
+    link: "/dashboard"
   },
   {
     title: "Investment Platforms",
     description: "Connect with investment opportunities and funding sources that understand diaspora markets and cultural capital.",
     icon: TrendingUp,
     count: "420+",
-    color: "from-accent to-orange-500"
+    color: "from-accent to-orange-500",
+    link: "/investment-hub"
   },
   {
     title: "Global Collaboration",
     description: "Partner with organizations worldwide. Leverage diaspora networks for international business and cultural exchange.",
     icon: Globe,
     count: "680+",
-    color: "from-green-500 to-emerald-600"
+    color: "from-green-500 to-emerald-600",
+    link: "/global"
   }
 ];
 
@@ -77,13 +82,15 @@ const OpportunityCategories = () => {
                     {category.description}
                   </p>
                   
-                  <Button 
-                    variant="ghost" 
-                    className="w-full group-hover:bg-primary/10 group-hover:text-primary transition-all duration-300"
-                  >
-                    Explore
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
+                  <Link to={category.link}>
+                    <Button 
+                      variant="ghost" 
+                      className="w-full group-hover:bg-primary/10 group-hover:text-primary transition-all duration-300"
+                    >
+                      Explore
+                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
                 </div>
               </Card>
             );
