@@ -23,9 +23,13 @@ interface OpportunityFormData {
   deadline: string;
 }
 
+interface OpportunityUploadFormProps {
+  onOpportunityCreated?: () => void;
+}
+
 const categories = [
   'Business',
-  'Career',
+  'Career', 
   'Investment',
   'Funding',
   'Grant',
@@ -35,7 +39,7 @@ const categories = [
 
 const sectors = [
   'Technology',
-  'Healthcare',
+  'Healthcare', 
   'Finance',
   'Education',
   'Manufacturing',
@@ -48,7 +52,7 @@ const sectors = [
   'Other'
 ];
 
-export const OpportunityUploadForm = () => {
+export const OpportunityUploadForm = ({ onOpportunityCreated }: OpportunityUploadFormProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   
@@ -100,6 +104,11 @@ export const OpportunityUploadForm = () => {
       });
       
       form.reset();
+      
+      // Trigger refresh of opportunities list
+      if (onOpportunityCreated) {
+        onOpportunityCreated();
+      }
     } catch (error) {
       console.error('Error uploading opportunity:', error);
       toast({

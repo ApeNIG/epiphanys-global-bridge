@@ -24,7 +24,11 @@ interface Opportunity {
   created_at: string;
 }
 
-export const UserOpportunities = () => {
+interface UserOpportunitiesProps {
+  onOpportunityChange?: () => void;
+}
+
+export const UserOpportunities = ({ onOpportunityChange }: UserOpportunitiesProps) => {
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
@@ -68,6 +72,11 @@ export const UserOpportunities = () => {
         title: "Success",
         description: "Opportunity deleted successfully.",
       });
+      
+      // Trigger refresh of public opportunities
+      if (onOpportunityChange) {
+        onOpportunityChange();
+      }
     } catch (error) {
       console.error('Error deleting opportunity:', error);
       toast({
@@ -97,6 +106,11 @@ export const UserOpportunities = () => {
         title: "Success",
         description: `Opportunity ${!currentStatus ? 'activated' : 'deactivated'} successfully.`,
       });
+      
+      // Trigger refresh of public opportunities
+      if (onOpportunityChange) {
+        onOpportunityChange();
+      }
     } catch (error) {
       console.error('Error updating opportunity:', error);
       toast({

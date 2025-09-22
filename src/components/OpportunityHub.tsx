@@ -48,6 +48,17 @@ const OpportunityHub = () => {
 
   useEffect(() => {
     fetchOpportunities();
+    
+    // Listen for opportunity updates from other components
+    const handleOpportunityUpdate = () => {
+      fetchOpportunities();
+    };
+    
+    window.addEventListener('opportunitiesUpdated', handleOpportunityUpdate);
+    
+    return () => {
+      window.removeEventListener('opportunitiesUpdated', handleOpportunityUpdate);
+    };
   }, []);
 
   const fetchOpportunities = async () => {

@@ -331,10 +331,16 @@ const Dashboard = () => {
               <TabsTrigger value="manage">Your Opportunities</TabsTrigger>
             </TabsList>
             <TabsContent value="upload" className="mt-6">
-              <OpportunityUploadForm />
+              <OpportunityUploadForm onOpportunityCreated={() => {
+                // Force refresh of public opportunities when a new one is created
+                window.dispatchEvent(new CustomEvent('opportunitiesUpdated'));
+              }} />
             </TabsContent>
             <TabsContent value="manage" className="mt-6">
-              <UserOpportunities />
+              <UserOpportunities onOpportunityChange={() => {
+                // Force refresh of public opportunities when status changes
+                window.dispatchEvent(new CustomEvent('opportunitiesUpdated'));
+              }} />
             </TabsContent>
           </Tabs>
         </div>
