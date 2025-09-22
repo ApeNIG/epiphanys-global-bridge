@@ -17,6 +17,7 @@ import Consultation from "./pages/Consultation";
 import Professionals from "./pages/Professionals";
 import Profile from "./pages/Profile";
 import BusinessOnboarding from "./pages/BusinessOnboarding";
+import Goals from "./pages/Goals";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -41,6 +42,7 @@ const App = () => (
             <Route path="/consultation" element={<Consultation />} />
             <Route path="/professionals" element={<Professionals />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/goals" element={<Goals />} />
             <Route path="/business-onboarding" element={<BusinessOnboarding />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
