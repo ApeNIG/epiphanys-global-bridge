@@ -272,10 +272,7 @@ const Auth = () => {
           {/* Hero Section */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-purple-600 to-orange-500 bg-clip-text text-transparent">
-              {userRole === 'investor' 
-                ? 'Join as an Investor' 
-                : 'Join the Epiphiny Flow Opportunity Hub'
-              }
+              join the epiphiny "deal" flow hub
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
               {userRole === 'investor'
