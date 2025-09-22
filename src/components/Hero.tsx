@@ -42,7 +42,7 @@ const Hero = () => {
             {/* Enhanced Company Description */}
             <div className="max-w-4xl mx-auto space-y-4">
               <p className="text-xl md:text-2xl text-muted-foreground font-medium leading-relaxed">
-                {t('hero.subtitle')}
+                An inclusive digital ecosystem that unlocks economic opportunities, celebrates cultural identity, and drives collaborative growth.
               </p>
               <p className="text-lg text-muted-foreground/80 max-w-3xl mx-auto">
                 An inclusive digital ecosystem that unlocks economic opportunities, celebrates 
