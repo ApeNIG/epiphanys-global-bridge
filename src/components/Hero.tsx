@@ -2,12 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, Globe, TrendingUp, Users, Sparkles } from "lucide-react";
-
 const Hero = () => {
-  const { t } = useTranslation();
-  
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-primary/5 to-accent/10">
+  const {
+    t
+  } = useTranslation();
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-primary/5 to-accent/10">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       <div className="flow-geometric-shape w-32 h-32 rotate-45 top-20 left-10 opacity-30 animate-pulse"></div>
@@ -33,9 +32,7 @@ const Hero = () => {
           {/* Main Heading with Enhanced Messaging */}
           <div className="space-y-6">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tight">
-              <span className="block text-foreground mb-2">
-                Where Cultures Meet
-              </span>
+              <span className="block text-foreground mb-2">Epiphiny Flow</span>
               <span className="block bg-gradient-to-r from-primary via-purple-600 to-accent bg-clip-text text-transparent">
                 OPPORTUNITIES
               </span>
@@ -139,8 +136,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
