@@ -14,21 +14,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { 
-  Clock, 
-  Users, 
-  Building2, 
-  TrendingUp, 
-  Globe, 
-  Shield, 
-  CheckCircle, 
-  Calendar,
-  MessageSquare,
-  Phone,
-  Mail,
-  MapPin
-} from "lucide-react";
-
+import { Clock, Users, Building2, TrendingUp, Globe, Shield, CheckCircle, Calendar, MessageSquare, Phone, Mail, MapPin } from "lucide-react";
 const consultationSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
@@ -41,78 +27,53 @@ const consultationSchema = z.object({
   currentChallenges: z.string().min(20, "Please describe your challenges (minimum 20 characters)"),
   budgetRange: z.string().min(1, "Please select budget range"),
   timeframe: z.string().min(1, "Please select timeframe"),
-  hearAboutUs: z.string().optional(),
+  hearAboutUs: z.string().optional()
 });
-
 type ConsultationForm = z.infer<typeof consultationSchema>;
-
-const organizationTypes = [
-  { value: "startup", label: "Startup (Pre-Series A)" },
-  { value: "scaleup", label: "Scale-up (Series A+)" },
-  { value: "sme", label: "SME (Established Business)" },
-  { value: "enterprise", label: "Enterprise (1000+ employees)" },
-  { value: "government", label: "Government/Public Sector" },
-  { value: "nonprofit", label: "Non-profit Organization" },
-];
-
-const industryFocus = [
-  "Technology & Software",
-  "Financial Services",
-  "Healthcare & Life Sciences",
-  "Retail & E-commerce",
-  "Manufacturing",
-  "Real Estate",
-  "Education",
-  "Energy & Sustainability",
-  "Media & Entertainment",
-  "Professional Services",
-  "Other",
-];
-
-const budgetRanges = [
-  "Under £5,000",
-  "£5,000 - £15,000",
-  "£15,000 - £50,000",
-  "£50,000 - £100,000",
-  "£100,000+",
-  "Government/Enterprise - Custom",
-];
-
-const timeframes = [
-  "Within 2 weeks",
-  "Within 1 month",
-  "Within 3 months",
-  "Within 6 months",
-  "Long-term partnership (6+ months)",
-];
-
-const consultationBenefits = [
-  {
-    icon: Clock,
-    title: "60-Minute Strategy Session",
-    description: "Deep dive into your specific challenges and opportunities with senior advisors"
-  },
-  {
-    icon: Globe,
-    title: "Diaspora Network Mapping",
-    description: "Identify key diaspora communities and networks relevant to your objectives"
-  },
-  {
-    icon: TrendingUp,
-    title: "Custom Growth Roadmap",
-    description: "Receive a preliminary strategic roadmap tailored to your organization"
-  },
-  {
-    icon: Users,
-    title: "Expert Network Access",
-    description: "Connect with relevant experts and potential partners in our global network"
-  },
-];
-
+const organizationTypes = [{
+  value: "startup",
+  label: "Startup (Pre-Series A)"
+}, {
+  value: "scaleup",
+  label: "Scale-up (Series A+)"
+}, {
+  value: "sme",
+  label: "SME (Established Business)"
+}, {
+  value: "enterprise",
+  label: "Enterprise (1000+ employees)"
+}, {
+  value: "government",
+  label: "Government/Public Sector"
+}, {
+  value: "nonprofit",
+  label: "Non-profit Organization"
+}];
+const industryFocus = ["Technology & Software", "Financial Services", "Healthcare & Life Sciences", "Retail & E-commerce", "Manufacturing", "Real Estate", "Education", "Energy & Sustainability", "Media & Entertainment", "Professional Services", "Other"];
+const budgetRanges = ["Under £5,000", "£5,000 - £15,000", "£15,000 - £50,000", "£50,000 - £100,000", "£100,000+", "Government/Enterprise - Custom"];
+const timeframes = ["Within 2 weeks", "Within 1 month", "Within 3 months", "Within 6 months", "Long-term partnership (6+ months)"];
+const consultationBenefits = [{
+  icon: Clock,
+  title: "60-Minute Strategy Session",
+  description: "Deep dive into your specific challenges and opportunities with senior advisors"
+}, {
+  icon: Globe,
+  title: "Diaspora Network Mapping",
+  description: "Identify key diaspora communities and networks relevant to your objectives"
+}, {
+  icon: TrendingUp,
+  title: "Custom Growth Roadmap",
+  description: "Receive a preliminary strategic roadmap tailored to your organization"
+}, {
+  icon: Users,
+  title: "Expert Network Access",
+  description: "Connect with relevant experts and potential partners in our global network"
+}];
 const Consultation = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-  
+  const {
+    toast
+  } = useToast();
   const form = useForm<ConsultationForm>({
     resolver: zodResolver(consultationSchema),
     defaultValues: {
@@ -127,57 +88,50 @@ const Consultation = () => {
       currentChallenges: "",
       budgetRange: "",
       timeframe: "",
-      hearAboutUs: "",
-    },
+      hearAboutUs: ""
+    }
   });
-
   const onSubmit = async (data: ConsultationForm) => {
     setIsSubmitting(true);
-    
     try {
       // Store consultation request in database
-      const { error } = await supabase
-        .from('consultation_requests')
-        .insert({
-          full_name: data.fullName,
-          email: data.email,
-          phone: data.phone,
-          company: data.company,
-          position: data.position,
-          organization_type: data.organizationType,
-          industry_focus: data.industryFocus,
-          consultation_goals: data.consultationGoals,
-          current_challenges: data.currentChallenges,
-          budget_range: data.budgetRange,
-          timeframe: data.timeframe,
-          hear_about_us: data.hearAboutUs || null,
-          status: 'pending'
-        });
-
+      const {
+        error
+      } = await supabase.from('consultation_requests').insert({
+        full_name: data.fullName,
+        email: data.email,
+        phone: data.phone,
+        company: data.company,
+        position: data.position,
+        organization_type: data.organizationType,
+        industry_focus: data.industryFocus,
+        consultation_goals: data.consultationGoals,
+        current_challenges: data.currentChallenges,
+        budget_range: data.budgetRange,
+        timeframe: data.timeframe,
+        hear_about_us: data.hearAboutUs || null,
+        status: 'pending'
+      });
       if (error) {
         throw error;
       }
-
       toast({
         title: "Consultation Request Submitted!",
-        description: "We'll contact you within 24 hours to schedule your strategic consultation.",
+        description: "We'll contact you within 24 hours to schedule your strategic consultation."
       });
-
       form.reset();
     } catch (error) {
       console.error('Error submitting consultation request:', error);
       toast({
         title: "Error",
         description: "There was an issue submitting your request. Please try again or contact us directly.",
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Header />
       
       {/* Hero Section */}
@@ -217,13 +171,11 @@ const Consultation = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {consultationBenefits.map((benefit, index) => (
-              <Card key={index} className="text-center p-6 hover:shadow-elegant transition-all duration-300">
+            {consultationBenefits.map((benefit, index) => <Card key={index} className="text-center p-6 hover:shadow-elegant transition-all duration-300">
                 <benefit.icon className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="text-lg font-bold mb-2">{benefit.title}</h3>
                 <p className="text-sm text-muted-foreground">{benefit.description}</p>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -247,63 +199,47 @@ const Consultation = () => {
                     <h3 className="text-xl font-semibold border-b pb-2">Personal Information</h3>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <FormField
-                        control={form.control}
-                        name="fullName"
-                        render={({ field }) => (
-                          <FormItem>
+                      <FormField control={form.control} name="fullName" render={({
+                      field
+                    }) => <FormItem>
                             <FormLabel>Full Name *</FormLabel>
                             <FormControl>
                               <Input placeholder="Your full name" {...field} />
                             </FormControl>
                             <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                          </FormItem>} />
 
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
+                      <FormField control={form.control} name="email" render={({
+                      field
+                    }) => <FormItem>
                             <FormLabel>Email Address *</FormLabel>
                             <FormControl>
                               <Input placeholder="your.email@company.com" type="email" {...field} />
                             </FormControl>
                             <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                          </FormItem>} />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <FormField
-                        control={form.control}
-                        name="phone"
-                        render={({ field }) => (
-                          <FormItem>
+                      <FormField control={form.control} name="phone" render={({
+                      field
+                    }) => <FormItem>
                             <FormLabel>Phone Number *</FormLabel>
                             <FormControl>
                               <Input placeholder="+44 20 1234 5678" {...field} />
                             </FormControl>
                             <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                          </FormItem>} />
 
-                      <FormField
-                        control={form.control}
-                        name="position"
-                        render={({ field }) => (
-                          <FormItem>
+                      <FormField control={form.control} name="position" render={({
+                      field
+                    }) => <FormItem>
                             <FormLabel>Your Position *</FormLabel>
                             <FormControl>
                               <Input placeholder="CEO, Founder, Director, etc." {...field} />
                             </FormControl>
                             <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                          </FormItem>} />
                     </div>
                   </div>
 
@@ -311,26 +247,20 @@ const Consultation = () => {
                   <div className="space-y-6">
                     <h3 className="text-xl font-semibold border-b pb-2">Organization Information</h3>
                     
-                    <FormField
-                      control={form.control}
-                      name="company"
-                      render={({ field }) => (
-                        <FormItem>
+                    <FormField control={form.control} name="company" render={({
+                    field
+                  }) => <FormItem>
                           <FormLabel>Company/Organization Name *</FormLabel>
                           <FormControl>
                             <Input placeholder="Your organization name" {...field} />
                           </FormControl>
                           <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                        </FormItem>} />
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <FormField
-                        control={form.control}
-                        name="organizationType"
-                        render={({ field }) => (
-                          <FormItem>
+                      <FormField control={form.control} name="organizationType" render={({
+                      field
+                    }) => <FormItem>
                             <FormLabel>Organization Type *</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
@@ -339,23 +269,17 @@ const Consultation = () => {
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
-                                {organizationTypes.map((type) => (
-                                  <SelectItem key={type.value} value={type.value}>
+                                {organizationTypes.map(type => <SelectItem key={type.value} value={type.value}>
                                     {type.label}
-                                  </SelectItem>
-                                ))}
+                                  </SelectItem>)}
                               </SelectContent>
                             </Select>
                             <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                          </FormItem>} />
 
-                      <FormField
-                        control={form.control}
-                        name="industryFocus"
-                        render={({ field }) => (
-                          <FormItem>
+                      <FormField control={form.control} name="industryFocus" render={({
+                      field
+                    }) => <FormItem>
                             <FormLabel>Industry Focus *</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
@@ -364,17 +288,13 @@ const Consultation = () => {
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
-                                {industryFocus.map((industry) => (
-                                  <SelectItem key={industry} value={industry}>
+                                {industryFocus.map(industry => <SelectItem key={industry} value={industry}>
                                     {industry}
-                                  </SelectItem>
-                                ))}
+                                  </SelectItem>)}
                               </SelectContent>
                             </Select>
                             <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                          </FormItem>} />
                     </div>
                   </div>
 
@@ -382,48 +302,30 @@ const Consultation = () => {
                   <div className="space-y-6">
                     <h3 className="text-xl font-semibold border-b pb-2">Consultation Details</h3>
                     
-                    <FormField
-                      control={form.control}
-                      name="consultationGoals"
-                      render={({ field }) => (
-                        <FormItem>
+                    <FormField control={form.control} name="consultationGoals" render={({
+                    field
+                  }) => <FormItem>
                           <FormLabel>What are your main goals for this consultation? *</FormLabel>
                           <FormControl>
-                            <Textarea 
-                              placeholder="Describe what you hope to achieve through our consultation..." 
-                              className="min-h-[100px]"
-                              {...field} 
-                            />
+                            <Textarea placeholder="Describe what you hope to achieve through our consultation..." className="min-h-[100px]" {...field} />
                           </FormControl>
                           <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                        </FormItem>} />
 
-                    <FormField
-                      control={form.control}
-                      name="currentChallenges"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>What are your biggest current challenges? *</FormLabel>
+                    <FormField control={form.control} name="currentChallenges" render={({
+                    field
+                  }) => <FormItem>
+                          <FormLabel>What are your current challenges? *</FormLabel>
                           <FormControl>
-                            <Textarea 
-                              placeholder="Describe the main obstacles or challenges your organization is facing..." 
-                              className="min-h-[100px]"
-                              {...field} 
-                            />
+                            <Textarea placeholder="Describe the main obstacles or challenges your organization is facing..." className="min-h-[100px]" {...field} />
                           </FormControl>
                           <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                        </FormItem>} />
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <FormField
-                        control={form.control}
-                        name="budgetRange"
-                        render={({ field }) => (
-                          <FormItem>
+                      <FormField control={form.control} name="budgetRange" render={({
+                      field
+                    }) => <FormItem>
                             <FormLabel>Budget Range *</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
@@ -432,23 +334,17 @@ const Consultation = () => {
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
-                                {budgetRanges.map((range) => (
-                                  <SelectItem key={range} value={range}>
+                                {budgetRanges.map(range => <SelectItem key={range} value={range}>
                                     {range}
-                                  </SelectItem>
-                                ))}
+                                  </SelectItem>)}
                               </SelectContent>
                             </Select>
                             <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                          </FormItem>} />
 
-                      <FormField
-                        control={form.control}
-                        name="timeframe"
-                        render={({ field }) => (
-                          <FormItem>
+                      <FormField control={form.control} name="timeframe" render={({
+                      field
+                    }) => <FormItem>
                             <FormLabel>Preferred Timeframe *</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
@@ -457,42 +353,28 @@ const Consultation = () => {
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
-                                {timeframes.map((time) => (
-                                  <SelectItem key={time} value={time}>
+                                {timeframes.map(time => <SelectItem key={time} value={time}>
                                     {time}
-                                  </SelectItem>
-                                ))}
+                                  </SelectItem>)}
                               </SelectContent>
                             </Select>
                             <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                          </FormItem>} />
                     </div>
 
-                    <FormField
-                      control={form.control}
-                      name="hearAboutUs"
-                      render={({ field }) => (
-                        <FormItem>
+                    <FormField control={form.control} name="hearAboutUs" render={({
+                    field
+                  }) => <FormItem>
                           <FormLabel>How did you hear about us?</FormLabel>
                           <FormControl>
                             <Input placeholder="Google search, referral, social media, etc." {...field} />
                           </FormControl>
                           <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                        </FormItem>} />
                   </div>
 
                   <div className="flex justify-center pt-6">
-                    <Button 
-                      type="submit" 
-                      size="xl" 
-                      variant="hero"
-                      disabled={isSubmitting}
-                      className="px-12 py-6 text-lg"
-                    >
+                    <Button type="submit" size="xl" variant="hero" disabled={isSubmitting} className="px-12 py-6 text-lg">
                       {isSubmitting ? "Submitting..." : "Submit Consultation Request"}
                     </Button>
                   </div>
@@ -539,8 +421,6 @@ const Consultation = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Consultation;
