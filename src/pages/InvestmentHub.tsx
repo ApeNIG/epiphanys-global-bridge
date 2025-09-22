@@ -5,182 +5,98 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InvestmentExplorer from "@/components/InvestmentExplorer";
 import { Link } from "react-router-dom";
-import { 
-  TrendingUp, 
-  Building2, 
-  Users, 
-  Target, 
-  Shield, 
-  Globe, 
-  DollarSign,
-  BarChart3,
-  Handshake,
-  ArrowRight,
-  CheckCircle,
-  Rocket,
-  Network,
-  CreditCard,
-  Banknote,
-  PiggyBank,
-  Landmark,
-  Briefcase,
-  FileText,
-  TrendingDown
-} from "lucide-react";
-
+import { TrendingUp, Building2, Users, Target, Shield, Globe, DollarSign, BarChart3, Handshake, ArrowRight, CheckCircle, Rocket, Network, CreditCard, Banknote, PiggyBank, Landmark, Briefcase, FileText, TrendingDown } from "lucide-react";
 const InvestmentHub = () => {
-  const investorTypes = [
-    {
-      icon: <Building2 className="w-8 h-8" />,
-      title: "Public Sector Investors",
-      description: "Government funds, development finance institutions, and public investment vehicles",
-      features: ["ESG-focused opportunities", "Impact measurement", "Regulatory compliance", "Risk mitigation"],
-      color: "from-emerald-400 to-teal-600"
-    },
-    {
-      icon: <DollarSign className="w-8 h-8" />,
-      title: "Private Investors",
-      description: "Angel investors, venture capital, private equity, and institutional funds",
-      features: ["High-growth ventures", "Due diligence support", "Portfolio management", "Exit strategies"],
-      color: "from-violet-400 to-purple-600"
-    }
-  ];
-
-  const businessTypes = [
-    {
-      icon: <Rocket className="w-6 h-6" />,
-      title: "Startups",
-      description: "Early-stage companies seeking seed and Series A funding",
-      benefits: ["Access to angel investors", "Mentorship programs", "Pitch deck optimization", "Market validation"]
-    },
-    {
-      icon: <TrendingUp className="w-6 h-6" />,
-      title: "Scale-ups",
-      description: "Growing companies ready for Series B+ and expansion capital",
-      benefits: ["Growth capital access", "Strategic partnerships", "International expansion", "Operational scaling"]
-    },
-    {
-      icon: <Building2 className="w-6 h-6" />,
-      title: "SMEs",
-      description: "Established small and medium enterprises seeking development capital",
-      benefits: ["Working capital solutions", "Equipment financing", "Market expansion", "Technology adoption"]
-    }
-  ];
-
-  const hubFeatures = [
-    {
-      icon: <Target className="w-6 h-6" />,
-      title: "Smart Matching",
-      description: "AI-powered algorithm matches investors with suitable business opportunities including startups, scale-ups, and SMEs based on criteria, risk profile, investment thesis, and business demographics."
-    },
-    {
-      icon: <Shield className="w-6 h-6" />,
-      title: "Due Diligence Hub",
-      description: "Comprehensive verification process, document management, and risk assessment tools for informed decision-making."
-    },
-    {
-      icon: <BarChart3 className="w-6 h-6" />,
-      title: "Performance Analytics",
-      description: "Real-time portfolio tracking, impact measurement, and detailed reporting for all stakeholders."
-    },
-    {
-      icon: <Network className="w-6 h-6" />,
-      title: "Global Network",
-      description: "Connect with diaspora entrepreneurs, local market experts, and international business networks."
-    }
-  ];
-
-  const investmentOpportunities = [
-    {
-      category: "Venture Capital",
-      icon: <TrendingDown className="w-6 h-6" />,
-      description: "Professional investment firms for high-growth startups",
-      examples: [
-        "Index Ventures - Pre-seed to Series A (£1M-£15M)",
-        "Balderton Capital - Series A/B focused (£5M-£25M)",
-        "Accel Partners - Early to growth stage (£2M-£50M)",
-        "Atomico - Series A to later stage (£10M-£100M+)",
-        "Connect Ventures - Pre-seed specialist (£250K-£2M)",
-        "Forward Partners - Seed stage ecommerce (£500K-£5M)"
-      ],
-      color: "from-indigo-400 to-purple-600"
-    },
-    {
-      category: "Angel Investors",
-      icon: <Users className="w-6 h-6" />,
-      description: "Individual investors providing capital and mentorship",
-      examples: [
-        "UK Angel Investment Network - £10K-£500K seed funding",
-        "Diaspora Angel Collective - Cultural expertise + capital",
-        "Tech Angel Syndicate - Industry-specific knowledge",
-        "Impact Angels - ESG-focused investments"
-      ],
-      color: "from-blue-400 to-indigo-600"
-    },
-    {
-      category: "Innovation Loans",
-      icon: <Rocket className="w-6 h-6" />,
-      description: "Government-backed loans for innovation and R&D",
-      examples: [
-        "Innovate UK Loans - £100K-£2M for R&D projects",
-        "Future Fund Breakthrough - High-growth potential",
-        "SBRI Innovation Vouchers - Proof of concept funding",
-        "Regional Innovation Grants - Location-specific support"
-      ],
-      color: "from-green-400 to-emerald-600"
-    },
-    {
-      category: "Business Banking",
-      icon: <Landmark className="w-6 h-6" />,
-      description: "Traditional and alternative banking solutions",
-      examples: [
-        "HSBC Start-up Banking - Fee-free business accounts",
-        "Starling Bank - Digital-first business banking",
-        "Metro Bank - Community-focused lending",
-        "Funding Circle - SME lending marketplace"
-      ],
-      color: "from-purple-400 to-violet-600"
-    },
-    {
-      category: "Alternative Finance",
-      icon: <CreditCard className="w-6 h-6" />,
-      description: "Modern financing solutions beyond traditional banks",
-      examples: [
-        "Crowdcube - Equity crowdfunding platform",
-        "Seedrs - Investment in early-stage businesses",
-        "Iwoca - Revenue-based business loans",
-        "Tide - SME-focused financial services"
-      ],
-      color: "from-orange-400 to-red-600"
-    },
-    {
-      category: "Government Grants",
-      icon: <FileText className="w-6 h-6" />,
-      description: "Public sector funding and support schemes",
-      examples: [
-        "Start Up Loans - £500-£25K government-backed loans",
-        "Export Development Guarantee - International trade",
-        "Green Business Grants - Sustainability initiatives",
-        "Diversity & Inclusion Funds - Underrepresented groups"
-      ],
-      color: "from-teal-400 to-cyan-600"
-    },
-    {
-      category: "Corporate Ventures",
-      icon: <Briefcase className="w-6 h-6" />,
-      description: "Strategic investments from established corporations",
-      examples: [
-        "Barclays Accelerator - Fintech partnerships",
-        "Shell Ventures - Energy and mobility solutions",
-        "Unilever Ventures - Consumer goods innovation",
-        "BT Innovation Partners - Tech infrastructure"
-      ],
-      color: "from-rose-400 to-pink-600"
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-background">
+  const investorTypes = [{
+    icon: <Building2 className="w-8 h-8" />,
+    title: "Public Sector Investors",
+    description: "Government funds, development finance institutions, and public investment vehicles",
+    features: ["ESG-focused opportunities", "Impact measurement", "Regulatory compliance", "Risk mitigation"],
+    color: "from-emerald-400 to-teal-600"
+  }, {
+    icon: <DollarSign className="w-8 h-8" />,
+    title: "Private Investors",
+    description: "Angel investors, venture capital, private equity, and institutional funds",
+    features: ["High-growth ventures", "Due diligence support", "Portfolio management", "Exit strategies"],
+    color: "from-violet-400 to-purple-600"
+  }];
+  const businessTypes = [{
+    icon: <Rocket className="w-6 h-6" />,
+    title: "Startups",
+    description: "Early-stage companies seeking seed and Series A funding",
+    benefits: ["Access to angel investors", "Mentorship programs", "Pitch deck optimization", "Market validation"]
+  }, {
+    icon: <TrendingUp className="w-6 h-6" />,
+    title: "Scale-ups",
+    description: "Growing companies ready for Series B+ and expansion capital",
+    benefits: ["Growth capital access", "Strategic partnerships", "International expansion", "Operational scaling"]
+  }, {
+    icon: <Building2 className="w-6 h-6" />,
+    title: "SMEs",
+    description: "Established small and medium enterprises seeking development capital",
+    benefits: ["Working capital solutions", "Equipment financing", "Market expansion", "Technology adoption"]
+  }];
+  const hubFeatures = [{
+    icon: <Target className="w-6 h-6" />,
+    title: "Smart Matching",
+    description: "AI-powered algorithm matches investors with suitable business opportunities including startups, scale-ups, and SMEs based on criteria, risk profile, investment thesis, and business demographics."
+  }, {
+    icon: <Shield className="w-6 h-6" />,
+    title: "Due Diligence Hub",
+    description: "Comprehensive verification process, document management, and risk assessment tools for informed decision-making."
+  }, {
+    icon: <BarChart3 className="w-6 h-6" />,
+    title: "Performance Analytics",
+    description: "Real-time portfolio tracking, impact measurement, and detailed reporting for all stakeholders."
+  }, {
+    icon: <Network className="w-6 h-6" />,
+    title: "Global Network",
+    description: "Connect with diaspora entrepreneurs, local market experts, and international business networks."
+  }];
+  const investmentOpportunities = [{
+    category: "Venture Capital",
+    icon: <TrendingDown className="w-6 h-6" />,
+    description: "Professional investment firms for high-growth startups",
+    examples: ["Index Ventures - Pre-seed to Series A (£1M-£15M)", "Balderton Capital - Series A/B focused (£5M-£25M)", "Accel Partners - Early to growth stage (£2M-£50M)", "Atomico - Series A to later stage (£10M-£100M+)", "Connect Ventures - Pre-seed specialist (£250K-£2M)", "Forward Partners - Seed stage ecommerce (£500K-£5M)"],
+    color: "from-indigo-400 to-purple-600"
+  }, {
+    category: "Angel Investors",
+    icon: <Users className="w-6 h-6" />,
+    description: "Individual investors providing capital and mentorship",
+    examples: ["UK Angel Investment Network - £10K-£500K seed funding", "Diaspora Angel Collective - Cultural expertise + capital", "Tech Angel Syndicate - Industry-specific knowledge", "Impact Angels - ESG-focused investments"],
+    color: "from-blue-400 to-indigo-600"
+  }, {
+    category: "Innovation Loans",
+    icon: <Rocket className="w-6 h-6" />,
+    description: "Government-backed loans for innovation and R&D",
+    examples: ["Innovate UK Loans - £100K-£2M for R&D projects", "Future Fund Breakthrough - High-growth potential", "SBRI Innovation Vouchers - Proof of concept funding", "Regional Innovation Grants - Location-specific support"],
+    color: "from-green-400 to-emerald-600"
+  }, {
+    category: "Business Banking",
+    icon: <Landmark className="w-6 h-6" />,
+    description: "Traditional and alternative banking solutions",
+    examples: ["HSBC Start-up Banking - Fee-free business accounts", "Starling Bank - Digital-first business banking", "Metro Bank - Community-focused lending", "Funding Circle - SME lending marketplace"],
+    color: "from-purple-400 to-violet-600"
+  }, {
+    category: "Alternative Finance",
+    icon: <CreditCard className="w-6 h-6" />,
+    description: "Modern financing solutions beyond traditional banks",
+    examples: ["Crowdcube - Equity crowdfunding platform", "Seedrs - Investment in early-stage businesses", "Iwoca - Revenue-based business loans", "Tide - SME-focused financial services"],
+    color: "from-orange-400 to-red-600"
+  }, {
+    category: "Government Grants",
+    icon: <FileText className="w-6 h-6" />,
+    description: "Public sector funding and support schemes",
+    examples: ["Start Up Loans - £500-£25K government-backed loans", "Export Development Guarantee - International trade", "Green Business Grants - Sustainability initiatives", "Diversity & Inclusion Funds - Underrepresented groups"],
+    color: "from-teal-400 to-cyan-600"
+  }, {
+    category: "Corporate Ventures",
+    icon: <Briefcase className="w-6 h-6" />,
+    description: "Strategic investments from established corporations",
+    examples: ["Barclays Accelerator - Fintech partnerships", "Shell Ventures - Energy and mobility solutions", "Unilever Ventures - Consumer goods innovation", "BT Innovation Partners - Tech infrastructure"],
+    color: "from-rose-400 to-pink-600"
+  }];
+  return <div className="min-h-screen bg-background">
       <Header />
       
       {/* Hero Section */}
@@ -198,9 +114,7 @@ const InvestmentHub = () => {
               Investment Hub
             </Badge>
             
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 via-violet-600 to-orange-600 bg-clip-text text-transparent leading-tight">
-              Bridging Capital with Opportunity
-            </h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 via-violet-600 to-orange-600 bg-clip-text text-transparent leading-tight">Connecting Innovation &amp; Investment </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
               Our Investment Hub connects public and private investors with high-potential businesses across diaspora communities, 
@@ -231,8 +145,7 @@ const InvestmentHub = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {hubFeatures.map((feature, index) => (
-              <Card key={index} className="relative overflow-hidden group hover:shadow-lg transition-all duration-300">
+            {hubFeatures.map((feature, index) => <Card key={index} className="relative overflow-hidden group hover:shadow-lg transition-all duration-300">
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/50 to-violet-50/50 dark:from-emerald-950/10 dark:to-violet-950/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <CardHeader className="relative">
                   <div className="w-12 h-12 bg-gradient-to-r from-emerald-100 to-violet-100 dark:from-emerald-900 dark:to-violet-900 rounded-lg flex items-center justify-center mb-4">
@@ -245,8 +158,7 @@ const InvestmentHub = () => {
                 <CardContent className="relative">
                   <p className="text-muted-foreground">{feature.description}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -262,8 +174,7 @@ const InvestmentHub = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {investorTypes.map((type, index) => (
-              <Card key={index} className="relative overflow-hidden group hover:shadow-xl transition-all duration-300">
+            {investorTypes.map((type, index) => <Card key={index} className="relative overflow-hidden group hover:shadow-xl transition-all duration-300">
                 <div className={`absolute inset-0 bg-gradient-to-br ${type.color} opacity-5 group-hover:opacity-10 transition-opacity`} />
                 <CardHeader className="relative">
                   <div className={`w-16 h-16 bg-gradient-to-r ${type.color} rounded-xl flex items-center justify-center mb-4 text-white shadow-lg`}>
@@ -274,16 +185,13 @@ const InvestmentHub = () => {
                 </CardHeader>
                 <CardContent className="relative">
                   <div className="space-y-3">
-                    {type.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-3">
+                    {type.features.map((feature, idx) => <div key={idx} className="flex items-center gap-3">
                         <CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0" />
                         <span className="text-sm">{feature}</span>
-                      </div>
-                    ))}
+                      </div>)}
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -300,8 +208,7 @@ const InvestmentHub = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {investmentOpportunities.map((opportunity, index) => (
-              <Card key={index} className="relative overflow-hidden hover:shadow-xl transition-all duration-300 group">
+            {investmentOpportunities.map((opportunity, index) => <Card key={index} className="relative overflow-hidden hover:shadow-xl transition-all duration-300 group">
                 <div className={`absolute inset-0 bg-gradient-to-br ${opportunity.color} opacity-5 group-hover:opacity-10 transition-opacity`} />
                 <CardHeader className="relative">
                   <div className={`w-14 h-14 bg-gradient-to-r ${opportunity.color} rounded-xl flex items-center justify-center mb-4 text-white shadow-lg`}>
@@ -312,21 +219,14 @@ const InvestmentHub = () => {
                 </CardHeader>
                 <CardContent className="relative">
                   <div className="space-y-3">
-                    {opportunity.examples.map((example, idx) => (
-                      <div key={idx} className="flex items-start gap-3">
+                    {opportunity.examples.map((example, idx) => <div key={idx} className="flex items-start gap-3">
                         <DollarSign className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
                         <span className="text-sm text-muted-foreground leading-relaxed">{example}</span>
-                      </div>
-                    ))}
+                      </div>)}
                   </div>
-                  <InvestmentExplorer 
-                    category={opportunity.category}
-                    description={opportunity.description}
-                    examples={opportunity.examples}
-                  />
+                  <InvestmentExplorer category={opportunity.category} description={opportunity.description} examples={opportunity.examples} />
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -342,8 +242,7 @@ const InvestmentHub = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {businessTypes.map((business, index) => (
-              <Card key={index} className="relative overflow-hidden hover:shadow-lg transition-all duration-300 group">
+            {businessTypes.map((business, index) => <Card key={index} className="relative overflow-hidden hover:shadow-lg transition-all duration-300 group">
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-violet-50/50 dark:from-orange-950/10 dark:to-violet-950/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <CardHeader className="relative">
                   <div className="w-12 h-12 bg-gradient-to-r from-orange-100 to-violet-100 dark:from-orange-900 dark:to-violet-900 rounded-lg flex items-center justify-center mb-4">
@@ -356,16 +255,13 @@ const InvestmentHub = () => {
                 </CardHeader>
                 <CardContent className="relative">
                   <div className="space-y-2">
-                    {business.benefits.map((benefit, idx) => (
-                      <div key={idx} className="flex items-center gap-3">
+                    {business.benefits.map((benefit, idx) => <div key={idx} className="flex items-center gap-3">
                         <div className="w-1.5 h-1.5 bg-gradient-to-r from-orange-400 to-violet-400 rounded-full flex-shrink-0" />
                         <span className="text-sm text-muted-foreground">{benefit}</span>
-                      </div>
-                    ))}
+                      </div>)}
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
 
           {/* List Your Business CTA */}
@@ -450,8 +346,6 @@ const InvestmentHub = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default InvestmentHub;
