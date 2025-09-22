@@ -119,7 +119,7 @@ const About = () => {
             <span className="bg-gradient-primary bg-clip-text text-transparent">Communities</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-medium">
-            We're building the world's leading digital platform that connects businesses, organizations, 
+            We're building a digital platform that connects businesses, organizations, 
             and individuals with public and private sector opportunities, with a strong focus on serving 
             <span className="text-emerald-green font-semibold"> diaspora communities</span> in the UK.
           </p>
