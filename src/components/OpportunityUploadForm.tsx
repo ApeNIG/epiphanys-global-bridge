@@ -52,6 +52,20 @@ const sectors = [
   'Other'
 ];
 
+const valueRanges = [
+  'Under £1,000',
+  '£1,000 - £5,000',
+  '£5,000 - £10,000',
+  '£10,000 - £25,000',
+  '£25,000 - £50,000',
+  '£50,000 - £100,000',
+  '£100,000 - £250,000',
+  '£250,000 - £500,000',
+  '£500,000 - £1,000,000',
+  'Over £1,000,000',
+  'Not specified'
+];
+
 export const OpportunityUploadForm = ({ onOpportunityCreated }: OpportunityUploadFormProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
@@ -307,12 +321,20 @@ export const OpportunityUploadForm = ({ onOpportunityCreated }: OpportunityUploa
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Value/Amount</FormLabel>
-                    <FormControl>
-                      <Input 
-                        placeholder="e.g., £10,000 - £50,000" 
-                        {...field} 
-                      />
-                    </FormControl>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select value range" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {valueRanges.map((range) => (
+                          <SelectItem key={range} value={range}>
+                            {range}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                     <FormMessage />
                   </FormItem>
                 )}
