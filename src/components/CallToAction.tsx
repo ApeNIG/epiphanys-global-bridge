@@ -2,29 +2,30 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Mail, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-
-const benefits = [
-  "Access exclusive opportunities",
-  "Connect with global networks",
-  "Receive personalized matches",
-  "Join a trusted community"
-];
+import { useTranslation } from 'react-i18next';
 
 const CallToAction = () => {
+  const { t } = useTranslation();
+  
+  const benefits = [
+    t('cta.benefits.access'),
+    t('cta.benefits.connect'),
+    t('cta.benefits.receive'),
+    t('cta.benefits.join')
+  ];
   return (
     <section className="py-20 bg-gradient-to-r from-primary/10 via-purple-500/10 to-accent/10">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Unlock Your 
+            {t('cta.title.part1')}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              {" "}Global Potential?
+              {" "}{t('cta.title.part2')}
             </span>
           </h2>
           
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join thousands of diaspora professionals, entrepreneurs, and organizations 
-            already transforming their opportunities through our platform.
+            {t('cta.description')}
           </p>
           
           {/* Benefits List */}
@@ -41,23 +42,23 @@ const CallToAction = () => {
           <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-8 border border-border/50 mb-8">
             <div className="flex items-center justify-center gap-2 mb-4">
               <Mail className="w-5 h-5 text-primary" />
-              <span className="font-semibold">Get Early Access</span>
+              <span className="font-semibold">{t('cta.earlyAccess')}</span>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <Input 
                 type="email" 
-                placeholder="Enter your email address" 
+                placeholder={t('cta.emailPlaceholder')} 
                 className="flex-1"
               />
               <Button variant="hero" className="group">
-                Join Waitlist
+                {t('cta.joinWaitlist')}
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
             
             <p className="text-xs text-muted-foreground mt-3">
-              Join 10,000+ professionals on our waitlist. No spam, ever.
+              {t('cta.noSpam')}
             </p>
           </div>
           
@@ -65,12 +66,12 @@ const CallToAction = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/consultation">
               <Button variant="glass" size="lg">
-                Book a Demo
+                {t('cta.bookDemo')}
               </Button>
             </Link>
             <Link to="/about">
               <Button variant="ghost" size="lg">
-                Learn More
+                {t('cta.learnMore')}
               </Button>
             </Link>
           </div>

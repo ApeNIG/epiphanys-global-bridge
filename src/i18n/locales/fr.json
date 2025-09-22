@@ -79,6 +79,25 @@
     "bookDemo": "Réserver une Démo",
     "learnMore": "En Savoir Plus"
   },
+  "cta": {
+    "title": {
+      "part1": "Prêt à Libérer Votre",
+      "part2": "Potentiel Mondial?"
+    },
+    "description": "Rejoignez des milliers de professionnels, entrepreneurs et organisations de la diaspora qui transforment déjà leurs opportunités grâce à notre plateforme.",
+    "benefits": {
+      "access": "Accédez à des opportunités exclusives",
+      "connect": "Connectez-vous aux réseaux mondiaux", 
+      "receive": "Recevez des correspondances personnalisées",
+      "join": "Rejoignez une communauté de confiance"
+    },
+    "earlyAccess": "Accès Anticipé",
+    "emailPlaceholder": "Entrez votre adresse e-mail",
+    "joinWaitlist": "Rejoindre la Liste d'Attente",
+    "noSpam": "Rejoignez plus de 10 000 professionnels sur notre liste d'attente. Jamais de spam.",
+    "bookDemo": "Réserver une Démo",
+    "learnMore": "En Savoir Plus"
+  },
   "footer": {
     "description": "Autonomiser les communautés de la diaspora mondiale grâce aux opportunités, connexions et célébration culturelle.",
     "platform": {

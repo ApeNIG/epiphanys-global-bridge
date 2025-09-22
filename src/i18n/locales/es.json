@@ -79,6 +79,25 @@
     "bookDemo": "Reservar una Demo",
     "learnMore": "Aprender Más"
   },
+  "cta": {
+    "title": {
+      "part1": "¿Listo para Liberar Tu",
+      "part2": "Potencial Global?"
+    },
+    "description": "Únete a miles de profesionales, emprendedores y organizaciones de la diáspora que ya están transformando sus oportunidades a través de nuestra plataforma.",
+    "benefits": {
+      "access": "Accede a oportunidades exclusivas",
+      "connect": "Conéctate con redes globales", 
+      "receive": "Recibe coincidencias personalizadas",
+      "join": "Únete a una comunidad confiable"
+    },
+    "earlyAccess": "Acceso Temprano",
+    "emailPlaceholder": "Ingresa tu dirección de correo electrónico",
+    "joinWaitlist": "Unirse a Lista de Espera",
+    "noSpam": "Únete a más de 10,000 profesionales en nuestra lista de espera. Nunca spam.",
+    "bookDemo": "Reservar una Demo",
+    "learnMore": "Saber Más"
+  },
   "footer": {
     "description": "Empoderando comunidades de la diáspora en todo el mundo a través de oportunidades, conexiones y celebración cultural.",
     "platform": {

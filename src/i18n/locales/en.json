@@ -79,6 +79,25 @@
     "bookDemo": "Book a Demo",
     "learnMore": "Learn More"
   },
+  "cta": {
+    "title": {
+      "part1": "Ready to Unlock Your",
+      "part2": "Global Potential?"
+    },
+    "description": "Join thousands of diaspora professionals, entrepreneurs, and organizations already transforming their opportunities through our platform.",
+    "benefits": {
+      "access": "Access exclusive opportunities",
+      "connect": "Connect with global networks", 
+      "receive": "Receive personalized matches",
+      "join": "Join a trusted community"
+    },
+    "earlyAccess": "Get Early Access",
+    "emailPlaceholder": "Enter your email address",
+    "joinWaitlist": "Join Waitlist",
+    "noSpam": "Join 10,000+ professionals on our waitlist. No spam, ever.",
+    "bookDemo": "Book a Demo",
+    "learnMore": "Learn More"
+  },
   "footer": {
     "description": "Empowering diaspora communities worldwide through opportunities, connections, and cultural celebration.",
     "platform": {

@@ -79,6 +79,25 @@
     "bookDemo": "Demo Buchen",
     "learnMore": "Mehr Erfahren"
   },
+  "cta": {
+    "title": {
+      "part1": "Bereit, Ihr",
+      "part2": "Globales Potenzial zu Entfalten?"
+    },
+    "description": "Schließen Sie sich Tausenden von Diaspora-Fachkräften, Unternehmern und Organisationen an, die bereits ihre Möglichkeiten durch unsere Plattform transformieren.",
+    "benefits": {
+      "access": "Zugang zu exklusiven Möglichkeiten",
+      "connect": "Verbindung zu globalen Netzwerken", 
+      "receive": "Personalisierte Übereinstimmungen erhalten",
+      "join": "Einer vertrauenswürdigen Gemeinschaft beitreten"
+    },
+    "earlyAccess": "Früher Zugang",
+    "emailPlaceholder": "Geben Sie Ihre E-Mail-Adresse ein",
+    "joinWaitlist": "Warteliste Beitreten",
+    "noSpam": "Schließen Sie sich über 10.000 Fachkräften auf unserer Warteliste an. Niemals Spam.",
+    "bookDemo": "Demo Buchen",
+    "learnMore": "Mehr Erfahren"
+  },
   "footer": {
     "description": "Diaspora-Gemeinschaften weltweit durch Möglichkeiten, Verbindungen und kulturelle Feier stärken.",
     "platform": {
