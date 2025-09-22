@@ -20,8 +20,7 @@ const advisoryServices = [
       "Diaspora Market Access",
       "Cultural Intelligence Integration"
     ],
-    outcomes: "95% of advised startups secure first-round funding",
-    pricing: "From £2,500/month"
+    outcomes: "95% of advised startups secure first-round funding"
   },
   {
     category: "Scale-ups", 
@@ -36,8 +35,7 @@ const advisoryServices = [
       "Cross-Cultural Team Building",
       "Global Network Activation"
     ],
-    outcomes: "Average 340% revenue growth within 18 months",
-    pricing: "From £7,500/month"
+    outcomes: "Average 340% revenue growth within 18 months"
   },
   {
     category: "SMEs",
@@ -52,8 +50,7 @@ const advisoryServices = [
       "Community Engagement Strategy",
       "Cultural Market Insights"
     ],
-    outcomes: "78% increase in market reach across diaspora networks",
-    pricing: "From £5,000/month"
+    outcomes: "78% increase in market reach across diaspora networks"
   },
   {
     category: "Enterprise",
@@ -68,8 +65,7 @@ const advisoryServices = [
       "ESG & Diversity Integration",
       "Innovation Ecosystem Access"
     ],
-    outcomes: "£50M+ in new market opportunities identified",
-    pricing: "Custom enterprise packages"
+    outcomes: "£50M+ in new market opportunities identified"
   },
   {
     category: "Government",
@@ -84,8 +80,7 @@ const advisoryServices = [
       "Talent Attraction Programs",
       "Innovation Hub Development"
     ],
-    outcomes: "£2.5B in diaspora-driven economic activity facilitated",
-    pricing: "Bespoke government packages"
+    outcomes: "£2.5B in diaspora-driven economic activity facilitated"
   }
 ];
 
@@ -172,7 +167,6 @@ const Advisory = () => {
                     </div>
                     <div>
                       <CardTitle className="text-xl font-bold">{service.category}</CardTitle>
-                      <Badge variant="outline" className="mt-1">{service.pricing}</Badge>
                     </div>
                   </div>
                   <CardDescription className="text-sm text-muted-foreground">
