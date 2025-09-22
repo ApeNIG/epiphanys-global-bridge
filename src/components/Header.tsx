@@ -96,11 +96,6 @@ const Header = () => {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link to="/goals" className="w-full">
-                Goals
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
               <Link to="/community" className="w-full">
                 Community
               </Link>
