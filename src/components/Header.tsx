@@ -91,11 +91,6 @@ const Header = () => {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link to="/professionals" className="w-full">
-                Professionals
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
               <Link to="/community" className="w-full">
                 Community
               </Link>
@@ -103,11 +98,6 @@ const Header = () => {
             <DropdownMenuItem asChild>
               <Link to="/global" className="w-full">
                 Global
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <Link to="/network" className="w-full">
-                Network
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
@@ -135,14 +125,8 @@ const Header = () => {
           <Link to="/investment-hub" className="text-foreground hover:text-primary transition-colors">
             Investment
           </Link>
-          <Link to="/professionals" className="text-foreground hover:text-primary transition-colors">
-            Professionals
-          </Link>
           <Link to="/community" className="text-foreground hover:text-primary transition-colors">
             Community
-          </Link>
-          <Link to="/network" className="text-foreground hover:text-primary transition-colors">
-            Network
           </Link>
           <Link to="/global" className="text-foreground hover:text-primary transition-colors">
             Global
@@ -188,12 +172,6 @@ const Header = () => {
                    <Link to="/goals" className="flex items-center cursor-pointer">
                      <Target className="w-4 h-4 mr-2" />
                      Goals
-                   </Link>
-                 </DropdownMenuItem>
-                 <DropdownMenuItem asChild>
-                   <Link to="/network" className="flex items-center cursor-pointer">
-                     <Users className="w-4 h-4 mr-2" />
-                     Network
                    </Link>
                  </DropdownMenuItem>
                 <DropdownMenuItem 
