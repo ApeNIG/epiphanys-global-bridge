@@ -20,34 +20,18 @@ import { Calendar } from "@/components/ui/calendar";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
-import { 
-  Target, 
-  Calendar as CalendarIcon, 
-  Plus, 
-  TrendingUp, 
-  Clock, 
-  CheckCircle2,
-  AlertCircle,
-  Star,
-  BarChart3,
-  BookOpen,
-  Users,
-  Lightbulb
-} from "lucide-react";
+import { Target, Calendar as CalendarIcon, Plus, TrendingUp, Clock, CheckCircle2, AlertCircle, Star, BarChart3, BookOpen, Users, Lightbulb } from "lucide-react";
 import { useTranslation } from "react-i18next";
-
 const goalSchema = z.object({
   title: z.string().min(3, "Goal title must be at least 3 characters"),
   description: z.string().optional(),
   category: z.string().min(1, "Please select a category"),
   priority: z.string().min(1, "Please select a priority"),
   target_date: z.date({
-    required_error: "Please select a target date",
-  }),
+    required_error: "Please select a target date"
+  })
 });
-
 type GoalForm = z.infer<typeof goalSchema>;
-
 interface Goal {
   id: string;
   title: string;
@@ -60,106 +44,92 @@ interface Goal {
   created_at: string;
   updated_at: string;
 }
-
-const goalCategories = [
-  { value: "career", label: "Career Development", icon: TrendingUp },
-  { value: "business", label: "Business Growth", icon: BarChart3 },
-  { value: "education", label: "Education & Skills", icon: BookOpen },
-  { value: "networking", label: "Networking", icon: Users },
-  { value: "personal", label: "Personal Development", icon: Lightbulb },
-];
-
-const priorities = [
-  { value: "low", label: "Low Priority", color: "bg-blue-500" },
-  { value: "medium", label: "Medium Priority", color: "bg-yellow-500" },
-  { value: "high", label: "High Priority", color: "bg-red-500" },
-];
-
-const supportResources = [
-  {
-    category: "career",
-    resources: [
-      "Professional mentorship programs",
-      "CV review and optimization",
-      "Interview preparation sessions",
-      "LinkedIn profile enhancement",
-      "Skill assessment and development plans"
-    ]
-  },
-  {
-    category: "business",
-    resources: [
-      "Business plan development",
-      "Funding and investment guidance", 
-      "Market research support",
-      "Networking with investors",
-      "Legal and compliance advice"
-    ]
-  },
-  {
-    category: "education",
-    resources: [
-      "Course recommendations",
-      "Study group connections",
-      "Certification pathways",
-      "Online learning platforms",
-      "Academic scholarship opportunities"
-    ]
-  },
-  {
-    category: "networking",
-    resources: [
-      "Industry event invitations",
-      "Professional association memberships",
-      "Diaspora community connections",
-      "Virtual networking sessions",
-      "Mentorship matching programs"
-    ]
-  },
-  {
-    category: "personal",
-    resources: [
-      "Personal development workshops",
-      "Life coaching sessions",
-      "Wellness and mindfulness programs",
-      "Cultural identity exploration",
-      "Work-life balance strategies"
-    ]
-  }
-];
-
+const goalCategories = [{
+  value: "career",
+  label: "Career Development",
+  icon: TrendingUp
+}, {
+  value: "business",
+  label: "Business Growth",
+  icon: BarChart3
+}, {
+  value: "education",
+  label: "Education & Skills",
+  icon: BookOpen
+}, {
+  value: "networking",
+  label: "Networking",
+  icon: Users
+}, {
+  value: "personal",
+  label: "Personal Development",
+  icon: Lightbulb
+}];
+const priorities = [{
+  value: "low",
+  label: "Low Priority",
+  color: "bg-blue-500"
+}, {
+  value: "medium",
+  label: "Medium Priority",
+  color: "bg-yellow-500"
+}, {
+  value: "high",
+  label: "High Priority",
+  color: "bg-red-500"
+}];
+const supportResources = [{
+  category: "career",
+  resources: ["Professional mentorship programs", "CV review and optimization", "Interview preparation sessions", "LinkedIn profile enhancement", "Skill assessment and development plans"]
+}, {
+  category: "business",
+  resources: ["Business plan development", "Funding and investment guidance", "Market research support", "Networking with investors", "Legal and compliance advice"]
+}, {
+  category: "education",
+  resources: ["Course recommendations", "Study group connections", "Certification pathways", "Online learning platforms", "Academic scholarship opportunities"]
+}, {
+  category: "networking",
+  resources: ["Industry event invitations", "Professional association memberships", "Diaspora community connections", "Virtual networking sessions", "Mentorship matching programs"]
+}, {
+  category: "personal",
+  resources: ["Personal development workshops", "Life coaching sessions", "Wellness and mindfulness programs", "Cultural identity exploration", "Work-life balance strategies"]
+}];
 const Goals = () => {
-  const { t } = useTranslation();
-  const { user } = useAuth();
-  const { toast } = useToast();
+  const {
+    t
+  } = useTranslation();
+  const {
+    user
+  } = useAuth();
+  const {
+    toast
+  } = useToast();
   const [goals, setGoals] = useState<Goal[]>([]);
   const [loading, setLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showForm, setShowForm] = useState(false);
-
   const form = useForm<GoalForm>({
     resolver: zodResolver(goalSchema),
     defaultValues: {
       title: "",
       description: "",
       category: "",
-      priority: "medium",
-    },
+      priority: "medium"
+    }
   });
-
   useEffect(() => {
     if (user) {
       fetchGoals();
     }
   }, [user]);
-
   const fetchGoals = async () => {
     try {
-      const { data, error } = await supabase
-        .from('goals')
-        .select('*')
-        .order('created_at', { ascending: false });
-
+      const {
+        data,
+        error
+      } = await supabase.from('goals').select('*').order('created_at', {
+        ascending: false
+      });
       if (error) throw error;
       setGoals(data || []);
     } catch (error) {
@@ -173,33 +143,27 @@ const Goals = () => {
       setLoading(false);
     }
   };
-
   const onSubmit = async (data: GoalForm) => {
     if (!user) return;
-    
     setIsSubmitting(true);
-    
     try {
-      const { error } = await supabase
-        .from('goals')
-        .insert({
-          user_id: user.id,
-          title: data.title,
-          description: data.description || null,
-          category: data.category,
-          priority: data.priority,
-          target_date: format(data.target_date, 'yyyy-MM-dd'),
-          status: 'active',
-          progress: 0
-        });
-
+      const {
+        error
+      } = await supabase.from('goals').insert({
+        user_id: user.id,
+        title: data.title,
+        description: data.description || null,
+        category: data.category,
+        priority: data.priority,
+        target_date: format(data.target_date, 'yyyy-MM-dd'),
+        status: 'active',
+        progress: 0
+      });
       if (error) throw error;
-
       toast({
         title: "Goal Created!",
-        description: "Your goal has been successfully created.",
+        description: "Your goal has been successfully created."
       });
-
       form.reset();
       setShowForm(false);
       fetchGoals();
@@ -214,24 +178,19 @@ const Goals = () => {
       setIsSubmitting(false);
     }
   };
-
   const updateProgress = async (goalId: string, newProgress: number) => {
     try {
-      const { error } = await supabase
-        .from('goals')
-        .update({ 
-          progress: newProgress,
-          status: newProgress === 100 ? 'completed' : 'active'
-        })
-        .eq('id', goalId);
-
+      const {
+        error
+      } = await supabase.from('goals').update({
+        progress: newProgress,
+        status: newProgress === 100 ? 'completed' : 'active'
+      }).eq('id', goalId);
       if (error) throw error;
-
       toast({
         title: "Progress Updated!",
-        description: `Goal progress updated to ${newProgress}%.`,
+        description: `Goal progress updated to ${newProgress}%.`
       });
-
       fetchGoals();
     } catch (error) {
       console.error('Error updating progress:', error);
@@ -242,21 +201,22 @@ const Goals = () => {
       });
     }
   };
-
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'completed': return 'bg-green-500';
-      case 'active': return 'bg-blue-500';
-      case 'paused': return 'bg-yellow-500';
-      default: return 'bg-gray-500';
+      case 'completed':
+        return 'bg-green-500';
+      case 'active':
+        return 'bg-blue-500';
+      case 'paused':
+        return 'bg-yellow-500';
+      default:
+        return 'bg-gray-500';
     }
   };
-
   const getCategoryIcon = (category: string) => {
     const cat = goalCategories.find(c => c.value === category);
     return cat ? cat.icon : Target;
   };
-
   const getDaysUntilTarget = (targetDate: string) => {
     const target = new Date(targetDate);
     const today = new Date();
@@ -264,10 +224,8 @@ const Goals = () => {
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     return diffDays;
   };
-
   if (!user) {
-    return (
-      <div className="min-h-screen bg-background">
+    return <div className="min-h-screen bg-background">
         <Header />
         <div className="flex items-center justify-center min-h-[60vh]">
           <Card className="max-w-md mx-auto text-center p-8">
@@ -282,13 +240,10 @@ const Goals = () => {
           </Card>
         </div>
         <Footer />
-      </div>
-    );
+      </div>;
   }
-
   if (loading) {
-    return (
-      <div className="min-h-screen bg-background">
+    return <div className="min-h-screen bg-background">
         <Header />
         <div className="flex items-center justify-center min-h-[60vh]">
           <div className="text-center">
@@ -297,12 +252,9 @@ const Goals = () => {
           </div>
         </div>
         <Footer />
-      </div>
-    );
+      </div>;
   }
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Header />
       
       {/* Hero Section */}
@@ -312,10 +264,7 @@ const Goals = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
               Your Goals & Aspirations
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Set meaningful goals, track your progress, and receive personalized support 
-              to achieve your career and personal aspirations.
-            </p>
+            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">Set meaningful goals, track your progress, and receive personalised support to achieve your business,  career and personal aspirations.</p>
             <Button onClick={() => setShowForm(!showForm)} size="lg" className="gap-2">
               <Plus className="w-5 h-5" />
               {showForm ? 'Cancel' : 'Set New Goal'}
@@ -326,8 +275,7 @@ const Goals = () => {
 
       <div className="container mx-auto max-w-6xl px-4 py-8">
         {/* Goal Creation Form */}
-        {showForm && (
-          <Card className="mb-8">
+        {showForm && <Card className="mb-8">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Target className="w-5 h-5" />
@@ -341,25 +289,19 @@ const Goals = () => {
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="title"
-                      render={({ field }) => (
-                        <FormItem>
+                    <FormField control={form.control} name="title" render={({
+                  field
+                }) => <FormItem>
                           <FormLabel>Goal Title *</FormLabel>
                           <FormControl>
                             <Input placeholder="e.g., Secure a senior developer role" {...field} />
                           </FormControl>
                           <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                        </FormItem>} />
 
-                    <FormField
-                      control={form.control}
-                      name="category"
-                      render={({ field }) => (
-                        <FormItem>
+                    <FormField control={form.control} name="category" render={({
+                  field
+                }) => <FormItem>
                           <FormLabel>Category *</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
@@ -368,43 +310,29 @@ const Goals = () => {
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              {goalCategories.map((category) => (
-                                <SelectItem key={category.value} value={category.value}>
+                              {goalCategories.map(category => <SelectItem key={category.value} value={category.value}>
                                   {category.label}
-                                </SelectItem>
-                              ))}
+                                </SelectItem>)}
                             </SelectContent>
                           </Select>
                           <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                        </FormItem>} />
                   </div>
 
-                  <FormField
-                    control={form.control}
-                    name="description"
-                    render={({ field }) => (
-                      <FormItem>
+                  <FormField control={form.control} name="description" render={({
+                field
+              }) => <FormItem>
                         <FormLabel>Description</FormLabel>
                         <FormControl>
-                          <Textarea 
-                            placeholder="Describe your goal in more detail..."
-                            className="min-h-[100px]"
-                            {...field} 
-                          />
+                          <Textarea placeholder="Describe your goal in more detail..." className="min-h-[100px]" {...field} />
                         </FormControl>
                         <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                      </FormItem>} />
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="priority"
-                      render={({ field }) => (
-                        <FormItem>
+                    <FormField control={form.control} name="priority" render={({
+                  field
+                }) => <FormItem>
                           <FormLabel>Priority *</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
@@ -413,61 +341,36 @@ const Goals = () => {
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              {priorities.map((priority) => (
-                                <SelectItem key={priority.value} value={priority.value}>
+                              {priorities.map(priority => <SelectItem key={priority.value} value={priority.value}>
                                   <div className="flex items-center gap-2">
                                     <div className={`w-3 h-3 rounded-full ${priority.color}`} />
                                     {priority.label}
                                   </div>
-                                </SelectItem>
-                              ))}
+                                </SelectItem>)}
                             </SelectContent>
                           </Select>
                           <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                        </FormItem>} />
 
-                    <FormField
-                      control={form.control}
-                      name="target_date"
-                      render={({ field }) => (
-                        <FormItem className="flex flex-col">
+                    <FormField control={form.control} name="target_date" render={({
+                  field
+                }) => <FormItem className="flex flex-col">
                           <FormLabel>Target Date *</FormLabel>
                           <Popover>
                             <PopoverTrigger asChild>
                               <FormControl>
-                                <Button
-                                  variant="outline"
-                                  className={cn(
-                                    "pl-3 text-left font-normal",
-                                    !field.value && "text-muted-foreground"
-                                  )}
-                                >
-                                  {field.value ? (
-                                    format(field.value, "PPP")
-                                  ) : (
-                                    <span>Pick a target date</span>
-                                  )}
+                                <Button variant="outline" className={cn("pl-3 text-left font-normal", !field.value && "text-muted-foreground")}>
+                                  {field.value ? format(field.value, "PPP") : <span>Pick a target date</span>}
                                   <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                                 </Button>
                               </FormControl>
                             </PopoverTrigger>
                             <PopoverContent className="w-auto p-0" align="start">
-                              <Calendar
-                                mode="single"
-                                selected={field.value}
-                                onSelect={field.onChange}
-                                disabled={(date) => date < new Date()}
-                                initialFocus
-                                className={cn("p-3 pointer-events-auto")}
-                              />
+                              <Calendar mode="single" selected={field.value} onSelect={field.onChange} disabled={date => date < new Date()} initialFocus className={cn("p-3 pointer-events-auto")} />
                             </PopoverContent>
                           </Popover>
                           <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                        </FormItem>} />
                   </div>
 
                   <div className="flex gap-4">
@@ -481,8 +384,7 @@ const Goals = () => {
                 </form>
               </Form>
             </CardContent>
-          </Card>
-        )}
+          </Card>}
 
         {/* Goals Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -495,8 +397,7 @@ const Goals = () => {
               </Badge>
             </div>
 
-            {goals.length === 0 ? (
-              <Card className="text-center py-12">
+            {goals.length === 0 ? <Card className="text-center py-12">
                 <Target className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-2">No Goals Yet</h3>
                 <p className="text-muted-foreground mb-6">
@@ -506,16 +407,12 @@ const Goals = () => {
                   <Plus className="w-4 h-4 mr-2" />
                   Set Your First Goal
                 </Button>
-              </Card>
-            ) : (
-              <div className="space-y-4">
-                {goals.map((goal) => {
-                  const CategoryIcon = getCategoryIcon(goal.category);
-                  const daysUntil = getDaysUntilTarget(goal.target_date);
-                  const priorityColor = priorities.find(p => p.value === goal.priority)?.color || 'bg-gray-500';
-
-                  return (
-                    <Card key={goal.id} className="hover:shadow-lg transition-shadow duration-300">
+              </Card> : <div className="space-y-4">
+                {goals.map(goal => {
+              const CategoryIcon = getCategoryIcon(goal.category);
+              const daysUntil = getDaysUntilTarget(goal.target_date);
+              const priorityColor = priorities.find(p => p.value === goal.priority)?.color || 'bg-gray-500';
+              return <Card key={goal.id} className="hover:shadow-lg transition-shadow duration-300">
                       <CardHeader className="pb-3">
                         <div className="flex items-start justify-between">
                           <div className="flex items-start gap-3">
@@ -524,11 +421,9 @@ const Goals = () => {
                             </div>
                             <div className="flex-1">
                               <CardTitle className="text-lg mb-1">{goal.title}</CardTitle>
-                              {goal.description && (
-                                <CardDescription className="line-clamp-2">
+                              {goal.description && <CardDescription className="line-clamp-2">
                                   {goal.description}
-                                </CardDescription>
-                              )}
+                                </CardDescription>}
                             </div>
                           </div>
                           <div className="flex items-center gap-2">
@@ -560,39 +455,25 @@ const Goals = () => {
                             <div className="flex items-center gap-2">
                               <Clock className="w-4 h-4" />
                               <span>
-                                {daysUntil > 0 ? `${daysUntil} days left` : 
-                                 daysUntil === 0 ? 'Due today' : 
-                                 `${Math.abs(daysUntil)} days overdue`}
+                                {daysUntil > 0 ? `${daysUntil} days left` : daysUntil === 0 ? 'Due today' : `${Math.abs(daysUntil)} days overdue`}
                               </span>
                             </div>
                           </div>
 
                           {/* Quick Actions */}
                           <div className="flex gap-2">
-                            <Button 
-                              size="sm" 
-                              variant="outline"
-                              onClick={() => updateProgress(goal.id, Math.min(goal.progress + 25, 100))}
-                              disabled={goal.progress >= 100}
-                            >
+                            <Button size="sm" variant="outline" onClick={() => updateProgress(goal.id, Math.min(goal.progress + 25, 100))} disabled={goal.progress >= 100}>
                               +25% Progress
                             </Button>
-                            {goal.progress < 100 && (
-                              <Button 
-                                size="sm" 
-                                onClick={() => updateProgress(goal.id, 100)}
-                              >
+                            {goal.progress < 100 && <Button size="sm" onClick={() => updateProgress(goal.id, 100)}>
                                 Mark Complete
-                              </Button>
-                            )}
+                              </Button>}
                           </div>
                         </div>
                       </CardContent>
-                    </Card>
-                  );
-                })}
-              </div>
-            )}
+                    </Card>;
+            })}
+              </div>}
           </div>
 
           {/* Support Resources Sidebar */}
@@ -608,30 +489,24 @@ const Goals = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                {supportResources.map((resource) => {
-                  const hasGoalsInCategory = goals.some(goal => goal.category === resource.category);
-                  if (!hasGoalsInCategory) return null;
-
-                  const categoryData = goalCategories.find(c => c.value === resource.category);
-                  const CategoryIcon = categoryData?.icon || Target;
-
-                  return (
-                    <div key={resource.category} className="space-y-3">
+                {supportResources.map(resource => {
+                const hasGoalsInCategory = goals.some(goal => goal.category === resource.category);
+                if (!hasGoalsInCategory) return null;
+                const categoryData = goalCategories.find(c => c.value === resource.category);
+                const CategoryIcon = categoryData?.icon || Target;
+                return <div key={resource.category} className="space-y-3">
                       <div className="flex items-center gap-2">
                         <CategoryIcon className="w-4 h-4 text-primary" />
                         <h4 className="font-semibold">{categoryData?.label}</h4>
                       </div>
                       <ul className="space-y-1 text-sm text-muted-foreground">
-                        {resource.resources.slice(0, 3).map((item, index) => (
-                          <li key={index} className="flex items-start gap-2">
+                        {resource.resources.slice(0, 3).map((item, index) => <li key={index} className="flex items-start gap-2">
                             <CheckCircle2 className="w-3 h-3 text-green-500 mt-0.5 flex-shrink-0" />
                             {item}
-                          </li>
-                        ))}
+                          </li>)}
                       </ul>
-                    </div>
-                  );
-                })}
+                    </div>;
+              })}
               </CardContent>
             </Card>
 
@@ -666,8 +541,6 @@ const Goals = () => {
       </div>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Goals;
