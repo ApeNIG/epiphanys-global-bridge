@@ -45,8 +45,8 @@ const Hero = () => {
                 {t('hero.subtitle')}
               </p>
               <p className="text-lg text-muted-foreground/80 max-w-3xl mx-auto">
-                Epiphiny Flow is the world's first diaspora-focused platform connecting communities, 
-                businesses, and investors across 190+ countries. We bridge cultural capital with global opportunities.
+                An inclusive digital ecosystem that unlocks economic opportunities, celebrates 
+                cultural identity, and drives collaborative growth.
               </p>
             </div>
           </div>
