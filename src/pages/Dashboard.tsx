@@ -125,7 +125,7 @@ const Dashboard = () => {
     { title: "Schedule Advisory Call", icon: Calendar, link: "/advisory" },
     { title: "Join Community Discussion", icon: MessageCircle, link: "/community" },
     { title: "Browse Resources", icon: BookOpen, link: "/about" },
-    { title: "Set Goals", icon: Target, link: "/opportunities" }
+    { title: "Set Goals", icon: Target, link: "/goals" }
   ];
 
   const userStats = {
