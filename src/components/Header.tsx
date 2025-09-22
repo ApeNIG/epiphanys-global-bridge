@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { User, LogOut, Target } from "lucide-react";
+import { User, LogOut, Target, Users } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -106,6 +106,11 @@ const Header = () => {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
+              <Link to="/network" className="w-full">
+                Network
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
               <Link to="/about" className="w-full">
                 About
               </Link>
@@ -135,6 +140,9 @@ const Header = () => {
           </Link>
           <Link to="/community" className="text-foreground hover:text-primary transition-colors">
             Community
+          </Link>
+          <Link to="/network" className="text-foreground hover:text-primary transition-colors">
+            Network
           </Link>
           <Link to="/global" className="text-foreground hover:text-primary transition-colors">
             Global
@@ -180,6 +188,12 @@ const Header = () => {
                    <Link to="/goals" className="flex items-center cursor-pointer">
                      <Target className="w-4 h-4 mr-2" />
                      Goals
+                   </Link>
+                 </DropdownMenuItem>
+                 <DropdownMenuItem asChild>
+                   <Link to="/network" className="flex items-center cursor-pointer">
+                     <Users className="w-4 h-4 mr-2" />
+                     Network
                    </Link>
                  </DropdownMenuItem>
                 <DropdownMenuItem 
