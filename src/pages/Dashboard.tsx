@@ -26,6 +26,7 @@ import { Link } from "react-router-dom";
 import ProfileCompletion from "@/components/ProfileCompletion";
 import { OpportunityUploadForm } from "@/components/OpportunityUploadForm";
 import { UserOpportunities } from "@/components/UserOpportunities";
+import { NetworkConnector } from "@/components/NetworkConnector";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Dashboard = () => {
@@ -292,25 +293,33 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* Quick Actions */}
+            {/* Network Connector */}
             <div>
-              <h3 className="text-xl font-bold mb-6">Quick Actions</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {quickActions.map((action, index) => (
-                  <Link key={index} to={action.link}>
-                    <Card className="hover:shadow-md transition-all duration-300 hover:scale-105 cursor-pointer">
-                      <CardContent className="pt-6">
-                        <div className="text-center">
-                          <action.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                          <h4 className="font-medium text-sm">{action.title}</h4>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
+              <h3 className="text-xl font-bold mb-6">Network & Connect</h3>
+              <NetworkConnector />
+            </div>
+          </div>
 
-              {/* Profile Completion Form */}
+          {/* Quick Actions Grid */}
+          <div className="mt-12">
+            <h3 className="text-xl font-bold mb-6">Quick Actions</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {quickActions.map((action, index) => (
+                <Link key={index} to={action.link}>
+                  <Card className="hover:shadow-md transition-all duration-300 hover:scale-105 cursor-pointer">
+                    <CardContent className="pt-6">
+                      <div className="text-center">
+                        <action.icon className="w-8 h-8 text-primary mx-auto mb-3" />
+                        <h4 className="font-medium text-sm">{action.title}</h4>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+
+            {/* Profile Completion Form */}
+            <div className="mt-8">
               <ProfileCompletion />
             </div>
           </div>
