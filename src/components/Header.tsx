@@ -136,9 +136,6 @@ const Header = () => {
           <Link to="/global" className="text-foreground hover:text-primary transition-colors">
             Global
           </Link>
-          <Link to="/consultation" className="text-foreground hover:text-primary transition-colors">
-            Book Demo
-          </Link>
           <Link to="/about" className="text-foreground hover:text-primary transition-colors">
             About
           </Link>
