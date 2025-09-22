@@ -45,7 +45,7 @@ const Hero = () => {
                 An inclusive digital ecosystem that unlocks economic opportunities, celebrates cultural identity, and drives collaborative growth.
               </p>
               <p className="text-lg text-muted-foreground/80 max-w-3xl mx-auto">
-                Building a future where every diaspora community member has access to opportunities
+                Building a future where every diaspora community member has access to support and investment
               </p>
             </div>
           </div>
