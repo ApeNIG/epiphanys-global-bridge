@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Mail, CheckCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const benefits = [
   "Access exclusive opportunities",
@@ -62,12 +63,16 @@ const CallToAction = () => {
           
           {/* Alternative CTA */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="glass" size="lg">
-              Book a Demo
-            </Button>
-            <Button variant="ghost" size="lg">
-              Learn More
-            </Button>
+            <Link to="/consultation">
+              <Button variant="glass" size="lg">
+                Book a Demo
+              </Button>
+            </Link>
+            <Link to="/about">
+              <Button variant="ghost" size="lg">
+                Learn More
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

@@ -111,6 +111,11 @@ const Header = () => {
               </a>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
+              <Link to="/consultation" className="w-full">
+                Book Demo
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
               <Link to="/auth" className="w-full">
                 Join Platform
               </Link>
@@ -130,6 +135,9 @@ const Header = () => {
           </Link>
           <Link to="/global" className="text-foreground hover:text-primary transition-colors">
             Global
+          </Link>
+          <Link to="/consultation" className="text-foreground hover:text-primary transition-colors">
+            Book Demo
           </Link>
           <Link to="/about" className="text-foreground hover:text-primary transition-colors">
             About
