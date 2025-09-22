@@ -33,9 +33,7 @@ const Hero = () => {
           <div className="space-y-6">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tight">
               <span className="block text-foreground mb-2">Epiphiny Flow</span>
-              <span className="block bg-gradient-to-r from-primary via-purple-600 to-accent bg-clip-text text-transparent">
-                OPPORTUNITIES
-              </span>
+              <span className="block bg-gradient-to-r from-primary via-purple-600 to-accent bg-clip-text text-transparent">Advisory &amp; Investment </span>
               <span className="block text-foreground/80 text-3xl md:text-4xl lg:text-5xl mt-4 font-bold">
                 GROW • SCALE • BOOST
               </span>
