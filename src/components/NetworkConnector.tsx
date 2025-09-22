@@ -57,15 +57,53 @@ export const NetworkConnector = () => {
     
     setIsSearching(true);
     try {
-      const { data, error } = await supabase
+      // Search user profiles
+      const { data: userProfiles, error: userError } = await supabase
         .from('profiles')
         .select('*')
         .neq('id', user.id)
         .or(`full_name.ilike.%${searchTerm}%,business_name.ilike.%${searchTerm}%,business_sector.ilike.%${searchTerm}%,location.ilike.%${searchTerm}%`)
-        .limit(5);
+        .limit(3);
 
-      if (error) throw error;
-      setSearchResults(data || []);
+      if (userError) throw userError;
+
+      // Search companies
+      const { data: companies, error: companyError } = await supabase
+        .from('companies')
+        .select('*')
+        .neq('user_id', user.id)
+        .or(`name.ilike.%${searchTerm}%,sector.ilike.%${searchTerm}%,location.ilike.%${searchTerm}%`)
+        .limit(2);
+
+      if (companyError) throw companyError;
+
+      // Get profiles for company owners
+      let companyResults: Profile[] = [];
+      if (companies && companies.length > 0) {
+        const ownerIds = companies.map(c => c.user_id);
+        const { data: ownerProfiles, error: ownerError } = await supabase
+          .from('profiles')
+          .select('*')
+          .in('id', ownerIds);
+
+        if (ownerError) throw ownerError;
+
+        companyResults = companies.map(company => {
+          const owner = ownerProfiles?.find(p => p.id === company.user_id);
+          return {
+            id: company.user_id,
+            full_name: owner?.full_name || 'Company Owner',
+            business_name: company.name,
+            business_sector: company.sector || '',
+            location: company.location || owner?.location || '',
+            profile_image_url: owner?.profile_image_url || owner?.avatar_url || '',
+            avatar_url: owner?.avatar_url || '',
+            user_category: 'Business'
+          };
+        });
+      }
+
+      setSearchResults([...(userProfiles || []), ...companyResults]);
     } catch (error) {
       console.error('Error searching profiles:', error);
     } finally {

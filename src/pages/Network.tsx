@@ -22,6 +22,12 @@ interface Profile {
   profile_image_url: string;
   avatar_url: string;
   interests: string[];
+  isCompanyProfile?: boolean;
+  company_id?: string;
+  website?: string;
+  year_founded?: number;
+  legal_structure?: string;
+  stage?: string;
 }
 
 interface ConnectionRequest {
@@ -52,13 +58,60 @@ export const Network = () => {
 
   const fetchProfiles = async () => {
     try {
-      const { data, error } = await supabase
+      // Fetch user profiles
+      const { data: userProfiles, error: userError } = await supabase
         .from('profiles')
         .select('*')
         .neq('id', user?.id);
 
-      if (error) throw error;
-      setProfiles(data || []);
+      if (userError) throw userError;
+
+      // Fetch company profiles from businesses listed in investment section
+      const { data: companies, error: companyError } = await supabase
+        .from('companies')
+        .select('*')
+        .neq('user_id', user?.id);
+
+      if (companyError) throw companyError;
+
+      // Get user profiles for company owners
+      let companyProfiles: any[] = [];
+      if (companies && companies.length > 0) {
+        const companyOwnerIds = companies.map(company => company.user_id);
+        const { data: ownerProfiles, error: ownerError } = await supabase
+          .from('profiles')
+          .select('*')
+          .in('id', companyOwnerIds);
+
+        if (ownerError) throw ownerError;
+
+        // Transform companies into profile format
+        companyProfiles = companies.map(company => {
+          const ownerProfile = ownerProfiles?.find(profile => profile.id === company.user_id);
+          return {
+            id: company.user_id,
+            full_name: ownerProfile?.full_name || 'Company Owner',
+            bio: `${company.stage || 'Company'} in ${company.sector || 'Various sectors'}`,
+            location: company.location || ownerProfile?.location || '',
+            business_name: company.name,
+            business_sector: company.sector || '',
+            user_category: 'Business',
+            profile_image_url: ownerProfile?.profile_image_url || ownerProfile?.avatar_url || '',
+            avatar_url: ownerProfile?.avatar_url || '',
+            interests: [company.sector].filter(Boolean),
+            isCompanyProfile: true,
+            company_id: company.id,
+            website: company.website,
+            year_founded: company.year_founded,
+            legal_structure: company.legal_structure,
+            stage: company.stage
+          };
+        });
+      }
+
+      // Combine user profiles and company profiles
+      const allProfiles = [...(userProfiles || []), ...companyProfiles];
+      setProfiles(allProfiles);
     } catch (error) {
       console.error('Error fetching profiles:', error);
       toast({
@@ -280,35 +333,51 @@ export const Network = () => {
                       <p className="text-sm text-muted-foreground">{profile.business_name}</p>
                     )}
                   </CardHeader>
-                  <CardContent className="space-y-3">
-                    {profile.user_category && (
-                      <Badge variant="secondary">{profile.user_category}</Badge>
-                    )}
-                    {profile.business_sector && (
-                      <p className="text-sm"><strong>Sector:</strong> {profile.business_sector}</p>
-                    )}
-                    {profile.location && (
-                      <p className="text-sm"><strong>Location:</strong> {profile.location}</p>
-                    )}
-                    {profile.bio && (
-                      <p className="text-sm text-muted-foreground line-clamp-3">{profile.bio}</p>
-                    )}
-                    {profile.interests && profile.interests.length > 0 && (
-                      <div className="flex flex-wrap gap-1">
-                        {profile.interests.slice(0, 3).map((interest, index) => (
-                          <Badge key={index} variant="outline" className="text-xs">
-                            {interest}
-                          </Badge>
-                        ))}
-                        {profile.interests.length > 3 && (
-                          <Badge variant="outline" className="text-xs">
-                            +{profile.interests.length - 3} more
-                          </Badge>
-                        )}
-                      </div>
-                    )}
-                    <ConnectionRequestModal profile={profile} />
-                  </CardContent>
+                   <CardContent className="space-y-3">
+                     <div className="flex gap-2 flex-wrap">
+                       {profile.user_category && (
+                         <Badge variant="secondary">{profile.user_category}</Badge>
+                       )}
+                       {profile.isCompanyProfile && profile.stage && (
+                         <Badge variant="outline">{profile.stage}</Badge>
+                       )}
+                     </div>
+                     {profile.business_sector && (
+                       <p className="text-sm"><strong>Sector:</strong> {profile.business_sector}</p>
+                     )}
+                     {profile.location && (
+                       <p className="text-sm"><strong>Location:</strong> {profile.location}</p>
+                     )}
+                     {profile.isCompanyProfile && profile.year_founded && (
+                       <p className="text-sm"><strong>Founded:</strong> {profile.year_founded}</p>
+                     )}
+                     {profile.isCompanyProfile && profile.website && (
+                       <p className="text-sm">
+                         <strong>Website:</strong> 
+                         <a href={profile.website} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline ml-1">
+                           {profile.website}
+                         </a>
+                       </p>
+                     )}
+                     {profile.bio && (
+                       <p className="text-sm text-muted-foreground line-clamp-3">{profile.bio}</p>
+                     )}
+                     {profile.interests && profile.interests.length > 0 && (
+                       <div className="flex flex-wrap gap-1">
+                         {profile.interests.slice(0, 3).map((interest, index) => (
+                           <Badge key={index} variant="outline" className="text-xs">
+                             {interest}
+                           </Badge>
+                         ))}
+                         {profile.interests.length > 3 && (
+                           <Badge variant="outline" className="text-xs">
+                             +{profile.interests.length - 3} more
+                           </Badge>
+                         )}
+                       </div>
+                     )}
+                     <ConnectionRequestModal profile={profile} />
+                   </CardContent>
                 </Card>
               ))}
             </div>
