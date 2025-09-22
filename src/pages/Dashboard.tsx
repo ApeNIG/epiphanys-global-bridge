@@ -24,6 +24,9 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import ProfileCompletion from "@/components/ProfileCompletion";
+import { OpportunityUploadForm } from "@/components/OpportunityUploadForm";
+import { UserOpportunities } from "@/components/UserOpportunities";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Dashboard = () => {
   const { user, loading } = useAuth();
@@ -311,6 +314,29 @@ const Dashboard = () => {
               <ProfileCompletion />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Opportunity Management Section */}
+      <section className="py-12 px-4">
+        <div className="container mx-auto">
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold mb-2">Manage Opportunities</h2>
+            <p className="text-muted-foreground">Upload new opportunities and manage your existing listings.</p>
+          </div>
+          
+          <Tabs defaultValue="upload" className="w-full">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="upload">Upload New</TabsTrigger>
+              <TabsTrigger value="manage">Your Opportunities</TabsTrigger>
+            </TabsList>
+            <TabsContent value="upload" className="mt-6">
+              <OpportunityUploadForm />
+            </TabsContent>
+            <TabsContent value="manage" className="mt-6">
+              <UserOpportunities />
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 
