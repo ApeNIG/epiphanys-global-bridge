@@ -1,6 +1,13 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, CheckCircle, Lock, Users, Globe, Award } from "lucide-react";
+import mccLogo from "@/assets/partners/mcc-logo.png";
+import gmcaLogo from "@/assets/partners/gmca-logo.png";
+import gcAngelsLogo from "@/assets/partners/gc-angels-logo.png";
+import gmGrowthHubLogo from "@/assets/partners/gm-growth-hub-logo.png";
+import ukBlackTechLogo from "@/assets/partners/uk-black-tech-logo.png";
+import ourBusinessGmLogo from "@/assets/partners/our-business-gm-logo.png";
+import universitySalfordLogo from "@/assets/partners/university-salford-logo.png";
 const trustFeatures = [{
   icon: Shield,
   title: "KYC Verification",
@@ -24,25 +31,32 @@ const trustFeatures = [{
 }];
 const partnerships = [{
   name: "MCC",
-  type: "Strategic Partner"
+  type: "Strategic Partner",
+  logo: mccLogo
 }, {
   name: "GMCA",
-  type: "Regional Partner"
+  type: "Regional Partner",
+  logo: gmcaLogo
 }, {
   name: "GC Angels",
-  type: "Investment Partner"
+  type: "Investment Partner",
+  logo: gcAngelsLogo
 }, {
   name: "GM Growth Hub",
-  type: "Growth Partner"
+  type: "Growth Partner",
+  logo: gmGrowthHubLogo
 }, {
   name: "UK Black Tech",
-  type: "Community Partner"
+  type: "Community Partner",
+  logo: ukBlackTechLogo
 }, {
   name: "Our Business GM",
-  type: "Business Partner"
+  type: "Business Partner",
+  logo: ourBusinessGmLogo
 }, {
   name: "University Salford",
-  type: "Academic Partner"
+  type: "Academic Partner",
+  logo: universitySalfordLogo
 }];
 const TrustIndicators = () => {
   return <section className="py-16 bg-card/30">
@@ -96,13 +110,22 @@ const TrustIndicators = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {partnerships.map((partner, index) => <div key={index} className="text-center">
-                <div className="bg-background rounded-lg p-4 border border-border">
-                  <div className="font-medium text-foreground">{partner.name}</div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {partnerships.map((partner, index) => (
+              <div key={index} className="text-center">
+                <div className="bg-background rounded-lg p-4 border border-border hover:shadow-md transition-shadow group">
+                  <div className="mb-3 flex justify-center">
+                    <img 
+                      src={partner.logo} 
+                      alt={`${partner.name} logo`}
+                      className="h-12 w-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    />
+                  </div>
+                  <div className="font-medium text-foreground text-sm">{partner.name}</div>
                   <div className="text-xs text-muted-foreground mt-1">{partner.type}</div>
                 </div>
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
 
