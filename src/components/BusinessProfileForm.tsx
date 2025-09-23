@@ -12,7 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { Building, Target, TrendingUp, DollarSign, Users, Handshake, Heart } from "lucide-react";
+import { Building, Target, TrendingUp, PoundSterling, Users, Handshake, Heart } from "lucide-react";
 
 interface BusinessProfileFormProps {
   onComplete?: () => void;
@@ -169,7 +169,7 @@ export default function BusinessProfileForm({ onComplete }: BusinessProfileFormP
     { id: "company", label: "Company", icon: Building },
     { id: "market", label: "Market", icon: Target },
     { id: "traction", label: "Traction", icon: TrendingUp },
-    { id: "funding", label: "Funding", icon: DollarSign },
+    { id: "funding", label: "Funding", icon: PoundSterling },
     { id: "team", label: "Team", icon: Users },
     { id: "strategic", label: "Strategic Fit", icon: Handshake },
     { id: "impact", label: "Impact", icon: Heart },
