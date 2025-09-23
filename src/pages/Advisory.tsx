@@ -45,7 +45,7 @@ const advisoryServices = [
     services: [
       "Market Diversification Strategy",
       "Digital Transformation",
-      "Supply Chain Optimization",
+      "Supply Chain Optimisation",
       "Partnership Development",
       "Community Engagement Strategy",
       "Cultural Market Insights"
@@ -88,13 +88,13 @@ const advisoryProcess = [
   {
     step: "01",
     title: "Discovery & Assessment",
-    description: "Deep dive into your organization's needs, challenges, and diaspora connection opportunities",
+    description: "Deep dive into your organisation's needs, challenges, and diaspora connection opportunities",
     duration: "2-4 weeks"
   },
   {
     step: "02", 
     title: "Strategy Development",
-    description: "Create a customized roadmap leveraging our global diaspora network and cultural intelligence",
+    description: "Create a customised roadmap leveraging our global diaspora network and cultural intelligence",
     duration: "3-6 weeks"
   },
   {
@@ -106,7 +106,7 @@ const advisoryProcess = [
   {
     step: "04",
     title: "Performance Monitoring",
-    description: "Track progress with data-driven insights and continuous optimization", 
+    description: "Track progress with data-driven insights and continuous optimisation", 
     duration: "Monthly reviews"
   }
 ];
@@ -136,7 +136,7 @@ const Advisory = () => {
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
               Unlock the power of diaspora communities with expert advisory services tailored for 
-              startups, scale-ups, SMEs, enterprises, and government organizations.
+              startups, scale-ups, SMEs, enterprises, and government organisations.
             </p>
             <Button asChild variant="hero" size="xl" className="text-lg px-12 py-6">
               <Link to="/consultation">Book Strategic Consultation</Link>
@@ -149,10 +149,10 @@ const Advisory = () => {
       <section className="py-20 bg-card/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Advisory Solutions by Organization Type</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Advisory Solutions by Organisation Type</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Specialized advisory services designed to leverage diaspora networks and cultural intelligence 
-              for sustainable growth across different organizational needs.
+              Specialised advisory services designed to leverage diaspora networks and cultural intelligence 
+              for sustainable growth across different organisational needs.
             </p>
           </div>
 
@@ -199,7 +199,7 @@ const Advisory = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Advisory Process</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               A proven methodology that combines cultural intelligence with strategic expertise 
-              to deliver measurable results for your organization.
+              to deliver measurable results for your organisation.
             </p>
           </div>
 
@@ -255,7 +255,7 @@ const Advisory = () => {
         <div className="relative z-10 container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Transform Your Organization?
+              Ready to Transform Your Organisation?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Join leading organisations that have accelerated their growth through our strategic advisory services 

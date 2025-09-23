@@ -280,7 +280,7 @@ export const Network = () => {
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">Network & Connect</h1>
         <p className="text-muted-foreground">
-          Discover and connect with professionals, entrepreneurs, and organizations in your network.
+          Discover and connect with professionals, entrepreneurs, and organisations in your network.
         </p>
       </div>
 

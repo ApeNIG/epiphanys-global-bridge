@@ -175,7 +175,7 @@ const Global = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Global Initiatives</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Strategic programmes designed to maximize diaspora potential and cross-border collaboration.
+              Strategic programmes designed to maximise diaspora potential and cross-border collaboration.
             </p>
           </div>
           

@@ -111,7 +111,7 @@ const TrustIndicators = () => {
               Trusted Partners
             </h3>
             <p className="text-sm text-muted-foreground">
-              Working alongside leading organizations to ensure credibility and impact
+              Working alongside leading organisations to ensure credibility and impact
             </p>
           </div>
 

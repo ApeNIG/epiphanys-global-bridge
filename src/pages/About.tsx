@@ -34,7 +34,7 @@ const About = () => {
     {
       icon: Users,
       title: "Community-Driven Growth",
-      description: "Building bridges between communities, organizations, and opportunities for collective advancement."
+      description: "Building bridges between communities, organisations, and opportunities for collective advancement."
     },
     {
       icon: Shield,
@@ -47,7 +47,7 @@ const About = () => {
     {
       icon: Heart,
       title: "Inclusivity First",
-      description: "Prioritizing underrepresented communities and ensuring equal access to opportunities."
+      description: "Prioritising underrepresented communities and ensuring equal access to opportunities."
     },
     {
       icon: Lightbulb,
@@ -119,7 +119,7 @@ const About = () => {
             <span className="bg-gradient-primary bg-clip-text text-transparent">Communities</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-medium">
-            We're building a digital platform that connects businesses, organizations, 
+            We're building a digital platform that connects businesses, organisations, 
             and individuals with public and private sector opportunities, with a strong focus on serving 
             <span className="text-emerald-green font-semibold"> diaspora communities</span> in the UK.
           </p>

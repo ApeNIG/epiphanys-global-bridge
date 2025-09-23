@@ -212,7 +212,7 @@ export const NetworkConnector = () => {
             Quick Network Search
           </CardTitle>
           <CardDescription>
-            Find and connect with professionals, entrepreneurs, and organizations
+            Find and connect with professionals, entrepreneurs, and organisations
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">

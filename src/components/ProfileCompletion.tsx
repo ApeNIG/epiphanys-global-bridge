@@ -332,7 +332,7 @@ const ProfileCompletion = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="business_name">Business/Organization Name</Label>
+                <Label htmlFor="business_name">Business/Organisation Name</Label>
                 <Input
                   id="business_name"
                   value={profileData.business_name || ''}
@@ -342,7 +342,7 @@ const ProfileCompletion = () => {
               </div>
               
               <div>
-                <Label htmlFor="user_category">Organization Type</Label>
+                <Label htmlFor="user_category">Organisation Type</Label>
                 <Select 
                   value={profileData.user_category || ''} 
                   onValueChange={(value) => setProfileData({...profileData, user_category: value})}

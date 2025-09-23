@@ -21,7 +21,7 @@ const consultationSchema = z.object({
   phone: z.string().min(10, "Please enter a valid phone number"),
   company: z.string().min(2, "Company name is required"),
   position: z.string().min(2, "Position is required"),
-  organizationType: z.string().min(1, "Please select organization type"),
+  organizationType: z.string().min(1, "Please select organisation type"),
   industryFocus: z.string().min(1, "Please select industry focus"),
   consultationGoals: z.string().min(20, "Please describe your goals (minimum 20 characters)"),
   currentChallenges: z.string().min(20, "Please describe your challenges (minimum 20 characters)"),
@@ -47,7 +47,7 @@ const organizationTypes = [{
   label: "Government/Public Sector"
 }, {
   value: "nonprofit",
-  label: "Non-profit Organization"
+  label: "Non-profit Organisation"
 }];
 const industryFocus = ["Technology & Software", "Financial Services", "Healthcare & Life Sciences", "Retail & E-commerce", "Manufacturing", "Real Estate", "Education", "Energy & Sustainability", "Media & Entertainment", "Professional Services", "Other"];
 const budgetRanges = ["Under £5,000", "£5,000 - £15,000", "£15,000 - £50,000", "£50,000 - £100,000", "£100,000+", "Government/Enterprise - Custom"];
@@ -63,7 +63,7 @@ const consultationBenefits = [{
 }, {
   icon: TrendingUp,
   title: "Custom Growth Roadmap",
-  description: "Receive a preliminary strategic roadmap tailored to your organization"
+  description: "Receive a preliminary strategic roadmap tailored to your organisation"
 }, {
   icon: Users,
   title: "Expert Network Access",
@@ -153,7 +153,7 @@ const Consultation = () => {
               <span className="text-foreground">Consultation</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
-              Get personalized expert guidance to unlock your organization's potential through 
+              Get personalised expert guidance to unlock your organisation's potential through 
               strategic diaspora network connections and cultural intelligence.
             </p>
           </div>
@@ -243,16 +243,16 @@ const Consultation = () => {
                     </div>
                   </div>
 
-                  {/* Organization Information */}
+                  {/* Organisation Information */}
                   <div className="space-y-6">
-                    <h3 className="text-xl font-semibold border-b pb-2">Organization Information</h3>
+                    <h3 className="text-xl font-semibold border-b pb-2">Organisation Information</h3>
                     
                     <FormField control={form.control} name="company" render={({
                     field
                   }) => <FormItem>
-                          <FormLabel>Company/Organization Name *</FormLabel>
+                          <FormLabel>Company/Organisation Name *</FormLabel>
                           <FormControl>
-                            <Input placeholder="Your organization name" {...field} />
+                            <Input placeholder="Your organisation name" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>} />
@@ -261,11 +261,11 @@ const Consultation = () => {
                       <FormField control={form.control} name="organizationType" render={({
                       field
                     }) => <FormItem>
-                            <FormLabel>Organization Type *</FormLabel>
+                            <FormLabel>Organisation Type *</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
                                 <SelectTrigger>
-                                  <SelectValue placeholder="Select organization type" />
+                                  <SelectValue placeholder="Select organisation type" />
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
@@ -317,7 +317,7 @@ const Consultation = () => {
                   }) => <FormItem>
                           <FormLabel>What are your current challenges? *</FormLabel>
                           <FormControl>
-                            <Textarea placeholder="Describe the main obstacles or challenges your organization is facing..." className="min-h-[100px]" {...field} />
+                            <Textarea placeholder="Describe the main obstacles or challenges your organisation is facing..." className="min-h-[100px]" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>} />

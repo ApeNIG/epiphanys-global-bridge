@@ -98,8 +98,8 @@ const DealFlowPlatform = () => {
     },
     {
       icon: PieChart,
-      title: "Portfolio Optimization",
-      description: "Advanced analytics and portfolio management tools to maximize returns and minimize risk.",
+      title: "Portfolio Optimisation",
+      description: "Advanced analytics and portfolio management tools to maximise returns and minimise risk.",
       benefits: ["Risk diversification", "Performance tracking", "Market insights", "Exit planning"]
     }
   ];
@@ -267,7 +267,7 @@ const DealFlowPlatform = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold bg-gradient-accent bg-clip-text text-transparent mb-6">How We Support You</h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Comprehensive support designed to maximize your investment success and minimize risk.
+              Comprehensive support designed to maximise your investment success and minimise risk.
             </p>
           </div>
           

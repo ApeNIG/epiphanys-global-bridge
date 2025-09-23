@@ -30,7 +30,7 @@ const categories = [
   },
   {
     title: "Global Collaboration",
-    description: "Partner with organizations worldwide. Leverage diaspora networks for international business and cultural exchange.",
+    description: "Partner with organisations worldwide. Leverage diaspora networks for international business and cultural exchange.",
     icon: Globe,
     count: "680+",
     color: "from-green-500 to-emerald-600",

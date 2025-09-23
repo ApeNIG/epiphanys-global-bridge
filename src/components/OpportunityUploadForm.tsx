@@ -244,13 +244,13 @@ export const OpportunityUploadForm = ({ onOpportunityCreated }: OpportunityUploa
               <FormField
                 control={form.control}
                 name="company_name"
-                rules={{ required: "Organization name is required" }}
+                rules={{ required: "Organisation name is required" }}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Organization/Company</FormLabel>
+                    <FormLabel>Organisation/Company</FormLabel>
                     <FormControl>
                       <Input 
-                        placeholder="Organization offering the opportunity" 
+                        placeholder="Organisation offering the opportunity" 
                         {...field} 
                       />
                     </FormControl>
@@ -287,7 +287,7 @@ export const OpportunityUploadForm = ({ onOpportunityCreated }: OpportunityUploa
                     <FormControl>
                       <Input 
                         type="email"
-                        placeholder="contact@organization.com" 
+                        placeholder="contact@organisation.com" 
                         {...field} 
                       />
                     </FormControl>

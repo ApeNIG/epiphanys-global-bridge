@@ -80,7 +80,7 @@ const priorities = [{
 }];
 const supportResources = [{
   category: "career",
-  resources: ["Professional mentorship programs", "CV review and optimization", "Interview preparation sessions", "LinkedIn profile enhancement", "Skill assessment and development plans"]
+  resources: ["Professional mentorship programmes", "CV review and optimisation", "Interview preparation sessions", "LinkedIn profile enhancement", "Skill assessment and development plans"]
 }, {
   category: "business",
   resources: ["Business plan development", "Funding and investment guidance", "Market research support", "Networking with investors", "Legal and compliance advice"]

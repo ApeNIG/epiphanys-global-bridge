@@ -24,7 +24,7 @@ const InvestmentHub = () => {
     icon: <Rocket className="w-6 h-6" />,
     title: "Startups",
     description: "Early-stage companies seeking seed and Series A funding",
-    benefits: ["Access to angel investors", "Mentorship programs", "Pitch deck optimization", "Market validation"]
+    benefits: ["Access to angel investors", "Mentorship programmes", "Pitch deck optimisation", "Market validation"]
   }, {
     icon: <TrendingUp className="w-6 h-6" />,
     title: "Scale-ups",
