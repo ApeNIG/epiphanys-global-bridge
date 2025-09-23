@@ -133,6 +133,9 @@ const Header = () => {
           <Link to="/community" className="text-foreground hover:text-primary transition-colors">
             Community
           </Link>
+          <Link to="/ai-tasks" className="text-foreground hover:text-primary transition-colors">
+            AI Tasks
+          </Link>
           <Link to="/global" className="text-foreground hover:text-primary transition-colors">
             Global
           </Link>

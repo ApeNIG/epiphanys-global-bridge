@@ -20,6 +20,7 @@ import BusinessOnboarding from "./pages/BusinessOnboarding";
 import Goals from "./pages/Goals";
 import { Network } from "./pages/Network";
 import DealFlowPlatform from "./pages/DealFlowPlatform";
+import AITasks from "./pages/AITasks";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -48,6 +49,7 @@ const App = () => (
             <Route path="/network" element={<Network />} />
             <Route path="/deal-flow-platform" element={<DealFlowPlatform />} />
             <Route path="/business-onboarding" element={<BusinessOnboarding />} />
+            <Route path="/ai-tasks" element={<AITasks />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
