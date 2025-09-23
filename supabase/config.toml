@@ -57,5 +57,8 @@ enable_confirmations = false
 enabled = true
 port = 54328
 
+[functions.ai-chatbot]
+verify_jwt = false
+
 [functions.openai-task-completion]
 verify_jwt = true
