@@ -116,7 +116,7 @@ const InvestmentHub = () => {
             
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 via-violet-600 to-orange-600 bg-clip-text text-transparent leading-tight">Connecting Innovation &amp; Investment </h1>
             
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">Our Investment Hub connects public and private investors with high-potential businesses across under represented communities, creating a transparent ecosystem for sustainable growth and global impact.</p>
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">Our Investment Hub connects public and private investors with high-potential businesses across diaspora communities, creating a transparent ecosystem for sustainable growth and global impact.</p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
