@@ -3,25 +3,45 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Clock, CheckCircle, ArrowRight, User, Mail, MapPin } from "lucide-react";
+import { Clock, CheckCircle, ArrowRight, User, Mail, MapPin, Lock } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const onboardingSteps = [
   { icon: User, label: "Basic Info", duration: "30s" },
-  { icon: Mail, label: "Verify Email", duration: "45s" },
+  { icon: Mail, label: "Email & Password", duration: "45s" },
   { icon: MapPin, label: "Set Preferences", duration: "30s" },
 ];
 
 const QuickOnboarding = () => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    password: "",
     location: "",
   });
+  const { signUp } = useAuth();
+  const navigate = useNavigate();
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (currentStep < onboardingSteps.length - 1) {
       setCurrentStep(currentStep + 1);
+    } else {
+      // Complete setup - create account
+      setLoading(true);
+      try {
+        const { error } = await signUp(formData.email, formData.password, formData.name);
+        if (!error) {
+          // Success toast already shown by signUp function
+          // User will be redirected to sign-in page after email confirmation
+        }
+      } catch (error) {
+        console.error('Sign up error:', error);
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -104,8 +124,20 @@ const QuickOnboarding = () => {
                       className="text-base"
                     />
                   </div>
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-2 block">
+                      Create a password
+                    </label>
+                    <Input
+                      type="password"
+                      placeholder="Choose a secure password"
+                      value={formData.password}
+                      onChange={(e) => handleInputChange("password", e.target.value)}
+                      className="text-base"
+                    />
+                  </div>
                   <p className="text-sm text-muted-foreground">
-                    We'll send a quick verification link to confirm your email.
+                    We'll send a confirmation email to verify your account.
                   </p>
                 </div>
               )}
@@ -140,14 +172,15 @@ const QuickOnboarding = () => {
                   variant="hero"
                   className="group"
                   disabled={
+                    loading ||
                     (currentStep === 0 && !formData.name) ||
-                    (currentStep === 1 && !formData.email) ||
+                    (currentStep === 1 && (!formData.email || !formData.password)) ||
                     (currentStep === 2 && !formData.location)
                   }
                 >
                   {currentStep === onboardingSteps.length - 1 ? (
                     <>
-                      Complete Setup
+                      {loading ? "Creating Account..." : "Complete Setup"}
                       <CheckCircle className="ml-2 w-4 h-4" />
                     </>
                   ) : (
