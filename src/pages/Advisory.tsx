@@ -229,6 +229,23 @@ const Advisory = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Epiphiny Flow Advisory</h2>
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="text-center p-8 hover:shadow-elegant transition-all duration-300">
+              <Globe className="w-12 h-12 text-primary mx-auto mb-4" />
+              <h3 className="text-xl font-bold mb-3">Global Diaspora Network</h3>
+            </Card>
+
+            <Card className="text-center p-8 hover:shadow-elegant transition-all duration-300">
+              <Target className="w-12 h-12 text-primary mx-auto mb-4" />
+              <h3 className="text-xl font-bold mb-3">Proven Track Record</h3>
+            </Card>
+
+            <Card className="text-center p-8 hover:shadow-elegant transition-all duration-300">
+              <Zap className="w-12 h-12 text-primary mx-auto mb-4" />
+              <h3 className="text-xl font-bold mb-3">Accelerated Results</h3>
+            </Card>
+          </div>
         </div>
       </section>
 
