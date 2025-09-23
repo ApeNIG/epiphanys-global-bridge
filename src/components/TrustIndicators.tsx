@@ -1,47 +1,51 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, CheckCircle, Lock, Users, Globe, Award } from "lucide-react";
-
-const trustFeatures = [
-  {
-    icon: Shield,
-    title: "KYC Verification",
-    description: "All users verified through secure identity checks",
-    status: "Active"
-  },
-  {
-    icon: CheckCircle,
-    title: "Community Credibility",
-    description: "Peer reviews and reputation scoring system",
-    status: "Live"
-  },
-  {
-    icon: Lock,
-    title: "Data Protection",
-    description: "GDPR compliant with 256-bit encryption",
-    status: "Certified"
-  },
-  {
-    icon: Users,
-    title: "Fraud Prevention",
-    description: "AI-powered monitoring and community reporting",
-    status: "24/7"
-  }
-];
-
-const partnerships = [
-  { name: "MCC", type: "Strategic Partner" },
-  { name: "GMCA", type: "Regional Partner" },
-  { name: "GC Angels", type: "Investment Partner" },
-  { name: "GM Growth Hub", type: "Growth Partner" },
-  { name: "UK Black Tech", type: "Community Partner" },
-  { name: "Our Business GM", type: "Business Partner" },
-  { name: "University Salford", type: "Academic Partner" }
-];
-
+const trustFeatures = [{
+  icon: Shield,
+  title: "KYC Verification",
+  description: "All users verified through secure identity checks",
+  status: "Active"
+}, {
+  icon: CheckCircle,
+  title: "Community Credibility",
+  description: "Peer reviews and reputation scoring system",
+  status: "Live"
+}, {
+  icon: Lock,
+  title: "Data Protection",
+  description: "GDPR compliant with 256-bit encryption",
+  status: "Certified"
+}, {
+  icon: Users,
+  title: "Fraud Prevention",
+  description: "AI-powered monitoring and community reporting",
+  status: "24/7"
+}];
+const partnerships = [{
+  name: "MCC",
+  type: "Strategic Partner"
+}, {
+  name: "GMCA",
+  type: "Regional Partner"
+}, {
+  name: "GC Angels",
+  type: "Investment Partner"
+}, {
+  name: "GM Growth Hub",
+  type: "Growth Partner"
+}, {
+  name: "UK Black Tech",
+  type: "Community Partner"
+}, {
+  name: "Our Business GM",
+  type: "Business Partner"
+}, {
+  name: "University Salford",
+  type: "Academic Partner"
+}];
 const TrustIndicators = () => {
-  return (
-    <section className="py-16 bg-card/30">
+  return <section className="py-16 bg-card/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <Badge variant="outline" className="mb-4 text-primary border-primary/20">
@@ -62,8 +66,7 @@ const TrustIndicators = () => {
 
         {/* Trust Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {trustFeatures.map((feature, index) => (
-            <Card key={index} className="text-center hover:shadow-elegant transition-all duration-300 group">
+          {trustFeatures.map((feature, index) => <Card key={index} className="text-center hover:shadow-elegant transition-all duration-300 group">
               <CardContent className="pt-6">
                 <div className="flex justify-center mb-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
@@ -78,8 +81,7 @@ const TrustIndicators = () => {
                   {feature.status}
                 </Badge>
               </CardContent>
-            </Card>
-          ))}
+            </Card>)}
         </div>
 
         {/* Partnerships */}
@@ -95,35 +97,31 @@ const TrustIndicators = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {partnerships.map((partner, index) => (
-              <div key={index} className="text-center">
+            {partnerships.map((partner, index) => <div key={index} className="text-center">
                 <div className="bg-background rounded-lg p-4 border border-border">
                   <div className="font-medium text-foreground">{partner.name}</div>
                   <div className="text-xs text-muted-foreground mt-1">{partner.type}</div>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
 
         {/* Security Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           <div className="text-center">
-            <div className="text-2xl font-bold text-primary">99.9%</div>
-            <div className="text-sm text-muted-foreground">Uptime</div>
+            
+            
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-primary">100%</div>
-            <div className="text-sm text-muted-foreground">GDPR Compliant</div>
+            
+            
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-primary">24/7</div>
-            <div className="text-sm text-muted-foreground">Security Monitoring</div>
+            
+            
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default TrustIndicators;
