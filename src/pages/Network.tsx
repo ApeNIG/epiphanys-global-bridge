@@ -8,8 +8,9 @@ import { Badge } from '@/components/ui/badge';
 import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useToast } from '@/hooks/use-toast';
-import { Users, MessageSquare, UserPlus, CheckCircle, XCircle } from 'lucide-react';
+import { Users, MessageSquare, UserPlus, CheckCircle, XCircle, ArrowLeft } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { Link } from 'react-router-dom';
 
 interface Profile {
   id: string;
@@ -300,6 +301,14 @@ export const Network = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
+        <div className="flex items-center gap-4 mb-4">
+          <Button variant="ghost" asChild>
+            <Link to="/dashboard" className="flex items-center gap-2">
+              <ArrowLeft className="h-4 w-4" />
+              Back to Dashboard
+            </Link>
+          </Button>
+        </div>
         <h1 className="text-3xl font-bold mb-2">Network & Connect</h1>
         <p className="text-muted-foreground">
           Discover and connect with professionals, entrepreneurs, and organisations in your network.
