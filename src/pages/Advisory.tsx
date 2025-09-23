@@ -169,9 +169,6 @@ const Advisory = () => {
                       <CardTitle className="text-xl font-bold">{service.category}</CardTitle>
                     </div>
                   </div>
-                  <CardDescription className="text-sm text-muted-foreground">
-                    {service.description}
-                  </CardDescription>
                 </CardHeader>
                 
                 <CardContent className="relative z-10">
@@ -231,32 +228,6 @@ const Advisory = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Epiphiny Flow Advisory</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="text-center p-8 hover:shadow-elegant transition-all duration-300">
-              <Globe className="w-12 h-12 text-primary mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-3">Global Diaspora Network</h3>
-              <p className="text-muted-foreground">
-                Access to 250M+ diaspora professionals across 190+ countries with deep cultural and market knowledge.
-              </p>
-            </Card>
-
-            <Card className="text-center p-8 hover:shadow-elegant transition-all duration-300">
-              <Target className="w-12 h-12 text-primary mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-3">Proven Track Record</h3>
-              <p className="text-muted-foreground">
-                Over £2.5B in economic value created through strategic diaspora engagement and cultural intelligence.
-              </p>
-            </Card>
-
-            <Card className="text-center p-8 hover:shadow-elegant transition-all duration-300">
-              <Zap className="w-12 h-12 text-primary mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-3">Accelerated Results</h3>
-              <p className="text-muted-foreground">
-                Average 340% faster market entry and 78% higher success rate in new market penetration.
-              </p>
-            </Card>
           </div>
         </div>
       </section>
