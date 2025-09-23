@@ -152,10 +152,12 @@ const Dashboard = () => {
               </p>
             </div>
             <div className="mt-4 lg:mt-0">
-              <Badge variant="secondary" className="text-sm px-3 py-1">
-                <CheckCircle className="w-4 h-4 mr-2" />
-                Profile {userStats.profileCompletion}% Complete
-              </Badge>
+              <Link to="/profile?highlight=missing">
+                <Badge variant="secondary" className="text-sm px-3 py-1 cursor-pointer hover:bg-secondary/80 transition-colors">
+                  <CheckCircle className="w-4 h-4 mr-2" />
+                  Profile {userStats.profileCompletion}% Complete
+                </Badge>
+              </Link>
             </div>
           </div>
 
@@ -194,18 +196,20 @@ const Dashboard = () => {
                 </div>
               </CardContent>
             </Card>
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-muted-foreground">Profile</p>
-                    <p className="text-2xl font-bold">{userStats.profileCompletion}%</p>
+            <Link to="/profile?highlight=missing">
+              <Card className="cursor-pointer hover:shadow-elegant transition-all duration-300">
+                <CardContent className="pt-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm text-muted-foreground">Profile</p>
+                      <p className="text-2xl font-bold">{userStats.profileCompletion}%</p>
+                    </div>
+                    <Star className="w-8 h-8 text-primary" />
                   </div>
-                  <Star className="w-8 h-8 text-primary" />
-                </div>
-                <Progress value={userStats.profileCompletion} className="mt-2" />
-              </CardContent>
-            </Card>
+                  <Progress value={userStats.profileCompletion} className="mt-2" />
+                </CardContent>
+              </Card>
+            </Link>
           </div>
         </div>
       </section>

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useAuth } from "@/hooks/useAuth";
+import { useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -102,12 +103,14 @@ interface ProfessionalProfile {
 const Profile = () => {
   const { user } = useAuth();
   const { toast } = useToast();
+  const [searchParams] = useSearchParams();
   const [profile, setProfile] = useState<ProfileData | null>(null);
   const [businessProfile, setBusinessProfile] = useState<BusinessProfile | null>(null);
   const [professionalProfile, setProfessionalProfile] = useState<ProfessionalProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [uploadingImage, setUploadingImage] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const shouldHighlightMissing = searchParams.get('highlight') === 'missing';
 
   useEffect(() => {
     if (user) {
@@ -353,6 +356,20 @@ const Profile = () => {
     return Math.round((completedFields / fields.length) * 100);
   };
 
+  const getMissingFields = () => {
+    if (!profile) return [];
+    const fieldLabels = [
+      { key: 'full_name', label: 'Full Name', value: profile.full_name },
+      { key: 'business_name', label: 'Business Name', value: profile.business_name },
+      { key: 'business_sector', label: 'Business Sector', value: profile.business_sector },
+      { key: 'user_category', label: 'User Category', value: profile.user_category },
+      { key: 'location', label: 'Location', value: profile.location },
+      { key: 'bio', label: 'Bio', value: profile.bio },
+      { key: 'investment_stage', label: 'Investment Stage', value: profile.investment_stage }
+    ];
+    return fieldLabels.filter(field => !field.value || field.value.toString().trim() === '');
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -464,7 +481,7 @@ const Profile = () => {
           </div>
 
           {/* Profile Completion */}
-          <Card className="mb-6">
+          <Card className={`mb-6 ${shouldHighlightMissing ? 'ring-2 ring-primary/50 ring-offset-2' : ''}`}>
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -472,6 +489,19 @@ const Profile = () => {
                   <p className="text-sm text-muted-foreground">
                     Complete your profile to unlock more opportunities
                   </p>
+                  {shouldHighlightMissing && completionPercentage() < 100 && (
+                    <div className="mt-3 p-3 bg-primary/5 rounded-lg border border-primary/20">
+                      <p className="text-sm font-medium text-primary mb-2">Missing Information:</p>
+                      <div className="space-y-1">
+                        {getMissingFields().map((field) => (
+                          <div key={field.key} className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <div className="w-2 h-2 bg-destructive rounded-full"></div>
+                            {field.label}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
                 <div className="text-right">
                   <div className="text-2xl font-bold text-primary">{completionPercentage()}%</div>
