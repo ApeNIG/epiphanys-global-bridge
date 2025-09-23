@@ -28,6 +28,7 @@ import { OpportunityUploadForm } from "@/components/OpportunityUploadForm";
 import { UserOpportunities } from "@/components/UserOpportunities";
 import { NetworkConnector } from "@/components/NetworkConnector";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useProfileCompletion } from "@/hooks/useProfileCompletion";
 
 const Dashboard = () => {
   const { user, loading } = useAuth();
@@ -128,8 +129,10 @@ const Dashboard = () => {
     { title: "Set Goals", icon: Target, link: "/goals" }
   ];
 
+  const { percentage: profileCompletion } = useProfileCompletion();
+  
   const userStats = {
-    profileCompletion: 75,
+    profileCompletion,
     connectionsCount: 24,
     opportunitiesViewed: 15,
     applicationsSubmitted: 3
