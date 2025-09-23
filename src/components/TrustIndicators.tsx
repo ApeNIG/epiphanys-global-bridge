@@ -1,13 +1,14 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, CheckCircle, Lock, Users, Globe, Award } from "lucide-react";
-import mccLogo from "@/assets/partners/mcc-logo.png";
+import mccLogo from "@/assets/partners/mcc-logo.webp";
 import gmcaLogo from "@/assets/partners/gmca-logo.png";
 import gcAngelsLogo from "@/assets/partners/gc-angels-logo.png";
 import gmGrowthHubLogo from "@/assets/partners/gm-growth-hub-logo.png";
 import ukBlackTechLogo from "@/assets/partners/uk-black-tech-logo.png";
 import ourBusinessGmLogo from "@/assets/partners/our-business-gm-logo.png";
 import universitySalfordLogo from "@/assets/partners/university-salford-logo.png";
+import factoryInternationalLogo from "@/assets/partners/factory-international-logo.png";
 const trustFeatures = [{
   icon: Shield,
   title: "KYC Verification",
@@ -37,6 +38,10 @@ const partnerships = [{
   name: "GMCA",
   type: "Regional Partner",
   logo: gmcaLogo
+}, {
+  name: "Factory International",
+  type: "Cultural Partner",
+  logo: factoryInternationalLogo
 }, {
   name: "GC Angels",
   type: "Investment Partner",
