@@ -249,7 +249,7 @@ const ProfileCompletion = () => {
           Complete Your Profile
         </CardTitle>
         <CardDescription>
-          Help us personalize your experience by providing more details about your business and interests.
+          Help us personalise your experience by providing more details about your business and interests.
         </CardDescription>
       </CardHeader>
       <CardContent>
