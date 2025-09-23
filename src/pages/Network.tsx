@@ -161,12 +161,31 @@ export const Network = () => {
 
   const sendConnectionRequest = async (receiverId: string, message: string) => {
     try {
+      // Check if connection request already exists
+      const { data: existingRequest } = await supabase
+        .from('connection_requests')
+        .select('id, status')
+        .eq('sender_id', user?.id)
+        .eq('receiver_id', receiverId)
+        .single();
+
+      if (existingRequest) {
+        toast({
+          title: "Already Connected",
+          description: existingRequest.status === 'pending' 
+            ? "You have already sent a connection request to this person."
+            : `You have already ${existingRequest.status} a connection with this person.`,
+          variant: "destructive",
+        });
+        return;
+      }
+
       const { error } = await supabase
         .from('connection_requests')
         .insert({
           sender_id: user?.id,
           receiver_id: receiverId,
-          message: message
+          message: message || 'Hi! I would like to connect with you on the platform.'
         });
 
       if (error) throw error;
@@ -175,11 +194,14 @@ export const Network = () => {
         title: "Success",
         description: "Connection request sent successfully.",
       });
+
+      // Refresh profiles to show updated connection status
+      fetchProfiles();
     } catch (error) {
       console.error('Error sending connection request:', error);
       toast({
         title: "Error",
-        description: "Failed to send connection request.",
+        description: "Failed to send connection request. Please try again.",
         variant: "destructive",
       });
     }

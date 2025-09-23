@@ -150,6 +150,27 @@ export const NetworkConnector = () => {
     if (!user) return;
 
     try {
+      // Check if connection request already exists
+      const { data: existingRequest } = await supabase
+        .from('connection_requests')
+        .select('id, status')
+        .eq('sender_id', user.id)
+        .eq('receiver_id', receiverId)
+        .single();
+
+      if (existingRequest) {
+        toast({
+          title: "Already Connected",
+          description: existingRequest.status === 'pending' 
+            ? "Connection request already sent."
+            : `You have already ${existingRequest.status} a connection with this person.`,
+          variant: "destructive",
+        });
+        // Remove from search results since they're already connected
+        setSearchResults(prev => prev.filter(profile => profile.id !== receiverId));
+        return;
+      }
+
       const { error } = await supabase
         .from('connection_requests')
         .insert({
@@ -171,7 +192,7 @@ export const NetworkConnector = () => {
       console.error('Error sending connection request:', error);
       toast({
         title: "Error",
-        description: "Failed to send connection request.",
+        description: "Failed to send connection request. Please try again.",
         variant: "destructive",
       });
     }
