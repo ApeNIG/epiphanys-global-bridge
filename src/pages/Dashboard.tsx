@@ -20,7 +20,8 @@ import {
   Calendar,
   MessageCircle,
   BookOpen,
-  Target
+  Target,
+  Brain
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import ProfileCompletion from "@/components/ProfileCompletion";
@@ -126,7 +127,8 @@ const Dashboard = () => {
     { title: "Schedule Advisory Call", icon: Calendar, link: "/advisory" },
     { title: "Join Community Discussion", icon: MessageCircle, link: "/community" },
     { title: "Browse Resources", icon: BookOpen, link: "/about" },
-    { title: "Set Goals", icon: Target, link: "/goals" }
+    { title: "Set Goals", icon: Target, link: "/goals" },
+    { title: "AI Tasks", icon: Brain, link: "/ai-tasks" }
   ];
 
   const { percentage: profileCompletion } = useProfileCompletion();
@@ -307,10 +309,10 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Quick Actions Grid */}
-          <div className="mt-12">
-            <h3 className="text-xl font-bold mb-6">Quick Actions</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {/* Quick Actions Grid */}
+            <div className="mt-12">
+              <h3 className="text-xl font-bold mb-6">Quick Actions</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
               {quickActions.map((action, index) => (
                 <Link key={index} to={action.link}>
                   <Card className="hover:shadow-md transition-all duration-300 hover:scale-105 cursor-pointer">
