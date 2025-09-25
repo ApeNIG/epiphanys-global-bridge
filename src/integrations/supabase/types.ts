@@ -338,6 +338,36 @@ export type Database = {
         }
         Relationships: []
       }
+      connections: {
+        Row: {
+          connected_at: string
+          connection_request_id: string | null
+          created_at: string
+          id: string
+          updated_at: string
+          user_id_1: string
+          user_id_2: string
+        }
+        Insert: {
+          connected_at?: string
+          connection_request_id?: string | null
+          created_at?: string
+          id?: string
+          updated_at?: string
+          user_id_1: string
+          user_id_2: string
+        }
+        Update: {
+          connected_at?: string
+          connection_request_id?: string | null
+          created_at?: string
+          id?: string
+          updated_at?: string
+          user_id_1?: string
+          user_id_2?: string
+        }
+        Relationships: []
+      }
       consultation_requests: {
         Row: {
           budget_range: string

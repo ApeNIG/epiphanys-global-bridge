@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useToast } from '@/hooks/use-toast';
-import { Users, MessageSquare, UserPlus, CheckCircle, XCircle, ArrowLeft } from 'lucide-react';
+import { Users, MessageSquare, UserPlus, CheckCircle, XCircle, ArrowLeft, Network as NetworkIcon } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Link } from 'react-router-dom';
 
@@ -41,12 +41,21 @@ interface ConnectionRequest {
   sender_profile?: Profile;
 }
 
+interface Connection {
+  id: string;
+  user_id_1: string;
+  user_id_2: string;
+  connected_at: string;
+  connected_user?: Profile;
+}
+
 export const Network = () => {
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [connectionRequests, setConnectionRequests] = useState<ConnectionRequest[]>([]);
+  const [connections, setConnections] = useState<Connection[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'discover' | 'requests'>('discover');
+  const [activeTab, setActiveTab] = useState<'discover' | 'requests' | 'network'>('discover');
   const { user } = useAuth();
   const { toast } = useToast();
 
@@ -54,7 +63,18 @@ export const Network = () => {
     if (user) {
       fetchProfiles();
       fetchConnectionRequests();
+      fetchConnections();
     }
+  }, [user]);
+
+  // Listen for connection accepted events from other components
+  useEffect(() => {
+    const handleConnectionAccepted = () => {
+      fetchConnections();
+    };
+
+    window.addEventListener('connectionAccepted', handleConnectionAccepted);
+    return () => window.removeEventListener('connectionAccepted', handleConnectionAccepted);
   }, [user]);
 
   const fetchProfiles = async () => {
@@ -160,6 +180,47 @@ export const Network = () => {
     }
   };
 
+  const fetchConnections = async () => {
+    try {
+      // Fetch connections where user is either user_id_1 or user_id_2
+      const { data: connectionsData, error: connectionsError } = await supabase
+        .from('connections')
+        .select('*')
+        .or(`user_id_1.eq.${user?.id},user_id_2.eq.${user?.id}`)
+        .order('connected_at', { ascending: false });
+
+      if (connectionsError) throw connectionsError;
+
+      if (connectionsData && connectionsData.length > 0) {
+        // Get the profiles of connected users
+        const connectedUserIds = connectionsData.map(conn => 
+          conn.user_id_1 === user?.id ? conn.user_id_2 : conn.user_id_1
+        );
+
+        const { data: connectedProfiles, error: profilesError } = await supabase
+          .from('profiles')
+          .select('*')
+          .in('id', connectedUserIds);
+
+        if (profilesError) throw profilesError;
+
+        // Combine connection data with user profiles
+        const connectionsWithProfiles = connectionsData.map(connection => ({
+          ...connection,
+          connected_user: connectedProfiles?.find(profile => 
+            profile.id === (connection.user_id_1 === user?.id ? connection.user_id_2 : connection.user_id_1)
+          )
+        }));
+
+        setConnections(connectionsWithProfiles);
+      } else {
+        setConnections([]);
+      }
+    } catch (error) {
+      console.error('Error fetching connections:', error);
+    }
+  };
+
   const sendConnectionRequest = async (receiverId: string, message: string) => {
     try {
       // Check if connection request already exists
@@ -222,7 +283,11 @@ export const Network = () => {
         description: `Connection request ${status} successfully.`,
       });
 
+      // Refresh both connection requests and connections
       fetchConnectionRequests();
+      if (status === 'accepted') {
+        fetchConnections();
+      }
     } catch (error) {
       console.error('Error updating connection request:', error);
       toast({
@@ -331,6 +396,13 @@ export const Network = () => {
           <MessageSquare className="h-4 w-4 mr-2" />
           Connection Requests ({connectionRequests.filter(req => req.status === 'pending').length})
         </Button>
+        <Button
+          variant={activeTab === 'network' ? 'default' : 'outline'}
+          onClick={() => setActiveTab('network')}
+        >
+          <NetworkIcon className="h-4 w-4 mr-2" />
+          My Network ({connections.length})
+        </Button>
       </div>
 
       {activeTab === 'discover' && (
@@ -422,6 +494,76 @@ export const Network = () => {
             </Card>
           )}
         </>
+      )}
+
+      {activeTab === 'network' && (
+        <div className="space-y-6">
+          {connections.length === 0 ? (
+            <Card>
+              <CardContent className="text-center py-8">
+                <NetworkIcon className="h-16 w-16 mx-auto mb-4 text-muted-foreground opacity-50" />
+                <h3 className="text-lg font-semibold mb-2">No connections yet</h3>
+                <p className="text-muted-foreground mb-4">
+                  Start connecting with people to build your network
+                </p>
+                <Button onClick={() => setActiveTab('discover')}>
+                  Discover People
+                </Button>
+              </CardContent>
+            </Card>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {connections.map((connection) => (
+                <Card key={connection.id} className="hover:shadow-lg transition-shadow">
+                  <CardHeader className="text-center">
+                    <Avatar className="w-16 h-16 mx-auto mb-3">
+                      <AvatarImage src={connection.connected_user?.profile_image_url || connection.connected_user?.avatar_url} />
+                      <AvatarFallback>
+                        {connection.connected_user?.full_name?.charAt(0) || '?'}
+                      </AvatarFallback>
+                    </Avatar>
+                    <CardTitle className="text-lg">
+                      {connection.connected_user?.full_name || 'Anonymous'}
+                    </CardTitle>
+                    {connection.connected_user?.business_name && (
+                      <p className="text-sm text-muted-foreground">
+                        {connection.connected_user.business_name}
+                      </p>
+                    )}
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="flex gap-2 flex-wrap">
+                      {connection.connected_user?.user_category && (
+                        <Badge variant="secondary">
+                          {connection.connected_user.user_category}
+                        </Badge>
+                      )}
+                    </div>
+                    {connection.connected_user?.business_sector && (
+                      <p className="text-sm">
+                        <strong>Sector:</strong> {connection.connected_user.business_sector}
+                      </p>
+                    )}
+                    {connection.connected_user?.location && (
+                      <p className="text-sm">
+                        <strong>Location:</strong> {connection.connected_user.location}
+                      </p>
+                    )}
+                    <p className="text-sm text-muted-foreground">
+                      Connected {new Date(connection.connected_at).toLocaleDateString()}
+                    </p>
+                    <div className="flex gap-2">
+                      <Button size="sm" className="flex-1">
+                        <MessageSquare className="h-4 w-4 mr-2" />
+                        Message
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
+        </div>
       )}
 
       {activeTab === 'requests' && (

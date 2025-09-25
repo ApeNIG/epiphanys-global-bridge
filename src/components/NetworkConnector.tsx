@@ -213,6 +213,11 @@ export const NetworkConnector = () => {
       });
 
       fetchPendingRequests();
+      
+      // Dispatch custom event to refresh connections on main Network page
+      if (status === 'accepted') {
+        window.dispatchEvent(new CustomEvent('connectionAccepted'));
+      }
     } catch (error) {
       console.error('Error updating connection request:', error);
       toast({
