@@ -31,7 +31,7 @@ const trustFeatures = [{
   status: "24/7"
 }];
 const partnerships = [{
-  name: "MCC",
+  name: "MC2",
   type: "Strategic Partner",
   logo: mccLogo
 }, {
