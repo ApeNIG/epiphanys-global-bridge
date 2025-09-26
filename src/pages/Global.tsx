@@ -17,19 +17,19 @@ const Global = () => {
   const diasporaRegions = [
     {
       region: "Africa & Caribbean",
-      communities: ["Nigerian", "Ghanaian", "Jamaican", "Barbadian", "Trinidadian", "Nigeria"],
+      communities: ["Nigeria", "Ghana", "South Africa", "Jamaica", "Trinidad"],
       opportunities: "2,500+",
       highlight: "Tech innovation & renewable energy",
     },
     {
       region: "South Asia",
-      communities: ["Indian", "Pakistani", "Bangladeshi", "Sri Lankan", "Basian"],
+      communities: ["India", "Pakistan", "Bangladesh", "Sri Lanka", "Indonesia"],
       opportunities: "3,200+",
       highlight: "Fintech & healthcare solutions",
     },
     {
       region: "Middle East & North Africa",
-      communities: ["Egyptian", "Moroccan", "Lebanese", "Jordanian"],
+      communities: ["Egypt", "Morocco", "Dubai", "Saudi Arabia", "Qatar"],
       opportunities: "1,800+",
       highlight: "Infrastructure & sustainable development",
     },
