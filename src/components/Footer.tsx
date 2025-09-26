@@ -114,7 +114,7 @@ const Footer = () => {
           </div>
           
           <div className="text-sm text-muted-foreground">
-            © 2024 Epiphiny Flow. All rights reserved.
+            2025 All Rights Reserved
           </div>
         </div>
       </div>
