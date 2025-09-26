@@ -6,7 +6,7 @@ const principles = [
   {
     icon: Users,
     title: "Inclusivity",
-    description: "Diaspora & underrepresented founders at the centre",
+    description: "Diaspora & underserved founders at the centre",
   },
   {
     icon: Shield,
