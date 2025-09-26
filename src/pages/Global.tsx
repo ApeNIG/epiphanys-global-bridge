@@ -17,7 +17,7 @@ const Global = () => {
   const diasporaRegions = [
     {
       region: "Africa & Caribbean",
-      communities: ["Nigerian", "Ghanaian", "Jamaican", "Barbadian", "Trinidadian"],
+      communities: ["Nigerian", "Ghanaian", "Jamaican", "Barbadian", "Trinidadian", "Nigeria"],
       opportunities: "2,500+",
       highlight: "Tech innovation & renewable energy",
     },
