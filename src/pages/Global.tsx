@@ -23,7 +23,7 @@ const Global = () => {
     },
     {
       region: "South Asia",
-      communities: ["Indian", "Pakistani", "Bangladeshi", "Sri Lankan"],
+      communities: ["Indian", "Pakistani", "Bangladeshi", "Sri Lankan", "Basian"],
       opportunities: "3,200+",
       highlight: "Fintech & healthcare solutions",
     },
