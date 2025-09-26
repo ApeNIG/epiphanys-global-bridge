@@ -156,7 +156,7 @@ const Community = () => {
           {/* Enhanced Badge with Icon Animation */}
           <Badge className="mb-8 bg-gradient-to-r from-cool-grey to-royal-blue/10 text-deep-navy border-0 shadow-elegant hover:shadow-glow transition-all duration-300 px-6 py-2 font-semibold">
             <Users className="w-4 h-4 mr-2 animate-pulse text-royal-blue" />
-            Diaspora-First Community Platform
+            Create your community
           </Badge>
           
           {/* Enhanced Typography with Epiphiny Brand Gradients */}
