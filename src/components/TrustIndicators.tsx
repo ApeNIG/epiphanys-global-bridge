@@ -32,7 +32,7 @@ const trustFeatures = [{
 }];
 const partnerships = [{
   name: "MC2",
-  type: "Strategic Partner",
+  type: "PR Partner",
   logo: mccLogo
 }, {
   name: "GMCA",
