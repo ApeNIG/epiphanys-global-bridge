@@ -35,7 +35,7 @@ const Global = () => {
     },
     {
       region: "Europe & Americas",
-      communities: ["Polish", "Italian", "Mexican", "Brazilian"],
+      communities: ["Germany", "France", "Italy", "Mexico", "Brazil"],
       opportunities: "2,100+",
       highlight: "Advanced manufacturing & green tech",
     },
