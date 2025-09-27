@@ -8,9 +8,11 @@ import { Badge } from '@/components/ui/badge';
 import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useToast } from '@/hooks/use-toast';
-import { Users, MessageSquare, UserPlus, CheckCircle, XCircle, ArrowLeft, Network as NetworkIcon } from 'lucide-react';
+import { Users, MessageSquare, UserPlus, CheckCircle, XCircle, ArrowLeft, Network as NetworkIcon, Mail } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Link } from 'react-router-dom';
+import { DirectMessage } from '@/components/DirectMessage';
+import { MessageButton } from '@/components/MessageButton';
 
 interface Profile {
   id: string;
@@ -56,6 +58,7 @@ export const Network = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<'discover' | 'requests' | 'network'>('discover');
+  const [selectedRecipient, setSelectedRecipient] = useState<Profile | null>(null);
   const { user } = useAuth();
   const { toast } = useToast();
 
@@ -409,6 +412,18 @@ export const Network = () => {
     );
   }
 
+  // Show direct message interface if a recipient is selected
+  if (selectedRecipient) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <DirectMessage 
+          recipient={selectedRecipient} 
+          onBack={() => setSelectedRecipient(null)} 
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
@@ -599,10 +614,10 @@ export const Network = () => {
                       Connected {new Date(connection.connected_at).toLocaleDateString()}
                     </p>
                     <div className="flex gap-2">
-                      <Button size="sm" className="flex-1">
-                        <MessageSquare className="h-4 w-4 mr-2" />
-                        Message
-                      </Button>
+                      <MessageButton
+                        userId={connection.connected_user!.id}
+                        onClick={() => setSelectedRecipient(connection.connected_user!)}
+                      />
                     </div>
                   </CardContent>
                 </Card>
