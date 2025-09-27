@@ -189,7 +189,7 @@ serve(async (req) => {
   } catch (error) {
     console.error('Error in framework generation:', error);
     return new Response(JSON.stringify({ 
-      error: error.message || 'An unexpected error occurred' 
+      error: error instanceof Error ? error.message : 'An unexpected error occurred' 
     }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },

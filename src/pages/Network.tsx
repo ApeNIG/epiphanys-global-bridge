@@ -67,6 +67,46 @@ export const Network = () => {
     }
   }, [user]);
 
+  // Set up real-time listeners for connections
+  useEffect(() => {
+    if (!user) return;
+
+    const channel = supabase
+      .channel('connections-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'connections',
+          filter: `user_id_1=eq.${user.id},user_id_2=eq.${user.id}`
+        },
+        () => {
+          console.log('New connection detected, refreshing...');
+          fetchConnections();
+        }
+      )
+      .on(
+        'postgres_changes',
+        {
+          event: 'UPDATE',
+          schema: 'public',
+          table: 'connection_requests',
+          filter: `receiver_id=eq.${user.id}`
+        },
+        () => {
+          console.log('Connection request updated, refreshing...');
+          fetchConnectionRequests();
+          fetchConnections();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [user]);
+
   // Listen for connection accepted events from other components
   useEffect(() => {
     const handleConnectionAccepted = () => {
@@ -286,7 +326,13 @@ export const Network = () => {
       // Refresh both connection requests and connections
       fetchConnectionRequests();
       if (status === 'accepted') {
-        fetchConnections();
+        // Add a small delay to ensure the trigger has time to create the connection
+        setTimeout(() => {
+          fetchConnections();
+        }, 100);
+        
+        // Dispatch custom event to notify other components
+        window.dispatchEvent(new CustomEvent('connectionAccepted'));
       }
     } catch (error) {
       console.error('Error updating connection request:', error);
