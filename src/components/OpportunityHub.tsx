@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Search, MapPin, Calendar, ExternalLink, Building, Users, Briefcase } from "lucide-react";
+import { Search, MapPin, Calendar, ExternalLink, Building, Users, Briefcase, Star } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -194,7 +194,7 @@ const OpportunityHub = () => {
         {/* Opportunities Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredOpportunities.map((opportunity) => {
-            const IconComponent = categoryIcons[opportunity.category];
+            const IconComponent = categoryIcons[opportunity.category as keyof typeof categoryIcons] || Star;
             return (
               <Card 
                 key={opportunity.id}
