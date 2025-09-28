@@ -115,6 +115,35 @@ const Consultation = () => {
       if (error) {
         throw error;
       }
+
+      // Send email notification to Robert and confirmation to user
+      try {
+        const { error: emailError } = await supabase.functions.invoke('send-consultation-email', {
+          body: {
+            full_name: data.fullName,
+            email: data.email,
+            phone: data.phone,
+            company: data.company,
+            position: data.position,
+            organization_type: data.organizationType,
+            industry_focus: data.industryFocus,
+            consultation_goals: data.consultationGoals,
+            current_challenges: data.currentChallenges,
+            budget_range: data.budgetRange,
+            timeframe: data.timeframe,
+            hear_about_us: data.hearAboutUs || ''
+          }
+        });
+
+        if (emailError) {
+          console.error('Email sending error:', emailError);
+          // Don't throw here - the database record was saved successfully
+        }
+      } catch (emailError) {
+        console.error('Error sending email notification:', emailError);
+        // Don't throw here - the database record was saved successfully
+      }
+
       toast({
         title: "Consultation Request Submitted!",
         description: "We'll contact you within 24 hours to schedule your strategic consultation."

@@ -71,3 +71,6 @@ verify_jwt = false
 
 [functions.framework-generator]
 verify_jwt = false
+
+[functions.send-consultation-email]
+verify_jwt = false
