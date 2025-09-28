@@ -14,6 +14,7 @@ interface Opportunity {
   description: string;
   category: 'business' | 'career' | 'investment' | 'collaboration';
   sector: 'public' | 'private';
+  business_sector: string | null;
   location: string | null;
   company_name: string;
   contact_email: string | null;
@@ -231,6 +232,11 @@ const OpportunityHub = () => {
 
                   <p className="text-sm text-muted-foreground mb-3 font-medium">
                     {opportunity.company_name}
+                    {opportunity.business_sector && (
+                      <span className="text-xs ml-2 text-muted-foreground/80">
+                        • {opportunity.business_sector}
+                      </span>
+                    )}
                   </p>
 
                   <p className="text-muted-foreground mb-4 text-sm leading-relaxed line-clamp-3">

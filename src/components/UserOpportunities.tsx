@@ -13,6 +13,7 @@ interface Opportunity {
   description: string;
   category: string;
   sector: string;
+  business_sector: string | null;
   location: string;
   company_name: string;
   contact_email: string;
@@ -178,6 +179,9 @@ export const UserOpportunities = ({ onOpportunityChange }: UserOpportunitiesProp
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <Building className="h-4 w-4" />
                         {opportunity.company_name}
+                        {opportunity.business_sector && (
+                          <span className="text-xs ml-2">• {opportunity.business_sector}</span>
+                        )}
                         {opportunity.location && (
                           <>
                             <MapPin className="h-4 w-4 ml-2" />

@@ -508,6 +508,7 @@ export type Database = {
       }
       opportunities: {
         Row: {
+          business_sector: string | null
           category: string
           company_name: string
           contact_email: string | null
@@ -526,6 +527,7 @@ export type Database = {
           website_url: string | null
         }
         Insert: {
+          business_sector?: string | null
           category: string
           company_name: string
           contact_email?: string | null
@@ -544,6 +546,7 @@ export type Database = {
           website_url?: string | null
         }
         Update: {
+          business_sector?: string | null
           category?: string
           company_name?: string
           contact_email?: string | null
