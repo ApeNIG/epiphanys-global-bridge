@@ -9,7 +9,7 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Advisory from "./pages/Advisory";
-import Opportunities from "./pages/Opportunities";
+import ManageOpportunities from "./pages/ManageOpportunities";
 import Community from "./pages/Community";
 import About from "./pages/About";
 import InvestmentHub from "./pages/InvestmentHub";
@@ -38,7 +38,7 @@ const App = () => (
             <Route path="/auth" element={<Auth />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/advisory" element={<Advisory />} />
-            <Route path="/opportunities" element={<Opportunities />} />
+            <Route path="/opportunities" element={<ManageOpportunities />} />
             <Route path="/community" element={<Community />} />
             <Route path="/about" element={<About />} />
             <Route path="/investment-hub" element={<InvestmentHub />} />
