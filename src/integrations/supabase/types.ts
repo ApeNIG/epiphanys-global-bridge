@@ -828,6 +828,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_filtered_profile_data: {
+        Args: { profile_id: string; requesting_user_id: string }
+        Returns: Json
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
