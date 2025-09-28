@@ -34,6 +34,7 @@ import { useProfileCompletion } from "@/hooks/useProfileCompletion";
 const Dashboard = () => {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
+  const { percentage: profileCompletion } = useProfileCompletion();
 
   useEffect(() => {
     if (!loading && !user) {
@@ -131,8 +132,6 @@ const Dashboard = () => {
     { title: "AI Tasks", icon: Brain, link: "/ai-tasks" }
   ];
 
-  const { percentage: profileCompletion } = useProfileCompletion();
-  
   const userStats = {
     profileCompletion,
     connectionsCount: 24,
