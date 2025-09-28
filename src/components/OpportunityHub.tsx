@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Search, MapPin, Calendar, ExternalLink, Building, Users, Briefcase, UsersRound } from "lucide-react";
+import { Search, MapPin, Calendar, ExternalLink, Building, Users, Briefcase } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -36,7 +36,7 @@ const categoryIcons = {
   business: Building,
   career: Users,
   investment: Briefcase,
-  collaboration: UsersRound
+  collaboration: Users
 };
 
 const OpportunityHub = () => {
