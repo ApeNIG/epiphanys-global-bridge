@@ -40,6 +40,7 @@ const categoryIcons = {
 };
 
 const OpportunityHub = () => {
+  console.log('Lucide icons check:', { Search, MapPin, Calendar, ExternalLink, Building, Users, Briefcase, Star });
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
@@ -195,6 +196,7 @@ const OpportunityHub = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredOpportunities.map((opportunity) => {
             const IconComponent = categoryIcons[opportunity.category as keyof typeof categoryIcons] || Star;
+            console.log('Opportunity category:', opportunity.category, 'IconComponent:', IconComponent);
             return (
               <Card 
                 key={opportunity.id}
