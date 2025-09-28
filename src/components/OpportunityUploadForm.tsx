@@ -15,6 +15,7 @@ interface OpportunityFormData {
   description: string;
   category: string;
   sector: string;
+  business_sector: string;
   location: string;
   company_name: string;
   contact_email: string;
@@ -38,6 +39,11 @@ const categories = [
 ];
 
 const sectors = [
+  'public',
+  'private'
+];
+
+const businessSectors = [
   'Technology',
   'Healthcare', 
   'Finance',
@@ -76,6 +82,7 @@ export const OpportunityUploadForm = ({ onOpportunityCreated }: OpportunityUploa
       description: '',
       category: '',
       sector: '',
+      business_sector: '',
       location: '',
       company_name: '',
       contact_email: '',
@@ -102,7 +109,16 @@ export const OpportunityUploadForm = ({ onOpportunityCreated }: OpportunityUploa
       const { error } = await supabase
         .from('opportunities')
         .insert({
-          ...data,
+          title: data.title,
+          description: data.description,
+          category: data.category,
+          sector: data.sector,
+          location: data.location,
+          company_name: data.company_name,
+          contact_email: data.contact_email,
+          website_url: data.website_url,
+          salary_range: data.salary_range,
+          deadline: data.deadline,
           user_id: user.id,
           is_active: true,
           is_featured: false
@@ -227,11 +243,8 @@ export const OpportunityUploadForm = ({ onOpportunityCreated }: OpportunityUploa
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {sectors.map((sector) => (
-                          <SelectItem key={sector} value={sector}>
-                            {sector}
-                          </SelectItem>
-                        ))}
+                        <SelectItem value="public">Public Sector</SelectItem>
+                        <SelectItem value="private">Private Sector</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -239,6 +252,32 @@ export const OpportunityUploadForm = ({ onOpportunityCreated }: OpportunityUploa
                 )}
               />
             </div>
+
+            <FormField
+              control={form.control}
+              name="business_sector"
+              rules={{ required: "Business sector is required" }}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Business Sector</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select business sector" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {businessSectors.map((sector) => (
+                        <SelectItem key={sector} value={sector}>
+                          {sector}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FormField
