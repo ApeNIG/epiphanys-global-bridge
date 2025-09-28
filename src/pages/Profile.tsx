@@ -51,7 +51,7 @@ const Profile = () => {
       <Header />
       
       {/* Profile Completion Status */}
-      <section className="py-8 px-4">
+      <section className="pt-24 py-8 px-4">
         <div className="container mx-auto">
           {showMissingFields && (
             <Alert id="missing-fields" className="mb-6 border-accent bg-accent/5">
