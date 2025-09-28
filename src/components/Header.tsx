@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { User, LogOut, Target, Users, Brain, MessageSquare } from "lucide-react";
+import { User, LogOut, Target, Users, Brain, MessageSquare, Briefcase } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -183,6 +183,12 @@ const Header = () => {
                    <Link to="/network" className="flex items-center cursor-pointer">
                      <MessageSquare className="w-4 h-4 mr-2" />
                      Messages
+                   </Link>
+                 </DropdownMenuItem>
+                 <DropdownMenuItem asChild>
+                   <Link to="/opportunities" className="flex items-center cursor-pointer">
+                     <Briefcase className="w-4 h-4 mr-2" />
+                     Manage Opportunities
                    </Link>
                  </DropdownMenuItem>
                  <DropdownMenuItem asChild>
