@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Search, MapPin, Calendar, ExternalLink, Building, Users, Briefcase, Star } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { ContactRequest } from "@/components/ContactRequest";
 
 interface Opportunity {
   id: string;
@@ -23,6 +24,7 @@ interface Opportunity {
   deadline: string | null;
   is_featured: boolean;
   created_at: string;
+  user_id: string | null;
 }
 
 const categoryColors = {
@@ -280,14 +282,16 @@ const OpportunityHub = () => {
                         Visit
                       </Button>
                     )}
-                    {opportunity.contact_email && (
-                      <Button 
+                    {opportunity.user_id && (
+                      <ContactRequest
+                        receiverId={opportunity.user_id}
+                        receiverName={opportunity.company_name}
+                        opportunityId={opportunity.id}
+                        opportunityTitle={opportunity.title}
+                        variant="default"
                         size="sm"
                         className="flex-1"
-                        onClick={() => window.open(`mailto:${opportunity.contact_email}`, '_blank')}
-                      >
-                        Apply Now
-                      </Button>
+                      />
                     )}
                   </div>
 

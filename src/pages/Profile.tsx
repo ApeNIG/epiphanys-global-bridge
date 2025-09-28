@@ -9,6 +9,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProfileCompletion from "@/components/ProfileCompletion";
 import BusinessProfileForm from "@/components/BusinessProfileForm";
+import { PrivacySettings } from "@/components/PrivacySettings";
 import { useSearchParams } from "react-router-dom";
 import { useProfileCompletion } from "@/hooks/useProfileCompletion";
 
@@ -189,6 +190,9 @@ const Profile = () => {
                   </div>
                 </CardContent>
               </Card>
+              
+              {/* Privacy Settings */}
+              <PrivacySettings />
             </div>
           </div>
         </div>

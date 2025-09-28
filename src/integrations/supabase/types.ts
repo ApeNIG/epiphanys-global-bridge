@@ -425,6 +425,47 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_requests: {
+        Row: {
+          created_at: string
+          id: string
+          message: string
+          opportunity_id: string | null
+          receiver_id: string
+          sender_id: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          message: string
+          opportunity_id?: string | null
+          receiver_id: string
+          sender_id: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          message?: string
+          opportunity_id?: string | null
+          receiver_id?: string
+          sender_id?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "contact_requests_opportunity_id_fkey"
+            columns: ["opportunity_id"]
+            isOneToOne: false
+            referencedRelation: "opportunities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       goals: {
         Row: {
           category: string
@@ -563,6 +604,36 @@ export type Database = {
           updated_at?: string
           user_id?: string | null
           website_url?: string | null
+        }
+        Relationships: []
+      }
+      privacy_settings: {
+        Row: {
+          contact_info_visible: boolean
+          created_at: string
+          id: string
+          professional_details_visible: boolean
+          profile_visibility: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          contact_info_visible?: boolean
+          created_at?: string
+          id?: string
+          professional_details_visible?: boolean
+          profile_visibility?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          contact_info_visible?: boolean
+          created_at?: string
+          id?: string
+          professional_details_visible?: boolean
+          profile_visibility?: string
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
