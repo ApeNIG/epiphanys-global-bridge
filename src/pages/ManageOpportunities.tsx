@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { OpportunityUploadForm } from '@/components/OpportunityUploadForm';
 import { UserOpportunities } from '@/components/UserOpportunities';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { BarChart, Upload, Eye, TrendingUp, Calendar } from 'lucide-react';
+import { BarChart, Upload, Eye, TrendingUp, Calendar, ArrowLeft } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const ManageOpportunities = () => {
   const [refreshKey, setRefreshKey] = useState(0);
+  const navigate = useNavigate();
 
   const handleOpportunityChange = () => {
     setRefreshKey(prev => prev + 1);
@@ -17,6 +20,14 @@ const ManageOpportunities = () => {
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/10">
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
+          <Button 
+            variant="ghost" 
+            onClick={() => navigate(-1)}
+            className="mb-4 flex items-center gap-2 text-muted-foreground hover:text-foreground"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Go Back
+          </Button>
           <h1 className="text-4xl font-bold mb-4">Manage Opportunities</h1>
           <p className="text-muted-foreground text-lg">
             Upload new opportunities and track the performance of your existing listings.
