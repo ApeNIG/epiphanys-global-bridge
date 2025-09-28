@@ -1,8 +1,29 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import OpportunityHub from "@/components/OpportunityHub";
+import { OpportunityUploadForm } from "@/components/OpportunityUploadForm";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Opportunities = () => {
+  const [refreshKey, setRefreshKey] = useState(0);
+  const [isUploadDialogOpen, setIsUploadDialogOpen] = useState(false);
+
+  const handleOpportunityCreated = () => {
+    setRefreshKey(prev => prev + 1);
+    setIsUploadDialogOpen(false);
+    // Dispatch custom event for real-time updates
+    window.dispatchEvent(new CustomEvent('opportunitiesUpdated'));
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -33,11 +54,26 @@ const Opportunities = () => {
             from both <span className="text-emerald-green font-semibold">public and private sectors</span>, with a strong focus on serving 
             <span className="text-sunset-orange font-semibold"> diaspora communities</span>.
           </p>
+          
+          <Dialog open={isUploadDialogOpen} onOpenChange={setIsUploadDialogOpen}>
+            <DialogTrigger asChild>
+              <Button size="lg" className="bg-gradient-primary hover:opacity-90 text-white shadow-lg">
+                <Plus className="mr-2 h-5 w-5" />
+                Upload Opportunity
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle>Share a New Opportunity</DialogTitle>
+              </DialogHeader>
+              <OpportunityUploadForm onOpportunityCreated={handleOpportunityCreated} />
+            </DialogContent>
+          </Dialog>
         </div>
       </section>
       
       <main className="container mx-auto px-4 py-12">
-        <OpportunityHub />
+        <OpportunityHub key={refreshKey} />
       </main>
       <Footer />
     </div>
