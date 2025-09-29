@@ -16,18 +16,49 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Clock, Users, Building2, TrendingUp, Globe, Shield, CheckCircle, Calendar, MessageSquare, Phone, Mail, MapPin } from "lucide-react";
 const consultationSchema = z.object({
-  fullName: z.string().min(2, "Full name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  phone: z.string().min(10, "Please enter a valid phone number"),
-  company: z.string().min(2, "Company name is required"),
-  position: z.string().min(2, "Position is required"),
-  organizationType: z.string().min(1, "Please select organisation type"),
-  industryFocus: z.string().min(1, "Please select industry focus"),
-  consultationGoals: z.string().min(20, "Please describe your goals (minimum 20 characters)"),
-  currentChallenges: z.string().min(20, "Please describe your challenges (minimum 20 characters)"),
-  budgetRange: z.string().min(1, "Please select budget range"),
-  timeframe: z.string().min(1, "Please select timeframe"),
-  hearAboutUs: z.string().optional()
+  fullName: z.string()
+    .trim()
+    .min(2, "Full name must be at least 2 characters")
+    .max(100, "Full name must be less than 100 characters"),
+  email: z.string()
+    .trim()
+    .email("Please enter a valid email address")
+    .max(255, "Email must be less than 255 characters"),
+  phone: z.string()
+    .trim()
+    .min(10, "Please enter a valid phone number")
+    .max(50, "Phone number must be less than 50 characters"),
+  company: z.string()
+    .trim()
+    .min(2, "Company name is required")
+    .max(200, "Company name must be less than 200 characters"),
+  position: z.string()
+    .trim()
+    .min(2, "Position is required")
+    .max(100, "Position must be less than 100 characters"),
+  organizationType: z.string()
+    .min(1, "Please select organisation type")
+    .max(100, "Organisation type must be less than 100 characters"),
+  industryFocus: z.string()
+    .min(1, "Please select industry focus")
+    .max(200, "Industry focus must be less than 200 characters"),
+  consultationGoals: z.string()
+    .trim()
+    .min(20, "Please describe your goals (minimum 20 characters)")
+    .max(2000, "Goals description must be less than 2000 characters"),
+  currentChallenges: z.string()
+    .trim()
+    .min(20, "Please describe your challenges (minimum 20 characters)")
+    .max(2000, "Challenges description must be less than 2000 characters"),
+  budgetRange: z.string()
+    .min(1, "Please select budget range")
+    .max(50, "Budget range must be less than 50 characters"),
+  timeframe: z.string()
+    .min(1, "Please select timeframe")
+    .max(100, "Timeframe must be less than 100 characters"),
+  hearAboutUs: z.string()
+    .max(500, "Referral information must be less than 500 characters")
+    .optional()
 });
 type ConsultationForm = z.infer<typeof consultationSchema>;
 const organizationTypes = [{
