@@ -825,7 +825,63 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      admin_consultation_requests: {
+        Row: {
+          budget_range: string | null
+          company: string | null
+          consultation_goals: string | null
+          created_at: string | null
+          current_challenges: string | null
+          email: string | null
+          full_name: string | null
+          hear_about_us: string | null
+          id: string | null
+          industry_focus: string | null
+          organization_type: string | null
+          phone: string | null
+          position: string | null
+          status: string | null
+          timeframe: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          budget_range?: string | null
+          company?: string | null
+          consultation_goals?: string | null
+          created_at?: string | null
+          current_challenges?: string | null
+          email?: string | null
+          full_name?: string | null
+          hear_about_us?: string | null
+          id?: string | null
+          industry_focus?: string | null
+          organization_type?: string | null
+          phone?: string | null
+          position?: string | null
+          status?: string | null
+          timeframe?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          budget_range?: string | null
+          company?: string | null
+          consultation_goals?: string | null
+          created_at?: string | null
+          current_challenges?: string | null
+          email?: string | null
+          full_name?: string | null
+          hear_about_us?: string | null
+          id?: string | null
+          industry_focus?: string | null
+          organization_type?: string | null
+          phone?: string | null
+          position?: string | null
+          status?: string | null
+          timeframe?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       can_view_consultation_request: {
@@ -854,6 +910,10 @@ export type Database = {
       is_admin_or_staff: {
         Args: { _user_id: string }
         Returns: boolean
+      }
+      log_consultation_access: {
+        Args: { accessing_user_id: string; request_id: string }
+        Returns: undefined
       }
     }
     Enums: {
