@@ -167,17 +167,19 @@ const Dashboard = () => {
 
           {/* Quick Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-muted-foreground">Connections</p>
-                    <p className="text-2xl font-bold">{userStats.connectionsCount}</p>
+            <Link to="/network?tab=network">
+              <Card className="cursor-pointer hover:shadow-elegant transition-all duration-300">
+                <CardContent className="pt-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm text-muted-foreground">Connections</p>
+                      <p className="text-2xl font-bold">{userStats.connectionsCount}</p>
+                    </div>
+                    <Users className="w-8 h-8 text-primary" />
                   </div>
-                  <Users className="w-8 h-8 text-primary" />
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </Link>
             <Card>
               <CardContent className="pt-6">
                 <div className="flex items-center justify-between">
@@ -303,7 +305,15 @@ const Dashboard = () => {
 
             {/* Network Connector */}
             <div>
-              <h3 className="text-xl font-bold mb-6">Network & Connect</h3>
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-xl font-bold">Network & Connect</h3>
+                <Link to="/network?tab=network">
+                  <Button variant="outline" size="sm">
+                    View All
+                    <ArrowUpRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+              </div>
               <NetworkConnector />
             </div>
           </div>

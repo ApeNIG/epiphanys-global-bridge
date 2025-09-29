@@ -57,10 +57,14 @@ export const Network = () => {
   const [connections, setConnections] = useState<Connection[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'discover' | 'requests' | 'network'>('discover');
   const [selectedRecipient, setSelectedRecipient] = useState<Profile | null>(null);
   const { user } = useAuth();
   const { toast } = useToast();
+  
+  // Get initial tab from URL search params
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialTab = urlParams.get('tab') as 'discover' | 'requests' | 'network' || 'discover';
+  const [activeTab, setActiveTab] = useState<'discover' | 'requests' | 'network'>(initialTab);
 
   useEffect(() => {
     if (user) {
