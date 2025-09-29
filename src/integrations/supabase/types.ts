@@ -828,6 +828,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      can_view_consultation_request: {
+        Args: { request_email: string; requesting_user_id: string }
+        Returns: boolean
+      }
       get_filtered_opportunity_data: {
         Args: { opportunity_id: string; requesting_user_id: string }
         Returns: Json
