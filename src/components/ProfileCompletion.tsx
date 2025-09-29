@@ -12,6 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Building2, User, Target, Globe, Upload, Camera, X } from "lucide-react";
 
 interface ProfileData {
+  full_name?: string;
   business_name?: string;
   investment_stage?: string;
   business_sector?: string;
@@ -112,6 +113,7 @@ const ProfileCompletion = () => {
 
     if (data) {
       setProfileData({
+        full_name: data.full_name || user?.user_metadata?.full_name || '',
         business_name: data.business_name || '',
         investment_stage: data.investment_stage || '',
         business_sector: data.business_sector || '',
@@ -124,6 +126,12 @@ const ProfileCompletion = () => {
         funding_raised: data.funding_raised || '',
         profile_image_url: data.profile_image_url || ''
       });
+    } else if (user?.user_metadata?.full_name) {
+      // If no profile exists but we have user metadata, set the full name
+      setProfileData(prev => ({
+        ...prev,
+        full_name: user.user_metadata.full_name
+      }));
     }
   };
 
@@ -218,7 +226,7 @@ const ProfileCompletion = () => {
     } else {
       toast({
         title: "Success",
-        description: "Profile updated successfully!",
+        description: "Profile updated successfully! You're now discoverable by other users in the Network section.",
         variant: "default"
       });
     }
@@ -331,6 +339,17 @@ const ProfileCompletion = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="full_name">Full Name *</Label>
+                <Input
+                  id="full_name"
+                  value={profileData.full_name || ''}
+                  onChange={(e) => setProfileData({...profileData, full_name: e.target.value})}
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+              
               <div>
                 <Label htmlFor="business_name">Business/Organisation Name</Label>
                 <Input
