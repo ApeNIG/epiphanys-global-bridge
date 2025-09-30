@@ -106,6 +106,12 @@ const OpportunityHub = () => {
     return matchesSearch && matchesCategory && matchesSector;
   });
 
+  // Check if any filters are active
+  const hasActiveFilters = searchTerm !== "" || selectedCategory !== "all" || selectedSector !== "all";
+  
+  // Show only 4 opportunities by default, all when filtering
+  const displayedOpportunities = hasActiveFilters ? filteredOpportunities : filteredOpportunities.slice(0, 4);
+
   const formatDeadline = (deadline: string | null) => {
     if (!deadline) return null;
     return new Date(deadline).toLocaleDateString('en-GB', {
@@ -190,13 +196,16 @@ const OpportunityHub = () => {
         {/* Results count */}
         <div className="mb-6">
           <p className="text-muted-foreground">
-            Showing {filteredOpportunities.length} of {opportunities.length} opportunities
+            Showing {displayedOpportunities.length} of {opportunities.length} opportunities
+            {!hasActiveFilters && filteredOpportunities.length > 4 && (
+              <span className="ml-2 text-primary">• Use search or filters to see more</span>
+            )}
           </p>
         </div>
 
         {/* Opportunities Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredOpportunities.map((opportunity) => {
+          {displayedOpportunities.map((opportunity) => {
             const IconComponent = categoryIcons[opportunity.category as keyof typeof categoryIcons] || Star;
             console.log('Opportunity category:', opportunity.category, 'IconComponent:', IconComponent);
             return (
@@ -306,7 +315,7 @@ const OpportunityHub = () => {
           })}
         </div>
 
-        {filteredOpportunities.length === 0 && (
+        {displayedOpportunities.length === 0 && (
           <div className="text-center py-12">
             <p className="text-muted-foreground text-lg">No opportunities found matching your criteria.</p>
             <Button 
