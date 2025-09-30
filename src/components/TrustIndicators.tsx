@@ -122,7 +122,6 @@ const TrustIndicators = () => {
                     />
                   </div>
                   <div className="font-medium text-foreground text-sm">{partner.name}</div>
-                  <div className="text-xs text-muted-foreground mt-1">{partner.type}</div>
                 </div>
               </div>
             ))}
