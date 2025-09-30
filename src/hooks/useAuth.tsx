@@ -73,6 +73,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           title: "Account created!",
           description: "Your account has been created successfully. Welcome to Epiphiny Flow!",
         });
+        
+        // Send welcome email
+        try {
+          await supabase.functions.invoke('send-welcome-email', {
+            body: {
+              email,
+              full_name: fullName
+            }
+          });
+        } catch (emailError) {
+          console.error('Failed to send welcome email:', emailError);
+        }
       }
 
       return { error };
