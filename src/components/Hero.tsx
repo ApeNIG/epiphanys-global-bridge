@@ -35,7 +35,7 @@ const Hero = () => {
               <span className="block text-foreground mb-2">Epiphiny Flow</span>
               <span className="block bg-gradient-to-r from-primary via-purple-600 to-accent bg-clip-text text-transparent">Advisory &amp; Investment </span>
               <span className="block text-foreground/80 text-3xl md:text-4xl lg:text-5xl mt-4 font-bold">
-                GROW • SCALE • BOOST
+                GROWS
               </span>
             </h1>
             
