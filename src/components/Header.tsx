@@ -11,6 +11,7 @@ import { User, LogOut, Target, Users, Brain, MessageSquare, Briefcase } from "lu
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Header = () => {
   const [profileImage, setProfileImage] = useState<string | null>(null);
@@ -143,6 +144,7 @@ const Header = () => {
 
         {/* Language Switcher and Authentication */}
         <div className="flex items-center space-x-3">
+          <ThemeToggle />
           <LanguageSwitcher />
           {user ? (
             <DropdownMenu>
