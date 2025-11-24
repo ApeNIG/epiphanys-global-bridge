@@ -132,6 +132,109 @@ All colors MUST be HSL.
     --sidebar-ring: var(--flow-teal);
   }
 
+  /* Parallax Styles */
+  .parallax-section {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .parallax-bg {
+    position: absolute;
+    top: -20%;
+    left: 0;
+    right: 0;
+    bottom: -20%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    will-change: transform;
+    z-index: -1;
+  }
+
+  .parallax-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--background) / 0.8),
+      hsl(var(--background) / 0.7)
+    );
+  }
+
+  .dark .parallax-overlay {
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--background) / 0.9),
+      hsl(var(--background) / 0.85)
+    );
+  }
+
+  .parallax-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .parallax-layer {
+    will-change: transform;
+  }
+
+  /* Scroll Reveal Animations */
+  .scroll-reveal {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .scroll-reveal-visible {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .scroll-reveal-fade {
+    opacity: 0;
+  }
+
+  .scroll-reveal-slide-up {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .scroll-reveal-slide-left {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  .scroll-reveal-slide-right {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  .scroll-reveal-scale {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  /* Smooth Scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    
+    .parallax-bg,
+    .parallax-layer {
+      transform: none !important;
+    }
+    
+    .scroll-reveal {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
   .light {
     --background: var(--flow-white);
     --foreground: var(--flow-dark);
