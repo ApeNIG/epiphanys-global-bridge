@@ -8,6 +8,9 @@ import { Search, MapPin, Calendar, ExternalLink, Building, Users, Briefcase, Sta
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { ContactRequest } from "@/components/ContactRequest";
+import ParallaxSection from "./ParallaxSection";
+import ScrollReveal from "./ScrollReveal";
+import { businessImages } from "@/utils/placeholderImages";
 
 interface Opportunity {
   id: string;
@@ -144,19 +147,25 @@ const OpportunityHub = () => {
   }
 
   return (
-    <section id="opportunity-hub" className="py-20 bg-gradient-to-b from-secondary/20 to-background">
+    <ParallaxSection 
+      backgroundImage={businessImages.networking}
+      speed={0.4}
+      className="py-20"
+    >
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <ScrollReveal animation="fade">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Live 
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               {" "}Opportunity Hub
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Discover real opportunities curated for diaspora communities and global collaboration
-          </p>
-        </div>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Discover real opportunities curated for diaspora communities and global collaboration
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Filters */}
         <div className="flex flex-col md:flex-row gap-4 mb-8">
@@ -205,14 +214,14 @@ const OpportunityHub = () => {
 
         {/* Opportunities Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayedOpportunities.map((opportunity) => {
+          {displayedOpportunities.map((opportunity, index) => {
             const IconComponent = categoryIcons[opportunity.category as keyof typeof categoryIcons] || Star;
             console.log('Opportunity category:', opportunity.category, 'IconComponent:', IconComponent);
             return (
-              <Card 
-                key={opportunity.id}
-                className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 bg-card/80 backdrop-blur-sm border-border/50 hover:border-primary/30 relative overflow-hidden"
-              >
+              <ScrollReveal key={opportunity.id} animation="slide-up" delay={index * 50}>
+                <Card 
+                  className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 bg-card/90 backdrop-blur-md border-border/50 hover:border-primary/30 relative overflow-hidden"
+                >
                 {opportunity.is_featured && (
                   <div className="absolute top-0 right-0">
                     <Badge className="bg-accent text-accent-foreground rounded-none rounded-bl-lg">
@@ -310,7 +319,8 @@ const OpportunityHub = () => {
                     </Badge>
                   </div>
                 </div>
-              </Card>
+                </Card>
+              </ScrollReveal>
             );
           })}
         </div>
@@ -332,7 +342,7 @@ const OpportunityHub = () => {
           </div>
         )}
       </div>
-    </section>
+    </ParallaxSection>
   );
 };
 

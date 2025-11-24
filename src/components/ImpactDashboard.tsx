@@ -1,6 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, Users, Briefcase, GraduationCap, DollarSign, MapPin } from "lucide-react";
+import ParallaxSection from "./ParallaxSection";
+import ScrollReveal from "./ScrollReveal";
+import { businessImages } from "@/utils/placeholderImages";
 
 const impactMetrics = [
   {
@@ -55,65 +58,75 @@ const impactMetrics = [
 
 const ImpactDashboard = () => {
   return (
-    <section className="py-16 bg-muted/30">
+    <ParallaxSection 
+      backgroundImage={businessImages.success}
+      speed={0.3}
+      className="py-16"
+    >
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <Badge variant="outline" className="mb-4 text-primary border-primary/20">
-            Real-Time Impact
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Measuring Our 
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              {" "}Collective Impact
-            </span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Every feature produces trackable outcomes. See how our community is driving 
-            economic empowerment and inclusive growth globally.
-          </p>
-        </div>
+        <ScrollReveal animation="fade">
+          <div className="text-center mb-12">
+            <Badge variant="outline" className="mb-4 text-primary border-primary/20">
+              Real-Time Impact
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Measuring Our 
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                {" "}Collective Impact
+              </span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Every feature produces trackable outcomes. See how our community is driving 
+              economic empowerment and inclusive growth globally.
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {impactMetrics.map((metric, index) => (
-            <Card key={index} className="relative overflow-hidden group hover:shadow-elegant transition-all duration-300">
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <metric.icon className="w-8 h-8 text-primary" />
-                  <Badge 
-                    variant="secondary" 
-                    className={`${metric.trend === 'up' ? 'text-green-600 bg-green-50 border-green-200' : ''}`}
-                  >
-                    {metric.change}
-                  </Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  <div className="text-2xl font-bold text-foreground">
-                    {metric.value}
+            <ScrollReveal key={index} animation="scale" delay={index * 75}>
+              <Card className="relative overflow-hidden group hover:shadow-elegant transition-all duration-300 bg-card/90 backdrop-blur-md">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <metric.icon className="w-8 h-8 text-primary" />
+                    <Badge 
+                      variant="secondary" 
+                      className={`${metric.trend === 'up' ? 'text-green-600 bg-green-50 border-green-200 dark:bg-green-950/30 dark:text-green-400' : ''}`}
+                    >
+                      {metric.change}
+                    </Badge>
                   </div>
-                  <CardTitle className="text-sm font-medium text-muted-foreground">
-                    {metric.title}
-                  </CardTitle>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {metric.description}
-                  </p>
-                </div>
-              </CardContent>
-              
-              {/* Gradient accent */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
-            </Card>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    <div className="text-2xl font-bold text-foreground">
+                      {metric.value}
+                    </div>
+                    <CardTitle className="text-sm font-medium text-muted-foreground">
+                      {metric.title}
+                    </CardTitle>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      {metric.description}
+                    </p>
+                  </div>
+                </CardContent>
+                
+                {/* Gradient accent */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
+              </Card>
+            </ScrollReveal>
           ))}
         </div>
 
-        <div className="text-center mt-8">
-          <p className="text-sm text-muted-foreground">
-            Data updated in real-time • Last refresh: {new Date().toLocaleTimeString()}
-          </p>
-        </div>
+        <ScrollReveal animation="fade" delay={450}>
+          <div className="text-center mt-8">
+            <p className="text-sm text-muted-foreground">
+              Data updated in real-time • Last refresh: {new Date().toLocaleTimeString()}
+            </p>
+          </div>
+        </ScrollReveal>
       </div>
-    </section>
+    </ParallaxSection>
   );
 };
 

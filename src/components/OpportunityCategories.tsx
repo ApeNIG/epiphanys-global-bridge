@@ -2,6 +2,9 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Briefcase, Users, TrendingUp, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
+import ParallaxSection from "./ParallaxSection";
+import ScrollReveal from "./ScrollReveal";
+import { businessImages } from "@/utils/placeholderImages";
 
 const categories = [
   {
@@ -40,64 +43,71 @@ const categories = [
 
 const OpportunityCategories = () => {
   return (
-    <section id="opportunities" className="py-20 bg-gradient-to-b from-background to-secondary/20">
+    <ParallaxSection 
+      backgroundImage={businessImages.business}
+      speed={0.3}
+      className="py-20"
+    >
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Discover Your 
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              {" "}Opportunities
-            </span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Explore curated opportunities designed to unlock your potential and connect you with global networks
-          </p>
-        </div>
+        <ScrollReveal animation="fade">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Discover Your 
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                {" "}Opportunities
+              </span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Explore curated opportunities designed to unlock your potential and connect you with global networks
+            </p>
+          </div>
+        </ScrollReveal>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((category, index) => {
             const IconComponent = category.icon;
             return (
-              <Card 
-                key={index} 
-                className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 bg-card/80 backdrop-blur-sm border-border/50 hover:border-primary/30"
-              >
-                <div className="p-6">
-                  <div className="relative mb-6">
-                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${category.color} p-3 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center`}>
-                      <IconComponent 
-                        className="w-10 h-10 text-white"
-                      />
+              <ScrollReveal key={index} animation="scale" delay={index * 100}>
+                <Card 
+                  className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 bg-card/90 backdrop-blur-md border-border/50 hover:border-primary/30"
+                >
+                  <div className="p-6">
+                    <div className="relative mb-6">
+                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${category.color} p-3 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center`}>
+                        <IconComponent 
+                          className="w-10 h-10 text-white"
+                        />
+                      </div>
+                      <div className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-xs font-bold px-2 py-1 rounded-full">
+                        {category.count}
+                      </div>
                     </div>
-                    <div className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-xs font-bold px-2 py-1 rounded-full">
-                      {category.count}
-                    </div>
+                    
+                    <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
+                      {category.title}
+                    </h3>
+                    
+                    <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
+                      {category.description}
+                    </p>
+                    
+                    <Link to={category.link}>
+                      <Button 
+                        variant="ghost" 
+                        className="w-full group-hover:bg-primary/10 group-hover:text-primary transition-all duration-300"
+                      >
+                        Explore
+                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
                   </div>
-                  
-                  <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
-                    {category.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
-                    {category.description}
-                  </p>
-                  
-                  <Link to={category.link}>
-                    <Button 
-                      variant="ghost" 
-                      className="w-full group-hover:bg-primary/10 group-hover:text-primary transition-all duration-300"
-                    >
-                      Explore
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                </div>
-              </Card>
+                </Card>
+              </ScrollReveal>
             );
           })}
         </div>
       </div>
-    </section>
+    </ParallaxSection>
   );
 };
 
