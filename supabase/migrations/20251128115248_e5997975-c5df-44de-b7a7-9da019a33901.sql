@@ -1,0 +1,1 @@
+UPDATE opportunities SET deadline = '2025-12-31' WHERE id = '3e166054-5931-42bb-825b-7e3dae327e80';
