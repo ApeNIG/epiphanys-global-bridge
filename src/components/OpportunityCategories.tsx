@@ -2,9 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Briefcase, Users, TrendingUp, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
-import ParallaxSection from "./ParallaxSection";
 import ScrollReveal from "./ScrollReveal";
-import { businessImages } from "@/utils/placeholderImages";
 
 const categories = [
   {
@@ -43,11 +41,7 @@ const categories = [
 
 const OpportunityCategories = () => {
   return (
-    <ParallaxSection 
-      backgroundImage={businessImages.business}
-      speed={0.3}
-      className="py-20"
-    >
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <ScrollReveal animation="fade">
           <div className="text-center mb-16">
@@ -107,7 +101,7 @@ const OpportunityCategories = () => {
           })}
         </div>
       </div>
-    </ParallaxSection>
+    </section>
   );
 };
 
