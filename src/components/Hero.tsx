@@ -2,20 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, Globe, TrendingUp, Users, Sparkles } from "lucide-react";
-import ParallaxSection from "./ParallaxSection";
 import ParallaxLayer from "./ParallaxLayer";
 import ScrollReveal from "./ScrollReveal";
-import { businessImages } from "@/utils/placeholderImages";
-
 const Hero = () => {
   const { t } = useTranslation();
   
   return (
-    <ParallaxSection 
-      backgroundImage={businessImages.hero}
-      speed={0.5}
-      className="min-h-screen flex items-center justify-center"
-    >
+    <div className="min-h-screen flex items-center justify-center relative bg-background">
       {/* Floating geometric shapes with parallax */}
       <ParallaxLayer speed={0.3} className="absolute inset-0 pointer-events-none">
         <div className="flow-geometric-shape w-32 h-32 rotate-45 absolute top-20 left-10 opacity-20"></div>
@@ -151,7 +144,7 @@ const Hero = () => {
           </ScrollReveal>
         </div>
       </div>
-    </ParallaxSection>
+    </div>
   );
 };
 
