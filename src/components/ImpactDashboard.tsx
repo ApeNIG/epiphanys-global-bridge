@@ -1,9 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, Users, Briefcase, GraduationCap, DollarSign, MapPin } from "lucide-react";
-import ParallaxSection from "./ParallaxSection";
 import ScrollReveal from "./ScrollReveal";
-import { businessImages } from "@/utils/placeholderImages";
 
 const impactMetrics = [
   {
@@ -58,11 +56,7 @@ const impactMetrics = [
 
 const ImpactDashboard = () => {
   return (
-    <ParallaxSection 
-      backgroundImage={businessImages.success}
-      speed={0.3}
-      className="py-16"
-    >
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <ScrollReveal animation="fade">
           <div className="text-center mb-12">
@@ -126,7 +120,7 @@ const ImpactDashboard = () => {
           </div>
         </ScrollReveal>
       </div>
-    </ParallaxSection>
+    </section>
   );
 };
 

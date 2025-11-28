@@ -3,9 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Heart, MapPin, Building2, Award } from "lucide-react";
 import { Link } from "react-router-dom";
-import ParallaxSection from "./ParallaxSection";
 import ScrollReveal from "./ScrollReveal";
-import { businessImages } from "@/utils/placeholderImages";
 
 const features = [
   {
@@ -39,11 +37,7 @@ const stats = [
 
 const DiasporaFocus = () => {
   return (
-    <ParallaxSection 
-      backgroundImage={businessImages.diaspora}
-      speed={0.35}
-      className="py-20"
-    >
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content Side */}
@@ -127,7 +121,7 @@ const DiasporaFocus = () => {
           </ScrollReveal>
         </div>
       </div>
-    </ParallaxSection>
+    </section>
   );
 };
 

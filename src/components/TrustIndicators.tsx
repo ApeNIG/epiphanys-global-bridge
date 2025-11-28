@@ -8,9 +8,7 @@ import ukBlackTechLogo from "@/assets/partners/uk-black-tech-logo.png";
 import ourBusinessGmLogo from "@/assets/partners/our-business-gm-logo.png";
 import universitySalfordLogo from "@/assets/partners/university-salford-logo.png";
 import factoryInternationalLogo from "@/assets/partners/factory-international-logo.png";
-import ParallaxSection from "./ParallaxSection";
 import ScrollReveal from "./ScrollReveal";
-import { businessImages } from "@/utils/placeholderImages";
 
 const trustFeatures = [
   {
@@ -51,11 +49,7 @@ const partnerships = [
 
 const TrustIndicators = () => {
   return (
-    <ParallaxSection 
-      backgroundImage={businessImages.trust}
-      speed={0.3}
-      className="py-16"
-    >
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <ScrollReveal animation="fade">
           <div className="text-center mb-12">
@@ -134,7 +128,7 @@ const TrustIndicators = () => {
           </div>
         </ScrollReveal>
       </div>
-    </ParallaxSection>
+    </section>
   );
 };
 
