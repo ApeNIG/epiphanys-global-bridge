@@ -1,15 +1,15 @@
 const VideoSection = () => {
-  // YouTube video ID extracted from the URL
-  const videoId = "2b90CiEnwSI";
+  // Vimeo video ID extracted from the URL
+  const videoId = "1141618638";
   
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
       <iframe
         className="absolute inset-0 w-full h-full"
-        src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
+        src={`https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1&loop=1&background=1&quality=1080p`}
         title="Video"
         frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allow="autoplay; fullscreen; picture-in-picture"
         allowFullScreen
         style={{ 
           width: '100vw',
