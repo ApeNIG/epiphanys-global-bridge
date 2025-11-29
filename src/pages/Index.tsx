@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import VideoSection from "@/components/VideoSection";
 import PrinciplesBar from "@/components/PrinciplesBar";
 import OpportunityCategories from "@/components/OpportunityCategories";
 import OpportunityHub from "@/components/OpportunityHub";
@@ -16,6 +17,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Header />
       <Hero />
+      <VideoSection />
       <PrinciplesBar />
       <DiasporaLeadersCarousel />
       <OpportunityCategories />
