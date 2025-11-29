@@ -1,0 +1,1 @@
+UPDATE opportunities SET website_url = 'https://www.business.gov.uk/export-opportunities/' WHERE id = '3e166054-5931-42bb-825b-7e3dae327e80';
