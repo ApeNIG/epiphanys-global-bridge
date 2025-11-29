@@ -8,6 +8,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { User, LogOut, Target, Users, Brain, MessageSquare, Briefcase } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
@@ -197,11 +202,18 @@ const Header = () => {
             </DropdownMenu>
           ) : (
             <>
-              <Link to="/auth">
-                <Button variant="ghost" size="icon" className="rounded-full">
-                  <User className="w-5 h-5" />
-                </Button>
-              </Link>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link to="/auth">
+                    <Button variant="ghost" size="icon" className="rounded-full">
+                      <User className="w-5 h-5" />
+                    </Button>
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>My Account</p>
+                </TooltipContent>
+              </Tooltip>
               <Link to="/auth">
                 <Button variant="hero" size="sm">
                   Join Platform
