@@ -114,6 +114,9 @@ const Header = () => {
         </DropdownMenu>
         
         <nav className="hidden md:flex items-center space-x-8">
+          <Link to="/about" className="text-foreground hover:text-primary transition-colors">
+            About
+          </Link>
           <Link to="/advisory" className="text-foreground hover:text-primary transition-colors">
             Advisory
           </Link>
@@ -125,9 +128,6 @@ const Header = () => {
           </Link>
           <Link to="/global" className="text-foreground hover:text-primary transition-colors">
             Global
-          </Link>
-          <Link to="/about" className="text-foreground hover:text-primary transition-colors">
-            About
           </Link>
         </nav>
 
