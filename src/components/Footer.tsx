@@ -41,54 +41,46 @@ const Footer = () => {
         </div>
 
         {/* Main Footer Content */}
-        <div className="py-6 flex flex-col md:flex-row justify-center gap-12 md:gap-24">
-          {/* Quick Links */}
-          <div className="text-center">
-            <div className="space-y-3">
-              {[
-                { name: "Business Opportunities", href: "/opportunities" },
-                { name: "Career Development", href: "/opportunities" },
-                { name: "Investment Hub", href: "/investment-hub" },
-                { name: "Global Collaboration", href: "/community" },
-                { name: "Community Forum", href: "/community" }
-              ].map((link, index) => (
-                <a 
-                  key={index}
-                  href={link.href} 
-                  className="block text-muted-foreground hover:text-primary transition-colors text-sm group"
-                >
-                  <span className="flex items-center justify-center gap-1">
-                    {link.name}
-                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </span>
-                </a>
-              ))}
+        <div className="py-6 grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 justify-items-center">
+          {[
+            [
+              { name: "Business Opportunities", href: "/opportunities" },
+              { name: "Career Development", href: "/opportunities" }
+            ],
+            [
+              { name: "Investment Hub", href: "/investment-hub" },
+              { name: "Global Collaboration", href: "/community" }
+            ],
+            [
+              { name: "Community Forum", href: "/community" },
+              { name: "Help Center", href: "#" }
+            ],
+            [
+              { name: "Community Guidelines", href: "#" },
+              { name: "Privacy Policy", href: "#" }
+            ],
+            [
+              { name: "Terms of Service", href: "#" },
+              { name: "Contact Us", href: "#" }
+            ]
+          ].map((column, colIndex) => (
+            <div key={colIndex} className="text-center">
+              <div className="space-y-3">
+                {column.map((link, linkIndex) => (
+                  <a 
+                    key={linkIndex}
+                    href={link.href} 
+                    className="block text-muted-foreground hover:text-primary transition-colors text-sm group"
+                  >
+                    <span className="flex items-center justify-center gap-1">
+                      {link.name}
+                      <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </span>
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
-          
-          {/* Support */}
-          <div className="text-center">
-            <div className="space-y-3">
-              {[
-                "Help Center",
-                "Community Guidelines",
-                "Privacy Policy",
-                "Terms of Service",
-                "Contact Us"
-              ].map((link, index) => (
-                <a 
-                  key={index}
-                  href="#" 
-                  className="block text-muted-foreground hover:text-primary transition-colors text-sm group"
-                >
-                  <span className="flex items-center justify-center gap-1">
-                    {link}
-                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </span>
-                </a>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
         
         <Separator className="mb-8" />
