@@ -46,8 +46,11 @@ const Footer = () => {
           <div className="text-center">
             <div className="space-y-3">
               {[
-                { name: "Opportunities", href: "/opportunities" },
-                { name: "Investment Hub", href: "/investment-hub" }
+                { name: "Business Opportunities", href: "/opportunities" },
+                { name: "Career Development", href: "/opportunities" },
+                { name: "Investment Hub", href: "/investment-hub" },
+                { name: "Global Collaboration", href: "/community" },
+                { name: "Community Forum", href: "/community" }
               ].map((link, index) => (
                 <a 
                   key={index}
@@ -67,7 +70,10 @@ const Footer = () => {
           <div className="text-center">
             <div className="space-y-3">
               {[
+                "Help Center",
+                "Community Guidelines",
                 "Privacy Policy",
+                "Terms of Service",
                 "Contact Us"
               ].map((link, index) => (
                 <a 
