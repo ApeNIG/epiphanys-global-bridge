@@ -65,12 +65,12 @@ const Footer = () => {
             ]
           ].map((column, colIndex) => (
             <div key={colIndex} className="text-center">
-              <div className="space-y-3">
+              <div className="flex flex-col gap-3">
                 {column.map((link, linkIndex) => (
                   <a 
                     key={linkIndex}
                     href={link.href} 
-                    className="block text-muted-foreground hover:text-primary transition-colors text-sm group"
+                    className="block text-muted-foreground hover:text-primary transition-colors text-sm group h-5 flex items-center justify-center"
                   >
                     <span className="flex items-center justify-center gap-1">
                       {link.name}
