@@ -22,7 +22,7 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => prev + 1);
-    }, 5000);
+    }, 8000);
     
     return () => clearInterval(interval);
   }, []);
@@ -34,7 +34,7 @@ const Hero = () => {
       const timeout = setTimeout(() => {
         setIsTransitioning(false);
         setCurrentIndex(0);
-      }, 1000); // Wait for transition to complete
+      }, 1500); // Wait for transition to complete
       
       return () => clearTimeout(timeout);
     }
@@ -55,7 +55,7 @@ const Hero = () => {
       {/* Hero Background Image Carousel */}
       <div className="absolute inset-0">
         <div 
-          className={`flex h-full ${isTransitioning ? 'transition-transform duration-1000 ease-in-out' : ''}`}
+          className={`flex h-full ${isTransitioning ? 'transition-transform duration-[1500ms] ease-in-out' : ''}`}
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {extendedImages.map((image, index) => (
