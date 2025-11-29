@@ -41,7 +41,7 @@ const Footer = () => {
         </div>
 
         {/* Main Footer Content */}
-        <div className="py-6 grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 justify-items-center">
+        <div className="py-3 grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 justify-items-center">
           {[
             [
               { name: "Business Opportunities", href: "/opportunities" },
