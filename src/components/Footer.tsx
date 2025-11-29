@@ -9,43 +9,41 @@ import {
   Instagram,
   ArrowUpRight
 } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
     <footer className="bg-secondary/20 border-t border-border">
       <div className="container mx-auto px-4">
-        {/* Main Footer Content */}
-        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand Section */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">EF</span>
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-                Epiphiny Flow
-              </span>
-            </div>
-            
-            <p className="text-muted-foreground mb-6 max-w-md">
-              Connecting diaspora communities with global opportunities in business, careers, and investment.
-            </p>
-            
-            <div className="flex items-center gap-4">
-              <Button variant="ghost" size="icon">
-                <Linkedin className="w-4 h-4" />
-              </Button>
-              <Button variant="ghost" size="icon">
-                <Twitter className="w-4 h-4" />
-              </Button>
-              <Button variant="ghost" size="icon">
-                <Instagram className="w-4 h-4" />
-              </Button>
-              <Button variant="ghost" size="icon">
-                <Globe className="w-4 h-4" />
-              </Button>
-            </div>
+        {/* Logo Section - Centered */}
+        <div className="py-12 flex flex-col items-center text-center">
+          <img src={logo} alt="Epiphiny Flow Logo" className="h-16 w-auto mb-4" />
+          <span className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent mb-4">
+            Epiphiny Flow
+          </span>
+          <p className="text-muted-foreground mb-6 max-w-md">
+            Connecting diaspora communities with global opportunities in business, careers, and investment.
+          </p>
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" size="icon">
+              <Linkedin className="w-4 h-4" />
+            </Button>
+            <Button variant="ghost" size="icon">
+              <Twitter className="w-4 h-4" />
+            </Button>
+            <Button variant="ghost" size="icon">
+              <Instagram className="w-4 h-4" />
+            </Button>
+            <Button variant="ghost" size="icon">
+              <Globe className="w-4 h-4" />
+            </Button>
           </div>
+        </div>
+
+        <Separator className="mb-8" />
+        
+        {/* Main Footer Content */}
+        <div className="py-8 grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* Quick Links */}
           <div>
