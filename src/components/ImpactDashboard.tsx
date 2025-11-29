@@ -56,8 +56,16 @@ const impactMetrics = [
 
 const ImpactDashboard = () => {
   return (
-    <section className="py-16 bg-background">
-      <div className="container mx-auto px-4">
+    <section 
+      className="py-16 relative bg-cover bg-center bg-no-repeat"
+      style={{ 
+        backgroundImage: `url('https://media.licdn.com/dms/image/v2/D4E22AQGpRqJTZ5XNbw/feedshare-shrink_2048_1536/B4EZmq05PcGcAw-/0/1759507660171?e=1766016000&v=beta&t=0r8eAwlCl9zg1WFlQrpxC5oLi8w0zfxbHfZMSii5b28')` 
+      }}
+    >
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-black/60" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <ScrollReveal animation="fade">
           <div className="text-center mb-12">
             <Badge variant="outline" className="mb-4 text-primary border-primary/20">
