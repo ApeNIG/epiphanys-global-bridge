@@ -14,29 +14,58 @@ const heroImages = [heroImage1, heroImage2, heroImage3, heroImage4];
 const Hero = () => {
   const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  
+  // Create extended array for seamless loop: [...images, firstImage]
+  const extendedImages = [...heroImages, heroImages[0]];
   
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+      setCurrentIndex((prev) => prev + 1);
     }, 5000);
     
     return () => clearInterval(interval);
   }, []);
   
+  // Handle seamless loop reset
+  useEffect(() => {
+    if (currentIndex === heroImages.length) {
+      // After transition to the duplicate first image, instantly reset to real first
+      const timeout = setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(0);
+      }, 1000); // Wait for transition to complete
+      
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex]);
+  
+  // Re-enable transitions after instant reset
+  useEffect(() => {
+    if (!isTransitioning) {
+      const timeout = setTimeout(() => {
+        setIsTransitioning(true);
+      }, 50);
+      return () => clearTimeout(timeout);
+    }
+  }, [isTransitioning]);
+  
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Hero Background Image Carousel */}
       <div className="absolute inset-0">
-        {heroImages.map((image, index) => (
-          <div
-            key={index}
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 ease-in-out"
-            style={{
-              backgroundImage: `url(${image})`,
-              transform: `translateX(${(index - currentIndex) * 100}%)`,
-            }}
-          />
-        ))}
+        <div 
+          className={`flex h-full ${isTransitioning ? 'transition-transform duration-1000 ease-in-out' : ''}`}
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {extendedImages.map((image, index) => (
+            <div
+              key={index}
+              className="min-w-full h-full bg-cover bg-center bg-no-repeat flex-shrink-0"
+              style={{ backgroundImage: `url(${image})` }}
+            />
+          ))}
+        </div>
       </div>
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-black/75" />
@@ -165,9 +194,14 @@ const Hero = () => {
         {heroImages.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentIndex(index)}
+            onClick={() => {
+              setIsTransitioning(true);
+              setCurrentIndex(index);
+            }}
             className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === currentIndex ? 'bg-white w-6' : 'bg-white/40 hover:bg-white/60'
+              (index === currentIndex || (currentIndex === heroImages.length && index === 0)) 
+                ? 'bg-white w-6' 
+                : 'bg-white/40 hover:bg-white/60'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
