@@ -210,7 +210,7 @@ const Header = () => {
                     </Button>
                   </Link>
                 </TooltipTrigger>
-                <TooltipContent className="bg-primary/20 text-primary border-primary/30">
+                <TooltipContent className="bg-primary/20 text-white border-primary/30">
                   <p>My Account</p>
                 </TooltipContent>
               </Tooltip>
