@@ -21,10 +21,10 @@ const Footer = () => {
           <span className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent mb-4">
             Epiphiny Flow
           </span>
-          <p className="text-muted-foreground mb-6 max-w-md">
+          <p className="text-muted-foreground mb-4 max-w-md">
             Connecting diaspora communities with global opportunities in business, careers, and investment.
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 mb-2">
             <Button variant="ghost" size="icon">
               <Linkedin className="w-4 h-4" />
             </Button>
@@ -40,13 +40,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <Separator className="mb-8" />
-        
         {/* Main Footer Content */}
-        <div className="py-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-          
+        <div className="py-6 flex flex-col md:flex-row justify-center gap-12 md:gap-24">
           {/* Quick Links */}
-          <div>
+          <div className="text-center">
             <h4 className="font-semibold mb-4 text-foreground">Platform</h4>
             <div className="space-y-3">
               {[
@@ -61,7 +58,7 @@ const Footer = () => {
                   href={link.href} 
                   className="block text-muted-foreground hover:text-primary transition-colors text-sm group"
                 >
-                  <span className="flex items-center gap-1">
+                  <span className="flex items-center justify-center gap-1">
                     {link.name}
                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </span>
@@ -71,7 +68,7 @@ const Footer = () => {
           </div>
           
           {/* Support */}
-          <div>
+          <div className="text-center">
             <h4 className="font-semibold mb-4 text-foreground">Support</h4>
             <div className="space-y-3">
               {[
@@ -86,7 +83,7 @@ const Footer = () => {
                   href="#" 
                   className="block text-muted-foreground hover:text-primary transition-colors text-sm group"
                 >
-                  <span className="flex items-center gap-1">
+                  <span className="flex items-center justify-center gap-1">
                     {link}
                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </span>
