@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import logo from "@/assets/logo.png";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -57,19 +58,7 @@ const Header = () => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Link to="/" className="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity">
-              <div className="relative w-10 h-10 bg-gradient-to-br from-primary via-purple-600 to-accent rounded-xl flex items-center justify-center shadow-lg">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-xl"></div>
-                <span className="relative text-white font-bold text-lg tracking-tight">
-                  <span className="text-white drop-shadow-sm">E</span>
-                  <span className="text-orange-200 drop-shadow-sm">F</span>
-                </span>
-                {/* Dropdown indicator lines */}
-                <div className="absolute bottom-1 right-1 flex flex-col space-y-0.5">
-                  <div className="w-2 h-0.5 bg-white/60 rounded"></div>
-                  <div className="w-2 h-0.5 bg-white/60 rounded"></div>
-                  <div className="w-2 h-0.5 bg-white/60 rounded"></div>
-                </div>
-              </div>
+              <img src={logo} alt="Epiphiny Flow" className="w-10 h-10 object-contain" />
               <span className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
                 Epiphiny Flow
               </span>
