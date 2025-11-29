@@ -16,7 +16,7 @@ const Footer = () => {
     <footer className="bg-secondary/20 border-t border-border">
       <div className="container mx-auto px-4">
         {/* Logo Section - Centered */}
-        <div className="pt-4 pb-4 flex flex-col items-center text-center">
+        <div className="pt-4 pb-2 flex flex-col items-center text-center">
           <img src={logo} alt="Epiphiny Flow Logo" className="h-16 w-auto mb-4" />
           <span className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent mb-4">
             Epiphiny Flow
