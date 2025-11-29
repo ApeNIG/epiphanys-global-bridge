@@ -41,7 +41,7 @@ const Footer = () => {
         </div>
 
         {/* Main Footer Content */}
-        <div className="py-3 grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 justify-items-center">
+        <div className="py-3 grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 items-start">
           {[
             [
               { name: "Business Opportunities", href: "/opportunities" },
@@ -64,17 +64,17 @@ const Footer = () => {
               { name: "Contact Us", href: "#" }
             ]
           ].map((column, colIndex) => (
-            <div key={colIndex} className="text-center">
+            <div key={colIndex} className="text-center w-full">
               <div className="flex flex-col gap-3">
                 {column.map((link, linkIndex) => (
                   <a 
                     key={linkIndex}
                     href={link.href} 
-                    className="block text-muted-foreground hover:text-primary transition-colors text-sm group h-5 flex items-center justify-center"
+                    className="block text-muted-foreground hover:text-primary transition-colors text-sm group"
                   >
-                    <span className="flex items-center justify-center gap-1">
+                    <span className="flex items-start justify-center gap-1">
                       {link.name}
-                      <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
                     </span>
                   </a>
                 ))}
