@@ -1,20 +1,43 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, Globe, TrendingUp, Users, Sparkles } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
-import heroImage from "@/assets/hero-image.jpg";
+import heroImage1 from "@/assets/hero-image.jpg";
+import heroImage2 from "@/assets/hero-image-2.jpg";
+import heroImage3 from "@/assets/hero-image-3.jpg";
+import heroImage4 from "@/assets/hero-image-4.jpg";
+
+const heroImages = [heroImage1, heroImage2, heroImage3, heroImage4];
 
 const Hero = () => {
   const { t } = useTranslation();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    
+    return () => clearInterval(interval);
+  }, []);
   
   return (
-    <div className="min-h-screen flex items-center justify-center relative">
-      {/* Hero Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      />
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Hero Background Image Carousel */}
+      <div className="absolute inset-0">
+        {heroImages.map((image, index) => (
+          <div
+            key={index}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 ease-in-out"
+            style={{
+              backgroundImage: `url(${image})`,
+              transform: `translateX(${(index - currentIndex) * 100}%)`,
+            }}
+          />
+        ))}
+      </div>
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-black/75" />
       {/* Content */}
@@ -135,6 +158,20 @@ const Hero = () => {
             </div>
           </ScrollReveal>
         </div>
+      </div>
+      
+      {/* Carousel indicators */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        {heroImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              index === currentIndex ? 'bg-white w-6' : 'bg-white/40 hover:bg-white/60'
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
     </div>
   );
