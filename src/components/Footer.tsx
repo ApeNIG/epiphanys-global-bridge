@@ -65,7 +65,7 @@ const Footer = () => {
             ]
           ].map((column, colIndex) => (
             <div key={colIndex} className="text-center w-full">
-              <div className="flex flex-col gap-10">
+              <div className="flex flex-col gap-8">
                 {column.map((link, linkIndex) => (
                   <a 
                     key={linkIndex}
