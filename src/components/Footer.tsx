@@ -70,7 +70,7 @@ const Footer = () => {
                   <a 
                     key={linkIndex}
                     href={link.href} 
-                    className="block text-muted-foreground hover:text-primary transition-colors text-sm group"
+                    className="block text-muted-foreground hover:text-primary transition-colors text-sm group h-5"
                   >
                     <span className="flex items-start justify-center gap-1">
                       {link.name}
