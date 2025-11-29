@@ -33,7 +33,6 @@ const LanguageSwitcher = () => {
         <Button variant="ghost" size="sm" className="gap-2">
           <Globe className="h-4 w-4" />
           <span className="hidden sm:inline">{currentLanguage.flag}</span>
-          <span className="hidden md:inline">{t('common.language')}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-[200px]">
