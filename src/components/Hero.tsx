@@ -34,7 +34,7 @@ const Hero = () => {
       const timeout = setTimeout(() => {
         setIsTransitioning(false);
         setCurrentIndex(0);
-      }, 1500); // Wait for transition to complete
+      }, 3000); // Wait for transition to complete
       
       return () => clearTimeout(timeout);
     }
@@ -55,7 +55,7 @@ const Hero = () => {
       {/* Hero Background Image Carousel */}
       <div className="absolute inset-0">
         <div 
-          className={`flex h-full ${isTransitioning ? 'transition-transform duration-[1500ms] ease-in-out' : ''}`}
+          className={`flex h-full ${isTransitioning ? 'transition-transform duration-[3000ms] ease-in-out' : ''}`}
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {extendedImages.map((image, index) => (
