@@ -44,7 +44,6 @@ const Footer = () => {
         <div className="py-6 flex flex-col md:flex-row justify-center gap-12 md:gap-24">
           {/* Quick Links */}
           <div className="text-center">
-            <h4 className="font-semibold mb-4 text-foreground">Platform</h4>
             <div className="space-y-3">
               {[
                 { name: "Opportunities", href: "/opportunities" },
@@ -66,7 +65,6 @@ const Footer = () => {
           
           {/* Support */}
           <div className="text-center">
-            <h4 className="font-semibold mb-4 text-foreground">Support</h4>
             <div className="space-y-3">
               {[
                 "Privacy Policy",
