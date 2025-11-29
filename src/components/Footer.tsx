@@ -47,11 +47,8 @@ const Footer = () => {
             <h4 className="font-semibold mb-4 text-foreground">Platform</h4>
             <div className="space-y-3">
               {[
-                { name: "Business Opportunities", href: "/opportunities" },
-                { name: "Career Development", href: "/opportunities" },
-                { name: "Investment Hub", href: "/investment-hub" },
-                { name: "Global Collaboration", href: "/community" },
-                { name: "Community Forum", href: "/community" }
+                { name: "Opportunities", href: "/opportunities" },
+                { name: "Investment Hub", href: "/investment-hub" }
               ].map((link, index) => (
                 <a 
                   key={index}
@@ -72,10 +69,7 @@ const Footer = () => {
             <h4 className="font-semibold mb-4 text-foreground">Support</h4>
             <div className="space-y-3">
               {[
-                "Help Center",
-                "Community Guidelines",
                 "Privacy Policy",
-                "Terms of Service",
                 "Contact Us"
               ].map((link, index) => (
                 <a 
