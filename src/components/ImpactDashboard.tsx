@@ -87,7 +87,7 @@ const ImpactDashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {impactMetrics.map((metric, index) => (
             <ScrollReveal key={index} animation="scale" delay={index * 75}>
-              <Card className="relative overflow-hidden group hover:shadow-elegant transition-all duration-300 bg-card/90 backdrop-blur-md">
+              <Card className="relative overflow-hidden group hover:shadow-elegant transition-all duration-300 bg-card/60 backdrop-blur-sm">
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
                     <metric.icon className="w-8 h-8 text-primary" />
