@@ -131,10 +131,8 @@ const Header = () => {
           </Link>
         </nav>
 
-        {/* Language Switcher and Authentication */}
+        {/* Authentication and Language Switcher */}
         <div className="flex items-center space-x-3">
-          <ThemeToggle />
-          <LanguageSwitcher />
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -211,6 +209,8 @@ const Header = () => {
               </Link>
             </>
           )}
+          <ThemeToggle />
+          <LanguageSwitcher />
         </div>
       </div>
     </header>
