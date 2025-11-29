@@ -125,7 +125,7 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out'
 			},
 			fontFamily: {
-				'grand-hotel': ['Grand Hotel', 'cursive']
+				'aref-ruqaa': ['Aref Ruqaa', 'serif']
 			}
 		}
 	},
