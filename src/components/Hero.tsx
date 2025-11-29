@@ -9,22 +9,6 @@ const Hero = () => {
   
   return (
     <div className="min-h-screen flex items-center justify-center relative bg-background">
-      {/* Floating geometric shapes with parallax */}
-      <ParallaxLayer speed={0.3} className="absolute inset-0 pointer-events-none">
-        <div className="flow-geometric-shape w-32 h-32 rotate-45 absolute top-20 left-10 opacity-20"></div>
-        <div className="flow-geometric-shape w-40 h-40 -rotate-12 absolute bottom-32 left-20 opacity-15"></div>
-      </ParallaxLayer>
-      
-      <ParallaxLayer speed={0.15} className="absolute inset-0 pointer-events-none">
-        <div className="flow-geometric-shape w-24 h-24 rotate-12 absolute top-40 right-20 opacity-15"></div>
-        <div className="flow-geometric-shape w-28 h-28 rotate-45 absolute bottom-20 right-32 opacity-20"></div>
-      </ParallaxLayer>
-      
-      {/* Floating particles */}
-      <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary rounded-full animate-ping"></div>
-      <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-accent rounded-full animate-ping delay-1000"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-3 h-3 bg-purple-500 rounded-full animate-ping delay-500"></div>
-      
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-6xl mx-auto space-y-10">
