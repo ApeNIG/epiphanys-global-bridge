@@ -107,9 +107,9 @@ CareConnect Health now provides multilingual telemedicine services to over 5,000
               <TooltipTrigger asChild>
                 <Link 
                   to="/community" 
-                  className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/80 dark:bg-deep-navy/80 shadow-md hover:shadow-lg hover:scale-110 transition-all duration-300 mb-8"
+                  className="inline-flex items-center justify-center hover:scale-110 transition-all duration-300 mb-8"
                 >
-                  <ChevronLeft className="w-5 h-5 text-foreground" />
+                  <ChevronLeft className="w-6 h-6 text-muted-foreground hover:text-primary" />
                 </Link>
               </TooltipTrigger>
               <TooltipContent>
