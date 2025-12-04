@@ -64,7 +64,7 @@ const Header = () => {
           <DropdownMenuTrigger asChild>
             <Link to="/" className="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity">
               <img src={logo} alt="Epiphiny Flow" className="w-[65px] h-[65px] object-contain" />
-              <span className="text-3xl font-aref-ruqaa font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
                 Epiphiny Flow
               </span>
             </Link>
