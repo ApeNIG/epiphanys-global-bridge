@@ -191,7 +191,7 @@ const Hero = () => {
           </ScrollReveal>
           
           {/* Carousel indicators */}
-          <div className="flex justify-center gap-2 pt-1 pb-6">
+          <div className="flex justify-center gap-2 pb-6">
             {heroImages.map((_, index) => (
               <button
                 key={index}
