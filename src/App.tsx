@@ -10,6 +10,7 @@ import { ThemeProvider } from "next-themes";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Login from "./pages/Login";
+import SuccessStories from "./pages/SuccessStories";
 import Dashboard from "./pages/Dashboard";
 import Advisory from "./pages/Advisory";
 import ManageOpportunities from "./pages/ManageOpportunities";
@@ -42,6 +43,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/success-stories" element={<SuccessStories />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/advisory" element={<Advisory />} />
             <Route path="/opportunities" element={<ManageOpportunities />} />
