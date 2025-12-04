@@ -1,0 +1,140 @@
+import { useAuth } from "@/hooks/useAuth";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { MapPin, Building2, Calendar, Globe, Edit2, Camera } from "lucide-react";
+
+interface ProfileHeaderProps {
+  profileData: any;
+  percentage: number;
+  onEditProfile: () => void;
+}
+
+const ProfileHeader = ({ profileData, percentage, onEditProfile }: ProfileHeaderProps) => {
+  const { user } = useAuth();
+
+  return (
+    <div className="bg-card rounded-xl overflow-hidden shadow-lg border border-border">
+      {/* Cover Image */}
+      <div className="h-48 bg-gradient-to-r from-primary/30 via-accent/20 to-primary/30 relative">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMSkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=')] opacity-30" />
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute top-4 right-4 bg-background/20 hover:bg-background/40 backdrop-blur-sm"
+        >
+          <Camera className="w-4 h-4" />
+        </Button>
+      </div>
+
+      {/* Profile Info */}
+      <div className="px-6 pb-6 relative">
+        {/* Profile Picture */}
+        <div className="absolute -top-16 left-6">
+          <div className="relative">
+            {profileData.profile_image_url ? (
+              <img
+                src={profileData.profile_image_url}
+                alt="Profile"
+                className="w-32 h-32 rounded-full object-cover border-4 border-card shadow-xl"
+              />
+            ) : (
+              <div className="w-32 h-32 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white text-4xl font-bold border-4 border-card shadow-xl">
+                {profileData.full_name?.[0] || user?.email?.[0]?.toUpperCase() || "U"}
+              </div>
+            )}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute bottom-0 right-0 bg-background border border-border rounded-full shadow-md hover:bg-muted"
+            >
+              <Camera className="w-4 h-4" />
+            </Button>
+          </div>
+        </div>
+
+        {/* Name and Actions */}
+        <div className="pt-20 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+          <div className="flex-1">
+            <div className="flex items-center gap-3 flex-wrap">
+              <h1 className="text-2xl lg:text-3xl font-bold text-foreground">
+                {profileData.full_name || user?.user_metadata?.full_name || "Your Name"}
+              </h1>
+              <Badge variant="secondary" className="bg-primary/10 text-primary">
+                {percentage}% Complete
+              </Badge>
+            </div>
+            
+            {profileData.business_name && (
+              <p className="text-lg text-muted-foreground mt-1">
+                {profileData.business_name}
+              </p>
+            )}
+            
+            {profileData.bio && (
+              <p className="text-muted-foreground mt-3 max-w-2xl leading-relaxed">
+                {profileData.bio}
+              </p>
+            )}
+
+            {/* Info Row */}
+            <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-muted-foreground">
+              {profileData.business_sector && (
+                <div className="flex items-center gap-1.5">
+                  <Building2 className="w-4 h-4" />
+                  <span>{profileData.business_sector}</span>
+                </div>
+              )}
+              {profileData.location && (
+                <div className="flex items-center gap-1.5">
+                  <MapPin className="w-4 h-4" />
+                  <span>{profileData.location}</span>
+                </div>
+              )}
+              {profileData.website && (
+                <a 
+                  href={profileData.website} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-primary hover:underline"
+                >
+                  <Globe className="w-4 h-4" />
+                  <span>Website</span>
+                </a>
+              )}
+              <div className="flex items-center gap-1.5">
+                <Calendar className="w-4 h-4" />
+                <span>Joined {new Date(user?.created_at || "").toLocaleDateString("en-GB", { month: "long", year: "numeric" })}</span>
+              </div>
+            </div>
+
+            {/* Interests */}
+            {profileData.interests && profileData.interests.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-4">
+                {profileData.interests.slice(0, 5).map((interest: string, index: number) => (
+                  <Badge key={index} variant="outline" className="bg-muted/50">
+                    {interest}
+                  </Badge>
+                ))}
+                {profileData.interests.length > 5 && (
+                  <Badge variant="outline" className="bg-muted/50">
+                    +{profileData.interests.length - 5} more
+                  </Badge>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex gap-2">
+            <Button onClick={onEditProfile} variant="outline" className="gap-2">
+              <Edit2 className="w-4 h-4" />
+              Edit Profile
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProfileHeader;
