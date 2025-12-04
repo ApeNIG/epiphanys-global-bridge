@@ -71,7 +71,7 @@ const Hero = () => {
         </div>
       </div>
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 z-[1] bg-black/30" />
+      <div className="absolute inset-0 z-[1] bg-black/50" />
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-6xl mx-auto space-y-10">
