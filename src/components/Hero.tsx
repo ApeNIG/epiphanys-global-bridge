@@ -189,26 +189,26 @@ const Hero = () => {
               </div>
             </div>
           </ScrollReveal>
+          
+          {/* Carousel indicators */}
+          <div className="flex justify-center gap-2 pt-4">
+            {heroImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setIsTransitioning(true);
+                  setCurrentIndex(index);
+                }}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  (index === currentIndex || (currentIndex === heroImages.length && index === 0)) 
+                    ? 'bg-white w-6' 
+                    : 'bg-white/40 hover:bg-white/60'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-      
-      {/* Carousel indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-        {heroImages.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => {
-              setIsTransitioning(true);
-              setCurrentIndex(index);
-            }}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              (index === currentIndex || (currentIndex === heroImages.length && index === 0)) 
-                ? 'bg-white w-6' 
-                : 'bg-white/40 hover:bg-white/60'
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
       </div>
     </div>
   );
