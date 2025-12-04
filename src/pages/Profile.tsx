@@ -14,7 +14,7 @@ const Profile = () => {
   const { user } = useAuth();
   const [activeTab, setActiveTab] = useState("posts");
   const [showEditProfile, setShowEditProfile] = useState(false);
-  const { percentage, missingFields, profileData, loading } = useProfileCompletion();
+  const { percentage, missingFields, profileData, loading, refetch } = useProfileCompletion();
 
   if (loading) {
     return (
@@ -41,6 +41,7 @@ const Profile = () => {
             profileData={profileData}
             percentage={percentage}
             onEditProfile={() => setShowEditProfile(!showEditProfile)}
+            onProfileUpdate={refetch}
           />
 
           {/* Main Content */}
