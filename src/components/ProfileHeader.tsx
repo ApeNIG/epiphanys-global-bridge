@@ -1,28 +1,158 @@
+import { useRef, useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MapPin, Building2, Calendar, Globe, Edit2, Camera } from "lucide-react";
+import { MapPin, Building2, Calendar, Globe, Edit2, Camera, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
 
 interface ProfileHeaderProps {
   profileData: any;
   percentage: number;
   onEditProfile: () => void;
+  onProfileUpdate?: () => void;
 }
 
-const ProfileHeader = ({ profileData, percentage, onEditProfile }: ProfileHeaderProps) => {
+const ProfileHeader = ({ profileData, percentage, onEditProfile, onProfileUpdate }: ProfileHeaderProps) => {
   const { user } = useAuth();
+  const profileImageInputRef = useRef<HTMLInputElement>(null);
+  const coverImageInputRef = useRef<HTMLInputElement>(null);
+  const [uploadingProfile, setUploadingProfile] = useState(false);
+  const [uploadingCover, setUploadingCover] = useState(false);
+
+  const handleImageUpload = async (
+    file: File,
+    type: "profile" | "cover",
+    setLoading: (loading: boolean) => void
+  ) => {
+    if (!user) return;
+
+    // Validate file type
+    if (!file.type.startsWith("image/")) {
+      toast({
+        title: "Error",
+        description: "Please select an image file.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Validate file size (5MB max)
+    if (file.size > 5 * 1024 * 1024) {
+      toast({
+        title: "Error",
+        description: "Image must be less than 5MB.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const fileExt = file.name.split(".").pop();
+      const fileName = `${user.id}/${type}.${fileExt}`;
+
+      // Upload to storage
+      const { error: uploadError } = await supabase.storage
+        .from("profile-images")
+        .upload(fileName, file, {
+          upsert: true,
+          contentType: file.type,
+        });
+
+      if (uploadError) throw uploadError;
+
+      // Get public URL
+      const {
+        data: { publicUrl },
+      } = supabase.storage.from("profile-images").getPublicUrl(fileName);
+
+      // Add cache-busting query param
+      const urlWithCacheBust = `${publicUrl}?t=${Date.now()}`;
+
+      // Update profile in database
+      const updateField = type === "profile" ? "profile_image_url" : "avatar_url";
+      const { error: updateError } = await supabase
+        .from("profiles")
+        .update({ [updateField]: urlWithCacheBust })
+        .eq("id", user.id);
+
+      if (updateError) throw updateError;
+
+      toast({
+        title: "Success",
+        description: `${type === "profile" ? "Profile" : "Cover"} image updated!`,
+      });
+
+      // Trigger refresh
+      onProfileUpdate?.();
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      toast({
+        title: "Error",
+        description: "Failed to upload image. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleProfileImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      handleImageUpload(file, "profile", setUploadingProfile);
+    }
+  };
+
+  const handleCoverImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      handleImageUpload(file, "cover", setUploadingCover);
+    }
+  };
 
   return (
     <div className="bg-card rounded-xl overflow-hidden shadow-lg border border-border">
+      {/* Hidden file inputs */}
+      <input
+        type="file"
+        ref={profileImageInputRef}
+        onChange={handleProfileImageChange}
+        accept="image/*"
+        className="hidden"
+      />
+      <input
+        type="file"
+        ref={coverImageInputRef}
+        onChange={handleCoverImageChange}
+        accept="image/*"
+        className="hidden"
+      />
+
       {/* Cover Image */}
-      <div className="h-48 bg-gradient-to-r from-primary/30 via-accent/20 to-primary/30 relative">
+      <div className="h-48 bg-gradient-to-r from-primary/30 via-accent/20 to-primary/30 relative overflow-hidden">
+        {profileData.avatar_url && profileData.avatar_url.trim() !== "" && (
+          <img
+            src={profileData.avatar_url}
+            alt="Cover"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMSkiIHN0cm9rZS13aWR0aD0iMiIvPjwvZz48L3N2Zz4=')] opacity-30" />
         <Button
           variant="ghost"
           size="icon"
           className="absolute top-4 right-4 bg-background/20 hover:bg-background/40 backdrop-blur-sm"
+          onClick={() => coverImageInputRef.current?.click()}
+          disabled={uploadingCover}
         >
-          <Camera className="w-4 h-4" />
+          {uploadingCover ? (
+            <Loader2 className="w-4 h-4 animate-spin" />
+          ) : (
+            <Camera className="w-4 h-4" />
+          )}
         </Button>
       </div>
 
@@ -46,8 +176,14 @@ const ProfileHeader = ({ profileData, percentage, onEditProfile }: ProfileHeader
               variant="ghost"
               size="icon"
               className="absolute bottom-0 right-0 bg-background border border-border rounded-full shadow-md hover:bg-muted"
+              onClick={() => profileImageInputRef.current?.click()}
+              disabled={uploadingProfile}
             >
-              <Camera className="w-4 h-4" />
+              {uploadingProfile ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                <Camera className="w-4 h-4" />
+              )}
             </Button>
           </div>
         </div>
