@@ -23,7 +23,8 @@ const ProfileHeader = ({ profileData, percentage, onEditProfile, onProfileUpdate
   const handleImageUpload = async (
     file: File,
     type: "profile" | "cover",
-    setLoading: (loading: boolean) => void
+    setLoading: (loading: boolean) => void,
+    inputRef: React.RefObject<HTMLInputElement>
   ) => {
     if (!user) return;
 
@@ -51,34 +52,45 @@ const ProfileHeader = ({ profileData, percentage, onEditProfile, onProfileUpdate
 
     try {
       const fileExt = file.name.split(".").pop();
-      const fileName = `${user.id}/${type}.${fileExt}`;
+      const fileName = `${user.id}/${type}-${Date.now()}.${fileExt}`;
+
+      console.log(`Uploading ${type} image:`, fileName);
 
       // Upload to storage
-      const { error: uploadError } = await supabase.storage
+      const { error: uploadError, data: uploadData } = await supabase.storage
         .from("profile-images")
         .upload(fileName, file, {
           upsert: true,
           contentType: file.type,
         });
 
-      if (uploadError) throw uploadError;
+      if (uploadError) {
+        console.error("Storage upload error:", uploadError);
+        throw uploadError;
+      }
+
+      console.log("Upload successful:", uploadData);
 
       // Get public URL
       const {
         data: { publicUrl },
       } = supabase.storage.from("profile-images").getPublicUrl(fileName);
 
-      // Add cache-busting query param
-      const urlWithCacheBust = `${publicUrl}?t=${Date.now()}`;
+      console.log("Public URL:", publicUrl);
 
       // Update profile in database
       const updateField = type === "profile" ? "profile_image_url" : "avatar_url";
       const { error: updateError } = await supabase
         .from("profiles")
-        .update({ [updateField]: urlWithCacheBust })
+        .update({ [updateField]: publicUrl })
         .eq("id", user.id);
 
-      if (updateError) throw updateError;
+      if (updateError) {
+        console.error("Database update error:", updateError);
+        throw updateError;
+      }
+
+      console.log(`${type} image saved to database`);
 
       toast({
         title: "Success",
@@ -96,20 +108,24 @@ const ProfileHeader = ({ profileData, percentage, onEditProfile, onProfileUpdate
       });
     } finally {
       setLoading(false);
+      // Reset file input
+      if (inputRef.current) {
+        inputRef.current.value = "";
+      }
     }
   };
 
   const handleProfileImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      handleImageUpload(file, "profile", setUploadingProfile);
+      handleImageUpload(file, "profile", setUploadingProfile, profileImageInputRef);
     }
   };
 
   const handleCoverImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      handleImageUpload(file, "cover", setUploadingCover);
+      handleImageUpload(file, "cover", setUploadingCover, coverImageInputRef);
     }
   };
 
