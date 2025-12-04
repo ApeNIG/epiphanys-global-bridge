@@ -31,7 +31,7 @@ const ProfileHeader = ({ profileData, percentage, onEditProfile }: ProfileHeader
         {/* Profile Picture */}
         <div className="absolute -top-16 left-6">
           <div className="relative">
-            {profileData.profile_image_url ? (
+            {profileData.profile_image_url && profileData.profile_image_url.trim() !== "" ? (
               <img
                 src={profileData.profile_image_url}
                 alt="Profile"
