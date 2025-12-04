@@ -183,10 +183,12 @@ const Community = () => {
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Button variant="outline" size="lg" className="border-2 border-royal-blue text-royal-blue hover:bg-royal-blue hover:text-white transform hover:scale-105 transition-all duration-300 px-8 py-4 font-semibold">
-              <Star className="mr-2 h-5 w-5" />
-              Explore Success Stories
-            </Button>
+            <Link to="/success-stories">
+              <Button variant="outline" size="lg" className="border-2 border-royal-blue text-royal-blue hover:bg-royal-blue hover:text-white transform hover:scale-105 transition-all duration-300 px-8 py-4 font-semibold">
+                <Star className="mr-2 h-5 w-5" />
+                Explore Success Stories
+              </Button>
+            </Link>
           </div>
           
           {/* Trust Indicators with Brand Colors */}
