@@ -4,7 +4,8 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Quote, TrendingUp, Users, Globe, Award, MapPin, Calendar, Building2 } from "lucide-react";
+import { ChevronLeft, Quote, TrendingUp, Users, Globe, Award, MapPin, Calendar, Building2 } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import successStory1 from "@/assets/success-story-1.jpg";
 import successStory2 from "@/assets/success-story-2.jpg";
 import successStory3 from "@/assets/success-story-3.jpg";
@@ -101,10 +102,21 @@ CareConnect Health now provides multilingual telemedicine services to over 5,000
         </div>
 
         <div className="relative container mx-auto z-10">
-          <Link to="/community" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8">
-            <ArrowLeft className="w-4 h-4" />
-            Back to Community
-          </Link>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Link 
+                  to="/community" 
+                  className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/80 dark:bg-deep-navy/80 shadow-md hover:shadow-lg hover:scale-110 transition-all duration-300 mb-8"
+                >
+                  <ChevronLeft className="w-5 h-5 text-foreground" />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Back to Community</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
 
           <Badge className="mb-6 bg-gradient-to-r from-cool-grey to-royal-blue/10 text-deep-navy border-0 shadow-elegant px-6 py-2">
             <Award className="w-4 h-4 mr-2 text-gold-amber" />
