@@ -53,9 +53,9 @@ const Hero = () => {
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Hero Background Image Carousel */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-0">
         <div 
-          className={`flex h-full ${isTransitioning ? 'transition-transform duration-[5000ms]' : ''}`}
+          className={`flex h-full w-full ${isTransitioning ? 'transition-transform duration-[5000ms]' : ''}`}
           style={{ 
             transform: `translateX(-${currentIndex * 100}%)`,
             transitionTimingFunction: isTransitioning ? 'cubic-bezier(0.25, 0.1, 0.25, 1)' : 'none'
@@ -71,7 +71,7 @@ const Hero = () => {
         </div>
       </div>
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/30" />
+      <div className="absolute inset-0 z-[1] bg-black/30" />
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-6xl mx-auto space-y-10">
