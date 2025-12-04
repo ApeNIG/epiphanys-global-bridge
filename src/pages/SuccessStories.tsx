@@ -102,26 +102,28 @@ CareConnect Health now provides multilingual telemedicine services to over 5,000
         </div>
 
         <div className="relative container mx-auto z-10">
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Link 
-                  to="/community" 
-                  className="inline-flex items-center justify-center hover:scale-110 transition-all duration-300 mb-8"
-                >
-                  <ChevronLeft className="w-4 h-4 text-muted-foreground hover:text-primary" />
-                </Link>
-              </TooltipTrigger>
-              <TooltipContent className="bg-emerald-green/20 text-emerald-green border-emerald-green/30">
-                <p>Back to Community</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <div className="flex items-center gap-4 mb-6">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link 
+                    to="/community" 
+                    className="inline-flex items-center justify-center hover:scale-110 transition-all duration-300"
+                  >
+                    <ChevronLeft className="w-4 h-4 text-muted-foreground hover:text-primary" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent className="bg-emerald-green/20 text-emerald-green border-emerald-green/30">
+                  <p>Back to Community</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
 
-          <Badge className="mb-6 bg-gradient-to-r from-cool-grey to-royal-blue/10 text-deep-navy border-0 shadow-elegant px-6 py-2">
-            <Award className="w-4 h-4 mr-2 text-gold-amber" />
-            Real Stories, Real Impact
-          </Badge>
+            <Badge className="bg-gradient-to-r from-cool-grey to-royal-blue/10 text-deep-navy border-0 shadow-elegant px-6 py-2">
+              <Award className="w-4 h-4 mr-2 text-gold-amber" />
+              Real Stories, Real Impact
+            </Badge>
+          </div>
 
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
             Success Stories
