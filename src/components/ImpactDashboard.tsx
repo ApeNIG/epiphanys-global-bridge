@@ -77,7 +77,7 @@ const ImpactDashboard = () => {
                 {" "}Collective Impact
               </span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
               Every feature produces trackable outcomes. See how our community is driving 
               economic empowerment and inclusive growth globally.
             </p>
@@ -104,10 +104,10 @@ const ImpactDashboard = () => {
                     <div className="text-2xl font-bold text-foreground">
                       {metric.value}
                     </div>
-                    <CardTitle className="text-sm font-medium text-muted-foreground">
+                    <CardTitle className="text-sm font-medium text-white/90">
                       {metric.title}
                     </CardTitle>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
+                    <p className="text-xs text-white/70 leading-relaxed">
                       {metric.description}
                     </p>
                   </div>
@@ -122,7 +122,7 @@ const ImpactDashboard = () => {
 
         <ScrollReveal animation="fade" delay={450}>
           <div className="text-center mt-8">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-white/70">
               Data updated in real-time • Last refresh: {new Date().toLocaleTimeString()}
             </p>
           </div>
