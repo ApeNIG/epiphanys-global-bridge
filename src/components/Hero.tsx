@@ -163,7 +163,7 @@ const Hero = () => {
           </ScrollReveal>
           
           <ScrollReveal animation="slide-up" delay={500}>
-            <div className="pt-16 pb-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="pt-8 pb-8 grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center group hover:scale-105 transition-transform">
                 <div className="text-4xl md:text-5xl font-black text-primary mb-2 group-hover:text-primary/80 transition-colors">
                   250M+
