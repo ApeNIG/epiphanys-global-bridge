@@ -110,7 +110,7 @@ CareConnect Health now provides multilingual telemedicine services to over 5,000
                     to="/community" 
                     className="inline-flex items-center justify-center hover:scale-110 transition-all duration-300"
                   >
-                    <ChevronLeft className="w-4 h-4 text-muted-foreground hover:text-primary" />
+                    <ChevronLeft className="w-6 h-6 text-muted-foreground hover:text-primary" />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent className="bg-emerald-green/20 text-emerald-green border-emerald-green/30">
