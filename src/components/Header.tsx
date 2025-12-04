@@ -204,14 +204,14 @@ const Header = () => {
             <>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link to="/auth">
+                  <Link to="/login">
                     <Button variant="ghost" size="icon" className="rounded-full">
                       <User className="w-5 h-5" />
                     </Button>
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent className="bg-primary/20 text-white border-primary/30">
-                  <p>My Account</p>
+                  <p>Sign In</p>
                 </TooltipContent>
               </Tooltip>
               <Link to="/auth">
