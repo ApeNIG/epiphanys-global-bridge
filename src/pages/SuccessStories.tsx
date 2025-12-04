@@ -156,7 +156,7 @@ CareConnect Health now provides multilingual telemedicine services to over 5,000
                     <img
                       src={story.image}
                       alt={story.name}
-                      className="w-full h-full min-h-[400px] object-cover"
+                      className="w-full h-full min-h-[400px] object-cover object-top scale-[0.85] origin-top"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-6 left-6 right-6">
