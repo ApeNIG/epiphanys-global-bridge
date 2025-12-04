@@ -119,8 +119,6 @@ const Advisory = () => {
       {/* Hero Section */}
       <section className="relative pt-20 pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-purple-500/5 to-teal-500/5" />
-        <div className="flow-geometric-shape w-32 h-32 rotate-45 top-20 left-10 opacity-20" />
-        <div className="flow-geometric-shape w-24 h-24 rotate-12 top-40 right-20 opacity-15" />
         
         <div className="relative z-10 container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
