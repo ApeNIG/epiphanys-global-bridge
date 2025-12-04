@@ -179,12 +179,8 @@ const Auth = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-background/80 to-primary/5">
         <header className="border-b border-border bg-background/80 backdrop-blur-sm">
-          <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-            <Link to="/" className="flex items-center space-x-2 text-foreground hover:text-primary transition-colors">
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back to Home</span>
-            </Link>
-            <Link to="/" className="flex items-center space-x-2">
+          <div className="container mx-auto px-4 h-16 flex items-center">
+            <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
               <img src={logo} alt="Epiphiny Flow" className="w-[65px] h-[65px] object-contain" />
               <span className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
                 Epiphiny Flow
@@ -242,12 +238,8 @@ const Auth = () => {
     <div className="min-h-screen bg-gradient-to-br from-background via-background/80 to-primary/5">
       {/* Header */}
       <header className="border-b border-border bg-background/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2 text-foreground hover:text-primary transition-colors">
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to Home</span>
-          </Link>
-          <Link to="/" className="flex items-center space-x-2">
+        <div className="container mx-auto px-4 h-16 flex items-center">
+          <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
             <img src={logo} alt="Epiphiny Flow" className="w-[65px] h-[65px] object-contain" />
             <span className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
               Epiphiny Flow
