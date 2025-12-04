@@ -185,8 +185,8 @@ const Auth = () => {
               <span>Back to Home</span>
             </Link>
             <Link to="/" className="flex items-center space-x-2">
-              <img src={logo} alt="Epiphiny Flow" className="w-[50px] h-[50px] object-contain" />
-              <span className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+              <img src={logo} alt="Epiphiny Flow" className="w-[65px] h-[65px] object-contain" />
+              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
                 Epiphiny Flow
               </span>
             </Link>
@@ -248,8 +248,8 @@ const Auth = () => {
             <span>Back to Home</span>
           </Link>
           <Link to="/" className="flex items-center space-x-2">
-            <img src={logo} alt="Epiphiny Flow" className="w-[50px] h-[50px] object-contain" />
-            <span className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+            <img src={logo} alt="Epiphiny Flow" className="w-[65px] h-[65px] object-contain" />
+            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
               Epiphiny Flow
             </span>
           </Link>
