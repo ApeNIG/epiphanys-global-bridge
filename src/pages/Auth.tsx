@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Shield, Users, TrendingUp, Globe } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -184,13 +185,7 @@ const Auth = () => {
               <span>Back to Home</span>
             </Link>
             <Link to="/" className="flex items-center space-x-2">
-              <div className="relative w-10 h-10 bg-gradient-to-br from-primary via-purple-600 to-accent rounded-xl flex items-center justify-center shadow-lg">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-xl"></div>
-                <span className="relative text-white font-bold text-lg tracking-tight">
-                  <span className="text-white drop-shadow-sm">E</span>
-                  <span className="text-orange-200 drop-shadow-sm">F</span>
-                </span>
-              </div>
+              <img src={logo} alt="Epiphiny Flow" className="w-[50px] h-[50px] object-contain" />
               <span className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
                 Epiphiny Flow
               </span>
@@ -253,13 +248,7 @@ const Auth = () => {
             <span>Back to Home</span>
           </Link>
           <Link to="/" className="flex items-center space-x-2">
-            <div className="relative w-10 h-10 bg-gradient-to-br from-primary via-purple-600 to-accent rounded-xl flex items-center justify-center shadow-lg">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-xl"></div>
-              <span className="relative text-white font-bold text-lg tracking-tight">
-                <span className="text-white drop-shadow-sm">E</span>
-                <span className="text-orange-200 drop-shadow-sm">F</span>
-              </span>
-            </div>
+            <img src={logo} alt="Epiphiny Flow" className="w-[50px] h-[50px] object-contain" />
             <span className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
               Epiphiny Flow
             </span>
