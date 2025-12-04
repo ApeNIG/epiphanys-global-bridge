@@ -9,6 +9,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "next-themes";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
+import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Advisory from "./pages/Advisory";
 import ManageOpportunities from "./pages/ManageOpportunities";
@@ -40,6 +41,7 @@ const App = () => (
             <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/advisory" element={<Advisory />} />
             <Route path="/opportunities" element={<ManageOpportunities />} />
