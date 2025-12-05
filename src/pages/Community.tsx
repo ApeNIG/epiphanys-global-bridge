@@ -126,7 +126,7 @@ const Community = () => {
     },
     {
       title: "Women in Diaspora Leadership",
-      date: "April 5, 2024",
+      date: "April 5 2026",
       location: "Birmingham ICC", 
       attendees: "800+ expected",
       focus: "Breaking Barriers Together"
