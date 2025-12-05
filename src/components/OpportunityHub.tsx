@@ -116,7 +116,7 @@ const OpportunityHub = () => {
   const displayedOpportunities = hasActiveFilters ? filteredOpportunities : filteredOpportunities.slice(0, 4);
 
   const formatDeadline = (deadline: string | null) => {
-    if (!deadline) return null;
+    if (!deadline) return 'Rolling';
     return new Date(deadline).toLocaleDateString('en-GB', {
       day: 'numeric',
       month: 'short',
@@ -280,12 +280,10 @@ const OpportunityHub = () => {
                       </div>
                     )}
                     
-                    {opportunity.deadline && (
-                      <div className="flex items-center text-sm text-muted-foreground">
-                        <Calendar className="w-4 h-4 mr-2" />
-                        Deadline: {formatDeadline(opportunity.deadline)}
-                      </div>
-                    )}
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <Calendar className="w-4 h-4 mr-2" />
+                      Deadline: {formatDeadline(opportunity.deadline)}
+                    </div>
                   </div>
 
                   <div className="flex gap-2">
