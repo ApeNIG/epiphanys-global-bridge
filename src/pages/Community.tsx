@@ -119,7 +119,7 @@ const Community = () => {
     },
     {
       title: "Cultural Heritage in Business",
-      date: "March 22, 2024", 
+      date: "March 22 2026", 
       location: "Manchester Central",
       attendees: "500+ expected",
       focus: "Leveraging Cultural Capital"
