@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Search, MapPin, Calendar, ExternalLink, Building, Users, Briefcase, Star } from "lucide-react";
+import { Search, MapPin, Calendar, ExternalLink, Building, Users, Briefcase, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { ContactRequest } from "@/components/ContactRequest";
@@ -51,6 +51,8 @@ const OpportunityHub = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedSector, setSelectedSector] = useState<string>("all");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
   const { toast } = useToast();
 
   useEffect(() => {
@@ -109,11 +111,22 @@ const OpportunityHub = () => {
     return matchesSearch && matchesCategory && matchesSector;
   });
 
-  // Check if any filters are active
-  const hasActiveFilters = searchTerm !== "" || selectedCategory !== "all" || selectedSector !== "all";
-  
-  // Show only 4 opportunities by default, all when filtering
-  const displayedOpportunities = hasActiveFilters ? filteredOpportunities : filteredOpportunities.slice(0, 4);
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, selectedCategory, selectedSector]);
+
+  // Pagination calculations
+  const totalPages = Math.ceil(filteredOpportunities.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayedOpportunities = filteredOpportunities.slice(startIndex, endIndex);
+
+  const goToPage = (page: number) => {
+    setCurrentPage(Math.max(1, Math.min(page, totalPages)));
+    // Scroll to top of opportunities section
+    document.getElementById('opportunities-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const formatDeadline = (deadline: string | null) => {
     if (!deadline) return 'Rolling';
@@ -147,12 +160,13 @@ const OpportunityHub = () => {
   }
 
   return (
-    <ParallaxSection 
-      backgroundImage={businessImages.networking}
-      speed={0.4}
-      className="py-20"
-    >
-      <div className="container mx-auto px-4">
+    <div id="opportunities-section">
+      <ParallaxSection 
+        backgroundImage={businessImages.networking}
+        speed={0.4}
+        className="py-20"
+      >
+        <div className="container mx-auto px-4">
         <ScrollReveal animation="fade">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -205,10 +219,7 @@ const OpportunityHub = () => {
         {/* Results count */}
         <div className="mb-6">
           <p className="text-muted-foreground">
-            Showing {displayedOpportunities.length} of {opportunities.length} opportunities
-            {!hasActiveFilters && filteredOpportunities.length > 4 && (
-              <span className="ml-2 text-primary">• Use search or filters to see more</span>
-            )}
+            Showing {startIndex + 1}-{Math.min(endIndex, filteredOpportunities.length)} of {filteredOpportunities.length} opportunities
           </p>
         </div>
 
@@ -323,6 +334,47 @@ const OpportunityHub = () => {
           })}
         </div>
 
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center gap-2 mt-10">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => goToPage(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="gap-1"
+            >
+              <ChevronLeft className="w-4 h-4" />
+              Previous
+            </Button>
+            
+            <div className="flex items-center gap-1">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <Button
+                  key={page}
+                  variant={currentPage === page ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => goToPage(page)}
+                  className="w-10"
+                >
+                  {page}
+                </Button>
+              ))}
+            </div>
+            
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => goToPage(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="gap-1"
+            >
+              Next
+              <ChevronRight className="w-4 h-4" />
+            </Button>
+          </div>
+        )}
+
         {displayedOpportunities.length === 0 && (
           <div className="text-center py-12">
             <p className="text-muted-foreground text-lg">No opportunities found matching your criteria.</p>
@@ -341,6 +393,7 @@ const OpportunityHub = () => {
         )}
       </div>
     </ParallaxSection>
+    </div>
   );
 };
 
