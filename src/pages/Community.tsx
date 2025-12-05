@@ -112,7 +112,7 @@ const Community = () => {
   const upcomingEvents = [
     {
       title: "Diaspora Business Summit 2024",
-      date: "March 15, 2024",
+      date: "March 15 2026",
       location: "London ExCeL",
       attendees: "1,200+ expected",
       focus: "Investment & Partnership Opportunities"
