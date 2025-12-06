@@ -71,8 +71,8 @@ const ImpactDashboard = () => {
             <Badge variant="outline" className="mb-4 text-primary border-primary/20">
               Real-Time Impact
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Measuring Our 
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+              Measuring Our
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 {" "}Collective Impact
               </span>
