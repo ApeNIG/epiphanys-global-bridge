@@ -8,6 +8,66 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+// Input validation constants
+const MAX_MESSAGE_LENGTH = 2000;
+const MAX_CONVERSATION_HISTORY = 20;
+const MAX_HISTORY_MESSAGE_LENGTH = 1000;
+
+// Rate limiting using in-memory store (resets on function restart)
+const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT_WINDOW_MS = 60000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 20;
+
+function getRateLimitKey(req: Request): string {
+  // Use IP address or a combination of headers for rate limiting
+  const forwarded = req.headers.get('x-forwarded-for');
+  const ip = forwarded ? forwarded.split(',')[0].trim() : 'unknown';
+  return ip;
+}
+
+function checkRateLimit(key: string): { allowed: boolean; retryAfter?: number } {
+  const now = Date.now();
+  const record = rateLimitStore.get(key);
+  
+  if (!record || now > record.resetTime) {
+    rateLimitStore.set(key, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return { allowed: true };
+  }
+  
+  if (record.count >= MAX_REQUESTS_PER_WINDOW) {
+    const retryAfter = Math.ceil((record.resetTime - now) / 1000);
+    return { allowed: false, retryAfter };
+  }
+  
+  record.count++;
+  return { allowed: true };
+}
+
+function sanitizeMessage(message: string): string {
+  if (typeof message !== 'string') return '';
+  return message.trim().slice(0, MAX_MESSAGE_LENGTH);
+}
+
+function validateConversationHistory(history: unknown): { role: string; content: string }[] {
+  if (!Array.isArray(history)) return [];
+  
+  return history
+    .slice(-MAX_CONVERSATION_HISTORY)
+    .filter((msg): msg is { role: string; content: string } => {
+      return (
+        typeof msg === 'object' &&
+        msg !== null &&
+        typeof msg.role === 'string' &&
+        typeof msg.content === 'string' &&
+        ['user', 'assistant'].includes(msg.role)
+      );
+    })
+    .map(msg => ({
+      role: msg.role,
+      content: msg.content.trim().slice(0, MAX_HISTORY_MESSAGE_LENGTH)
+    }));
+}
+
 const systemPrompt = `You are an AI assistant for a world-leading digital platform that connects businesses, organisations, and individuals with public and private sector opportunities in business, careers, investment, and global collaboration. The platform has a strong focus on serving diaspora communities in the UK.
 
 Key platform features include:
@@ -44,11 +104,40 @@ serve(async (req) => {
   }
 
   try {
-    const { message, conversationHistory = [] } = await req.json();
+    // Rate limiting check
+    const rateLimitKey = getRateLimitKey(req);
+    const rateLimitResult = checkRateLimit(rateLimitKey);
+    
+    if (!rateLimitResult.allowed) {
+      console.log(`Rate limit exceeded for ${rateLimitKey}`);
+      return new Response(JSON.stringify({ 
+        error: 'Too many requests. Please try again later.',
+        retryAfter: rateLimitResult.retryAfter
+      }), {
+        status: 429,
+        headers: { 
+          ...corsHeaders, 
+          'Content-Type': 'application/json',
+          'Retry-After': String(rateLimitResult.retryAfter)
+        },
+      });
+    }
+
+    const body = await req.json();
+    const message = sanitizeMessage(body.message);
+    const conversationHistory = validateConversationHistory(body.conversationHistory);
 
     if (!message) {
-      throw new Error('No message provided');
+      return new Response(JSON.stringify({ error: 'Message is required' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
     }
+
+    console.log('Processing chatbot request:', { 
+      messageLength: message.length, 
+      historyLength: conversationHistory.length 
+    });
 
     // Build conversation context
     const messages = [

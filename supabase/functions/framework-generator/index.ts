@@ -6,6 +6,18 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+// Input validation constants
+const MAX_BUSINESS_CONTEXT_LENGTH = 5000;
+const ALLOWED_FRAMEWORK_TYPES = [
+  'business_plan',
+  'content_strategy',
+  'investment_proposal',
+  'marketing_plan',
+  'team_structure'
+] as const;
+
+type FrameworkType = typeof ALLOWED_FRAMEWORK_TYPES[number];
+
 interface BusinessInfo {
   industry: string;
   stage: string;
@@ -19,6 +31,21 @@ interface FrameworkSection {
   type: 'text' | 'checklist' | 'table' | 'template';
 }
 
+function validateFrameworkType(type: unknown): FrameworkType {
+  if (typeof type !== 'string') {
+    return 'business_plan';
+  }
+  if (ALLOWED_FRAMEWORK_TYPES.includes(type as FrameworkType)) {
+    return type as FrameworkType;
+  }
+  return 'business_plan';
+}
+
+function sanitizeBusinessContext(context: unknown): string {
+  if (typeof context !== 'string') return '';
+  return context.trim().slice(0, MAX_BUSINESS_CONTEXT_LENGTH);
+}
+
 serve(async (req) => {
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
@@ -26,10 +53,17 @@ serve(async (req) => {
   }
 
   try {
-    const { framework_type, business_context, business_info } = await req.json();
+    const body = await req.json();
+    const framework_type = validateFrameworkType(body.framework_type);
+    const business_context = sanitizeBusinessContext(body.business_context);
 
-    if (!framework_type || !business_context) {
-      throw new Error('Framework type and business context are required');
+    if (!business_context) {
+      return new Response(JSON.stringify({ 
+        error: 'Business context is required' 
+      }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
     }
 
     const openAIApiKey = Deno.env.get('OPENAI_API_KEY');
@@ -37,7 +71,10 @@ serve(async (req) => {
       throw new Error('OpenAI API key not configured');
     }
 
-    console.log('Generating framework:', { framework_type, context_length: business_context.length });
+    console.log('Generating framework:', { 
+      framework_type, 
+      context_length: business_context.length 
+    });
 
     const frameworkPrompts = {
       business_plan: `Create a comprehensive business plan framework including:
@@ -129,7 +166,7 @@ serve(async (req) => {
 
     Make it practical, actionable, and tailored to the specific business context provided.`;
 
-    const userPrompt = `${frameworkPrompts[framework_type as keyof typeof frameworkPrompts] || frameworkPrompts.business_plan}
+    const userPrompt = `${frameworkPrompts[framework_type]}
 
     Business Context: ${business_context}
 

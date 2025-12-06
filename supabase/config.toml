@@ -57,21 +57,27 @@ enable_confirmations = false
 enabled = true
 port = 54328
 
+# AI chatbot remains public for non-authenticated users but has input validation
 [functions.ai-chatbot]
 verify_jwt = false
 
+# Speech-to-text requires authentication to prevent API abuse
 [functions.speech-to-text]
-verify_jwt = false
+verify_jwt = true
 
+# Text-to-speech requires authentication to prevent API abuse
 [functions.text-to-speech]
-verify_jwt = false
+verify_jwt = true
 
+# Task completion requires authentication
 [functions.openai-task-completion]
-verify_jwt = false
+verify_jwt = true
 
+# Framework generator requires authentication
 [functions.framework-generator]
-verify_jwt = false
+verify_jwt = true
 
+# Email functions remain public but have input validation
 [functions.send-consultation-email]
 verify_jwt = false
 

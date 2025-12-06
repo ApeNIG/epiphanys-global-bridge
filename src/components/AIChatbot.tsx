@@ -77,6 +77,16 @@ export const AIChatbot = () => {
   }, []);
 
   const startListening = async () => {
+    // Voice features require authentication
+    if (!user) {
+      toast({
+        title: "Sign in Required",
+        description: "Voice features are available for signed-in users. Please sign in to use voice input.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       
@@ -164,11 +174,17 @@ export const AIChatbot = () => {
   const speakText = async (text: string) => {
     if (!voiceEnabled || !window.speechSynthesis) return;
     
+    // For non-authenticated users, use browser TTS directly
+    if (!user) {
+      fallbackToWebSpeech(text);
+      return;
+    }
+    
     try {
       // Cancel any ongoing speech
       window.speechSynthesis.cancel();
       
-      // Use text-to-speech edge function for better quality
+      // Use text-to-speech edge function for better quality (authenticated users only)
       const { data, error } = await supabase.functions.invoke('text-to-speech', {
         body: { 
           text: text.replace(/[*_~`]/g, ''), // Remove markdown formatting
