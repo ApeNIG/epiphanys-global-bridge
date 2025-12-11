@@ -138,7 +138,7 @@ const Community = () => {
       </section>
 
       {/* Section 2: Community Impact Stats */}
-      <section className="min-h-screen flex items-center bg-pastel-teal">
+      <section className="min-h-screen flex items-center">
         <div className="container mx-auto px-4 py-32">
           <ScrollReveal animation="fade">
             <div className="text-center mb-16">
