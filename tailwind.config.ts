@@ -79,7 +79,15 @@ export default {
 				'flow-accent': 'hsl(var(--flow-accent))',
 				'flow-premium': 'hsl(var(--flow-premium))',
 				'flow-community': 'hsl(var(--flow-community))',
-				'flow-foundation': 'hsl(var(--flow-foundation))'
+				'flow-foundation': 'hsl(var(--flow-foundation))',
+				
+				// Pastel Section Backgrounds
+				'pastel-teal': 'hsl(var(--pastel-teal))',
+				'pastel-purple': 'hsl(var(--pastel-purple))',
+				'pastel-mint': 'hsl(var(--pastel-mint))',
+				'pastel-peach': 'hsl(var(--pastel-peach))',
+				'pastel-sky': 'hsl(var(--pastel-sky))',
+				'pastel-rose': 'hsl(var(--pastel-rose))'
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
