@@ -84,15 +84,15 @@ const Community = () => {
           backgroundAttachment: 'fixed'
         }}
       >
-        <div className="absolute inset-0 bg-deep-navy/75" />
+        <div className="absolute inset-0 bg-white/60" />
         <div className="container mx-auto px-4 py-32 text-center relative z-10">
           <ScrollReveal animation="fade">
-            <Badge className="mb-8 bg-white/10 backdrop-blur-sm text-white border-white/20 shadow-elegant px-6 py-2 font-semibold">
+            <Badge className="mb-8 bg-charcoal/10 backdrop-blur-sm text-charcoal border-charcoal/20 shadow-elegant px-6 py-2 font-semibold">
               <Users className="w-4 h-4 mr-2" />
               Create your local, national and global community
             </Badge>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight text-white">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight text-charcoal">
               Where Cultural Heritage
               <br />
               <span className="text-emerald-green">
@@ -100,7 +100,7 @@ const Community = () => {
               </span>
             </h1>
             
-            <p className="text-lg md:text-xl text-white/90 mb-10 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-charcoal/90 mb-10 max-w-4xl mx-auto leading-relaxed">
               Join the UK's largest diaspora-focused professional community. Connect with your roots while building your future through 
               <span className="text-emerald-green font-semibold"> authentic relationships</span> and 
               <span className="text-sunset-orange font-semibold"> shared experiences</span>.
@@ -114,7 +114,7 @@ const Community = () => {
                 </Button>
               </Link>
               <Link to="/success-stories">
-                <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-deep-navy transform hover:scale-105 transition-all duration-300 px-8 py-4 font-semibold">
+                <Button variant="outline" size="lg" className="border-2 border-charcoal text-charcoal hover:bg-charcoal hover:text-white transform hover:scale-105 transition-all duration-300 px-8 py-4 font-semibold">
                   <Star className="mr-2 h-5 w-5" />
                   Explore Success Stories
                 </Button>
