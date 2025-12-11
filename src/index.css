@@ -46,6 +46,14 @@ All colors MUST be HSL.
     --flow-border: 220 13% 91%;    /* Subtle borders */
     --charcoal-black: 220 13% 9%;
     --cloud-grey: 220 14% 96%;
+    
+    /* Pastel Section Backgrounds */
+    --pastel-teal: 164 50% 94%;      /* Soft teal */
+    --pastel-purple: 260 40% 94%;    /* Soft lavender */
+    --pastel-mint: 150 40% 94%;      /* Soft mint */
+    --pastel-peach: 20 50% 94%;      /* Soft peach */
+    --pastel-sky: 200 50% 94%;       /* Soft sky blue */
+    --pastel-rose: 340 40% 94%;      /* Soft rose */
 
     /* Flow-inspired Design Tokens */
     --flow-primary: var(--flow-teal);
@@ -121,6 +129,14 @@ All colors MUST be HSL.
     --border: 220 13% 20%;
     --input: 220 13% 20%;
     --ring: var(--flow-teal);
+    
+    /* Dark mode pastel backgrounds - deeper, richer tones */
+    --pastel-teal: 164 30% 15%;
+    --pastel-purple: 260 25% 15%;
+    --pastel-mint: 150 25% 14%;
+    --pastel-peach: 20 25% 14%;
+    --pastel-sky: 200 25% 15%;
+    --pastel-rose: 340 20% 14%;
 
     --sidebar-background: 220 13% 12%;
     --sidebar-foreground: 240 4.8% 95.9%;

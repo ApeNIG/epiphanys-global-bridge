@@ -96,7 +96,7 @@ const About = () => {
       <Header />
       
       {/* Section 1: Empowering Diaspora Communities */}
-      <section className="min-h-screen flex items-center bg-gradient-to-br from-royal-blue/10 via-background to-emerald-green/10">
+      <section className="min-h-screen flex items-center bg-pastel-teal">
         <div className="container mx-auto px-4 py-32 text-center">
           <ScrollReveal animation="fade">
             <Badge variant="secondary" className="mb-8 bg-primary/10 text-primary border-primary/20 shadow-elegant px-6 py-2 font-semibold">
@@ -126,7 +126,7 @@ const About = () => {
       </section>
 
       {/* Section 2: Our Mission */}
-      <section className="min-h-screen flex items-center bg-gradient-to-br from-emerald-green/10 via-background to-sunset-orange/10">
+      <section className="min-h-screen flex items-center bg-pastel-purple">
         <div className="container mx-auto px-4 py-32">
           <ScrollReveal animation="fade">
             <div className="text-center mb-16">
@@ -177,7 +177,7 @@ const About = () => {
       </section>
 
       {/* Section 3: Our Vision */}
-      <section className="min-h-screen flex items-center bg-gradient-to-br from-sunset-orange/10 via-background to-magenta/10">
+      <section className="min-h-screen flex items-center bg-pastel-mint">
         <div className="container mx-auto px-4 py-32">
           <ScrollReveal animation="fade">
             <div className="text-center mb-16">
@@ -213,7 +213,7 @@ const About = () => {
       </section>
 
       {/* Section 4: Our Values */}
-      <section className="min-h-screen flex items-center bg-gradient-to-br from-magenta/10 via-background to-gold-amber/10">
+      <section className="min-h-screen flex items-center bg-pastel-peach">
         <div className="container mx-auto px-4 py-32">
           <ScrollReveal animation="fade">
             <div className="text-center mb-16">
@@ -248,7 +248,7 @@ const About = () => {
       </section>
 
       {/* Section 5: Our Expertise */}
-      <section className="min-h-screen flex items-center bg-gradient-to-br from-gold-amber/10 via-background to-royal-blue/10">
+      <section className="min-h-screen flex items-center bg-pastel-sky">
         <div className="container mx-auto px-4 py-32">
           <ScrollReveal animation="fade">
             <div className="text-center mb-16">
@@ -283,7 +283,7 @@ const About = () => {
       </section>
 
       {/* Section 6: Why We Exist */}
-      <section className="min-h-screen flex items-center bg-gradient-to-br from-royal-blue/10 via-background to-emerald-green/10">
+      <section className="min-h-screen flex items-center bg-pastel-rose">
         <div className="container mx-auto px-4 py-32">
           <div className="max-w-4xl mx-auto text-center">
             <ScrollReveal animation="fade">
