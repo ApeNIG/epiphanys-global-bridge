@@ -332,4 +332,17 @@ All colors MUST be HSL.
     border: 2px solid hsl(var(--flow-teal) / 0.3);
     background: linear-gradient(135deg, hsl(var(--flow-teal) / 0.1), hsl(var(--flow-purple) / 0.1));
   }
+
+  /* Animated gradient background */
+  .animated-gradient-bg {
+    background: linear-gradient(271deg, #89ebc6, #a8e4eb, #d6a8eb);
+    background-size: 600% 600%;
+    animation: gradientShift 30s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 }
