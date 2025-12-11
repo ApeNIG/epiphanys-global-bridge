@@ -157,16 +157,16 @@ All colors MUST be HSL.
     inset: 0;
     background: linear-gradient(
       to bottom,
-      hsl(var(--background) / 0.8),
-      hsl(var(--background) / 0.7)
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.5)
     );
   }
 
   .dark .parallax-overlay {
     background: linear-gradient(
       to bottom,
-      hsl(var(--background) / 0.9),
-      hsl(var(--background) / 0.85)
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.6)
     );
   }
 
