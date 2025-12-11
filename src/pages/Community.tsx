@@ -121,7 +121,7 @@ const Community = () => {
               </Link>
             </div>
             
-            <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-500">
+            <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-400">
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-emerald-green" />
                 <span>Verified Community</span>
