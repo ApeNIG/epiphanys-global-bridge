@@ -11,15 +11,17 @@ interface UseCountUpOptions {
 export const useCountUp = ({ end, duration = 2000, start = 0, suffix = '', prefix = '' }: UseCountUpOptions) => {
   const [count, setCount] = useState(start);
   const [isVisible, setIsVisible] = useState(false);
-  const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
+        if (entry.isIntersecting) {
+          setCount(start); // Reset count when entering
           setIsVisible(true);
-          setHasAnimated(true);
+        } else {
+          setIsVisible(false);
+          setCount(start); // Reset when leaving
         }
       },
       { threshold: 0.3 }
@@ -30,7 +32,7 @@ export const useCountUp = ({ end, duration = 2000, start = 0, suffix = '', prefi
     }
 
     return () => observer.disconnect();
-  }, [hasAnimated]);
+  }, [start]);
 
   useEffect(() => {
     if (!isVisible) return;
