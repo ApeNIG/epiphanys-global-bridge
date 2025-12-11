@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedStat from "@/components/AnimatedStat";
+import AnimatedNumber from "@/components/AnimatedNumber";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -262,15 +263,15 @@ const Community = () => {
 
             <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mt-16">
               <div className="text-center">
-                <div className="text-4xl font-bold text-emerald-green mb-2">15,000+</div>
+                <AnimatedNumber value="15,000+" className="text-4xl font-bold text-emerald-green mb-2" />
                 <div className="text-white/70">Active Members</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-sunset-orange mb-2">47</div>
+                <AnimatedNumber value="47" className="text-4xl font-bold text-sunset-orange mb-2" />
                 <div className="text-white/70">Countries</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-gold-amber mb-2">2,500+</div>
+                <AnimatedNumber value="2,500+" className="text-4xl font-bold text-gold-amber mb-2" />
                 <div className="text-white/70">Success Stories</div>
               </div>
             </div>
