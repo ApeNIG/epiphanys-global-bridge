@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, Users, Briefcase, GraduationCap, DollarSign, MapPin } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import AnimatedNumber from "./AnimatedNumber";
 
 const impactMetrics = [
   {
@@ -101,9 +102,7 @@ const ImpactDashboard = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
-                    <div className="text-2xl font-bold text-foreground">
-                      {metric.value}
-                    </div>
+                    <AnimatedNumber value={metric.value} className="text-2xl font-bold text-foreground" />
                     <CardTitle className="text-sm font-medium text-white/90">
                       {metric.title}
                     </CardTitle>
