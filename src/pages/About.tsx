@@ -214,22 +214,16 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {visionPoints.map((point, index) => (
               <ScrollReveal key={index} animation="slide-up" delay={200 + index * 150}>
-                <Card className="p-8 bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-102 group">
-                  <div className="flex items-start space-x-6">
-                    <div className="flex-shrink-0">
-                      <div className="w-16 h-16 bg-gradient-primary rounded-xl flex items-center justify-center shadow-elegant">
-                        <point.icon className="w-8 h-8 text-white" />
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-black text-white mb-3">
-                        {point.title}
-                      </h3>
-                      <p className="text-white/80 leading-relaxed">
-                        {point.description}
-                      </p>
-                    </div>
+                <Card className="p-8 bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-102 group text-center">
+                  <div className="w-16 h-16 bg-gradient-primary rounded-xl flex items-center justify-center shadow-elegant mx-auto mb-6">
+                    <point.icon className="w-8 h-8 text-white" />
                   </div>
+                  <h3 className="text-2xl font-black text-white mb-3">
+                    {point.title}
+                  </h3>
+                  <p className="text-white/80 leading-relaxed">
+                    {point.description}
+                  </p>
                 </Card>
               </ScrollReveal>
             ))}
@@ -299,22 +293,16 @@ const About = () => {
               const gradients = ['bg-gradient-success', 'bg-gradient-community', 'bg-gradient-premium', 'bg-gradient-primary'];
               return (
                 <ScrollReveal key={index} animation="slide-up" delay={200 + index * 150}>
-                  <Card className="p-8 bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-102 group">
-                    <div className="flex items-start space-x-6">
-                      <div className="flex-shrink-0">
-                        <div className={`w-16 h-16 ${gradients[index]} rounded-xl flex items-center justify-center shadow-elegant`}>
-                          <area.icon className="w-8 h-8 text-white" />
-                        </div>
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-black text-white mb-3">
-                          {area.title}
-                        </h3>
-                        <p className="text-white/80 leading-relaxed">
-                          {area.description}
-                        </p>
-                      </div>
+                  <Card className="p-8 bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-102 group text-center">
+                    <div className={`w-16 h-16 ${gradients[index]} rounded-xl flex items-center justify-center shadow-elegant mx-auto mb-6`}>
+                      <area.icon className="w-8 h-8 text-white" />
                     </div>
+                    <h3 className="text-2xl font-black text-white mb-3">
+                      {area.title}
+                    </h3>
+                    <p className="text-white/80 leading-relaxed">
+                      {area.description}
+                    </p>
                   </Card>
                 </ScrollReveal>
               );
