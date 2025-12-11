@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AnimatedNumber from "@/components/AnimatedNumber";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -122,7 +123,7 @@ const Global = () => {
               <Card key={index} className="text-center hover:shadow-elegant transition-all duration-300 hover:scale-105">
                 <CardContent className="pt-6">
                   <stat.icon className="w-12 h-12 text-primary mx-auto mb-4" />
-                  <div className="text-3xl font-bold text-foreground mb-2">{stat.value}</div>
+                  <AnimatedNumber value={stat.value} className="text-3xl font-bold text-foreground mb-2" />
                   <p className="text-muted-foreground">{stat.label}</p>
                 </CardContent>
               </Card>
