@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import AnimatedStat from "@/components/AnimatedStat";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -155,15 +156,12 @@ const Community = () => {
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
               {communityStats.map((stat, index) => (
-                <Card key={index} className="text-center hover:shadow-elegant transition-all duration-300 transform hover:scale-105 bg-background/80 backdrop-blur-sm">
-                  <CardContent className="pt-8 pb-6">
-                    <div className="w-16 h-16 mx-auto mb-6 rounded-xl flex items-center justify-center bg-gradient-primary shadow-elegant">
-                      <stat.icon className="h-8 w-8 text-white" />
-                    </div>
-                    <div className="text-4xl font-bold text-foreground mb-3">{stat.value}</div>
-                    <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{stat.label}</div>
-                  </CardContent>
-                </Card>
+                <AnimatedStat
+                  key={index}
+                  label={stat.label}
+                  value={stat.value}
+                  icon={stat.icon}
+                />
               ))}
             </div>
           </ScrollReveal>
