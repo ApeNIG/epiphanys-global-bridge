@@ -4,14 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import ParallaxSection from "@/components/ParallaxSection";
 import ScrollReveal from "@/components/ScrollReveal";
-import heroImage from "@/assets/hero-image.jpg";
-import heroImage2 from "@/assets/hero-image-2.jpg";
-import heroImage3 from "@/assets/hero-image-3.jpg";
-import heroImage4 from "@/assets/hero-image-4.jpg";
-import successStory1 from "@/assets/success-story-1.jpg";
-import successStory2 from "@/assets/success-story-2.jpg";
 import { 
   Target, 
   Heart, 
@@ -103,27 +96,22 @@ const About = () => {
       <Header />
       
       {/* Section 1: Empowering Diaspora Communities */}
-      <ParallaxSection 
-        backgroundImage={heroImage} 
-        speed={0.3} 
-        className="min-h-screen flex items-center"
-        overlay={true}
-      >
-        <div className="container mx-auto px-4 py-32 text-center relative z-10">
+      <section className="min-h-screen flex items-center bg-gradient-to-br from-royal-blue/10 via-background to-emerald-green/10">
+        <div className="container mx-auto px-4 py-32 text-center">
           <ScrollReveal animation="fade">
-            <Badge variant="secondary" className="mb-8 bg-white/20 backdrop-blur-sm text-white border-white/30 shadow-elegant px-6 py-2 font-semibold">
+            <Badge variant="secondary" className="mb-8 bg-primary/10 text-primary border-primary/20 shadow-elegant px-6 py-2 font-semibold">
               About Epiphiny Flow
             </Badge>
           </ScrollReveal>
           <ScrollReveal animation="slide-up" delay={200}>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight drop-shadow-lg">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-8 leading-tight">
               Empowering Diaspora
               <br />
-              <span className="bg-gradient-to-r from-emerald-green to-gold-amber bg-clip-text text-transparent">Communities</span>
+              <span className="bg-gradient-to-r from-royal-blue to-emerald-green bg-clip-text text-transparent">Communities</span>
             </h1>
           </ScrollReveal>
           <ScrollReveal animation="fade" delay={400}>
-            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed font-medium drop-shadow-md">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-medium">
               We're building a digital platform that connects businesses, organisations, 
               and individuals with public and private sector opportunities, with a strong focus on serving 
               <span className="text-emerald-green font-semibold"> diaspora communities</span> in the UK.
@@ -135,20 +123,15 @@ const About = () => {
             </div>
           </ScrollReveal>
         </div>
-      </ParallaxSection>
+      </section>
 
       {/* Section 2: Our Mission */}
-      <ParallaxSection 
-        backgroundImage={heroImage2} 
-        speed={0.4} 
-        className="min-h-screen flex items-center"
-        overlay={true}
-      >
-        <div className="container mx-auto px-4 py-32 relative z-10">
+      <section className="min-h-screen flex items-center bg-gradient-to-br from-emerald-green/10 via-background to-sunset-orange/10">
+        <div className="container mx-auto px-4 py-32">
           <ScrollReveal animation="fade">
             <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-bold text-white mb-8 drop-shadow-lg">Our Mission</h2>
-              <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed font-medium drop-shadow-md">
+              <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-8">Our Mission</h2>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-medium">
                 To create an inclusive digital ecosystem that unlocks economic opportunities, celebrates 
                 cultural identity, and drives collaborative growth.
               </p>
@@ -157,54 +140,49 @@ const About = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <ScrollReveal animation="slide-up" delay={200}>
-              <Card className="p-8 text-center bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 group">
+              <Card className="p-8 text-center bg-card border-border hover:shadow-elegant transition-all duration-300 hover:scale-105 group h-full">
                 <div className="w-16 h-16 bg-gradient-primary rounded-xl flex items-center justify-center mx-auto mb-6 shadow-elegant">
                   <Target className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-black text-white mb-4">Purpose-Driven</h3>
-                <p className="text-white/80 leading-relaxed">
+                <h3 className="text-2xl font-black text-foreground mb-4">Purpose-Driven</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   Every feature serves our mission of diaspora empowerment and economic inclusion
                 </p>
               </Card>
             </ScrollReveal>
             <ScrollReveal animation="slide-up" delay={400}>
-              <Card className="p-8 text-center bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 group">
+              <Card className="p-8 text-center bg-card border-border hover:shadow-glow transition-all duration-300 hover:scale-105 group h-full">
                 <div className="w-16 h-16 bg-gradient-success rounded-xl flex items-center justify-center mx-auto mb-6 shadow-glow">
                   <Users className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-black text-white mb-4">Community-Centric</h3>
-                <p className="text-white/80 leading-relaxed">
+                <h3 className="text-2xl font-black text-foreground mb-4">Community-Centric</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   Built by the community, for the community, with authentic cultural understanding
                 </p>
               </Card>
             </ScrollReveal>
             <ScrollReveal animation="slide-up" delay={600}>
-              <Card className="p-8 text-center bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 group">
+              <Card className="p-8 text-center bg-card border-border hover:shadow-orange transition-all duration-300 hover:scale-105 group h-full">
                 <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mx-auto mb-6 shadow-orange">
                   <Globe className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-black text-white mb-4">Globally Connected</h3>
-                <p className="text-white/80 leading-relaxed">
+                <h3 className="text-2xl font-black text-foreground mb-4">Globally Connected</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   Linking local communities to worldwide opportunities and global networks
                 </p>
               </Card>
             </ScrollReveal>
           </div>
         </div>
-      </ParallaxSection>
+      </section>
 
       {/* Section 3: Our Vision */}
-      <ParallaxSection 
-        backgroundImage={heroImage3} 
-        speed={0.35} 
-        className="min-h-screen flex items-center"
-        overlay={true}
-      >
-        <div className="container mx-auto px-4 py-32 relative z-10">
+      <section className="min-h-screen flex items-center bg-gradient-to-br from-sunset-orange/10 via-background to-magenta/10">
+        <div className="container mx-auto px-4 py-32">
           <ScrollReveal animation="fade">
             <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-bold text-white mb-8 drop-shadow-lg">Our Vision</h2>
-              <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed font-medium drop-shadow-md">
+              <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-8">Our Vision</h2>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-medium">
                 Building a future where every diaspora community member has access to opportunities 
                 that honor their heritage while driving economic growth and cultural innovation.
               </p>
@@ -212,37 +190,35 @@ const About = () => {
           </ScrollReveal>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {visionPoints.map((point, index) => (
-              <ScrollReveal key={index} animation="slide-up" delay={200 + index * 150}>
-                <Card className="p-8 bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-102 group text-center">
-                  <div className="w-16 h-16 bg-gradient-primary rounded-xl flex items-center justify-center shadow-elegant mx-auto mb-6">
-                    <point.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-black text-white mb-3">
-                    {point.title}
-                  </h3>
-                  <p className="text-white/80 leading-relaxed">
-                    {point.description}
-                  </p>
-                </Card>
-              </ScrollReveal>
-            ))}
+            {visionPoints.map((point, index) => {
+              const gradients = ['bg-gradient-primary', 'bg-gradient-success', 'bg-gradient-secondary', 'bg-gradient-premium'];
+              return (
+                <ScrollReveal key={index} animation="slide-up" delay={200 + index * 150}>
+                  <Card className="p-8 bg-card border-border hover:shadow-elegant transition-all duration-300 hover:scale-102 group text-center h-full">
+                    <div className={`w-16 h-16 ${gradients[index]} rounded-xl flex items-center justify-center shadow-elegant mx-auto mb-6`}>
+                      <point.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-black text-foreground mb-3">
+                      {point.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {point.description}
+                    </p>
+                  </Card>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
-      </ParallaxSection>
+      </section>
 
       {/* Section 4: Our Values */}
-      <ParallaxSection 
-        backgroundImage={heroImage4} 
-        speed={0.45} 
-        className="min-h-screen flex items-center"
-        overlay={true}
-      >
-        <div className="container mx-auto px-4 py-32 relative z-10">
+      <section className="min-h-screen flex items-center bg-gradient-to-br from-magenta/10 via-background to-gold-amber/10">
+        <div className="container mx-auto px-4 py-32">
           <ScrollReveal animation="fade">
             <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-bold text-white mb-8 drop-shadow-lg">Our Values</h2>
-              <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed font-medium drop-shadow-md">
+              <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-8">Our Values</h2>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-medium">
                 These core principles guide every decision we make and every feature we build.
               </p>
             </div>
@@ -253,14 +229,14 @@ const About = () => {
               const gradients = ['bg-gradient-primary', 'bg-gradient-success', 'bg-gradient-secondary', 'bg-gradient-premium'];
               return (
                 <ScrollReveal key={index} animation="scale" delay={200 + index * 150}>
-                  <Card className="p-6 text-center bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 group h-full">
+                  <Card className="p-6 text-center bg-card border-border hover:shadow-elegant transition-all duration-300 hover:scale-105 group h-full">
                     <div className={`w-16 h-16 ${gradients[index]} rounded-xl flex items-center justify-center mx-auto mb-6 shadow-elegant`}>
                       <value.icon className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-black text-white mb-4">
+                    <h3 className="text-xl font-black text-foreground mb-4">
                       {value.title}
                     </h3>
-                    <p className="text-white/80 leading-relaxed text-sm">
+                    <p className="text-muted-foreground leading-relaxed text-sm">
                       {value.description}
                     </p>
                   </Card>
@@ -269,20 +245,15 @@ const About = () => {
             })}
           </div>
         </div>
-      </ParallaxSection>
+      </section>
 
       {/* Section 5: Our Expertise */}
-      <ParallaxSection 
-        backgroundImage={successStory1} 
-        speed={0.3} 
-        className="min-h-screen flex items-center"
-        overlay={true}
-      >
-        <div className="container mx-auto px-4 py-32 relative z-10">
+      <section className="min-h-screen flex items-center bg-gradient-to-br from-gold-amber/10 via-background to-royal-blue/10">
+        <div className="container mx-auto px-4 py-32">
           <ScrollReveal animation="fade">
             <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-bold text-white mb-8 drop-shadow-lg">Our Expertise</h2>
-              <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed font-medium drop-shadow-md">
+              <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-8">Our Expertise</h2>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-medium">
                 Deep domain knowledge across key areas that matter most to diaspora communities.
               </p>
             </div>
@@ -293,14 +264,14 @@ const About = () => {
               const gradients = ['bg-gradient-success', 'bg-gradient-community', 'bg-gradient-premium', 'bg-gradient-primary'];
               return (
                 <ScrollReveal key={index} animation="slide-up" delay={200 + index * 150}>
-                  <Card className="p-8 bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-102 group text-center">
+                  <Card className="p-8 bg-card border-border hover:shadow-elegant transition-all duration-300 hover:scale-102 group text-center h-full">
                     <div className={`w-16 h-16 ${gradients[index]} rounded-xl flex items-center justify-center shadow-elegant mx-auto mb-6`}>
                       <area.icon className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-2xl font-black text-white mb-3">
+                    <h3 className="text-2xl font-black text-foreground mb-3">
                       {area.title}
                     </h3>
-                    <p className="text-white/80 leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed">
                       {area.description}
                     </p>
                   </Card>
@@ -309,35 +280,30 @@ const About = () => {
             })}
           </div>
         </div>
-      </ParallaxSection>
+      </section>
 
       {/* Section 6: Why We Exist */}
-      <ParallaxSection 
-        backgroundImage={successStory2} 
-        speed={0.4} 
-        className="min-h-screen flex items-center"
-        overlay={true}
-      >
-        <div className="container mx-auto px-4 py-32 relative z-10">
+      <section className="min-h-screen flex items-center bg-gradient-to-br from-royal-blue/10 via-background to-emerald-green/10">
+        <div className="container mx-auto px-4 py-32">
           <div className="max-w-4xl mx-auto text-center">
             <ScrollReveal animation="fade">
-              <h2 className="text-5xl md:text-6xl font-bold text-white mb-12 drop-shadow-lg">Why We Exist</h2>
+              <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-12">Why We Exist</h2>
             </ScrollReveal>
             
             <ScrollReveal animation="slide-up" delay={200}>
-              <div className="space-y-6 text-white mb-12">
-                <p className="text-lg md:text-xl leading-relaxed font-medium drop-shadow-md">
+              <div className="space-y-6 text-muted-foreground mb-12">
+                <p className="text-lg md:text-xl leading-relaxed font-medium">
                   Diaspora communities represent incredible untapped potential. With deep cultural knowledge, 
                   global networks, and unique perspectives, these communities are perfectly positioned to drive 
                   economic growth and innovation. Yet traditional platforms often overlook their specific needs 
                   and challenges.
                 </p>
-                <p className="text-lg md:text-xl leading-relaxed font-medium drop-shadow-md">
+                <p className="text-lg md:text-xl leading-relaxed font-medium">
                   We founded Epiphiny Flow because we believe that by creating a platform specifically designed 
                   for diaspora communities, we can unlock opportunities that benefit not just individuals, but 
                   entire communities and economies.
                 </p>
-                <p className="text-lg md:text-xl leading-relaxed font-medium drop-shadow-md">
+                <p className="text-lg md:text-xl leading-relaxed font-medium">
                   Our platform serves as a bridge - connecting heritage with opportunity, tradition with 
                   innovation, and local communities with global possibilities.
                 </p>
@@ -353,7 +319,7 @@ const About = () => {
                   </Button>
                 </Link>
                 <Link to="/opportunities">
-                  <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-deep-navy hover:shadow-glow transition-all duration-300 hover:scale-105 px-8 py-4 font-semibold backdrop-blur-sm">
+                  <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary hover:text-white hover:shadow-glow transition-all duration-300 hover:scale-105 px-8 py-4 font-semibold">
                     <Globe className="w-5 h-5 mr-2" />
                     Explore Opportunities
                   </Button>
@@ -362,7 +328,7 @@ const About = () => {
             </ScrollReveal>
           </div>
         </div>
-      </ParallaxSection>
+      </section>
 
       <Footer />
     </div>
