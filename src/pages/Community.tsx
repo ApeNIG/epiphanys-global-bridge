@@ -84,7 +84,7 @@ const Community = () => {
           backgroundAttachment: 'fixed'
         }}
       >
-        <div className="absolute inset-0 bg-deep-navy/60" />
+        <div className="absolute inset-0 bg-deep-navy/75" />
         <div className="container mx-auto px-4 py-32 text-center relative z-10">
           <ScrollReveal animation="fade">
             <Badge className="mb-8 bg-white/10 backdrop-blur-sm text-white border-white/20 shadow-elegant px-6 py-2 font-semibold">
