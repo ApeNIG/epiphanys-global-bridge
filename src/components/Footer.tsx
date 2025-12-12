@@ -13,7 +13,7 @@ import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary/20 border-t border-border">
+    <footer className="bg-background/80 backdrop-blur-sm border-t border-border">
       <div className="container mx-auto px-4">
         {/* Logo Section - Centered */}
         <div className="pt-4 pb-2 flex flex-col items-center text-center">
