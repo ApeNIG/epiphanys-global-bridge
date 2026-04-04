@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import { AIChatbot } from "./components/AIChatbot";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -27,8 +27,21 @@ import { Network } from "./pages/Network";
 import DealFlowPlatform from "./pages/DealFlowPlatform";
 import AITasks from "./pages/AITasks";
 import NotFound from "./pages/NotFound";
+import IndexV2 from "./pages/IndexV2";
+import AboutV2 from "./pages/AboutV2";
+import AdvisoryV2 from "./pages/AdvisoryV2";
+import InvestmentHubV2 from "./pages/InvestmentHubV2";
+import CommunityPageV2 from "./pages/CommunityPageV2";
+import GlobalV2 from "./pages/GlobalV2";
+import DesignLabV2 from "./pages/DesignLabV2";
 
 const queryClient = new QueryClient();
+
+const ChatbotWrapper = () => {
+  const location = useLocation();
+  if (location.pathname.startsWith("/v2")) return null;
+  return <AIChatbot />;
+};
 
 const App = () => (
     <QueryClientProvider client={queryClient}>
@@ -59,10 +72,17 @@ const App = () => (
             <Route path="/deal-flow-platform" element={<DealFlowPlatform />} />
             <Route path="/business-onboarding" element={<BusinessOnboarding />} />
             <Route path="/ai-tasks" element={<AITasks />} />
+            <Route path="/v2" element={<IndexV2 />} />
+            <Route path="/v2/about" element={<AboutV2 />} />
+            <Route path="/v2/advisory" element={<AdvisoryV2 />} />
+            <Route path="/v2/investment" element={<InvestmentHubV2 />} />
+            <Route path="/v2/community" element={<CommunityPageV2 />} />
+            <Route path="/v2/global" element={<GlobalV2 />} />
+            <Route path="/v2/lab" element={<DesignLabV2 />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-            <AIChatbot />
+            <ChatbotWrapper />
           </BrowserRouter>
         </TooltipProvider>
       </AuthProvider>
