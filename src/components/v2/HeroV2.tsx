@@ -89,9 +89,9 @@ const useParallax = (speed = 0.15) => {
 
 /* ── Hero ── */
 const HeroV2 = () => {
-  const parallax1 = useParallax(0.08);
-  const parallax2 = useParallax(-0.05);
-  const parallax3 = useParallax(0.12);
+  const parallax1 = useParallax(0.04);
+  const parallax2 = useParallax(-0.03);
+  const parallax3 = useParallax(0.06);
 
   return (
     <section className="bg-white relative overflow-hidden">
@@ -359,7 +359,7 @@ const HeroV2 = () => {
               <img
                 src={heroPortrait}
                 alt="Diaspora investor overlooking the City of London"
-                className="w-full h-[120%] object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-[1.03]"
+                className="w-full h-[120%] object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
               />
             </div>
             {/* Editorial text overlay — top-left for visibility */}
@@ -482,7 +482,7 @@ const HeroV2 = () => {
               <img
                 src={heroManchester}
                 alt="Entrepreneur in Manchester"
-                className="w-full h-[120%] object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-[1.03]"
+                className="w-full h-[120%] object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
               />
             </div>
             {/* Editorial text overlay */}
