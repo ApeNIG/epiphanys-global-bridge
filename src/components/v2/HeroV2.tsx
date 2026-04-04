@@ -359,7 +359,7 @@ const HeroV2 = () => {
               <img
                 src={heroPortrait}
                 alt="Diaspora investor overlooking the City of London"
-                className="w-full h-[120%] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                className="w-full h-[120%] object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-[1.03]"
               />
             </div>
             {/* Editorial text overlay — top-left for visibility */}
@@ -482,7 +482,7 @@ const HeroV2 = () => {
               <img
                 src={heroManchester}
                 alt="Entrepreneur in Manchester"
-                className="w-full h-[120%] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                className="w-full h-[120%] object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-[1.03]"
               />
             </div>
             {/* Editorial text overlay */}
