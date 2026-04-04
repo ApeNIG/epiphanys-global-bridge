@@ -66,33 +66,9 @@ const AnimatedStat = ({
   );
 };
 
-/* ── Parallax hook ── */
-const useParallax = (speed = 0.15) => {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const onScroll = () => {
-      const rect = el.getBoundingClientRect();
-      const center = rect.top + rect.height / 2 - window.innerHeight / 2;
-      el.style.transform = `translateY(${center * speed}px)`;
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [speed]);
-
-  return ref;
-};
 
 /* ── Hero ── */
 const HeroV2 = () => {
-  const parallax1 = useRef<HTMLDivElement>(null);
-  const parallax2 = useRef<HTMLDivElement>(null);
-  const parallax3 = useRef<HTMLDivElement>(null);
-
   return (
     <section className="bg-white relative overflow-hidden">
       {/* Keyframes — injected once */}
@@ -355,7 +331,7 @@ const HeroV2 = () => {
                 "heroPhotoReveal 1s cubic-bezier(0.16,1,0.3,1) 1100ms forwards",
             }}
           >
-            <div ref={parallax1} className="w-full h-full">
+            <div className="w-full h-full">
               <img
                 src={heroPortrait}
                 alt="Diaspora investor overlooking the City of London"
@@ -478,7 +454,7 @@ const HeroV2 = () => {
                 "heroPhotoReveal 1s cubic-bezier(0.16,1,0.3,1) 1500ms forwards",
             }}
           >
-            <div ref={parallax3} className="w-full h-full">
+            <div className="w-full h-full">
               <img
                 src={heroManchester}
                 alt="Entrepreneur in Manchester"
