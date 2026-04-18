@@ -34,6 +34,8 @@ import InvestmentHubV2 from "./pages/InvestmentHubV2";
 import CommunityPageV2 from "./pages/CommunityPageV2";
 import GlobalV2 from "./pages/GlobalV2";
 import DesignLabV2 from "./pages/DesignLabV2";
+import IndexV3 from "./pages/IndexV3";
+import PosterGallery from "./components/posters/PosterGallery";
 
 const queryClient = new QueryClient();
 
@@ -79,6 +81,8 @@ const App = () => (
             <Route path="/v2/community" element={<CommunityPageV2 />} />
             <Route path="/v2/global" element={<GlobalV2 />} />
             <Route path="/v2/lab" element={<DesignLabV2 />} />
+            <Route path="/v3" element={<IndexV3 />} />
+            <Route path="/posters" element={<PosterGallery />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
