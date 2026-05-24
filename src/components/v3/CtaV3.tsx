@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import ctaBoardroom from "@/assets/v3/cta-boardroom.png";
+import ctaBoardroom from "@/assets/v2/manchester-street-portrait.jpg";
 
 const CtaV3 = () => {
   const ref = useScrollReveal<HTMLDivElement>();
@@ -20,7 +20,7 @@ const CtaV3 = () => {
           <img
             src={ctaBoardroom}
             alt="Diverse professionals collaborating in London boardroom"
-            className="absolute inset-0 w-full h-full object-cover scale-110"
+            className="absolute inset-0 w-full h-full object-cover object-[center_20%] scale-110"
           />
           {/* Dark overlay for text legibility */}
           <div className="absolute inset-0 bg-black/50" />

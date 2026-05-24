@@ -112,6 +112,7 @@ const CommunityV3 = () => {
                       src={communityCoworking}
                       alt="Professional in London coworking space"
                       className="w-full h-full object-cover"
+                      style={{ transform: 'scale(1.1) translateY(-15%)', transformOrigin: 'top center' }}
                     />
                     {/* Editorial overlay stat */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-5">

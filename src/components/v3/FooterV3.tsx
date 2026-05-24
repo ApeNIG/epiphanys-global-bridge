@@ -35,12 +35,12 @@ const FooterV3 = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           {/* Brand — editorial, left-aligned */}
           <div className="md:col-span-4 flex flex-col gap-5">
-            <div className="flex items-center gap-1.5">
+            <Link to="/v3" className="flex items-center gap-1.5">
               <img src={logo} alt="Epiphiny Flow" className="w-8 h-8 object-contain" />
               <span className="text-[20px] text-white tracking-wide" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600 }}>
                 Epiphiny Flow
               </span>
-            </div>
+            </Link>
             <p className="text-[14px] text-gray-600 leading-[1.7] max-w-[280px]">
               Connecting diaspora communities with global opportunities in
               business, careers, and investment.

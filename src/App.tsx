@@ -35,6 +35,13 @@ import CommunityPageV2 from "./pages/CommunityPageV2";
 import GlobalV2 from "./pages/GlobalV2";
 import DesignLabV2 from "./pages/DesignLabV2";
 import IndexV3 from "./pages/IndexV3";
+import AboutV3 from "./pages/AboutV3";
+import AdvisoryV3 from "./pages/AdvisoryV3";
+import InvestmentV3 from "./pages/InvestmentV3";
+import AdvisoryReport from "./pages/AdvisoryReport";
+import AdvisoryBoard from "./pages/AdvisoryBoard";
+import Events from "./pages/Events";
+import FAQ from "./pages/FAQ";
 import PosterGallery from "./components/posters/PosterGallery";
 
 const queryClient = new QueryClient();
@@ -82,6 +89,13 @@ const App = () => (
             <Route path="/v2/global" element={<GlobalV2 />} />
             <Route path="/v2/lab" element={<DesignLabV2 />} />
             <Route path="/v3" element={<IndexV3 />} />
+            <Route path="/v3/about" element={<AboutV3 />} />
+            <Route path="/v3/advisory" element={<AdvisoryV3 />} />
+            <Route path="/v3/investment" element={<InvestmentV3 />} />
+            <Route path="/advisory/report" element={<AdvisoryReport />} />
+            <Route path="/advisory/board" element={<AdvisoryBoard />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/posters" element={<PosterGallery />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

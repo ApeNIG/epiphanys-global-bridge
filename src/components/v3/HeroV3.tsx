@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { parseStatValue } from "@/hooks/useCountUp";
-import heroPortrait from "@/assets/v2/spiral-staircase-man.jpg";
+import heroPortrait from "@/assets/v3/cta-boardroom.png";
 
-import heroManchester from "@/assets/v2/manchester-street-portrait.jpg";
+import heroManchester from "@/assets/v2/spiral-staircase-man.jpg";
 import GlobeV3 from "./GlobeV3";
 
 /* ── Animated counter for a single stat ── */
@@ -569,7 +569,8 @@ const HeroV3 = () => {
               <img
                 src={heroPortrait}
                 alt="Diaspora investor overlooking the City of London"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                className="w-full h-full object-cover transition-transform duration-700"
+                style={{ transform: 'scale(1.15) translateY(-28%)', transformOrigin: 'top center' }}
               />
             </div>
             {/* Editorial text overlay — top-left for visibility */}
