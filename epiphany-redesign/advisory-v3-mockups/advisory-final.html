@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advisory — Final: The Route</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#00E7C3; --teal-deep:#2A9D8F; --dark:#15171A; --cream:#F5F0E8;
+    --purple:#8B5CF6; --ink:#15171A; --grey:#5B6470; --grey-l:#9CA3AF;
+    --line:rgba(21,23,26,0.10);
+    --rail-x:110px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Manrope',sans-serif;background:#fff;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1440px;margin:0 auto;padding:0 80px;position:relative}
+
+  .overline{display:flex;align-items:center;gap:16px;margin-bottom:28px}
+  .overline .dash{width:48px;height:2px;background:var(--teal)}
+  .overline span{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--grey-l)}
+
+  /* ── Header ── */
+  header{position:relative;z-index:20;border-bottom:1px solid var(--line);background:#fff}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .logo{font-family:'Outfit',sans-serif;font-weight:600;font-size:19px;letter-spacing:0.2px}
+  .logo em{font-style:normal;color:var(--teal-deep)}
+  .nav-links{display:flex;gap:36px}
+  .nav-links a{font-size:14px;font-weight:500;color:var(--grey);text-decoration:none}
+  .nav-links a.active{color:var(--ink);font-weight:700}
+  .nav-cta{display:inline-flex;align-items:center;background:var(--dark);color:var(--teal);padding:12px 24px;border-radius:999px;font-size:14px;font-weight:600;text-decoration:none}
+
+  /* ── Hero ── */
+  .hero{position:relative;overflow:hidden;padding:96px 0 0;background:#fff}
+  .hero-grid-bg{position:absolute;inset:0;opacity:0.025;background-image:linear-gradient(90deg,#15171A 1px,transparent 1px),linear-gradient(#15171A 1px,transparent 1px);background-size:120px 120px;pointer-events:none}
+  .hero-grid{display:grid;grid-template-columns:1fr 452px;gap:64px;align-items:stretch;position:relative;padding-top:56px}
+  .hero-lead h1{font-family:'Playfair Display',serif;font-weight:600;font-size:76px;line-height:1.04;letter-spacing:-0.02em;max-width:640px}
+  .hero-lead h1 .hl{position:relative;display:inline-block}
+  .hero-lead h1 .hl::after{content:"";position:absolute;left:-6px;right:-6px;bottom:0.06em;height:0.42em;background:linear-gradient(90deg,var(--teal),#00d4b3);opacity:0.28;z-index:-1;border-radius:3px}
+  .hero-lead p{font-size:19px;line-height:1.7;color:var(--grey);max-width:480px;margin-top:34px}
+  .pill{display:inline-flex;align-items:center;gap:12px;background:var(--dark);color:var(--teal);padding:18px 22px 18px 32px;border-radius:999px;font-size:15px;font-weight:600;text-decoration:none;white-space:nowrap;margin-top:34px}
+  .pill .arr{width:32px;height:32px;border-radius:999px;background:rgba(0,231,195,0.12);display:flex;align-items:center;justify-content:center;font-size:14px}
+
+  /* ── Advisory Route Charter (hero right) — a mandate through 4 checkpoints ── */
+  .charter{position:relative;display:flex;flex-direction:column;background:linear-gradient(180deg,#fbfefe 0%,#f3faf8 100%);border:1px solid rgba(42,157,143,0.22);border-radius:6px;padding:26px 30px 22px;box-shadow:0 30px 70px -34px rgba(21,23,26,0.22)}
+  /* the route line — runs the full panel height and exits at the bottom edge */
+  .charter::before{content:"";position:absolute;left:34px;top:70px;bottom:-1px;width:2px;background:var(--teal-deep);opacity:0.55}
+  .charter-hd{display:flex;justify-content:space-between;align-items:baseline}
+  .charter-hd .t{font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal-deep)}
+  .charter-hd .s{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-l)}
+  .charter-rule{width:44px;height:2px;background:var(--teal-deep);margin:12px 0 6px}
+  .charter-rows{position:relative}
+  .crow{position:relative;padding:15px 0 15px 32px;border-bottom:1px solid rgba(21,23,26,0.07)}
+  .crow:last-child{border-bottom:none}
+  .crow::before{content:"";position:absolute;left:-3px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--teal-deep);box-shadow:inset 0 0 0 2.2px #fbfefe,0 0 0 1.4px var(--teal-deep);z-index:1}
+  .crow .k{font-family:'Manrope',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey-l);margin-bottom:4px}
+  .crow .k b{color:var(--teal-deep);font-weight:700}
+  .crow .v{font-family:'Playfair Display',serif;font-size:19px;font-weight:500;color:var(--ink);line-height:1.2}
+  .charter-ft{display:flex;align-items:center;justify-content:flex-end;gap:9px;margin-top:auto;padding-top:20px}
+  .charter-ft .chk{width:15px;height:15px;border:1.5px solid var(--teal-deep);border-radius:3px;display:flex;align-items:center;justify-content:center;color:var(--teal-deep);font-size:9px;line-height:1}
+  .charter-ft span{font-size:9.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--grey-l)}
+
+  /* connector: route exits the charter bottom, travels to the page spine.
+     Both endpoints are fixed offsets from their wrap edges, so the horizontal
+     bar flexes with viewport width and always connects. */
+  .hero-route{position:relative;height:92px}
+  .conn-v{position:absolute;right:416px;top:0;width:2px;height:46px;background:var(--teal-deep);opacity:0.6}
+  .conn-h{position:absolute;left:var(--rail-x);right:416px;top:44px;height:2px;background:var(--teal-deep);opacity:0.6}
+  .hero-route .rail{left:var(--rail-x);top:45px;bottom:-280px}
+  .hero-route .onode{position:absolute;left:calc(var(--rail-x) - 8px);top:37px;width:18px;height:18px;z-index:1}
+  .hero-route .onode::before{content:"";position:absolute;inset:-9px;border-radius:50%;background:rgba(0,231,195,0.15)}
+  .hero-route .onode::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--teal-deep);box-shadow:inset 0 0 0 2.5px #fff,0 0 0 1.5px var(--teal-deep)}
+  .hero-route .olabel{position:absolute;left:calc(var(--rail-x) + 28px);top:40px;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal-deep)}
+
+  /* mobile: stack, drop the horizontal jog, keep a simple left spine */
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:36px;padding-top:36px}
+    .charter{width:100%}
+    .conn-v,.conn-h{display:none}
+    .hero-route{height:64px}
+    .hero-route .rail{top:20px}
+    .hero-route .onode{top:12px}
+    .hero-route .olabel{top:15px}
+  }
+
+  /* ── THE ROUTE ── */
+  .rail{position:absolute;left:var(--rail-x);top:0;bottom:0;width:2px;
+    background-image:repeating-linear-gradient(180deg,var(--teal-deep) 0 7px,transparent 7px 14px);opacity:0.55}
+  .rail.start{top:0}
+  .railed{padding-left:110px}
+
+  /* ── Solutions: the commercial centre ── */
+  .index-sec{padding:64px 0 90px;position:relative;background:#fff}
+  .index-sec .rail{top:-64px;bottom:-90px}
+  .index-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px}
+  .index-head h2{font-family:'Playfair Display',serif;font-weight:600;font-size:56px;letter-spacing:-0.01em;max-width:600px;line-height:1.08}
+  .index-head .note{font-size:15px;color:var(--grey);max-width:320px;line-height:1.7;padding-bottom:10px}
+  .row{position:relative;display:grid;grid-template-columns:150px 1fr 380px;align-items:center;gap:48px;padding:44px 0 44px 0;border-top:1px solid rgba(21,23,26,0.14)}
+  .row:last-child{border-bottom:1px solid rgba(21,23,26,0.14)}
+  .row .rnode{position:absolute;left:calc(-110px + var(--rail-x) - 110px);top:50%}
+  .row::before{content:"";position:absolute;left:-118px;top:50%;transform:translateY(-50%);width:14px;height:14px;border-radius:50%;background:var(--teal-deep);box-shadow:inset 0 0 0 2.5px #fff,0 0 0 1.5px var(--teal-deep),0 0 0 8px rgba(0,231,195,0.10)}
+  .row::after{content:"";position:absolute;left:-104px;top:50%;width:74px;height:1.5px;background-image:repeating-linear-gradient(90deg,var(--teal-deep) 0 5px,transparent 5px 10px);opacity:0.5}
+  .row .num{font-family:'Manrope',sans-serif;font-size:104px;font-weight:800;color:rgba(21,23,26,0.06);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-4px}
+  .row .mid h3{font-family:'Playfair Display',serif;font-size:40px;font-weight:600;letter-spacing:-0.01em}
+  .row .mid p{font-size:16.5px;color:var(--grey);line-height:1.7;max-width:520px;margin-top:10px}
+  .row .outcome{text-align:right}
+  .row .outcome .v{font-family:'Manrope',sans-serif;font-size:52px;font-weight:800;letter-spacing:-2px;color:var(--ink);line-height:1}
+  .row .outcome .v b{color:var(--teal-deep)}
+  .row .outcome .k{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--grey-l);margin-top:10px;font-weight:700}
+
+  /* ── Process: stations on the route ── */
+  .process{background:var(--cream);padding:90px 0 100px;position:relative}
+  .process .rail{opacity:0.55;top:-90px;bottom:-100px}
+  .process h2{font-family:'Playfair Display',serif;font-weight:600;font-size:56px;line-height:1.08;max-width:640px}
+  .process .lead{font-size:16px;color:var(--grey);max-width:380px;line-height:1.7}
+  .process-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px}
+  .mstep{position:relative;display:grid;grid-template-columns:330px 190px 1fr;gap:48px;align-items:start;padding:44px 0;border-bottom:1px solid rgba(21,23,26,0.10)}
+  .mstep:last-child{border-bottom:none}
+  .mstep::before{content:"";position:absolute;left:-118px;top:58px;width:14px;height:14px;border-radius:50%;background:var(--teal-deep);box-shadow:inset 0 0 0 2.5px var(--cream),0 0 0 1.5px var(--teal-deep),0 0 0 8px rgba(0,231,195,0.10)}
+  .mstep::after{content:"";position:absolute;left:-104px;top:64px;width:74px;height:1.5px;background-image:repeating-linear-gradient(90deg,var(--teal-deep) 0 5px,transparent 5px 10px);opacity:0.5}
+  .mstep h3{font-family:'Playfair Display',serif;font-size:32px;font-weight:600;line-height:1.15}
+  .mstep h3 small{display:block;font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:2.5px;color:var(--teal-deep);margin-bottom:12px}
+  .mstep .tl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--purple);padding-top:14px}
+  .mstep p{font-size:16px;line-height:1.8;color:var(--grey);max-width:560px;padding-top:8px}
+
+  /* ── Evidence interruption (full-width black) ── */
+  .proof{background:var(--dark);padding:110px 0;position:relative;overflow:hidden}
+  .proof .rail{background-image:repeating-linear-gradient(180deg,var(--teal) 0 7px,transparent 7px 14px);opacity:0.5;top:-110px;bottom:-1px}
+  .proof .terminal{position:absolute;left:calc(var(--rail-x) - 9px);top:118px;width:20px;height:20px}
+  .proof .terminal::before{content:"";position:absolute;inset:-12px;border-radius:50%;background:rgba(0,231,195,0.12)}
+  .proof .terminal::after{content:"";position:absolute;inset:4px;border-radius:50%;background:var(--teal);box-shadow:inset 0 0 0 2.5px var(--dark),0 0 0 1.5px var(--teal)}
+  .proof .grid2{display:grid;grid-template-columns:1.15fr 0.85fr;gap:100px;align-items:center;padding-left:110px}
+  .proof blockquote{font-family:'Playfair Display',serif;font-size:46px;font-weight:500;color:#fff;line-height:1.25;letter-spacing:-0.01em}
+  .proof blockquote em{font-style:italic;color:var(--teal)}
+  .proof .attr{margin-top:32px;font-size:12px;text-transform:uppercase;letter-spacing:3px;color:rgba(255,255,255,0.4);font-weight:600}
+  .glass{background:rgba(255,255,255,0.97);border-radius:20px;padding:38px;width:400px;box-shadow:0 30px 80px -20px rgba(0,0,0,0.5);justify-self:end}
+  .glass .gh{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .glass .gh span{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey-l)}
+  .glass .dot{width:8px;height:8px;border-radius:50%;background:var(--teal)}
+  .glass .big{font-family:'Manrope',sans-serif;font-size:52px;font-weight:800;letter-spacing:-1.5px}
+  .glass .delta{font-size:13px;font-weight:700;color:var(--teal-deep);margin:4px 0 18px}
+  .glass .delta small{color:var(--grey-l);font-weight:500;margin-left:6px}
+  .glass .mini{display:flex;justify-content:space-between;border-top:1px solid rgba(21,23,26,0.08);padding-top:16px;margin-top:16px}
+  .glass .mini div{text-align:center}
+  .glass .mini .mv{font-family:'Manrope',sans-serif;font-size:15px;font-weight:800}
+  .glass .mini .mv.t{color:var(--teal-deep)}
+  .glass .mini .mk{font-size:8px;text-transform:uppercase;letter-spacing:1.5px;color:var(--grey-l);margin-top:3px}
+  .proof-arcs{position:absolute;left:0;bottom:0;width:100%;height:100%;opacity:0.5;pointer-events:none}
+
+  /* ── CTA: the final station ── */
+  .cta-sec{padding:0 0 130px;background:var(--dark);border-top:1px solid rgba(255,255,255,0.08);position:relative;overflow:hidden}
+  .cta-sec .rail{background-image:repeating-linear-gradient(180deg,var(--teal) 0 7px,transparent 7px 14px);opacity:0.5;top:0;height:96px}
+  .cta-dest{position:absolute;left:calc(var(--rail-x) - 13px);top:88px;width:28px;height:28px}
+  .cta-dest::before{content:"";position:absolute;inset:-16px;border-radius:50%;background:rgba(0,231,195,0.10)}
+  .cta-dest::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--teal);box-shadow:0 0 30px rgba(0,231,195,0.45)}
+  .cta-dlabel{position:absolute;left:calc(var(--rail-x) + 40px);top:94px;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal)}
+  .cta-panel{padding:170px 0 0 110px;position:relative}
+  .cta-panel h2{font-family:'Playfair Display',serif;font-size:68px;font-weight:600;color:#fff;line-height:1.06;max-width:720px;letter-spacing:-0.01em}
+  .cta-panel h2 em{font-style:italic;color:var(--teal)}
+  .cta-panel p{color:rgba(255,255,255,0.55);font-size:17px;line-height:1.75;max-width:470px;margin-top:24px}
+  .cta-actions{display:flex;gap:18px;margin-top:44px}
+  .pill-teal{display:inline-flex;align-items:center;gap:12px;background:var(--teal);color:var(--dark);padding:18px 22px 18px 32px;border-radius:999px;font-size:15px;font-weight:700;text-decoration:none}
+  .pill-teal .arr{width:32px;height:32px;border-radius:999px;background:rgba(21,23,26,0.1);display:flex;align-items:center;justify-content:center}
+  .pill-ghost{display:inline-flex;align-items:center;border:1px solid rgba(255,255,255,0.22);color:rgba(255,255,255,0.75);padding:18px 34px;border-radius:999px;font-size:15px;font-weight:500;text-decoration:none}
+  .cta-map{position:absolute;right:-60px;top:20px;width:620px;height:620px;opacity:0.9}
+
+  footer{background:var(--dark);border-top:1px solid rgba(255,255,255,0.08);padding:56px 0}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center}
+  footer .logo{color:#fff}
+  footer p{font-size:12px;color:rgba(255,255,255,0.35);letter-spacing:1px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">Epiphiny <em>Flow</em></div>
+    <nav class="nav-links">
+      <a href="#">Home</a><a href="#" class="active">Advisory</a><a href="#">Investment</a><a href="#">Community</a><a href="#">About</a>
+    </nav>
+    <a class="nav-cta" href="#">Get Started</a>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-lead">
+        <div class="overline"><div class="dash"></div><span>Advisory Services</span></div>
+        <h1>Strategic advisory for <span class="hl">global</span> growth</h1>
+        <p>Expert advisory built on the diaspora network: for startups, scale-ups, SMEs, enterprises and government organisations that grow across borders.</p>
+        <a class="pill" href="#">Book Consultation <span class="arr">→</span></a>
+      </div>
+
+      <!-- Advisory Route Charter: one mandate through four validated checkpoints -->
+      <div class="charter">
+        <div class="charter-hd">
+          <span class="t">Advisory Route</span>
+          <span class="s">Active Mandate</span>
+        </div>
+        <div class="charter-rule"></div>
+        <div class="charter-rows">
+          <div class="crow"><div class="k"><b>01</b> &nbsp;/&nbsp; Brief</div><div class="v">Cross-border growth mandate</div></div>
+          <div class="crow"><div class="k"><b>02</b> &nbsp;/&nbsp; Network</div><div class="v">Diaspora intelligence mapped</div></div>
+          <div class="crow"><div class="k"><b>03</b> &nbsp;/&nbsp; Access</div><div class="v">Strategic introductions activated</div></div>
+          <div class="crow"><div class="k"><b>04</b> &nbsp;/&nbsp; Outcome</div><div class="v">Measurable growth pathway</div></div>
+        </div>
+        <div class="charter-ft"><span class="chk">&#10003;</span><span>Regulated Process &middot; FCA</span></div>
+      </div>
+    </div>
+
+    <!-- the route exits the charter and becomes the page spine -->
+    <div class="hero-route">
+      <div class="conn-v"></div>
+      <div class="conn-h"></div>
+      <div class="rail"></div>
+      <span class="onode"></span>
+      <span class="olabel">The Advisory Route</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOLUTIONS: the commercial centre ── -->
+<section class="index-sec">
+  <div class="wrap">
+    <div class="rail"></div>
+    <div class="railed">
+      <div class="overline"><div class="dash"></div><span>Solutions</span></div>
+      <div class="index-head">
+        <h2>Advisory by organisation type</h2>
+        <div class="note">Five engagement models, one network. Every engagement plugs your organisation into the corridor between the UK and the continent.</div>
+      </div>
+      <div class="row">
+        <div class="num">01</div>
+        <div class="mid"><h3>Startups</h3><p>Transform ideas into viable businesses with expert guidance at every stage.</p></div>
+        <div class="outcome"><div class="v">95<b>%</b></div><div class="k">secure first-round funding</div></div>
+      </div>
+      <div class="row">
+        <div class="num">02</div>
+        <div class="mid"><h3>Scale-ups</h3><p>Accelerate growth while maintaining cultural authenticity across borders.</p></div>
+        <div class="outcome"><div class="v">340<b>%</b></div><div class="k">revenue growth in 18 months</div></div>
+      </div>
+      <div class="row">
+        <div class="num">03</div>
+        <div class="mid"><h3>SMEs</h3><p>Strengthen market position through strategic diaspora connections.</p></div>
+        <div class="outcome"><div class="v">78<b>%</b></div><div class="k">increase in market reach</div></div>
+      </div>
+      <div class="row">
+        <div class="num">04</div>
+        <div class="mid"><h3>Enterprise</h3><p>Leverage diaspora intelligence for competitive advantage at scale.</p></div>
+        <div class="outcome"><div class="v">£50M<b>+</b></div><div class="k">new opportunities identified</div></div>
+      </div>
+      <div class="row">
+        <div class="num">05</div>
+        <div class="mid"><h3>Government</h3><p>Harness diaspora potential for measurable economic development.</p></div>
+        <div class="outcome"><div class="v">£2.5B</div><div class="k">economic activity facilitated</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS: stations on the route ── -->
+<section class="process">
+  <div class="wrap">
+    <div class="rail"></div>
+    <div class="railed">
+      <div class="overline"><div class="dash"></div><span>Our Process</span></div>
+      <div class="process-head">
+        <h2>Four stations, one connected journey</h2>
+        <p class="lead">The route runs from first conversation to measurable growth. Each station has a clear output before the next begins.</p>
+      </div>
+      <div class="mstep">
+        <h3><small>STATION 01</small>Discovery &amp; Assessment</h3>
+        <div class="tl">2 to 4 weeks</div>
+        <p>We immerse ourselves in your organisation: your goals, challenges, and the diaspora communities most relevant to your growth trajectory.</p>
+      </div>
+      <div class="mstep">
+        <h3><small>STATION 02</small>Strategy Development</h3>
+        <div class="tl">3 to 6 weeks</div>
+        <p>Our team crafts a bespoke advisory strategy: mapping diaspora networks, identifying opportunities, and building a roadmap tailored to your sector.</p>
+      </div>
+      <div class="mstep">
+        <h3><small>STATION 03</small>Implementation Support</h3>
+        <div class="tl">Ongoing</div>
+        <p>We work alongside your team to execute the strategy: facilitating introductions, navigating cultural nuances, ensuring measurable progress.</p>
+      </div>
+      <div class="mstep">
+        <h3><small>STATION 04</small>Performance Monitoring</h3>
+        <div class="tl">Monthly reviews</div>
+        <p>Regular reviews track KPIs, surface new opportunities, and refine the approach based on real-world results and shifting market dynamics.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EVIDENCE: full-width black interruption, route terminates ── -->
+<section class="proof">
+  <svg class="proof-arcs" viewBox="0 0 1440 400" fill="none" preserveAspectRatio="xMidYMid slice">
+    <path d="M-40 380 Q 400 120 900 300 T 1500 200" stroke="#00E7C3" stroke-width="1" stroke-dasharray="6 5" opacity="0.14"/>
+    <path d="M-40 300 Q 500 60 1500 320" stroke="#00E7C3" stroke-width="1" stroke-dasharray="6 5" opacity="0.10"/>
+    <circle cx="900" cy="300" r="3" fill="#00E7C3" opacity="0.4"/>
+    <circle cx="400" cy="212" r="3" fill="#00E7C3" opacity="0.3"/>
+  </svg>
+  <div class="wrap">
+    <div class="rail"></div>
+    <span class="terminal"></span>
+    <div class="grid2">
+      <div>
+        <blockquote>The network is the strategy. Advisory turns diaspora <em>connection</em> into measurable growth.</blockquote>
+        <div class="attr">Epiphiny Flow Advisory · Manchester &amp; London</div>
+      </div>
+      <div class="glass">
+        <div class="gh"><span>Engagement Snapshot</span><span class="dot"></span></div>
+        <div class="big">£2.5B</div>
+        <div class="delta">+24% <small>economic activity facilitated</small></div>
+        <svg viewBox="0 0 280 44" fill="none" style="width:100%;height:36px">
+          <path d="M0 38 Q30 34 46 30 T96 24 T150 18 T200 10 T240 13 T280 5" stroke="#2A9D8F" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M0 38 Q30 34 46 30 T96 24 T150 18 T200 10 T240 13 T280 5 L280 44 L0 44Z" fill="#2A9D8F" opacity="0.10"/>
+        </svg>
+        <div class="mini">
+          <div><div class="mv">120+</div><div class="mk">Engagements</div></div>
+          <div><div class="mv">14</div><div class="mk">Markets</div></div>
+          <div><div class="mv t">↑ 24%</div><div class="mk">Avg ROI</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA: the final station ── -->
+<section class="cta-sec">
+  <div class="wrap">
+    <div class="rail"></div>
+    <span class="cta-dest"></span>
+    <span class="cta-dlabel">Destination · Your Growth</span>
+    <div class="cta-panel">
+      <svg class="cta-map" viewBox="0 0 620 620" fill="none">
+        <circle cx="310" cy="310" r="280" stroke="#00E7C3" stroke-width="0.8" opacity="0.18"/>
+        <circle cx="310" cy="310" r="200" stroke="#00E7C3" stroke-width="0.6" opacity="0.12"/>
+        <path d="M130 350 Q 310 180 490 350" stroke="#00E7C3" stroke-width="1.2" stroke-dasharray="6 5" opacity="0.35"/>
+        <path d="M175 245 Q 330 370 460 245" stroke="#00E7C3" stroke-width="1" stroke-dasharray="6 5" opacity="0.25"/>
+        <circle cx="130" cy="350" r="5" fill="#00E7C3" opacity="0.8"/>
+        <circle cx="490" cy="350" r="5" fill="#00E7C3" opacity="0.8"/>
+        <circle cx="460" cy="245" r="4" fill="#00E7C3" opacity="0.6"/>
+        <circle cx="175" cy="245" r="4" fill="#00E7C3" opacity="0.6"/>
+      </svg>
+      <h2>Ready to transform <em>your</em> organisation?</h2>
+      <p>Book a strategic consultation with our advisory team and take the first step toward diaspora-powered growth.</p>
+      <div class="cta-actions">
+        <a class="pill-teal" href="#">Book Consultation <span class="arr">→</span></a>
+        <a class="pill-ghost" href="#">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">Epiphiny <em>Flow</em></div>
+    <p>MANCHESTER, UK · FCA REGULATED</p>
+  </div>
+</footer>
+
+</body>
+</html>
