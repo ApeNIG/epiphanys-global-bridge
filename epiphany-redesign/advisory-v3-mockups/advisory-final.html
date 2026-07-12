@@ -43,8 +43,8 @@
 
   /* ── Advisory Route Charter (hero right) — a mandate through 4 checkpoints ── */
   .charter{position:relative;display:flex;flex-direction:column;background:linear-gradient(180deg,#fbfefe 0%,#f3faf8 100%);border:1px solid rgba(42,157,143,0.22);border-radius:6px;padding:26px 30px 22px;box-shadow:0 30px 70px -34px rgba(21,23,26,0.22)}
-  /* the route line — runs the full panel height and exits at the bottom edge */
-  .charter::before{content:"";position:absolute;left:34px;top:70px;bottom:-1px;width:2px;background:var(--teal-deep);opacity:0.55}
+  /* the route line — emerges from under the charter title, runs full height, exits the bottom edge */
+  .charter::before{content:"";position:absolute;left:34px;top:52px;bottom:-1px;width:2px;background:var(--teal-deep);opacity:0.55}
   .charter-hd{display:flex;justify-content:space-between;align-items:baseline}
   .charter-hd .t{font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal-deep)}
   .charter-hd .s{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-l)}
@@ -67,20 +67,18 @@
   .conn-v{position:absolute;right:416px;top:0;width:2px;height:46px;background:var(--teal-deep);opacity:0.6}
   .conn-h{position:absolute;left:var(--rail-x);right:416px;top:44px;height:2px;background:var(--teal-deep);opacity:0.6}
   .hero-route .rail{left:var(--rail-x);top:45px;bottom:-280px}
-  .hero-route .onode{position:absolute;left:calc(var(--rail-x) - 8px);top:37px;width:18px;height:18px;z-index:1}
-  .hero-route .onode::before{content:"";position:absolute;inset:-9px;border-radius:50%;background:rgba(0,231,195,0.15)}
-  .hero-route .onode::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--teal-deep);box-shadow:inset 0 0 0 2.5px #fff,0 0 0 1.5px var(--teal-deep)}
-  .hero-route .olabel{position:absolute;left:calc(var(--rail-x) + 28px);top:40px;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal-deep)}
+  /* clean landing node — where the route reaches the page and turns down (no competing label) */
+  .hero-route .onode{position:absolute;left:calc(var(--rail-x) - 6px);top:38px;width:14px;height:14px;z-index:1}
+  .hero-route .onode::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--teal-deep);box-shadow:inset 0 0 0 2.4px #fff,0 0 0 1.4px var(--teal-deep)}
 
   /* mobile: stack, drop the horizontal jog, keep a simple left spine */
   @media (max-width:900px){
     .hero-grid{grid-template-columns:1fr;gap:36px;padding-top:36px}
     .charter{width:100%}
     .conn-v,.conn-h{display:none}
-    .hero-route{height:64px}
+    .hero-route{height:60px}
     .hero-route .rail{top:20px}
-    .hero-route .onode{top:12px}
-    .hero-route .olabel{top:15px}
+    .hero-route .onode{top:13px}
   }
 
   /* ── THE ROUTE ── */
@@ -217,7 +215,6 @@
       <div class="conn-h"></div>
       <div class="rail"></div>
       <span class="onode"></span>
-      <span class="olabel">The Advisory Route</span>
     </div>
   </div>
 </section>
