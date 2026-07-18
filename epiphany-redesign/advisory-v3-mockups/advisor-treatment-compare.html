@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Advisor portrait treatments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#00E7C3; --teal-deep:#2A9D8F; --dark:#15171A; --navy:#0A1628;
+    --cream:#F5F0EB; --ink:#15171A; --grey:#5B6470; --grey-l:#9CA3AF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Manrope',sans-serif;background:var(--cream);color:var(--ink);padding:56px 64px 64px}
+  .doc-head{max-width:1180px;margin:0 auto 40px}
+  .doc-head .over{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--grey-l);display:flex;align-items:center;gap:12px}
+  .doc-head .over::before{content:"";width:44px;height:2px;background:var(--teal)}
+  .doc-head h1{font-family:'Playfair Display',serif;font-size:36px;font-weight:600;margin:14px 0 8px;line-height:1.1}
+  .doc-head p{font-size:15px;color:var(--grey);max-width:720px;line-height:1.65}
+  .grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+  .col-head{text-align:center;padding:0 6px}
+  .col-head .k{font-size:10px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:var(--teal-deep)}
+  .col-head h2{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;margin:6px 0 6px}
+  .col-head .desc{font-size:12.5px;color:var(--grey);line-height:1.5;min-height:54px}
+  .col-head.reject .k{color:#C0563B}
+  .cell{margin-top:22px}
+  .cell + .cell{margin-top:26px}
+  .portrait{position:relative;aspect-ratio:4/5;border-radius:8px;overflow:hidden;background:linear-gradient(155deg,#1b3a44 0%,#15171A 60%)}
+  .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center}
+  .name{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;margin:12px 2px 2px}
+  .role{font-size:11.5px;color:var(--grey);margin:0 2px;line-height:1.45}
+
+  /* ---- A: DUOTONE (what the client rejected) ---- */
+  .duo img{filter:grayscale(1) contrast(1.06) brightness(0.98)}
+  .duo .portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,#2A9D8F,#0e2a2f);mix-blend-mode:color;opacity:0.92}
+  .duo .portrait::before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 55%,rgba(10,22,40,0.45))}
+
+  /* ---- B: WARM COLOUR ON A CONSISTENT TILE ---- */
+  .warm .portrait{background:var(--navy);padding:14px;border:1px solid rgba(0,231,195,0.28)}
+  .warm .portrait .inner{position:absolute;inset:14px;border-radius:5px;overflow:hidden}
+  .warm .portrait img{border-radius:5px;filter:saturate(1.06) contrast(1.02) brightness(1.03) sepia(0.08)}
+  .warm .portrait .node{position:absolute;left:-5px;top:50%;transform:translateY(-50%);z-index:3;width:11px;height:11px;border-radius:50%;border:1.5px solid var(--teal-deep);background:radial-gradient(circle,#00E7C3 0 2px,transparent 2.2px)}
+  .warm .portrait .rail{position:absolute;left:0;top:50%;transform:translateY(-50%);width:14px;height:2px;background:var(--teal-deep);opacity:0.6;z-index:2}
+
+  /* ---- C: EDITORIAL MONOCHROME (warms to colour on hover / in modal) ---- */
+  .bw img{filter:grayscale(1) contrast(1.09) brightness(1.04) sepia(0.05)}
+  .bw .portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(21,23,26,0.35))}
+  .bw .hovernote{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal-deep);margin:8px 2px 0;display:flex;align-items:center;gap:6px}
+  .bw .hovernote::before{content:"";width:14px;height:2px;background:var(--teal-deep)}
+</style>
+</head>
+<body>
+  <div class="doc-head">
+    <div class="over">Epiphiny Flow · Advisory · Board of Advisors</div>
+    <h1>Portrait treatment options</h1>
+    <p>The duotone gave the eight advisors a single look, but it tinted real people cold, which is what the client reacted to. These are three ways to keep them unified while letting the faces stay real and warm. Same photos, three treatments.</p>
+  </div>
+
+  <div class="grid">
+    <!-- COL A -->
+    <div>
+      <div class="col-head reject">
+        <div class="k">Option A · current</div>
+        <h2>Duotone</h2>
+        <div class="desc">One teal-and-dark tint over every face. Unifies perfectly, but reads processed and cold. Client rejected.</div>
+      </div>
+      <div class="cell duo">
+        <div class="portrait"><img src="adv-photos/karl.jpg" alt="Karl Murray"></div>
+        <div class="name">Karl Murray</div>
+        <div class="role">Managing Director, FW Business</div>
+      </div>
+      <div class="cell duo">
+        <div class="portrait"><img src="adv-photos/eddie.jpg" alt="Eddie Cole"></div>
+        <div class="name">Eddie Cole</div>
+        <div class="role">Accountancy &amp; taxation specialist</div>
+      </div>
+      <div class="cell duo">
+        <div class="portrait"><img src="adv-photos/suzanne.jpg" alt="Suzanne Oliver"></div>
+        <div class="name">Suzanne Oliver</div>
+        <div class="role">Director, IP Strategy, Scintilla</div>
+      </div>
+    </div>
+
+    <!-- COL B -->
+    <div>
+      <div class="col-head">
+        <div class="k">Option B · recommended</div>
+        <h2>Warm colour on tile</h2>
+        <div class="desc">Faces stay natural and warm. Cohesion comes from an identical navy tile, teal keyline, and the route node, not from recolouring people.</div>
+      </div>
+      <div class="cell warm">
+        <div class="portrait"><span class="rail"></span><span class="node"></span><div class="inner"><img src="adv-photos/karl.jpg" alt="Karl Murray"></div></div>
+        <div class="name">Karl Murray</div>
+        <div class="role">Managing Director, FW Business</div>
+      </div>
+      <div class="cell warm">
+        <div class="portrait"><span class="rail"></span><span class="node"></span><div class="inner"><img src="adv-photos/eddie.jpg" alt="Eddie Cole"></div></div>
+        <div class="name">Eddie Cole</div>
+        <div class="role">Accountancy &amp; taxation specialist</div>
+      </div>
+      <div class="cell warm">
+        <div class="portrait"><span class="rail"></span><span class="node"></span><div class="inner"><img src="adv-photos/suzanne.jpg" alt="Suzanne Oliver"></div></div>
+        <div class="name">Suzanne Oliver</div>
+        <div class="role">Director, IP Strategy, Scintilla</div>
+      </div>
+    </div>
+
+    <!-- COL C -->
+    <div>
+      <div class="col-head">
+        <div class="k">Option C</div>
+        <h2>Editorial B&amp;W</h2>
+        <div class="desc">True black-and-white at rest, timeless not cold. Warms to full colour on hover and inside the open bio. A tasteful reveal.</div>
+      </div>
+      <div class="cell bw">
+        <div class="portrait"><img src="adv-photos/karl.jpg" alt="Karl Murray"></div>
+        <div class="name">Karl Murray</div>
+        <div class="role">Managing Director, FW Business</div>
+        <div class="hovernote">Colour on hover</div>
+      </div>
+      <div class="cell bw">
+        <div class="portrait"><img src="adv-photos/eddie.jpg" alt="Eddie Cole"></div>
+        <div class="name">Eddie Cole</div>
+        <div class="role">Accountancy &amp; taxation specialist</div>
+        <div class="hovernote">Colour on hover</div>
+      </div>
+      <div class="cell bw">
+        <div class="portrait"><img src="adv-photos/suzanne.jpg" alt="Suzanne Oliver"></div>
+        <div class="name">Suzanne Oliver</div>
+        <div class="role">Director, IP Strategy, Scintilla</div>
+        <div class="hovernote">Colour on hover</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

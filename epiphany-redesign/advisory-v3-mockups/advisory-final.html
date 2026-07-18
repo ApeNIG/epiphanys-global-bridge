@@ -32,53 +32,53 @@
 
   /* ── Hero ── */
   .hero{position:relative;overflow:hidden;padding:96px 0 0;background:#fff}
-  .hero-grid-bg{position:absolute;inset:0;opacity:0.025;background-image:linear-gradient(90deg,#15171A 1px,transparent 1px),linear-gradient(#15171A 1px,transparent 1px);background-size:120px 120px;pointer-events:none}
-  .hero-grid{display:grid;grid-template-columns:1fr 452px;gap:64px;align-items:stretch;position:relative;padding-top:56px}
-  .hero-lead h1{font-family:'Playfair Display',serif;font-weight:600;font-size:76px;line-height:1.04;letter-spacing:-0.02em;max-width:640px}
+  .hero-grid-bg{position:absolute;inset:0;opacity:0.02;background-image:linear-gradient(90deg,#15171A 1px,transparent 1px),linear-gradient(#15171A 1px,transparent 1px);background-size:120px 120px;pointer-events:none}
+  .hero-eyebrow{padding-top:40px;margin-bottom:38px}
+  .hero-grid{display:grid;grid-template-columns:1fr 424px;gap:64px;align-items:stretch;position:relative}
+  .hero-lead{display:flex;flex-direction:column}
+  .hero-lead h1{font-family:'Playfair Display',serif;font-weight:600;font-size:72px;line-height:1.05;letter-spacing:-0.02em;max-width:700px}
   .hero-lead h1 .hl{position:relative;display:inline-block}
   .hero-lead h1 .hl::after{content:"";position:absolute;left:-6px;right:-6px;bottom:0.06em;height:0.42em;background:linear-gradient(90deg,var(--teal),#00d4b3);opacity:0.28;z-index:-1;border-radius:3px}
-  .hero-lead p{font-size:19px;line-height:1.7;color:var(--grey);max-width:480px;margin-top:34px}
-  .pill{display:inline-flex;align-items:center;gap:12px;background:var(--dark);color:var(--teal);padding:18px 22px 18px 32px;border-radius:999px;font-size:15px;font-weight:600;text-decoration:none;white-space:nowrap;margin-top:34px}
-  .pill .arr{width:32px;height:32px;border-radius:999px;background:rgba(0,231,195,0.12);display:flex;align-items:center;justify-content:center;font-size:14px}
+  .hero-lead p{font-size:18px;line-height:1.7;color:var(--grey);max-width:460px;margin-top:30px}
+  .pill{display:inline-flex;align-items:center;gap:11px;background:var(--dark);color:var(--teal);padding:15px 20px 15px 28px;border-radius:999px;font-size:14.5px;font-weight:600;text-decoration:none;white-space:nowrap;margin-top:32px;width:fit-content}
+  .pill .arr{width:30px;height:30px;border-radius:999px;background:rgba(0,231,195,0.12);display:flex;align-items:center;justify-content:center;font-size:13px}
 
-  /* ── Advisory Route Charter (hero right) — a mandate through 4 checkpoints ── */
-  .charter{position:relative;display:flex;flex-direction:column;background:linear-gradient(180deg,#fbfefe 0%,#f3faf8 100%);border:1px solid rgba(42,157,143,0.22);border-radius:6px;padding:26px 30px 22px;box-shadow:0 30px 70px -34px rgba(21,23,26,0.22)}
-  /* the route line — emerges from under the charter title, runs full height, exits the bottom edge */
-  .charter::before{content:"";position:absolute;left:34px;top:52px;bottom:-1px;width:2px;background:var(--teal-deep);opacity:0.55}
+  /* ── Advisory Route Charter — a formal mandate through 4 checkpoints ── */
+  .charter{position:relative;display:flex;flex-direction:column;background:rgba(0,231,195,0.025);border:1px solid rgba(42,157,143,0.22);border-radius:4px;padding:26px 30px 22px;box-shadow:0 18px 50px rgba(21,23,26,0.045)}
+  /* the route line — solid, runs the full panel height, exits the bottom edge */
+  .charter::before{content:"";position:absolute;left:32px;top:56px;bottom:-1px;width:2px;background:var(--teal-deep);opacity:0.55}
   .charter-hd{display:flex;justify-content:space-between;align-items:baseline}
-  .charter-hd .t{font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal-deep)}
-  .charter-hd .s{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-l)}
-  .charter-rule{width:44px;height:2px;background:var(--teal-deep);margin:12px 0 6px}
+  .charter-hd .t{font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal-deep)}
+  .charter-hd .s{font-family:'Manrope',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--grey-l)}
+  .charter-rule{width:44px;height:2px;background:var(--teal-deep);margin:12px 0 2px}
   .charter-rows{position:relative}
-  .crow{position:relative;padding:15px 0 15px 32px;border-bottom:1px solid rgba(21,23,26,0.07)}
+  .crow{position:relative;padding:16px 0 15px 32px;border-bottom:1px solid rgba(21,23,26,0.08)}
   .crow:last-child{border-bottom:none}
-  .crow::before{content:"";position:absolute;left:-3px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--teal-deep);box-shadow:inset 0 0 0 2.2px #fbfefe,0 0 0 1.4px var(--teal-deep);z-index:1}
-  .crow .k{font-family:'Manrope',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey-l);margin-bottom:4px}
+  /* checkpoint node — ring + bright core, route passes through; no halo, no plate */
+  .crow::before{content:"";position:absolute;left:-3.5px;top:19px;width:11px;height:11px;border-radius:50%;border:1.5px solid var(--teal-deep);background:radial-gradient(circle,#00E7C3 0 1.9px,transparent 2.1px);z-index:1}
+  .crow .k{font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--grey-l);margin-bottom:5px}
   .crow .k b{color:var(--teal-deep);font-weight:700}
-  .crow .v{font-family:'Playfair Display',serif;font-size:19px;font-weight:500;color:var(--ink);line-height:1.2}
-  .charter-ft{display:flex;align-items:center;justify-content:flex-end;gap:9px;margin-top:auto;padding-top:20px}
-  .charter-ft .chk{width:15px;height:15px;border:1.5px solid var(--teal-deep);border-radius:3px;display:flex;align-items:center;justify-content:center;color:var(--teal-deep);font-size:9px;line-height:1}
-  .charter-ft span{font-size:9.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--grey-l)}
+  .crow .v{font-family:'Playfair Display',serif;font-size:18.5px;font-weight:500;color:var(--ink);line-height:1.24}
+  .charter-ft{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:auto;padding-top:14px}
+  .charter-ft .chk{width:14px;height:14px;border:1.5px solid var(--teal-deep);border-radius:3px;display:flex;align-items:center;justify-content:center;color:var(--teal-deep);font-size:9px;line-height:1}
+  .charter-ft span{font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--grey-l)}
 
-  /* connector: route exits the charter bottom, travels to the page spine.
-     Both endpoints are fixed offsets from their wrap edges, so the horizontal
-     bar flexes with viewport width and always connects. */
-  .hero-route{position:relative;height:92px}
-  .conn-v{position:absolute;right:416px;top:0;width:2px;height:46px;background:var(--teal-deep);opacity:0.6}
-  .conn-h{position:absolute;left:var(--rail-x);right:416px;top:44px;height:2px;background:var(--teal-deep);opacity:0.6}
-  .hero-route .rail{left:var(--rail-x);top:45px;bottom:-280px}
-  /* clean landing node — where the route reaches the page and turns down (no competing label) */
-  .hero-route .onode{position:absolute;left:calc(var(--rail-x) - 6px);top:38px;width:14px;height:14px;z-index:1}
-  .hero-route .onode::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--teal-deep);box-shadow:inset 0 0 0 2.4px #fff,0 0 0 1.4px var(--teal-deep)}
+  /* ── Hero floor: the route becomes the architectural boundary between hero and content ── */
+  .hero-route{position:relative;height:42px}
+  .hero-floor{position:absolute;left:50%;transform:translateX(-50%);width:100vw;bottom:0;height:1px;background:#E8ECEB}
+  .conn-v{position:absolute;right:391px;top:0;width:2px;height:42px;background:var(--teal-deep);opacity:0.6}
+  .floor-route{position:absolute;left:var(--rail-x);right:391px;bottom:0;height:2px;background:var(--teal-deep);opacity:0.6}
+  .junction{position:absolute;left:calc(var(--rail-x) - 5px);bottom:-5px;width:10px;height:10px;border-radius:50%;border:1.5px solid var(--teal-deep);background:radial-gradient(circle,#00E7C3 0 2px,transparent 2.2px);z-index:2}
+  /* spine — dashed after the junction: defined mandate becomes ongoing journey */
+  .hero-route .rail{left:var(--rail-x);top:42px;bottom:-260px}
 
-  /* mobile: stack, drop the horizontal jog, keep a simple left spine */
   @media (max-width:900px){
-    .hero-grid{grid-template-columns:1fr;gap:36px;padding-top:36px}
+    .hero-grid{grid-template-columns:1fr;gap:34px}
     .charter{width:100%}
-    .conn-v,.conn-h{display:none}
-    .hero-route{height:60px}
-    .hero-route .rail{top:20px}
-    .hero-route .onode{top:13px}
+    .conn-v,.floor-route{display:none}
+    .hero-route{height:44px}
+    .hero-route .rail{top:22px}
+    .junction{bottom:auto;top:17px}
   }
 
   /* ── THE ROUTE ── */
@@ -162,6 +162,55 @@
   .pill-ghost{display:inline-flex;align-items:center;border:1px solid rgba(255,255,255,0.22);color:rgba(255,255,255,0.75);padding:18px 34px;border-radius:999px;font-size:15px;font-weight:500;text-decoration:none}
   .cta-map{position:absolute;right:-60px;top:20px;width:620px;height:620px;opacity:0.9}
 
+  /* ── Board of Advisors — real people, on the route ── */
+  .advisors{background:#fff;padding:92px 0 100px;position:relative}
+  .advisors .rail{top:-100px;bottom:-1px}
+  .adv-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px}
+  .adv-head h2{font-family:'Playfair Display',serif;font-weight:600;font-size:52px;line-height:1.1;letter-spacing:-0.01em;max-width:560px}
+  .adv-head .note{font-size:15px;color:var(--grey);max-width:320px;line-height:1.7;padding-bottom:8px}
+  .adv-quote{font-family:'Playfair Display',serif;font-size:26px;font-weight:500;font-style:italic;line-height:1.4;color:var(--ink);max-width:760px;margin:34px 0 52px;padding-left:26px;border-left:2px solid var(--teal-deep)}
+  .adv-quote cite{display:block;font-family:'Manrope',sans-serif;font-style:normal;font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--grey-l);margin-top:16px}
+  .adv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .adv-card{position:relative}
+  /* Option C on tile: editorial B&W at rest on a consistent navy tile + teal keyline. Colour reveal activates by adding .photos-live to .adv-grid once Rob's real (untinted) photos are dropped in. */
+  .adv-portrait{position:relative;aspect-ratio:4/5;border-radius:8px;overflow:hidden;background:#0A1628;padding:12px;border:1px solid rgba(0,231,195,0.24);transition:transform .35s ease,border-color .35s ease}
+  .adv-card:hover .adv-portrait{transform:translateY(-4px);border-color:rgba(0,231,195,0.5)}
+  .adv-portrait img{position:absolute;top:12px;left:12px;width:calc(100% - 24px);height:calc(100% - 24px);object-fit:cover;object-position:top center;border-radius:5px;filter:grayscale(1) contrast(1.07) brightness(1.05);transition:filter .45s ease,transform .5s ease}
+  .adv-card:hover .adv-portrait img{transform:scale(1.03)}
+  .adv-grid.photos-live .adv-card:hover .adv-portrait img{filter:grayscale(0) saturate(1.05) contrast(1.02) brightness(1.03)}
+  .adv-portrait .tag{position:absolute;left:20px;bottom:20px;z-index:3;font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.7);background:rgba(10,22,40,0.5);backdrop-filter:blur(4px);padding:4px 8px;border-radius:3px}
+  .adv-portrait::after{content:"";position:absolute;inset:12px;border-radius:5px;background:linear-gradient(180deg,transparent 58%,rgba(10,22,40,0.5));pointer-events:none;z-index:2}
+  .adv-card h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--ink);margin:16px 0 3px;line-height:1.15}
+  .adv-card .role{font-size:12.5px;color:var(--grey);line-height:1.5}
+  .adv-card .role b{color:var(--teal-deep);font-weight:600}
+  /* clickable advisor cards -> bio modal */
+  .adv-card{cursor:pointer}
+  .adv-card:focus-visible{outline:2px solid var(--teal-deep);outline-offset:4px;border-radius:8px}
+  .adv-more{position:absolute;z-index:3;top:12px;right:12px;width:28px;height:28px;border-radius:50%;background:rgba(21,23,26,0.55);backdrop-filter:blur(4px);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1;font-weight:300;opacity:0;transform:scale(.85);transition:opacity .3s ease,transform .3s ease;pointer-events:none}
+  .adv-card:hover .adv-more,.adv-card:focus-visible .adv-more{opacity:1;transform:scale(1)}
+  /* bio modal */
+  .bio-modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px}
+  .bio-modal.open{display:flex}
+  .bio-backdrop{position:absolute;inset:0;background:rgba(21,23,26,0.62);backdrop-filter:blur(6px);animation:bioFade .3s ease}
+  .bio-panel{position:relative;z-index:1;display:grid;grid-template-columns:240px 1fr;background:#fff;border-radius:12px;max-width:680px;width:100%;overflow:hidden;box-shadow:0 30px 80px rgba(21,23,26,0.35);animation:bioRise .35s cubic-bezier(.2,.8,.2,1)}
+  .bio-photo{position:relative;background:linear-gradient(155deg,#1b3a44 0%,#15171A 60%);min-height:320px}
+  .bio-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(1) contrast(1.06)}
+  body.photos-live .bio-photo img{filter:none}
+  .bio-tag{position:absolute;bottom:14px;left:14px;font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#fff;background:rgba(21,23,26,0.45);backdrop-filter:blur(4px);padding:5px 9px;border-radius:3px}
+  .bio-body{padding:40px 42px 42px}
+  .bio-rule{width:44px;height:2px;background:var(--teal-deep);margin-bottom:18px}
+  .bio-body h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:600;color:var(--ink);line-height:1.12;margin-bottom:8px}
+  .bio-body h3 b{color:var(--teal-deep);font-weight:600}
+  .bio-role{font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--grey-l);line-height:1.6;margin-bottom:22px}
+  .bio-text{font-size:15px;line-height:1.78;color:var(--grey)}
+  .bio-pending{margin-top:18px;font-size:11.5px;font-style:italic;color:var(--purple);display:none}
+  .bio-pending.show{display:block}
+  .bio-close{position:absolute;top:12px;right:14px;z-index:2;background:rgba(255,255,255,0.92);border:none;width:34px;height:34px;border-radius:50%;font-size:22px;line-height:1;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,box-shadow .2s}
+  .bio-close:hover{background:#fff;box-shadow:0 4px 14px rgba(0,0,0,0.12)}
+  @keyframes bioFade{from{opacity:0}to{opacity:1}}
+  @keyframes bioRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  @media (max-width:640px){.bio-panel{grid-template-columns:1fr;max-width:400px}.bio-photo{min-height:200px;height:200px}.bio-body{padding:28px 26px 32px}}
+
   footer{background:var(--dark);border-top:1px solid rgba(255,255,255,0.08);padding:56px 0}
   footer .wrap{display:flex;justify-content:space-between;align-items:center}
   footer .logo{color:#fff}
@@ -184,9 +233,11 @@
 <section class="hero">
   <div class="hero-grid-bg"></div>
   <div class="wrap">
+    <div class="hero-eyebrow">
+      <div class="overline"><div class="dash"></div><span>Advisory Services</span></div>
+    </div>
     <div class="hero-grid">
       <div class="hero-lead">
-        <div class="overline"><div class="dash"></div><span>Advisory Services</span></div>
         <h1>Strategic advisory for <span class="hl">global</span> growth</h1>
         <p>Expert advisory built on the diaspora network: for startups, scale-ups, SMEs, enterprises and government organisations that grow across borders.</p>
         <a class="pill" href="#">Book Consultation <span class="arr">→</span></a>
@@ -195,8 +246,8 @@
       <!-- Advisory Route Charter: one mandate through four validated checkpoints -->
       <div class="charter">
         <div class="charter-hd">
-          <span class="t">Advisory Route</span>
-          <span class="s">Active Mandate</span>
+          <span class="t">Advisory Charter</span>
+          <span class="s">EF &middot; 01</span>
         </div>
         <div class="charter-rule"></div>
         <div class="charter-rows">
@@ -205,16 +256,17 @@
           <div class="crow"><div class="k"><b>03</b> &nbsp;/&nbsp; Access</div><div class="v">Strategic introductions activated</div></div>
           <div class="crow"><div class="k"><b>04</b> &nbsp;/&nbsp; Outcome</div><div class="v">Measurable growth pathway</div></div>
         </div>
-        <div class="charter-ft"><span class="chk">&#10003;</span><span>Regulated Process &middot; FCA</span></div>
+        <div class="charter-ft"><span class="chk">&#10003;</span><span>Epiphiny Flow &middot; FCA Regulated</span></div>
       </div>
     </div>
 
-    <!-- the route exits the charter and becomes the page spine -->
+    <!-- the route drops from the charter, becomes the hero floor, turns once, continues as the page spine -->
     <div class="hero-route">
+      <div class="hero-floor"></div>
+      <div class="floor-route"></div>
       <div class="conn-v"></div>
-      <div class="conn-h"></div>
+      <span class="junction"></span>
       <div class="rail"></div>
-      <span class="onode"></span>
     </div>
   </div>
 </section>
@@ -292,6 +344,66 @@
   </div>
 </section>
 
+<!-- ── BOARD OF ADVISORS — real people, a stop on the route ── -->
+<section class="advisors">
+  <div class="wrap">
+    <div class="rail"></div>
+    <div class="railed">
+      <div class="overline"><div class="dash"></div><span>Board of Advisors</span></div>
+      <div class="adv-head">
+        <h2>Specialist advice, expert guidance</h2>
+        <div class="note">A board of proven operators, regulators and specialists, standing behind every engagement.</div>
+      </div>
+      <blockquote class="adv-quote">
+        A business&rsquo;s true potential is unleashed when it embraces a diversity of thought and culture.
+        <cite>Mark Huxley &middot; Chair, Financial Services Group of Livery Companies</cite>
+      </blockquote>
+      <div class="adv-grid">
+        <div class="adv-card" role="button" tabindex="0" data-key="diana" aria-label="Read Diana Chrouch's full bio">
+          <div class="adv-portrait"><img src="adv-photos/diana.jpg" alt="Diana Chrouch"><span class="tag">OBE</span><span class="adv-more" aria-hidden="true">+</span></div>
+          <h3>Diana Chrouch <b style="color:var(--teal-deep)">OBE</b></h3>
+          <div class="role">Marketing &amp; diversity consultant &middot; APPG special advisor, ethnic-minority business</div>
+        </div>
+        <div class="adv-card" role="button" tabindex="0" data-key="suzanne" aria-label="Read Suzanne Oliver's full bio">
+          <div class="adv-portrait"><img src="adv-photos/suzanne.jpg" alt="Suzanne Oliver"><span class="adv-more" aria-hidden="true">+</span></div>
+          <h3>Suzanne Oliver</h3>
+          <div class="role">Dual-qualified UK/European patent attorney &middot; Director, IP Strategy</div>
+        </div>
+        <div class="adv-card" role="button" tabindex="0" data-key="eddie" aria-label="Read Eddie Cole's full bio">
+          <div class="adv-portrait"><img src="adv-photos/eddie.jpg" alt="Eddie Cole"><span class="adv-more" aria-hidden="true">+</span></div>
+          <h3>Eddie Cole</h3>
+          <div class="role">Chartered accountant, 25 yrs &middot; Fellow, Institute of Directors</div>
+        </div>
+        <div class="adv-card" role="button" tabindex="0" data-key="arnab" aria-label="Read Arnab Dutt's full bio">
+          <div class="adv-portrait"><img src="adv-photos/arnab.jpg" alt="Arnab Dutt"><span class="tag">OBE</span><span class="adv-more" aria-hidden="true">+</span></div>
+          <h3>Arnab Dutt <b style="color:var(--teal-deep)">OBE</b></h3>
+          <div class="role">CEO, Divine Ox &middot; FSB Policy Champion, procurement &amp; social value</div>
+        </div>
+        <div class="adv-card" role="button" tabindex="0" data-key="huxley" aria-label="Read Mark Huxley's full bio">
+          <div class="adv-portrait"><img src="adv-photos/huxley.jpg" alt="Mark Huxley"><span class="adv-more" aria-hidden="true">+</span></div>
+          <h3>Mark Huxley</h3>
+          <div class="role">Lloyd&rsquo;s insurance veteran &middot; Chair, Financial Services Group of Livery Companies</div>
+        </div>
+        <div class="adv-card" role="button" tabindex="0" data-key="karl" aria-label="Read Karl Murray's full bio">
+          <div class="adv-portrait"><img src="adv-photos/karl.jpg" alt="Karl Murray"><span class="adv-more" aria-hidden="true">+</span></div>
+          <h3>Karl Murray</h3>
+          <div class="role">Managing Director, FW Business &middot; community &amp; fund deployment</div>
+        </div>
+        <div class="adv-card" role="button" tabindex="0" data-key="mann" aria-label="Read Mark Mann's full bio">
+          <div class="adv-portrait"><img src="adv-photos/mann.jpg" alt="Mark Mann"><span class="adv-more" aria-hidden="true">+</span></div>
+          <h3>Mark Mann</h3>
+          <div class="role">Social-impact strategist &middot; Director, Divine Ox &middot; President, SOPHIA Oxford</div>
+        </div>
+        <div class="adv-card" role="button" tabindex="0" data-key="muna" aria-label="Read Muna Yassin's full bio">
+          <div class="adv-portrait"><img src="adv-photos/muna.jpg" alt="Muna Yassin"><span class="tag">MBE</span><span class="adv-more" aria-hidden="true">+</span></div>
+          <h3>Muna Yassin <b style="color:var(--teal-deep)">MBE</b></h3>
+          <div class="role">CEO, Rooted Finance &middot; 20+ yrs financial inclusion</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── EVIDENCE: full-width black interruption, route terminates ── -->
 <section class="proof">
   <svg class="proof-arcs" viewBox="0 0 1440 400" fill="none" preserveAspectRatio="xMidYMid slice">
@@ -359,6 +471,74 @@
     <p>MANCHESTER, UK · FCA REGULATED</p>
   </div>
 </footer>
+
+<!-- ── ADVISOR BIO MODAL ── -->
+<div class="bio-modal" id="bioModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="bioName">
+  <div class="bio-backdrop" data-close></div>
+  <div class="bio-panel" role="document">
+    <button class="bio-close" type="button" data-close aria-label="Close bio">&times;</button>
+    <div class="bio-photo"><img id="bioImg" src="" alt=""><span class="bio-tag" id="bioTag"></span></div>
+    <div class="bio-body">
+      <div class="bio-rule"></div>
+      <h3 id="bioName"></h3>
+      <div class="bio-role" id="bioRole"></div>
+      <p class="bio-text" id="bioText"></p>
+      <div class="bio-pending" id="bioPending">Full bio to be confirmed.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var ADV = {
+    diana:   {name:"Diana Chrouch", hon:"OBE", role:"Director, Chrouch Consulting · Special Advisor, APPG for Ethnic Minority Business", photo:"adv-photos/diana.jpg", bio:"Director of Chrouch Consulting and a marketing and customer-engagement specialist known for turning brands around, from multinational blue chips to SMEs and charities. Special Advisor to the All-Party Parliamentary Group for Ethnic Minority Business Owners and Chair of National Ethnic Minority Business Policy at the Federation of Small Businesses. A first-class graduate who trained in the UK, studied stakeholder engagement at Dartmouth College and new media at the BBC, she authored The Marketing Toolkit with the National Association of Women in Construction."},
+    suzanne: {name:"Suzanne Oliver", hon:"", role:"Dual-qualified UK/European patent attorney · Director, IP Strategy, Scintilla", photo:"adv-photos/suzanne.jpg", bio:"Dual-qualified UK and European patent attorney and Director of IP Strategy at Scintilla, with an engineering background. She has led IP strategy at robotics start-up GroundWOW, run Operations, Legal and IP at Arm spin-out SeeChange Technologies, and managed Arm's global patent and trademark teams. A former President of the UK IP Federation advising government on innovation and IP, she has been named an IAM World Leading IP Strategist and a Managing IP Corporate IP Star, and is a longstanding advocate for women in STEM."},
+    eddie:   {name:"Eddie Cole", hon:"", role:"Accountancy & taxation specialist · Fellow, Institute of Directors", photo:"adv-photos/eddie.jpg", bio:"An accountancy, taxation and management specialist with nearly 25 years' experience, Eddie has held roles at blue-chip firms including Halifax Building Society, Airtours, Kellogg's and British Gas, and has led the operations of a Manchester-based B2B services group. A Fellow of the Institute of Directors and of several accounting bodies, he holds a Certificate in Company Direction from the University of Salford and has helped establish thousands of UK limited companies since 2001."},
+    arnab:   {name:"Arnab Dutt", hon:"OBE", role:"CEO, Divine Ox · FSB Policy Champion, procurement & social value", photo:"adv-photos/arnab.jpg", bio:"CEO of Divine Ox, Oxford University's expert venture hub. FSB Policy Champion for Procurement and Social Value, an advisor to the Cabinet Office on social value policy, and a Trustee of the Anti-Racist Alliance Trust."},
+    huxley:  {name:"Mark Huxley", hon:"", role:"Lloyd's insurance veteran · Chair, Financial Services Group of Livery Companies", photo:"adv-photos/huxley.jpg", bio:"Five decades in the Lloyd's and London insurance market, having founded 10 organisations. Master of the Worshipful Company of Entrepreneurs 2023/24, an advisor to the Lord Mayor's Office, and a Top 100 Influential People 2025 winner."},
+    karl:    {name:"Karl Murray", hon:"", role:"Managing Director, FW Business · youth, education & community", photo:"adv-photos/karl.jpg", bio:"Managing Director of FW Business Ltd since 2008, Karl leads promotion, advertising and consultancy work with a specialism in youth support, education, and voluntary and community development. His ventures include Link Up Caribbeans, focused on the Caribbean experience, and FW Vacation Homes."},
+    mann:    {name:"Mark Mann", hon:"", role:"Social-impact strategist · Director, Divine Ox · President, SOPHIA Oxford", photo:"adv-photos/mann.jpg", bio:"Founder of Divine Ox Ltd, developed in partnership with Oxford University, and a specialist in social impact measurement. Has worked with the BBC and European universities, and is President of SOPHIA Oxford UK Limited."},
+    muna:    {name:"Muna Yassin", hon:"MBE", role:"CEO, Rooted Finance · 20+ yrs financial inclusion", photo:"adv-photos/muna.jpg", bio:"CEO of Rooted Finance, a London charity providing specialist debt advice to diverse ethnic communities, with over 20 years in financial inclusion. Awarded an MBE in the 2021 Queen's Birthday Honours for charitable financial services to disadvantaged people during Covid-19, she has served on the government's VCSE Advisory Panel, joined the Board of the Money Advice Liaison Group in 2025, and previously been a Trustee of Toynbee Hall and a board member of Women Advancing Microfinance UK."}
+  };
+  var modal = document.getElementById('bioModal');
+  var img = document.getElementById('bioImg'), tag = document.getElementById('bioTag'),
+      nm = document.getElementById('bioName'), rl = document.getElementById('bioRole'),
+      tx = document.getElementById('bioText'), pd = document.getElementById('bioPending');
+  var lastFocus = null;
+  function openBio(key){
+    var d = ADV[key]; if(!d) return;
+    img.src = d.photo; img.alt = d.name;
+    if(d.hon){ tag.textContent = d.hon; tag.style.display=''; } else { tag.style.display='none'; }
+    nm.innerHTML = d.name + (d.hon ? ' <b>' + d.hon + '</b>' : '');
+    rl.textContent = d.role;
+    tx.textContent = d.bio;
+    pd.classList.toggle('show', !!d.pending);
+    lastFocus = document.activeElement;
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('.bio-close').focus();
+  }
+  function closeBio(){
+    modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    if(lastFocus) lastFocus.focus();
+  }
+  var cards = document.querySelectorAll('.adv-card[data-key]');
+  for(var i=0;i<cards.length;i++){
+    (function(c){
+      c.addEventListener('click', function(){ openBio(c.getAttribute('data-key')); });
+      c.addEventListener('keydown', function(e){
+        if(e.key==='Enter' || e.key===' '){ e.preventDefault(); openBio(c.getAttribute('data-key')); }
+      });
+    })(cards[i]);
+  }
+  var closers = modal.querySelectorAll('[data-close]');
+  for(var j=0;j<closers.length;j++){ closers[j].addEventListener('click', closeBio); }
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape' && modal.classList.contains('open')) closeBio();
+  });
+})();
+</script>
 
 </body>
 </html>
