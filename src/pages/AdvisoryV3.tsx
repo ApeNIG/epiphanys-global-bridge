@@ -204,7 +204,7 @@ const AdvisoryV3 = () => {
                 </span>
               </Link>
               <Link
-                to="/v3/about"
+                to="/about"
                 className="inline-flex items-center gap-2 border border-white/20 text-white/70 px-8 py-4 rounded-full text-[15px] font-medium hover:border-white/40 hover:text-white transition-colors"
               >
                 Learn More

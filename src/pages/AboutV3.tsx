@@ -276,15 +276,15 @@ const AboutV3 = () => {
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <Overline label="About Us" />
             <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4rem)] text-[#15171A] leading-[1.08] tracking-[-0.02em] max-w-[820px] mb-6">
-              Empowering Diaspora
+              Growing UK
               <br />
-              Communities
+              diaspora business
             </h1>
-            <p className="text-gray-500 text-[17px] md:text-[19px] leading-[1.75] max-w-[620px]">
-              We're building a digital platform that connects businesses,
-              organisations, and individuals with public and private sector
-              opportunities — with a strong focus on serving diaspora communities
-              in the UK.
+            <p className="text-gray-500 text-[17px] md:text-[19px] leading-[1.75] max-w-[640px]">
+              We are developing an advisory, a tech platform and a fund to
+              contribute to the growing national ecosystem, connecting founders,
+              businesses and institutions with public and private stakeholders to
+              develop opportunities for economic growth across the UK and globally.
             </p>
           </div>
         </section>
@@ -298,9 +298,9 @@ const AboutV3 = () => {
 
             <blockquote className="max-w-[840px] mb-16">
               <p className="font-serif text-[clamp(1.4rem,3vw,2.25rem)] text-[#15171A] leading-[1.3] tracking-[-0.01em]">
-                "To create an inclusive digital ecosystem that unlocks economic
-                opportunities, celebrates cultural identity, and drives
-                collaborative growth."
+                "To build a more connected and inclusive ecosystem that unlocks
+                investment and funding opportunities, celebrates the UK&rsquo;s
+                diversity, and powers a collaborative approach to growth."
               </p>
             </blockquote>
 
@@ -329,9 +329,10 @@ const AboutV3 = () => {
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <Overline label="Our Vision" />
 
-            <h2 className="font-serif text-3xl md:text-[42px] text-[#15171A] leading-[1.2] max-w-[700px] mb-16">
-              A future where every diaspora community member has access to
-              opportunities that honour their heritage
+            <h2 className="font-serif text-3xl md:text-[42px] text-[#15171A] leading-[1.2] max-w-[760px] mb-16">
+              A UK economy where diversity of thought and heritage is celebrated,
+              harnessed, and fuels economic growth, equitably and fairly, with
+              long-lasting generational impact
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -472,7 +473,7 @@ const AboutV3 = () => {
                   </span>
                 </Link>
                 <Link
-                  to="/v3/advisory"
+                  to="/advisory"
                   className="inline-flex items-center gap-2 border border-white/20 text-white/70 px-8 py-4 rounded-full text-[15px] font-medium hover:border-white/40 hover:text-white transition-colors"
                 >
                   Explore Advisory

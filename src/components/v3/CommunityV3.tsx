@@ -2,7 +2,6 @@ import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import communityIndian from "@/assets/v3/community-indian-woman.png";
 import communityEastAsian from "@/assets/v3/community-east-asian-man.png";
-import lifestyleCafe from "@/assets/v2/lifestyle-cafe.jpg";
 import communityCoworking from "@/assets/v3/community-coworking-woman.png";
 
 const CommunityV3 = () => {
@@ -49,28 +48,23 @@ const CommunityV3 = () => {
                 <em className="not-italic text-[#00E7C3]">inclusive growth</em>.
               </h2>
 
-              {/* Testimonial — editorial blockquote */}
+              {/* Editorial pull-quote — brand voice, not a fabricated testimonial */}
               <blockquote className="mt-4">
                 <div className="text-[48px] leading-none text-[#00E7C3]/20 font-serif select-none">
                   "
                 </div>
                 <p className="text-gray-400 text-[17px] leading-[1.8] -mt-6 ml-1">
-                  Epiphiny Flow has transformed how our community connects with
-                  global opportunities. It's more than a platform — it's a
-                  bridge to our future.
+                  Built with and for diaspora communities, so voices are heard,
+                  needs are met, and growth is shared. More than a platform: a
+                  bridge to the UK&rsquo;s economic future.
                 </p>
                 <div className="flex items-center gap-4 mt-6 ml-1">
-                  <img
-                    src={lifestyleCafe}
-                    alt="Community leader"
-                    className="w-12 h-12 rounded-full object-cover grayscale"
-                  />
                   <div>
                     <div className="text-white text-sm font-semibold">
-                      Sarah Okafor
+                      Epiphiny Flow
                     </div>
                     <div className="text-gray-600 text-xs tracking-wide">
-                      Entrepreneur &amp; Community Leader
+                      Advisory &middot; Fund &middot; Community
                     </div>
                   </div>
                 </div>
@@ -118,10 +112,10 @@ const CommunityV3 = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-5">
                       <div>
                         <span className="text-[28px] font-bold text-white font-sans tracking-tight">
-                          94%
+                          1 in 6
                         </span>
                         <span className="text-[10px] text-white/60 uppercase tracking-wider ml-2">
-                          Member retention
+                          UK businesses minority-led
                         </span>
                       </div>
                     </div>

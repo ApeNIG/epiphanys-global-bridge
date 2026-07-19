@@ -4,14 +4,14 @@ import logo from "@/assets/logo.png";
 
 const footerLinks = {
   Platform: [
-    { label: "Advisory", href: "/v2/advisory" },
-    { label: "Investment Hub", href: "/v2/investment" },
-    { label: "Community", href: "/v2/community" },
-    { label: "Opportunities", href: "/v2/advisory" },
-    { label: "Global", href: "/v2/global" },
+    { label: "Advisory", href: "/advisory" },
+    { label: "Our Fund", href: "/fund" },
+    { label: "Advisory Board", href: "/advisory/board" },
+    { label: "Events", href: "/events" },
+    { label: "FAQ", href: "/faq" },
   ],
   Company: [
-    { label: "About", href: "/v2/about" },
+    { label: "About", href: "/about" },
     { label: "Careers", href: "#" },
     { label: "Press", href: "#" },
     { label: "Contact", href: "#contact" },
@@ -113,7 +113,7 @@ const FooterV3 = () => {
         {/* Bottom Bar — minimal */}
         <div className="border-t border-white/[0.06] mt-14 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="text-[12px] text-gray-700">
-            &copy; 2026 Epiphiny Flow. All rights reserved. FCA Regulated.
+            &copy; 2026 Epiphiny Flow. All rights reserved.
           </span>
           <div className="flex items-center gap-6">
             {["Privacy Policy", "Terms of Service", "Cookie Policy"].map(

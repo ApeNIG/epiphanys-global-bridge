@@ -62,15 +62,19 @@ const App = () => (
             <BrowserRouter>
             <ScrollToTop />
             <Routes>
-            <Route path="/" element={<Index />} />
+            <Route path="/" element={<IndexV3 />} />
+            <Route path="/legacy-home" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/login" element={<Login />} />
             <Route path="/success-stories" element={<SuccessStories />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/advisory" element={<Advisory />} />
+            <Route path="/advisory" element={<AdvisoryV3 />} />
+            <Route path="/fund" element={<InvestmentV3 />} />
+            <Route path="/legacy-advisory" element={<Advisory />} />
             <Route path="/opportunities" element={<ManageOpportunities />} />
             <Route path="/community" element={<Community />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/about" element={<AboutV3 />} />
+            <Route path="/legacy-about" element={<About />} />
             <Route path="/investment-hub" element={<InvestmentHub />} />
             <Route path="/global" element={<Global />} />
             <Route path="/consultation" element={<Consultation />} />

@@ -484,16 +484,6 @@ const Auth = () => {
             )}
           </div>
 
-          {/* Trust Indicators */}
-          <div className="mt-16 text-center">
-            <h3 className="text-lg font-semibold mb-6">Trusted by diaspora communities worldwide</h3>
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-              <div className="text-sm font-medium">UK Government Partnership</div>
-              <div className="text-sm font-medium">ISO 27001 Certified</div>
-              <div className="text-sm font-medium">GDPR Compliant</div>
-              <div className="text-sm font-medium">FCA Authorized Partners</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

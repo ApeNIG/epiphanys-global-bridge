@@ -4,19 +4,19 @@ import { ArrowRight, Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navItems = [
-  { label: "Home", href: "/v3" },
-  { label: "About", href: "/v3/about" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
   {
     label: "Advisory",
-    href: "/v3/advisory",
+    href: "/advisory",
     children: [
       { label: "Report", href: "/advisory/report" },
       { label: "Advisory Board", href: "/advisory/board" },
     ],
   },
   {
-    label: "Investment",
-    href: "/v3/investment",
+    label: "Our Fund",
+    href: "/fund",
     children: [
       { label: "Deal Flow Platform", href: "/deal-flow-platform" },
     ],
@@ -74,7 +74,7 @@ const HeaderV3 = () => {
       }`}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-20 flex items-center justify-between h-[72px]">
-        <Link to="/v3" className="flex items-center gap-1.5">
+        <Link to="/" className="flex items-center gap-1.5">
           <img src={logo} alt="Epiphiny Flow" className="w-9 h-9 object-contain" />
           <span className="text-xl tracking-wide text-[#15171A]" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600 }}>
             Epiphiny Flow

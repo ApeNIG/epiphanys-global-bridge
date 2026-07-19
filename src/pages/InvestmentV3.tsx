@@ -22,55 +22,55 @@ const Overline = ({ label }: { label: string }) => (
 const howItWorks = [
   {
     icon: Sparkles,
-    title: "Smart Matching",
+    title: "Considered Matching",
     description:
-      "Our AI-powered engine matches investors with businesses based on sector alignment, risk profile, impact goals, and cultural fit across diaspora markets.",
+      "We will match investment-ready businesses with the right capital, based on sector, stage, impact and fit, with a focus on diaspora communities across the UK.",
     accent: "#00E7C3",
   },
   {
     icon: Shield,
-    title: "Due Diligence Hub",
+    title: "Rigorous Due Diligence",
     description:
-      "Comprehensive vetting with FCA compliance, financial audits, market analysis, and risk assessment. Every opportunity is thoroughly validated before listing.",
+      "Every business will go through careful vetting, financial review and risk assessment before any investment. The fund is being designed to meet the relevant UK regulatory standards.",
     accent: "#8B5CF6",
   },
   {
     icon: BarChart3,
-    title: "Performance Analytics",
+    title: "Transparent Reporting",
     description:
-      "Real-time dashboards tracking portfolio performance, impact metrics, and market trends. Make data-driven decisions with full transparency.",
+      "Backers will receive clear, honest reporting on how their capital is put to work and the growth and impact it helps create.",
     accent: "#00E7C3",
   },
   {
     icon: Globe,
-    title: "Global Network",
+    title: "Rooted in the UK",
     description:
-      "Access investment opportunities across 47 countries through our trusted network of diaspora entrepreneurs, fund managers, and institutional partners.",
+      "The fund will back diaspora-led businesses across the UK, connected to opportunity locally, nationally and globally.",
     accent: "#8B5CF6",
   },
 ];
 
 const investorTypes = [
   {
-    title: "Public Sector Investors",
+    title: "Public Sector Backers",
     description:
-      "Government bodies, development finance institutions, and impact-focused funds seeking measurable social and economic returns.",
+      "Government bodies, development finance institutions and impact-focused funds seeking measurable social and economic returns.",
     points: [
-      "ESG-focused opportunities",
-      "Impact measurement frameworks",
-      "Regulatory compliance",
-      "Risk mitigation strategies",
+      "Impact-focused opportunities",
+      "Measurable social return",
+      "UK economic growth",
+      "Diaspora community reach",
     ],
   },
   {
-    title: "Private Investors",
+    title: "Private Backers",
     description:
-      "Angel investors, family offices, and venture funds looking for high-growth opportunities with cultural intelligence.",
+      "Angel investors, family offices and venture funds looking for high-growth opportunities with cultural intelligence.",
     points: [
       "High-growth ventures",
-      "Due diligence support",
-      "Portfolio management tools",
-      "Exit strategies",
+      "Diaspora market insight",
+      "Long-term partnership",
+      "Shared, inclusive growth",
     ],
   },
 ];
@@ -78,21 +78,21 @@ const investorTypes = [
 const businessTypes = [
   {
     title: "Startups",
-    stage: "Seed & Series A",
+    stage: "Early stage",
     description:
-      "Early-stage ventures with diaspora market insight. Get matched with investors who understand cross-border potential and cultural market dynamics.",
+      "Early-stage, investment-ready ventures with diaspora market insight, looking for the capital and guidance to get off the ground.",
   },
   {
     title: "Scale-ups",
-    stage: "Series B+",
+    stage: "Growth stage",
     description:
-      "Growth-stage businesses expanding across borders. Access capital, strategic partners, and market intelligence for international scaling.",
+      "Growth-stage businesses ready to expand, seeking capital, strategic partners and market intelligence to scale across the UK and beyond.",
   },
   {
     title: "SMEs",
-    stage: "Development Capital",
+    stage: "Established",
     description:
-      "Established small and medium enterprises seeking capital for expansion, modernisation, or entering new diaspora-connected markets.",
+      "Established small and medium enterprises seeking capital for expansion, modernisation or reaching new markets.",
   },
 ];
 
@@ -109,16 +109,16 @@ const InvestmentV3 = () => {
         {/* ── Hero ── */}
         <section className="bg-white pt-32 md:pt-44 pb-20 md:pb-28">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
-            <Overline label="Investment Hub" />
+            <Overline label="Our Fund" />
             <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4rem)] text-[#15171A] leading-[1.08] tracking-[-0.02em] max-w-[820px] mb-6">
-              Connecting Innovation
+              Backing investment-ready
               <br />
-              & Investment
+              diaspora businesses
             </h1>
-            <p className="text-gray-500 text-[17px] md:text-[19px] leading-[1.75] max-w-[600px]">
-              Our Investment Hub connects public and private investors with
-              high-potential businesses across diaspora communities — with full
-              due diligence, FCA compliance, and transparent reporting.
+            <p className="text-gray-500 text-[17px] md:text-[19px] leading-[1.75] max-w-[620px]">
+              Our prospective fund will invest in investment-ready diasporic
+              community businesses to fuel growth across the UK. We are building it
+              in partnership with public and private stakeholders.
             </p>
           </div>
         </section>
@@ -126,9 +126,9 @@ const InvestmentV3 = () => {
         {/* ── How It Works ── */}
         <section className="bg-[#F5F0E8] py-20 md:py-28">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
-            <Overline label="How It Works" />
+            <Overline label="How It Will Work" />
             <h2 className="font-serif text-3xl md:text-[42px] text-[#15171A] leading-[1.2] max-w-[560px] mb-16">
-              The platform behind every deal
+              How the fund will work
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -158,9 +158,9 @@ const InvestmentV3 = () => {
         {/* ── For Investors ── */}
         <section className="bg-white py-20 md:py-28">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
-            <Overline label="For Investors" />
+            <Overline label="For Backers" />
             <h2 className="font-serif text-3xl md:text-[42px] text-[#15171A] leading-[1.2] max-w-[560px] mb-16">
-              Opportunities built for your mandate
+              Built for public and private backers
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -197,7 +197,7 @@ const InvestmentV3 = () => {
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <Overline label="For Businesses" />
             <h2 className="font-serif text-3xl md:text-[42px] text-[#15171A] leading-[1.2] max-w-[560px] mb-16">
-              Capital for every stage
+              Backing businesses at every stage
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -225,23 +225,23 @@ const InvestmentV3 = () => {
         <section className="bg-[#15171A] py-20 md:py-28">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <h2 className="font-serif text-[clamp(2rem,5vw,3.5rem)] text-white leading-[1.1] tracking-[-0.01em] max-w-[640px] mb-10">
-              Transform your investment journey
+              Register your interest in the fund
             </h2>
             <div className="flex flex-col sm:flex-row items-start gap-4">
               <Link
-                to="/deal-flow-platform"
+                to="/consultation"
                 className="inline-flex items-center gap-3 bg-[#00E7C3] text-[#15171A] pl-8 pr-6 py-4 rounded-full text-[15px] font-semibold hover:bg-[#00d4b3] transition-colors group"
               >
-                Start Investing
+                Register as a backer
                 <span className="w-8 h-8 rounded-full bg-[#15171A]/10 flex items-center justify-center group-hover:bg-[#15171A]/20 transition-colors">
                   <ArrowRight className="w-4 h-4" />
                 </span>
               </Link>
               <Link
-                to="/auth"
+                to="/consultation"
                 className="inline-flex items-center gap-2 border border-white/20 text-white/70 px-8 py-4 rounded-full text-[15px] font-medium hover:border-white/40 hover:text-white transition-colors"
               >
-                List Your Business
+                Tell us about your business
               </Link>
             </div>
           </div>

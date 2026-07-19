@@ -38,11 +38,11 @@ const TrustStripV3 = () => {
             </div>
 
             <h2 className="font-serif text-[clamp(1.75rem,4vw,2.75rem)] text-[#15171A] leading-[1.35]">
-              <span className="block">An inclusive digital ecosystem that{" "}
-              <em className="not-italic text-[#8B5CF6]">unlocks opportunities</em>,</span>
-              <span className="block">celebrates cultural identity, and drives{" "}
-              <em className="not-italic text-[#00E7C3]">collaborative growth</em></span>
-              <span className="block">across borders</span>
+              <span className="block">To build a more connected and inclusive ecosystem that{" "}
+              <em className="not-italic text-[#8B5CF6]">unlocks investment and funding</em>,</span>
+              <span className="block">celebrates the{" "}
+              <em className="not-italic text-[#00E7C3]">UK&rsquo;s diversity</em>, and powers</span>
+              <span className="block">a collaborative approach to growth</span>
             </h2>
           </div>
 

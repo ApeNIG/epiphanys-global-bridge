@@ -33,19 +33,20 @@ const CtaV3 = () => {
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-12 h-[2px] bg-[#00E7C3]" />
                 <span className="text-[11px] font-semibold tracking-[3px] uppercase text-white/50">
-                  Get Started
+                  The Advantage
                 </span>
               </div>
 
               <h2 className="font-serif text-[clamp(2rem,5vw,3.5rem)] text-white leading-[1.1] tracking-[-0.01em]">
-                Your heritage is
+                The UK&rsquo;s diversity
                 <br />
-                your advantage.
+                is our advantage.
               </h2>
 
-              <p className="text-white/60 text-[17px] mt-6 leading-[1.7] max-w-[480px]">
-                250M+ diaspora professionals are building across borders.
-                Get the advisory, investment, and community to join them.
+              <p className="text-white/60 text-[17px] mt-6 leading-[1.7] max-w-[520px]">
+                Ethnic-minority-led businesses add at least &pound;74bn a year to the
+                UK economy and employ nearly 3 million people. That is the advantage
+                we are built to unlock.
               </p>
 
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-12">

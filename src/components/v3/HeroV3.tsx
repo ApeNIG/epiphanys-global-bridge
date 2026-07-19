@@ -463,7 +463,7 @@ const HeroV3 = () => {
         >
           <div className="w-12 h-[2px] bg-[#00E7C3]" />
           <span className="text-[11px] font-semibold tracking-[3px] uppercase text-gray-400">
-            Advisory · Investment · Community
+            Advisory · Fund · Community
           </span>
         </div>
 
@@ -499,7 +499,7 @@ const HeroV3 = () => {
                 }}
               />
             </span>{" "}
-            diaspora
+            the UK
           </span>
           <span
             className="block opacity-0"
@@ -508,7 +508,7 @@ const HeroV3 = () => {
                 "heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 550ms forwards",
             }}
           >
-            businesses
+            economy
           </span>
         </h1>
 
@@ -520,10 +520,10 @@ const HeroV3 = () => {
               "heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 700ms forwards",
           }}
         >
-          <p className="text-[17px] text-gray-500 max-w-[420px] leading-[1.7]">
-            Advisory, investment and community — connecting diaspora
-            professionals with the knowledge, funding and networks to build
-            across borders.
+          <p className="text-[17px] text-gray-500 max-w-[440px] leading-[1.7]">
+            Supporting diasporic communities, founders and businesses to access
+            increased investment, funding and networking opportunities, so they
+            can scale locally, nationally and globally.
           </p>
 
           <a
@@ -540,10 +540,9 @@ const HeroV3 = () => {
         {/* Stat bar — staggered entrance + counter animation */}
         <div className="mt-14 flex flex-wrap items-baseline gap-x-12 gap-y-4 border-t border-gray-200 pt-8">
           {[
-            { num: "250M+", label: "Diaspora Professionals" },
-            { num: "£685B", label: "Economic Impact" },
-            { num: "190+", label: "Countries Connected" },
-            { num: "1,200+", label: "Success Stories" },
+            { num: "£74bn", label: "Added to the UK economy a year" },
+            { num: "17%", label: "Of UK businesses are minority-led" },
+            { num: "3M", label: "People employed" },
           ].map((stat, i) => (
             <AnimatedStat
               key={stat.label}
@@ -598,15 +597,15 @@ const HeroV3 = () => {
                 style={{ animation: "pulseGlow 4s ease-in-out 2.6s infinite" }}
               >
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-[9px] font-semibold tracking-[2px] uppercase text-gray-400">Portfolio</span>
+                  <span className="text-[9px] font-semibold tracking-[2px] uppercase text-gray-400">UK Economy</span>
                   <span className="w-2 h-2 rounded-full bg-[#00E7C3] animate-pulse" />
                 </div>
                 <div className="text-[28px] font-bold text-[#15171A] tracking-tight font-sans leading-none">
-                  £48,200
+                  £74bn
                 </div>
                 <div className="flex items-center gap-1.5 mt-1 mb-4">
-                  <span className="text-[12px] font-semibold text-[#00E7C3]">+12.4%</span>
-                  <span className="text-[10px] text-gray-400">this quarter</span>
+                  <span className="text-[12px] font-semibold text-[#00E7C3]">Minority-led</span>
+                  <span className="text-[10px] text-gray-400">GVA a year</span>
                 </div>
                 {/* Sparkline */}
                 <svg viewBox="0 0 180 40" className="w-full h-[32px]" fill="none">
@@ -636,16 +635,16 @@ const HeroV3 = () => {
                 </svg>
                 <div className="flex justify-between mt-3 pt-3 border-t border-gray-100">
                   <div className="text-center">
-                    <div className="text-[11px] font-bold text-[#15171A]">3</div>
-                    <div className="text-[8px] text-gray-400 uppercase tracking-wider">Active</div>
+                    <div className="text-[11px] font-bold text-[#15171A]">1 in 6</div>
+                    <div className="text-[8px] text-gray-400 uppercase tracking-wider">Minority-led</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-[11px] font-bold text-[#15171A]">7</div>
-                    <div className="text-[8px] text-gray-400 uppercase tracking-wider">Markets</div>
+                    <div className="text-[11px] font-bold text-[#15171A]">3M</div>
+                    <div className="text-[8px] text-gray-400 uppercase tracking-wider">Employed</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-[11px] font-bold text-[#00E7C3]">↑ 24%</div>
-                    <div className="text-[8px] text-gray-400 uppercase tracking-wider">ROI</div>
+                    <div className="text-[11px] font-bold text-[#00E7C3]">6M</div>
+                    <div className="text-[8px] text-gray-400 uppercase tracking-wider">UK firms</div>
                   </div>
                 </div>
               </div>
