@@ -16,7 +16,6 @@ import { Link } from "react-router-dom";
 import HeaderV3 from "@/components/v3/HeaderV3";
 import FooterV3 from "@/components/v3/FooterV3";
 import otisThomas from "@/assets/team/otis-thomas.jpg";
-import markHuxley from "@/assets/team/mark-huxley.jpg";
 import sajPurkayastha from "@/assets/team/saj-purkayastha.jpg";
 import markMann from "@/assets/team/mark-mann.jpg";
 import arnabDutt from "@/assets/team/arnab-dutt.jpg";
@@ -71,16 +70,6 @@ const teamMembers = [
     bg: "#1e2a3a",
     photo: markMann,
     photoPos: "center 12%",
-    overlay: "bg-black/40",
-  },
-  {
-    name: "Mark Huxley",
-    role: "Advisory Board",
-    bio: "Five decades in the Lloyd's and London insurance market. Founded 10 organisations. Master of the Worshipful Company of Entrepreneurs 2023/24. Advises the Lord Mayor's Office. Top 100 Influential People 2025 Winner.",
-    initials: "MH",
-    bg: "#2a2a1e",
-    photo: markHuxley,
-    photoPos: "center 10%",
     overlay: "bg-black/40",
   },
 ];

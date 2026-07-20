@@ -7,7 +7,6 @@ import { AuthProvider } from "@/hooks/useAuth";
 import { AIChatbot } from "./components/AIChatbot";
 import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "next-themes";
-import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Login from "./pages/Login";
 import SuccessStories from "./pages/SuccessStories";
@@ -63,7 +62,6 @@ const App = () => (
             <ScrollToTop />
             <Routes>
             <Route path="/" element={<IndexV3 />} />
-            <Route path="/legacy-home" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/login" element={<Login />} />
             <Route path="/success-stories" element={<SuccessStories />} />
