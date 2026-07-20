@@ -17,65 +17,126 @@ import HeaderV3 from "@/components/v3/HeaderV3";
 import FooterV3 from "@/components/v3/FooterV3";
 import otisThomas from "@/assets/team/otis-thomas.jpg";
 import sajPurkayastha from "@/assets/team/saj-purkayastha.jpg";
-import markMann from "@/assets/team/mark-mann.jpg";
-import arnabDutt from "@/assets/team/arnab-dutt.jpg";
+import martinaWitter from "@/assets/team/martina-witter.jpg";
+import abayomiAlemoru from "@/assets/team/abayomi-alemoru.jpg";
+import nazZaman from "@/assets/team/naz-zaman.jpg";
 
 /* ─── Team accordion ─── */
 const teamMembers = [
   {
     name: "Robert Croll",
     role: "Founder & Director",
-    bio: "Founder and Director of Epiphiny Flow Ltd. Driving the mission to connect diaspora communities with economic opportunity through digital infrastructure, investment, and advisory services.",
+    bio: "Founder and Director of Epiphiny Flow, driving the mission to connect diaspora communities, founders and businesses with economic opportunity.",
     initials: "RC",
     bg: "#2a3a4a",
     photo: null,
-    photoPos: "center 10%",
+    photoPos: "center 12%",
     overlay: "bg-black/40",
   },
   {
-    name: "Saj Purkayastha",
+    name: "Abayomi Alemoru",
     role: "Non-Executive Director",
-    bio: "Internet marketing expert with over 20 years' experience. Has mentored more than 500,000 people through online coaching and education programmes globally.",
-    initials: "SP",
-    bg: "#1a1a1a",
-    photo: sajPurkayastha,
-    photoPos: "center 8%",
-    overlay: "bg-black/55",
+    bio: "Exited law firm owner and a solicitor of 30 years, specialising in employment.",
+    initials: "AA",
+    bg: "#1e2a3a",
+    photo: abayomiAlemoru,
+    photoPos: "center 20%",
+    overlay: "bg-black/45",
   },
   {
     name: "Otis Thomas",
     role: "Non-Executive Director",
-    bio: "Strategic leader with over 20 years in business development and investment readiness. Managing Director of T.A.P. Project C.I.C. (The African Pot). Master's from the University of Manchester.",
+    bio: "Social enterprise expert and business owner, and a member of the Greater Manchester Combined Authority social enterprise advisory group.",
     initials: "OT",
     bg: "#1e2e1e",
     photo: otisThomas,
     photoPos: "center 10%",
-    overlay: "bg-black/40",
-  },
-  {
-    name: "Arnab Dutt OBE",
-    role: "Non-Executive Director",
-    bio: "CEO of Divine Ox (Oxford University expert venture hub). FSB Policy Champion for Procurement and Social Value. Advisor to the Cabinet Office on social value policy. Trustee of the Anti-Racist Alliance Trust.",
-    initials: "AD",
-    bg: "#2a1e2a",
-    photo: arnabDutt,
-    photoPos: "center 30%",
     overlay: "bg-black/45",
   },
   {
-    name: "Mark Mann",
-    role: "Advisory Board",
-    bio: "Founder of Divine Ox Ltd, developed in partnership with Oxford University. Specialist in social impact measurement. Has worked with the BBC and European universities. President of SOPHIA Oxford UK Limited.",
-    initials: "MM",
+    name: "Saj Purkayastha",
+    role: "Non-Executive Director",
+    bio: "Marketing expert and entrepreneur who has driven over $100M in marketing sales for business income.",
+    initials: "SP",
+    bg: "#1a1a1a",
+    photo: sajPurkayastha,
+    photoPos: "center 8%",
+    overlay: "bg-black/50",
+  },
+  {
+    name: "Martina Witter",
+    role: "Non-Executive Director",
+    bio: "Therapy and health and wellbeing expert, and CEO of TEDx Trafford.",
+    initials: "MW",
+    bg: "#2a1e2a",
+    photo: martinaWitter,
+    photoPos: "center 6%",
+    overlay: "bg-black/45",
+  },
+  {
+    name: "Kashif Ashraf",
+    role: "Non-Executive Director",
+    bio: "North-West Chair of the independent panel for the Bank of England, and President of Oldham Chamber of Commerce and the Asian Business Partnership, deeply connected across Asian entrepreneurship.",
+    initials: "KA",
+    bg: "#233140",
+    photo: null,
+    photoPos: "center 12%",
+    overlay: "bg-black/40",
+  },
+  {
+    name: "Diana Chrouch OBE",
+    role: "Non-Executive Director",
+    bio: "APPG Special Advisor on ethnic minority businesses and Chair of Ethnic Minority Business Policy.",
+    initials: "DC",
     bg: "#1e2a3a",
-    photo: markMann,
+    photo: null,
+    photoPos: "center 12%",
+    overlay: "bg-black/40",
+  },
+  {
+    name: "Fiona Murray",
+    role: "Non-Executive Director",
+    bio: "Social impact specialist and fundraising expert in social enterprise.",
+    initials: "FM",
+    bg: "#1e2e2a",
+    photo: null,
+    photoPos: "center 12%",
+    overlay: "bg-black/40",
+  },
+  {
+    name: "Naz Zaman",
+    role: "Non-Executive Director",
+    bio: "CEO of Inclusive North, leading fund deployment for the Phoenix Way and Pathway Fund for diaspora community-owned business, and a social impact and fundraising specialist.",
+    initials: "NZ",
+    bg: "#2a2a1e",
+    photo: nazZaman,
+    photoPos: "center 10%",
+    overlay: "bg-black/45",
+  },
+  {
+    name: "Alabi Ibagun",
+    role: "Non-Executive Director",
+    bio: "Creative production specialist for filmed content, and an AI enthusiast.",
+    initials: "AI",
+    bg: "#1a2233",
+    photo: null,
+    photoPos: "center 12%",
+    overlay: "bg-black/40",
+  },
+  {
+    name: "Steve Conway",
+    role: "Non-Executive Director",
+    bio: "Business development advisor for social enterprises.",
+    initials: "SC",
+    bg: "#22331e",
+    photo: null,
     photoPos: "center 12%",
     overlay: "bg-black/40",
   },
 ];
 
 const TeamAccordion = () => {
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState(0);
 
   const prev = () => setActive((i) => (i - 1 + teamMembers.length) % teamMembers.length);
   const next = () => setActive((i) => (i + 1) % teamMembers.length);
@@ -118,7 +179,7 @@ const TeamAccordion = () => {
         </div>
 
         {/* Accordion strip */}
-        <div className="flex gap-3 h-[420px] md:h-[480px] overflow-hidden">
+        <div className="flex gap-2 md:gap-3 h-[420px] md:h-[480px] overflow-hidden">
           {teamMembers.map((person, i) => {
             const isActive = active === i;
             return (
@@ -126,7 +187,7 @@ const TeamAccordion = () => {
                 key={person.name}
                 onClick={() => setActive(i)}
                 className="relative rounded-[20px] overflow-hidden cursor-pointer shrink-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
-                style={{ width: isActive ? "min(420px, 45%)" : "72px", flexShrink: 0 }}
+                style={{ width: isActive ? "min(420px, 42%)" : "56px", flexShrink: 0 }}
               >
                 {/* Portrait */}
                 <div
