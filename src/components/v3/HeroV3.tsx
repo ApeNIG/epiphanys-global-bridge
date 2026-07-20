@@ -527,10 +527,10 @@ const HeroV3 = () => {
           </p>
 
           <a
-            href="/auth"
+            href="/consultation"
             className="inline-flex items-center gap-3 bg-[#15171A] text-[#00E7C3] pl-8 pr-6 py-4 rounded-full text-[15px] font-semibold hover:bg-[#2a2d32] transition-colors group w-fit"
           >
-            Get Started
+            Book a call
             <span className="w-8 h-8 rounded-full bg-[#00E7C3]/10 flex items-center justify-center group-hover:bg-[#00E7C3]/20 transition-colors">
               <ArrowRight className="w-4 h-4" />
             </span>

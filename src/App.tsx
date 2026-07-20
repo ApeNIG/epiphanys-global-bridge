@@ -41,6 +41,8 @@ import AdvisoryReport from "./pages/AdvisoryReport";
 import AdvisoryBoard from "./pages/AdvisoryBoard";
 import Events from "./pages/Events";
 import FAQ from "./pages/FAQ";
+import Privacy from "./pages/Privacy";
+import Cookies from "./pages/Cookies";
 import PosterGallery from "./components/posters/PosterGallery";
 
 const queryClient = new QueryClient();
@@ -98,6 +100,8 @@ const App = () => (
             <Route path="/advisory/board" element={<AdvisoryBoard />} />
             <Route path="/events" element={<Events />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/cookies" element={<Cookies />} />
             <Route path="/posters" element={<PosterGallery />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

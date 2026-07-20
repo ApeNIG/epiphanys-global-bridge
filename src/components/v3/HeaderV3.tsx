@@ -122,10 +122,10 @@ const HeaderV3 = () => {
             Log in
           </Link>
           <Link
-            to="/auth"
+            to="/consultation"
             className="hidden sm:flex items-center gap-2 bg-[#15171A] text-[#00E7C3] px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#2a2d32] transition-colors"
           >
-            Get Started
+            Book a call
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
           <button
@@ -186,10 +186,10 @@ const HeaderV3 = () => {
               Log in
             </Link>
             <Link
-              to="/auth"
+              to="/consultation"
               className="flex items-center gap-2 bg-[#15171A] text-[#00E7C3] px-6 py-2.5 rounded-full text-sm font-semibold"
             >
-              Get Started
+              Book a call
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>

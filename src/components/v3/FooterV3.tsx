@@ -1,4 +1,4 @@
-import { Linkedin, Twitter, Instagram, MapPin, Mail } from "lucide-react";
+import { Linkedin, Instagram, MapPin, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
@@ -12,15 +12,7 @@ const footerLinks = {
   ],
   Company: [
     { label: "About", href: "/about" },
-    { label: "Careers", href: "#" },
-    { label: "Press", href: "#" },
-    { label: "Contact", href: "#contact" },
-  ],
-  Resources: [
-    { label: "Blog", href: "#" },
-    { label: "Help Centre", href: "#" },
-    { label: "Partnerships", href: "#" },
-    { label: "Events", href: "#" },
+    { label: "Contact", href: "mailto:Robert@epiphinyflow.com" },
   ],
 };
 
@@ -35,7 +27,7 @@ const FooterV3 = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           {/* Brand — editorial, left-aligned */}
           <div className="md:col-span-4 flex flex-col gap-5">
-            <Link to="/v3" className="flex items-center gap-1.5">
+            <Link to="/" className="flex items-center gap-1.5">
               <img src={logo} alt="Epiphiny Flow" className="w-8 h-8 object-contain" />
               <span className="text-[20px] text-white tracking-wide" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600 }}>
                 Epiphiny Flow
@@ -62,7 +54,6 @@ const FooterV3 = () => {
             <div className="flex items-center gap-2 mt-1">
               {[
                 { Icon: Linkedin, href: "https://www.linkedin.com/in/epiphiny-flow-95b948387/" },
-                { Icon: Twitter, href: "#" },
                 { Icon: Instagram, href: "https://www.instagram.com/epiphinyflow/" },
               ].map(({ Icon, href }) => (
                 <a
@@ -116,17 +107,12 @@ const FooterV3 = () => {
             &copy; 2026 Epiphiny Flow. All rights reserved.
           </span>
           <div className="flex items-center gap-6">
-            {["Privacy Policy", "Terms of Service", "Cookie Policy"].map(
-              (item) => (
-                <a
-                  key={item}
-                  href="#"
-                  className="text-[12px] text-gray-700 hover:text-[#00E7C3] transition-colors"
-                >
-                  {item}
-                </a>
-              )
-            )}
+            <Link to="/privacy" className="text-[12px] text-gray-700 hover:text-[#00E7C3] transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/cookies" className="text-[12px] text-gray-700 hover:text-[#00E7C3] transition-colors">
+              Cookie Policy
+            </Link>
           </div>
         </div>
       </div>

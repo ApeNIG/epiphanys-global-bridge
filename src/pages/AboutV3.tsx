@@ -453,10 +453,10 @@ const AboutV3 = () => {
 
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <Link
-                  to="/auth"
+                  to="/consultation"
                   className="inline-flex items-center gap-3 bg-[#00E7C3] text-[#15171A] pl-8 pr-6 py-4 rounded-full text-[15px] font-semibold hover:bg-[#00d4b3] transition-colors group"
                 >
-                  Get Started
+                  Book a call
                   <span className="w-8 h-8 rounded-full bg-[#15171A]/10 flex items-center justify-center group-hover:bg-[#15171A]/20 transition-colors">
                     <ArrowRight className="w-4 h-4" />
                   </span>

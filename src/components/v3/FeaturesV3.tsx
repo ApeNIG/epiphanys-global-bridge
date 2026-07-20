@@ -1,8 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import metaphorDiscover from "@/assets/v2/metaphor-discover.jpg";
+import metaphorDiscover from "@/assets/v3/metaphor-advisory-woman.jpg";
 import metaphorStaircase from "@/assets/v2/metaphor-staircase.jpg";
-import metaphorHandshake from "@/assets/v2/metaphor-handshake.jpg";
+import metaphorHandshake from "@/assets/v3/metaphor-community-group.jpg";
 
 const features = [
   {
@@ -13,7 +13,7 @@ const features = [
     stat: "8",
     statLabel: "Specialist advisors",
     image: metaphorDiscover,
-    imageAlt: "Figure looking through telescope at constellation of opportunities",
+    imageAlt: "Woman looking through a telescope at a constellation of opportunities",
     accent: "#00E7C3",
     accentHover: "rgba(0,231,195,0.15)",
   },
@@ -37,7 +37,7 @@ const features = [
     stat: "7",
     statLabel: "Founding partners",
     image: metaphorHandshake,
-    imageAlt: "Two hands meeting with golden coin symbolising trust and capital",
+    imageAlt: "A diverse group of men and women standing together as a community",
     accent: "#E89B3E",
     accentHover: "rgba(232,155,62,0.15)",
   },
