@@ -19,7 +19,10 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				serif: ['"Playfair Display"', 'Georgia', 'serif'],
+				// Headlines unified to Sora (the homepage headline font) across all pages.
+				// The `serif` key name is kept so existing `font-serif` headline classes
+				// resolve to Sora with no churn; Playfair Display has been retired.
+				serif: ['Sora', 'system-ui', 'sans-serif'],
 				sans: ['Manrope', 'system-ui', 'sans-serif'],
 			},
 			colors: {

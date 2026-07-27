@@ -98,14 +98,14 @@ const AdvisoryV3 = () => {
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <Overline label="Advisory Services" />
             <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4rem)] text-[#15171A] leading-[1.08] tracking-[-0.02em] max-w-[820px] mb-6">
-              Strategic Advisory for
+              Advice that helps you
               <br />
-              Global Growth
+              grow and scale
             </h1>
-            <p className="text-gray-500 text-[17px] md:text-[19px] leading-[1.75] max-w-[600px]">
-              Unlock the power of diaspora communities with expert advisory
-              services tailored for startups, scale-ups, SMEs, enterprises, and
-              government organisations.
+            <p className="text-gray-500 text-[17px] md:text-[19px] leading-[1.75] max-w-[620px]">
+              Strategic advisory for founders, businesses and institutions,
+              connecting you to the diaspora networks, capital and opportunities
+              that drive real growth. From first idea to global scale.
             </p>
           </div>
         </section>
@@ -187,27 +187,27 @@ const AdvisoryV3 = () => {
         <section className="bg-[#15171A] py-20 md:py-28">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <h2 className="font-serif text-[clamp(2rem,5vw,3.5rem)] text-white leading-[1.1] tracking-[-0.01em] max-w-[580px] mb-6">
-              Ready to transform your organisation?
+              Ready to grow?
             </h2>
             <p className="text-white/50 text-[17px] leading-[1.75] max-w-[480px] mb-10">
-              Book a strategic consultation with our advisory team and take the
-              first step toward diaspora-powered growth.
+              Book a call with our advisory team and take the first step toward
+              diaspora-powered growth. No obligation, just a conversation.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4">
               <Link
                 to="/consultation"
                 className="inline-flex items-center gap-3 bg-[#00E7C3] text-[#15171A] pl-8 pr-6 py-4 rounded-full text-[15px] font-semibold hover:bg-[#00d4b3] transition-colors group"
               >
-                Book Consultation
+                Book a call
                 <span className="w-8 h-8 rounded-full bg-[#15171A]/10 flex items-center justify-center group-hover:bg-[#15171A]/20 transition-colors">
                   <ArrowRight className="w-4 h-4" />
                 </span>
               </Link>
               <Link
-                to="/about"
+                to="/advisory/board"
                 className="inline-flex items-center gap-2 border border-white/20 text-white/70 px-8 py-4 rounded-full text-[15px] font-medium hover:border-white/40 hover:text-white transition-colors"
               >
-                Learn More
+                Meet the advisory board
               </Link>
             </div>
           </div>
