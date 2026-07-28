@@ -556,7 +556,8 @@ const HeroV3 = () => {
 
       {/* Photo Strip — staggered reveal */}
       <div className="relative z-10 -mb-28 md:-mb-36 mt-14">
-        <div className="grid grid-cols-12 gap-3 px-3 md:px-6">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-20">
+        <div className="grid grid-cols-12 gap-3">
           <div
             className="col-span-12 md:col-span-7 rounded-2xl overflow-hidden h-[300px] md:h-[480px] group opacity-0 relative"
             style={{
@@ -569,7 +570,7 @@ const HeroV3 = () => {
                 src={heroPortrait}
                 alt="Diaspora investor overlooking the City of London"
                 className="w-full h-full object-cover transition-transform duration-700"
-                style={{ transform: 'scale(1.15) translateY(-28%)', transformOrigin: 'top center' }}
+                style={{ transform: 'scale(1.15) translate(10%, -28%)', transformOrigin: 'top center' }}
               />
             </div>
             {/* Editorial text overlay — top-left for visibility */}
@@ -649,6 +650,7 @@ const HeroV3 = () => {
               </span>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>

@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import { AIChatbot } from "./components/AIChatbot";
+import FeedbackWidget from "@/components/v3/FeedbackWidget";
 import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "next-themes";
 import Auth from "./pages/Auth";
@@ -51,6 +52,19 @@ const ChatbotWrapper = () => {
   const location = useLocation();
   if (location.pathname.startsWith("/v2")) return null;
   return <AIChatbot />;
+};
+
+// Feedback widget: show on the public marketing pages only, not the
+// logged-in app pages, auth screens, or the legacy /v2 site.
+const FEEDBACK_HIDDEN_PREFIXES = [
+  "/v2", "/auth", "/login", "/dashboard", "/profile", "/goals", "/network",
+  "/opportunities", "/business-onboarding", "/ai-tasks", "/deal-flow-platform",
+  "/investment-hub", "/professionals", "/success-stories",
+];
+const FeedbackWrapper = () => {
+  const location = useLocation();
+  if (FEEDBACK_HIDDEN_PREFIXES.some((p) => location.pathname.startsWith(p))) return null;
+  return <FeedbackWidget />;
 };
 
 const App = () => (
@@ -107,6 +121,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
             <ChatbotWrapper />
+            <FeedbackWrapper />
           </BrowserRouter>
         </TooltipProvider>
       </AuthProvider>
