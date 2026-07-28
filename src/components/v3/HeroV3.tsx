@@ -570,7 +570,7 @@ const HeroV3 = () => {
                 src={heroPortrait}
                 alt="Diaspora investor overlooking the City of London"
                 className="w-full h-full object-cover transition-transform duration-700"
-                style={{ transform: 'scale(1.15) translate(10%, -28%)', transformOrigin: 'top center' }}
+                style={{ transform: 'scale(1.22) translate(10%, -28%)', transformOrigin: 'top center' }}
               />
             </div>
             {/* Editorial text overlay — top-left for visibility */}
