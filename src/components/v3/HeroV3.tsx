@@ -569,8 +569,7 @@ const HeroV3 = () => {
               <img
                 src={heroPortrait}
                 alt="Diaspora investor overlooking the City of London"
-                className="w-full h-full object-cover"
-                style={{ transform: 'scale(1.28)', transformOrigin: '42% 64%' }}
+                className="w-full h-full object-cover [transform-origin:42%_64%] [transform:scale(1.28)] md:[transform-origin:40%_100%] md:[transform:scale(1.5)]"
               />
             </div>
             {/* Editorial text overlay — top-left for visibility */}
