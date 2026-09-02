@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import FeedbackWidget from "@/components/v3/FeedbackWidget";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -13,10 +13,7 @@ import SuccessStories from "./pages/SuccessStories";
 import Dashboard from "./pages/Dashboard";
 import Advisory from "./pages/Advisory";
 import ManageOpportunities from "./pages/ManageOpportunities";
-import Community from "./pages/Community";
 import About from "./pages/About";
-import InvestmentHub from "./pages/InvestmentHub";
-import Global from "./pages/Global";
 import Consultation from "./pages/Consultation";
 import Professionals from "./pages/Professionals";
 import Profile from "./pages/Profile";
@@ -83,11 +80,17 @@ const App = () => (
             <Route path="/fund" element={<InvestmentV3 />} />
             <Route path="/legacy-advisory" element={<Advisory />} />
             <Route path="/opportunities" element={<ManageOpportunities />} />
-            <Route path="/community" element={<Community />} />
+            {/* Legacy pre-V3 pages, redirected 2026-09-02 on Siba's call.
+                They rendered the old header, the old "Investment" nav and 3-4
+                /auth links. Nothing on the site links to them any more, but old
+                bookmarks and typed URLs landed on the old website. The page
+                components remain in the repo; restore by swapping the element
+                back. */}
+            <Route path="/community" element={<Navigate to="/" replace />} />
             <Route path="/about" element={<AboutV3 />} />
             <Route path="/legacy-about" element={<About />} />
-            <Route path="/investment-hub" element={<InvestmentHub />} />
-            <Route path="/global" element={<Global />} />
+            <Route path="/investment-hub" element={<Navigate to="/" replace />} />
+            <Route path="/global" element={<Navigate to="/" replace />} />
             <Route path="/consultation" element={<Consultation />} />
             <Route path="/professionals" element={<Professionals />} />
             <Route path="/profile" element={<Profile />} />
