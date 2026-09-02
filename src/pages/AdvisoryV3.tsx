@@ -120,7 +120,7 @@ const AdvisoryV3 = () => {
                 <div className="rounded-[20px] overflow-hidden h-[320px] md:h-[440px]">
                   <img
                     src={founderConsultancy}
-                    alt="A founder sitting with a closed laptop in a meeting room"
+                    alt="A founder mid-answer across a table from an advisor, a single sheet between them"
                     className="w-full h-full object-cover"
                     style={{ objectPosition: "center 30%" }}
                   />
