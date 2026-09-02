@@ -64,7 +64,7 @@ const DealFlowPlatform = () => (
           </p>
 
           <a
-            href="mailto:Robert@epiphinyflow.com?subject=Deal%20Flow%20Platform%20-%20register%20my%20interest"
+            href="mailto:info@epiphinyflow.com?subject=Deal%20Flow%20Platform%20-%20register%20my%20interest"
             className="inline-flex items-center gap-3 bg-[#15171A] text-[#00E7C3] pl-8 pr-6 py-4 rounded-full text-[15px] font-semibold hover:bg-[#2a2d32] transition-colors group w-fit mt-10"
           >
             Register your interest

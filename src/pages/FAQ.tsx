@@ -92,11 +92,11 @@ const groups: Group[] = [
       },
       {
         q: "How do I attend the event?",
-        a: "Places are extremely limited due to the nature of the event. Register your interest by email at Robert@epiphinyflow.com and we will be in touch.",
+        a: "Places are extremely limited due to the nature of the event. Register your interest by email at info@epiphinyflow.com and we will be in touch.",
       },
       {
         q: "How do I get in touch?",
-        a: "Email Robert@epiphinyflow.com, or use the contact options in the footer of any page.",
+        a: "Email info@epiphinyflow.com, or use the contact options in the footer of any page.",
       },
     ],
   },
@@ -191,7 +191,7 @@ const FAQ = () => (
             </p>
           </div>
           <a
-            href="mailto:Robert@epiphinyflow.com?subject=Question%20about%20Epiphiny%20Flow"
+            href="mailto:info@epiphinyflow.com?subject=Question%20about%20Epiphiny%20Flow"
             className="inline-flex items-center gap-3 bg-[#15171A] text-[#00E7C3] pl-8 pr-6 py-4 rounded-full text-[15px] font-semibold hover:bg-[#2a2d32] transition-colors group w-fit shrink-0"
           >
             Get in touch

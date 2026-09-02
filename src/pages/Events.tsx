@@ -18,8 +18,8 @@ const details = [
   {
     icon: Mail,
     label: "Register your interest",
-    value: "Robert@epiphinyflow.com",
-    href: "mailto:Robert@epiphinyflow.com?subject=Grow%20Scale%20Boost%202026%20-%20Register%20my%20interest",
+    value: "info@epiphinyflow.com",
+    href: "mailto:info@epiphinyflow.com?subject=Grow%20Scale%20Boost%202026%20-%20Register%20my%20interest",
   },
 ];
 
@@ -132,7 +132,7 @@ const Events = () => (
               </p>
 
               <a
-                href="mailto:Robert@epiphinyflow.com?subject=Grow%20Scale%20Boost%202026%20-%20Register%20my%20interest"
+                href="mailto:info@epiphinyflow.com?subject=Grow%20Scale%20Boost%202026%20-%20Register%20my%20interest"
                 className="inline-flex items-center gap-3 bg-[#15171A] text-[#00E7C3] pl-8 pr-6 py-4 rounded-full text-[15px] font-semibold hover:bg-[#2a2d32] transition-colors group w-fit"
               >
                 Register your interest

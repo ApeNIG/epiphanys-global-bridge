@@ -4,7 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
-import { AIChatbot } from "./components/AIChatbot";
 import FeedbackWidget from "@/components/v3/FeedbackWidget";
 import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "next-themes";
@@ -48,11 +47,9 @@ import PosterGallery from "./components/posters/PosterGallery";
 
 const queryClient = new QueryClient();
 
-const ChatbotWrapper = () => {
-  const location = useLocation();
-  if (location.pathname.startsWith("/v2")) return null;
-  return <AIChatbot />;
-};
+// AI chatbot removed 2026-09-02 per the 25 August website review (the "chat
+// bubble" and "AI assistant" on that list are this one component). The
+// component file is retained; restore by re-adding this wrapper and its import.
 
 // Feedback widget: show on the public marketing pages only, not the
 // logged-in app pages, auth screens, or the legacy /v2 site.
@@ -120,7 +117,6 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-            <ChatbotWrapper />
             <FeedbackWrapper />
           </BrowserRouter>
         </TooltipProvider>

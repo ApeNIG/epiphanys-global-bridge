@@ -60,10 +60,10 @@ const CtaV3 = () => {
                   </span>
                 </a>
                 <a
-                  href="mailto:Robert@epiphinyflow.com?subject=Epiphiny%20Flow%20enquiry"
+                  href="mailto:info@epiphinyflow.com?subject=Intro%20meeting%20request"
                   className="inline-flex items-center gap-2 border-2 border-white/50 text-white px-8 py-4 rounded-full text-[15px] font-medium hover:bg-white/10 hover:border-white transition-colors backdrop-blur-sm"
                 >
-                  Email us
+                  Email us for an intro meeting
                 </a>
               </div>
             </div>

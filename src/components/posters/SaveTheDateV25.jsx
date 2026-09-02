@@ -388,7 +388,7 @@ const SaveTheDateV25 = () => {
               color: '#00E7C3',
             }}
           >
-            Robert@epiphinyflow.com
+            info@epiphinyflow.com
           </span>
         </motion.div>
       </motion.div>

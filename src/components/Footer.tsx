@@ -94,7 +94,7 @@ const Footer = () => {
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-4 h-4" />
-              <span>Robert@epiphinyflow.com</span>
+              <span>info@epiphinyflow.com</span>
             </div>
           </div>
           

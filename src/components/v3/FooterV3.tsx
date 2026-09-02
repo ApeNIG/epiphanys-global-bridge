@@ -12,7 +12,7 @@ const footerLinks = {
   ],
   Company: [
     { label: "About", href: "/about" },
-    { label: "Contact", href: "mailto:Robert@epiphinyflow.com" },
+    { label: "Contact", href: "mailto:info@epiphinyflow.com" },
   ],
 };
 
@@ -44,11 +44,11 @@ const FooterV3 = () => {
                 <span className="text-[13px] text-gray-600">Manchester, UK</span>
               </div>
               <a
-                href="mailto:Robert@epiphinyflow.com"
+                href="mailto:info@epiphinyflow.com"
                 className="flex items-center gap-2 hover:text-gray-400 transition-colors"
               >
                 <Mail className="w-3.5 h-3.5 text-gray-600" />
-                <span className="text-[13px] text-gray-600">Robert@epiphinyflow.com</span>
+                <span className="text-[13px] text-gray-600">info@epiphinyflow.com</span>
               </a>
             </div>
             <div className="flex items-center gap-2 mt-1">

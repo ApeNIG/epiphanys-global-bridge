@@ -34,8 +34,8 @@ const features = [
     title: "Community",
     description:
       "Join a trusted network of diaspora founders, businesses and institutions. Real relationships that open doors, not cold pitches.",
-    stat: "7",
-    statLabel: "Founding partners",
+    stat: "Soon",
+    statLabel: "Community in development",
     image: metaphorHandshake,
     imageAlt: "A diverse group of men and women standing together as a community",
     accent: "#E89B3E",

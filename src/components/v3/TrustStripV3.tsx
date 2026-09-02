@@ -37,7 +37,7 @@ const TrustStripV3 = () => {
               </span>
             </div>
 
-            <h2 className="font-serif text-[clamp(1.75rem,4vw,2.75rem)] text-[#15171A] leading-[1.35]">
+            <h2 className="font-serif text-[clamp(2.1rem,4.8vw,3.4rem)] text-[#15171A] leading-[1.28]">
               <span className="block">To build a more connected and inclusive ecosystem that{" "}
               <em className="not-italic text-[#8B5CF6]">unlocks investment and funding</em>,</span>
               <span className="block">celebrates the{" "}

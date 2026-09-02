@@ -490,7 +490,7 @@ const SaveTheDateV28 = () => {
                 fontWeight: 500,
               }}
             >
-              Robert@epiphinyflow.com
+              info@epiphinyflow.com
             </div>
           </div>
         </motion.div>

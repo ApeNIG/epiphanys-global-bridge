@@ -67,7 +67,7 @@ const FeedbackWidget = () => {
     } catch (err: any) {
       toast({
         title: "Couldn't send that",
-        description: "Please try again in a moment, or email robert@epiphinyflow.com.",
+        description: "Please try again in a moment, or email info@epiphinyflow.com.",
         variant: "destructive",
       });
     } finally {

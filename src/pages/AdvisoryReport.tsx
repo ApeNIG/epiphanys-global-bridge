@@ -61,7 +61,7 @@ const AdvisoryReport = () => (
           </p>
 
           <a
-            href="mailto:Robert@epiphinyflow.com?subject=Advisory%20Report%20-%20notify%20me"
+            href="mailto:info@epiphinyflow.com?subject=Advisory%20Report%20-%20notify%20me"
             className="inline-flex items-center gap-3 bg-[#15171A] text-[#00E7C3] pl-8 pr-6 py-4 rounded-full text-[15px] font-semibold hover:bg-[#2a2d32] transition-colors group w-fit mt-10"
           >
             Register to receive it

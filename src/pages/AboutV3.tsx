@@ -43,6 +43,9 @@ const teamMembers: TeamMember[] = [
     name: "Robert Croll",
     role: "Founder & Director",
     bio: "Founder and Director of Epiphiny Flow, driving the mission to connect diaspora communities, founders and businesses with economic opportunity.",
+    fullBio: [
+      "Robert Croll leads Epiphiny Flow, a social enterprise founded in the north whose aim is to deliver a pioneering strategy to boost the UK economy, by helping to deliver increased resources, investment and funding to diasporic communities, leaders, founders, businesses and entrepreneurs.",
+    ],
     initials: "RC",
     bg: "#2a3a4a",
     photo: null,
@@ -140,10 +143,15 @@ const teamMembers: TeamMember[] = [
     overlay: "bg-black/45",
   },
   {
-    name: "Fiona Murray",
+    name: "Nadia Shiraz",
     role: "Non-Executive Director",
-    bio: "Social impact specialist and fundraising expert in social enterprise.",
-    initials: "FM",
+    bio: "Operations Manager at Inclusive North, specialising in high-value programme delivery, governance and cross-sector partnerships.",
+    fullBio: [
+      "Nadia Shiraz is Operations Manager at Inclusive North, with extensive experience in leading high-value projects and managing complex programmes and contracts. She plays a key role in translating organisational strategy into effective delivery, ensuring strong governance, robust systems and consistently high standards across the organisation.",
+      "She has a strong track record of developing and maintaining strategic partnerships across the public, private and voluntary sectors, and is experienced in managing complex stakeholder relationships, coordinating competing priorities and ensuring programmes deliver against agreed outcomes, contractual requirements and organisational objectives.",
+      "With a strong focus on operational excellence, collaboration and continuous improvement, Nadia brings a practical and solutions-focused approach to her role.",
+    ],
+    initials: "NS",
     bg: "#1e2e2a",
     photo: null,
     photoPos: "center 12%",
@@ -211,7 +219,7 @@ const TeamAccordion = () => {
 
   return (
     <>
-    <section className="bg-white py-20 md:py-28">
+    <section className="bg-white py-14 md:py-20">
       <div className="max-w-[1440px] mx-auto px-6 md:px-20">
         {/* Header row */}
         <div className="flex items-end justify-between mb-12">
@@ -491,7 +499,7 @@ const AboutV3 = () => {
         <TeamAccordion />
 
         {/* ── Mission ── */}
-        <section className="bg-[#F5F0E8] py-20 md:py-28">
+        <section className="bg-[#F5F0E8] py-14 md:py-20">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <Overline label="Our Mission" />
 
@@ -524,7 +532,7 @@ const AboutV3 = () => {
         </section>
 
         {/* ── Vision ── */}
-        <section className="bg-white py-20 md:py-28">
+        <section className="bg-white py-14 md:py-20">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <Overline label="Our Vision" />
 
@@ -572,7 +580,7 @@ const AboutV3 = () => {
         </section>
 
         {/* ── Values ── */}
-        <section className="bg-[#F5F0E8] py-20 md:py-28">
+        <section className="bg-[#F5F0E8] py-14 md:py-20">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <Overline label="Our Values" />
 
@@ -621,7 +629,7 @@ const AboutV3 = () => {
         <section className="relative overflow-hidden bg-[#15171A]">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] bg-[#8B5CF6]/[0.06] rounded-full blur-[150px] pointer-events-none" />
 
-          <div className="max-w-[1440px] mx-auto px-6 md:px-20 py-24 md:py-36 relative z-10">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-20 py-16 md:py-24 relative z-10">
             <div className="max-w-[760px]">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-[2px] bg-[#00E7C3]" />

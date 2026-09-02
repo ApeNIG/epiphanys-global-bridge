@@ -17,9 +17,6 @@ const navItems = [
   {
     label: "Our Fund",
     href: "/fund",
-    children: [
-      { label: "Deal Flow Platform", href: "/deal-flow-platform" },
-    ],
   },
   { label: "Events", href: "/events" },
   { label: "FAQ", href: "/faq" },
@@ -116,12 +113,6 @@ const HeaderV3 = () => {
 
         <div className="flex items-center gap-4">
           <Link
-            to="/login"
-            className="hidden md:block text-sm font-medium text-[#4a6e68] hover:text-[#00E7C3]"
-          >
-            Log in
-          </Link>
-          <Link
             to="/consultation"
             className="hidden sm:flex items-center gap-2 bg-[#15171A] text-[#00E7C3] px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#2a2d32] transition-colors"
           >
@@ -182,9 +173,6 @@ const HeaderV3 = () => {
             )
           )}
           <div className="flex items-center gap-3 pt-3 border-t border-gray-100 mt-2">
-            <Link to="/login" className="text-sm font-medium text-gray-700">
-              Log in
-            </Link>
             <Link
               to="/consultation"
               className="flex items-center gap-2 bg-[#15171A] text-[#00E7C3] px-6 py-2.5 rounded-full text-sm font-semibold"
