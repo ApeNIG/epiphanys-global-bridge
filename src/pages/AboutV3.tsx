@@ -198,7 +198,17 @@ const teamMembers: TeamMember[] = [
   {
     name: "Steve Conway",
     role: "Non-Executive Director",
-    bio: "Business development advisor for social enterprises.",
+    bio: "Founder and Director of Community Asset Services Cooperative, with thirty years supporting Global Majority organisations across the statutory, community and enterprise sectors.",
+    // From "SC summary.docx" in his Drive folder, 30 August. His document is
+    // written in the first person and contains the same account twice, plus a
+    // trailing line offering to reshape it, which is chat output that was pasted
+    // in. Converted to third person to match the other eleven, deduplicated, and
+    // the trailing line dropped. Substance and claims are his, unchanged.
+    fullBio: [
+      "Steve Conway is a Mixed Heritage consultant with more than thirty years' experience across the statutory, community and enterprise sectors, dedicated to strengthening excluded, minoritised and Global Majority organisations. After beginning his professional life in the health service, he studied at the University of Manchester, achieving a First Class degree in History and Social Science with a focus on race, racism and migration. That grounding reflected his own convictions about social and economic inequality and shaped a career supporting Global Majority organisations, charities and businesses across the statutory, community and grant-making sectors.",
+      "His experience includes establishing TS4SE Cooperative, and senior consultancy and management roles at The Ubele Initiative, where he contributed to system change programmes, managed the National Enterprise Development programme in partnership with Social Investment Business, and gave direct support to community organisations and social businesses across the UK. More recently, as a Community Business Connector at Power to Change, he guided excluded and racialised community businesses through assessment, programme design and capacity building, while leading on equity, diversity and inclusion within the team.",
+      "Internationally, he has supported social enterprise development in Congo (Brazzaville), working with government partners on community-led environmental and heritage projects in Pointe Noire and Loango Bay. As Founder and Director of Community Asset Services Cooperative, he specialises in helping Global Majority communities build stable and sustainable social enterprises and businesses, and advises statutory bodies and communities on complex asset governance, heritage buildings, business planning and mentoring.",
+    ],
     initials: "SC",
     bg: "#22331e",
     photo: steveConway,
