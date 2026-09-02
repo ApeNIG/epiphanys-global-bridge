@@ -37,12 +37,16 @@ const TrustStripV3 = () => {
               </span>
             </div>
 
-            <h2 className="font-serif text-[clamp(2.1rem,4.8vw,3.4rem)] text-[#15171A] leading-[1.28]">
-              <span className="block">To build a more connected and inclusive ecosystem that{" "}
-              <em className="not-italic text-[#8B5CF6]">unlocks investment and funding</em>,</span>
-              <span className="block">celebrates the{" "}
-              <em className="not-italic text-[#00E7C3]">UK&rsquo;s diversity</em>, and powers</span>
-              <span className="block">a collaborative approach to growth</span>
+            {/* No forced line breaks: the statement was three hard-wrapped
+                blocks, which stopped being three lines the moment the type was
+                enlarged and orphaned the word "powers". Letting it flow keeps
+                the rag honest at any size. */}
+            <h2 className="font-serif text-[clamp(2.1rem,4.8vw,3.4rem)] text-[#15171A] leading-[1.28] text-balance">
+              To build a more connected and inclusive ecosystem that{" "}
+              <em className="not-italic text-[#8B5CF6]">unlocks investment and funding</em>,
+              celebrates the{" "}
+              <em className="not-italic text-[#00E7C3]">UK&rsquo;s diversity</em>, and powers
+              a collaborative approach to growth
             </h2>
           </div>
 
