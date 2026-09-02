@@ -14,7 +14,6 @@ import Dashboard from "./pages/Dashboard";
 import Advisory from "./pages/Advisory";
 import ManageOpportunities from "./pages/ManageOpportunities";
 import About from "./pages/About";
-import Consultation from "./pages/Consultation";
 import Professionals from "./pages/Professionals";
 import Profile from "./pages/Profile";
 import BusinessOnboarding from "./pages/BusinessOnboarding";
@@ -91,7 +90,13 @@ const App = () => (
             <Route path="/legacy-about" element={<About />} />
             <Route path="/investment-hub" element={<Navigate to="/" replace />} />
             <Route path="/global" element={<Navigate to="/" replace />} />
-            <Route path="/consultation" element={<Consultation />} />
+            {/* Consultation form hidden 2026-09-02 on Siba's call. The site
+                contacts by email throughout now, nothing linked here, and an
+                orphaned 12-field form asking for budget range was a page a
+                visitor could still land on from an old link. The page
+                component remains in the repo; restore by swapping the element
+                back to <Consultation />. */}
+            <Route path="/consultation" element={<Navigate to="/" replace />} />
             <Route path="/professionals" element={<Professionals />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/goals" element={<Goals />} />
