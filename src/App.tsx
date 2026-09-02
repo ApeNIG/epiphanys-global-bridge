@@ -2,9 +2,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
-import FeedbackWidget from "@/components/v3/FeedbackWidget";
 import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "next-themes";
 import Auth from "./pages/Auth";
@@ -47,18 +46,11 @@ const queryClient = new QueryClient();
 // bubble" and "AI assistant" on that list are this one component). The
 // component file is retained; restore by re-adding this wrapper and its import.
 
-// Feedback widget: show on the public marketing pages only, not the
-// logged-in app pages, auth screens, or the legacy /v2 site.
-const FEEDBACK_HIDDEN_PREFIXES = [
-  "/v2", "/auth", "/login", "/dashboard", "/profile", "/goals", "/network",
-  "/opportunities", "/business-onboarding", "/ai-tasks", "/deal-flow-platform",
-  "/investment-hub", "/professionals", "/success-stories",
-];
-const FeedbackWrapper = () => {
-  const location = useLocation();
-  if (FEEDBACK_HIDDEN_PREFIXES.some((p) => location.pathname.startsWith(p))) return null;
-  return <FeedbackWidget />;
-};
+// Feedback widget removed 2026-09-02: Rob asked for it off, Siba's call to
+// comply. The component and its Supabase table are untouched; restore by
+// re-adding the import, this wrapper and <FeedbackWrapper /> in the tree.
+// NOTE: there is now no in-product channel for anyone to report the live site
+// broken. Breakage will only surface if somebody emails info@.
 
 const App = () => (
     <QueryClientProvider client={queryClient}>
@@ -125,7 +117,6 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-            <FeedbackWrapper />
           </BrowserRouter>
         </TooltipProvider>
       </AuthProvider>
