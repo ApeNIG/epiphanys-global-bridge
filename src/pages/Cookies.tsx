@@ -57,28 +57,52 @@ const sections: { heading: string; body: React.ReactNode }[] = [
     body: (
       <>
         This website uses only a small number of <strong>strictly necessary and
-        functional</strong> cookies: those needed to make the site work, to
-        balance load and protect it against abuse, and to remember preferences
-        such as your display or language settings.
+        functional</strong> storage, and in fact this website currently sets{" "}
+        <strong>no cookies at all</strong>. Checked on 2 September 2026: a fresh
+        visit to this site leaves an empty cookie store.
         <br />
         <br />
-        We do <strong>not</strong> currently use analytics or performance
-        cookies, and we do not use advertising or marketing cookies. No
-        third-party tracking runs on this site. If that changes we will update
-        this policy and ask for your consent before any such cookie is set.
+        We store one item in your browser&rsquo;s local storage,{" "}
+        <code>i18nextLng</code>, which remembers the language you chose so the
+        site does not ask again. It stays on your device, is not sent to us, and
+        you can clear it from your browser at any time.
+        <br />
+        <br />
+        We do <strong>not</strong> use analytics or performance cookies, and we
+        do not use advertising or marketing cookies. No third-party tracking runs
+        on this site. If that changes we will update this policy and ask for your
+        consent before any such cookie is set.
       </>
     ),
   },
   {
-    heading: "Your choices",
+    heading: "Why there is no cookie banner",
     body: (
       <>
-        Because we set only strictly necessary and functional cookies, there is
-        no consent banner on this site. You can still control or delete cookies
-        through your browser settings, which applies to every website you visit,
-        not only this one. Blocking essential cookies may stop parts of this
-        website working properly. The help pages for Chrome, Microsoft Edge,
-        Firefox and Safari each explain how to manage cookies in that browser.
+        UK law requires your consent before a website sets cookies that are not
+        strictly necessary, and requires a way for you to refuse them. We set no
+        such cookies, so there is nothing here for you to consent to and a banner
+        would ask you to agree to something that is not happening. The day we add
+        analytics, or anything else that is not strictly necessary, a banner
+        appears with it.
+        <br />
+        <br />
+        You can still control or delete cookies through your browser settings,
+        which applies to every website you visit, not only this one. The help
+        pages for Chrome, Microsoft Edge, Firefox and Safari each explain how.
+      </>
+    ),
+  },
+  {
+    heading: "Third parties this site contacts",
+    body: (
+      <>
+        Two services are called when a page loads, neither of which sets a
+        cookie: <strong>Google Fonts</strong>, which serves the typefaces, and{" "}
+        <strong>unpkg</strong>, which serves the map imagery on the home page.
+        Requesting a file from either means your IP address reaches that
+        provider, as it would with any website that loads a font or an image from
+        elsewhere. We do not send them anything else about you.
       </>
     ),
   },
