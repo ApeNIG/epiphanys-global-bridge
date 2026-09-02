@@ -9,6 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import HeaderV3 from "@/components/v3/HeaderV3";
 import FooterV3 from "@/components/v3/FooterV3";
+import founderConsultancy from "@/assets/v3/founder-consultancy.jpg";
 
 const Overline = ({ label }: { label: string }) => (
   <div className="flex items-center gap-4 mb-6">
@@ -107,6 +108,37 @@ const AdvisoryV3 = () => {
               connecting you to the diaspora networks, capital and opportunities
               that drive real growth. From first idea to global scale.
             </p>
+          </div>
+        </section>
+
+        {/* The picture does the same job as the copy: someone being advised,
+            in the room where it happens. Not decoration. */}
+        <section className="bg-white pb-20 md:pb-28">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-20">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+              <div className="lg:col-span-7">
+                <div className="rounded-[20px] overflow-hidden h-[320px] md:h-[440px]">
+                  <img
+                    src={founderConsultancy}
+                    alt="A founder sitting with a closed laptop in a meeting room"
+                    className="w-full h-full object-cover"
+                    style={{ objectPosition: "center 40%" }}
+                  />
+                </div>
+              </div>
+              <div className="lg:col-span-5">
+                <h2 className="font-serif text-[26px] md:text-[32px] text-[#15171A] leading-[1.25] mb-5">
+                  Most founders do not need a pitch deck. They need the right
+                  introduction.
+                </h2>
+                <p className="text-gray-500 text-[16px] leading-[1.8]">
+                  Our advisory board covers access to investment and funding,
+                  investment readiness, marketing, intellectual property and
+                  partnerships. You get the specialists your situation actually
+                  calls for, not a generic package.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 

@@ -1,6 +1,7 @@
 import { TrendingUp, Target, Landmark, Users, ArrowRight } from "lucide-react";
 import HeaderV3 from "@/components/v3/HeaderV3";
 import FooterV3 from "@/components/v3/FooterV3";
+import founderResearcher from "@/assets/v3/founder-researcher.jpg";
 
 const topics = [
   {
@@ -69,6 +70,31 @@ const AdvisoryReport = () => (
               <ArrowRight className="w-4 h-4" />
             </span>
           </a>
+        </div>
+      </section>
+
+      {/* The report being read. The picture is the page's subject, not scenery. */}
+      <section className="bg-white pb-16 md:pb-24">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-7">
+              <div className="rounded-[20px] overflow-hidden h-[320px] md:h-[440px]">
+                <img
+                  src={founderResearcher}
+                  alt="A researcher reading a printed report by a window"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: "center 35%" }}
+                />
+              </div>
+            </div>
+            <div className="lg:col-span-5">
+              <p className="text-gray-500 text-[16px] leading-[1.8]">
+                The report gathers what the diaspora business community already
+                knows and puts it somewhere it can be argued with: the barriers to
+                capital, what actually unlocks it, and where the gaps sit.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
