@@ -24,6 +24,10 @@ import nazZaman from "@/assets/team/naz-zaman.jpg";
 import alabiIbagun from "@/assets/team/alabi-ibagun.jpg";
 import kashifAshraf from "@/assets/team/kashif-ashraf.jpg";
 import dianaChrouch from "@/assets/advisors/diana.jpg";
+import robertCroll from "@/assets/team/robert-croll.jpg";
+import nadiaShiraz from "@/assets/team/nadia-shiraz.jpg";
+import steveConway from "@/assets/team/steve-conway.jpg";
+import erinmaBell from "@/assets/team/erinma-bell.jpg";
 
 /* The closed strip labels each member by first name. Taking name.split(" ")[0]
    raw made Prof Erinma Bell's label read "PROF" while every other label was a
@@ -54,9 +58,9 @@ const teamMembers: TeamMember[] = [
     ],
     initials: "RC",
     bg: "#2a3a4a",
-    photo: null,
-    photoPos: "center 12%",
-    overlay: "bg-black/40",
+    photo: robertCroll,
+    photoPos: "center 18%",
+    overlay: "bg-black/45",
   },
   {
     name: "Abayomi Alemoru",
@@ -159,9 +163,9 @@ const teamMembers: TeamMember[] = [
     ],
     initials: "NS",
     bg: "#1e2e2a",
-    photo: null,
-    photoPos: "center 12%",
-    overlay: "bg-black/40",
+    photo: nadiaShiraz,
+    photoPos: "center 14%",
+    overlay: "bg-black/45",
   },
   {
     name: "Naz Zaman",
@@ -197,9 +201,9 @@ const teamMembers: TeamMember[] = [
     bio: "Business development advisor for social enterprises.",
     initials: "SC",
     bg: "#22331e",
-    photo: null,
-    photoPos: "center 12%",
-    overlay: "bg-black/40",
+    photo: steveConway,
+    photoPos: "center 22%",
+    overlay: "bg-black/45",
   },
   {
     // Added 2026-09-02. She has had a profile and a headshot in the client's
@@ -216,8 +220,8 @@ const teamMembers: TeamMember[] = [
     ],
     initials: "EB",
     bg: "#2e2436",
-    photo: null,
-    photoPos: "center 12%",
+    photo: erinmaBell,
+    photoPos: "center 16%",
     overlay: "bg-black/45",
   },
 ];
