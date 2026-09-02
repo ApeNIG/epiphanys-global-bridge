@@ -122,7 +122,7 @@ const AdvisoryV3 = () => {
                     src={founderConsultancy}
                     alt="A founder sitting with a closed laptop in a meeting room"
                     className="w-full h-full object-cover"
-                    style={{ objectPosition: "center 40%" }}
+                    style={{ objectPosition: "center 30%" }}
                   />
                 </div>
               </div>
