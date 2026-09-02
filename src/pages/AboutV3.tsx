@@ -25,6 +25,12 @@ import alabiIbagun from "@/assets/team/alabi-ibagun.jpg";
 import kashifAshraf from "@/assets/team/kashif-ashraf.jpg";
 import dianaChrouch from "@/assets/advisors/diana.jpg";
 
+/* The closed strip labels each member by first name. Taking name.split(" ")[0]
+   raw made Prof Erinma Bell's label read "PROF" while every other label was a
+   first name, so drop a leading honorific first. */
+const firstNameOf = (name: string) =>
+  name.replace(/^(Prof(essor)?|Dr|Sir|Dame|Rev)\.?\s+/i, "").split(" ")[0];
+
 /* ─── Team accordion ─── */
 type TeamMember = {
   name: string;
@@ -195,6 +201,25 @@ const teamMembers: TeamMember[] = [
     photoPos: "center 12%",
     overlay: "bg-black/40",
   },
+  {
+    // Added 2026-09-02. She has had a profile and a headshot in the client's
+    // Drive NED Board folder since 30 August and was on no version of this page:
+    // the folder holds twelve people and the site held eleven.
+    name: "Prof Erinma Bell MBE DL",
+    role: "Non-Executive Director",
+    bio: "Peace activist, community leader and educator, and Chair of the Greater Manchester Police Force Independent Advisory Committee.",
+    fullBio: [
+      "Professor Erinma Bell MBE DL is a prominent peace activist, community leader and educator dedicated to fostering positive change in the Greater Manchester area. With a passion for social justice and community empowerment, Erinma has dedicated her life to bridging divides and promoting unity among diverse communities.",
+      "As Chair of the Greater Manchester Police Force Independent Advisory Committee, she has been instrumental in building trust and collaboration between law enforcement and the communities they serve, work that has led to significant advances in community policing and in dialogue and understanding.",
+      "Alongside that work she is Chair of the Fabric Advisory Committee of Manchester Cathedral and a Trustee of Emerge 3Rs, Chair of the Ethics Committee of Trinity High School and Chair of the Nostalgia Trust, and a founding member and Trustee of Bishopthorpe Charitable Partner's Trust, further demonstrating her commitment to education and community development.",
+      "Her dedication to peace and social justice has earned her numerous accolades, including Member of the Order of the British Empire (MBE) and the title of Deputy Lieutenant (DL). Her leadership, compassion and vision continue to inspire positive change across Greater Manchester and beyond.",
+    ],
+    initials: "EB",
+    bg: "#2e2436",
+    photo: null,
+    photoPos: "center 12%",
+    overlay: "bg-black/45",
+  },
 ];
 
 const TeamAccordion = () => {
@@ -337,7 +362,7 @@ const TeamAccordion = () => {
                       className="text-white/40 text-[10px] font-semibold tracking-[2px] uppercase whitespace-nowrap"
                       style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
                     >
-                      {person.name.split(" ")[0]}
+                      {firstNameOf(person.name)}
                     </span>
                   </div>
                 )}
