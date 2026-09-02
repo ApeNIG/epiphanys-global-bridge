@@ -49,21 +49,19 @@ const CtaV3 = () => {
                 we are built to unlock.
               </p>
 
+              {/* One button, not two. The primary was "Book a call" -> the
+                  consultation form and the secondary was already a mailto; now
+                  that the site contacts by email, keeping both would have put
+                  two email buttons side by side saying the same thing. */}
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-12">
                 <a
-                  href="/consultation"
+                  href="mailto:info@epiphinyflow.com?subject=Epiphiny%20Flow%20enquiry"
                   className="inline-flex items-center gap-3 bg-[#00E7C3] text-[#15171A] pl-8 pr-6 py-4 rounded-full text-[15px] font-semibold hover:bg-[#00d4b3] transition-colors group"
                 >
-                  Book a call
+                  Contact us
                   <span className="w-8 h-8 rounded-full bg-[#15171A]/10 flex items-center justify-center group-hover:bg-[#15171A]/20 transition-colors">
                     <ArrowRight className="w-4 h-4" />
                   </span>
-                </a>
-                <a
-                  href="mailto:info@epiphinyflow.com?subject=Intro%20meeting%20request"
-                  className="inline-flex items-center gap-2 border-2 border-white/50 text-white px-8 py-4 rounded-full text-[15px] font-medium hover:bg-white/10 hover:border-white transition-colors backdrop-blur-sm"
-                >
-                  Email us for an intro meeting
                 </a>
               </div>
             </div>

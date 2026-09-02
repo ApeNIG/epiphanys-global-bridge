@@ -1,5 +1,4 @@
 import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
 import HeaderV3 from "@/components/v3/HeaderV3";
 import FooterV3 from "@/components/v3/FooterV3";
 import BoardOfAdvisors from "@/components/v3/BoardOfAdvisors";
@@ -49,18 +48,18 @@ const AdvisoryBoard = () => (
             Put this expertise to work
           </h2>
           <p className="text-white/50 text-[17px] leading-[1.75] max-w-[480px] mb-10">
-            Every engagement is backed by this board. Book a call and we will
+            Every engagement is backed by this board. Get in touch and we will
             match you with the right specialists for your goals.
           </p>
-          <Link
-            to="/consultation"
+          <a
+            href="mailto:info@epiphinyflow.com?subject=Advisory%20enquiry"
             className="inline-flex items-center gap-3 bg-[#00E7C3] text-[#15171A] pl-8 pr-6 py-4 rounded-full text-[15px] font-semibold hover:bg-[#00d4b3] transition-colors group w-fit"
           >
-            Book a call
+            Contact us
             <span className="w-8 h-8 rounded-full bg-[#15171A]/10 flex items-center justify-center group-hover:bg-[#15171A]/20 transition-colors">
               <ArrowRight className="w-4 h-4" />
             </span>
-          </Link>
+          </a>
         </div>
       </section>
     </main>

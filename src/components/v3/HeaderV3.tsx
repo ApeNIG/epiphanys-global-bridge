@@ -112,13 +112,13 @@ const HeaderV3 = () => {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Link
-            to="/consultation"
+          <a
+            href="mailto:info@epiphinyflow.com?subject=Epiphiny%20Flow%20enquiry"
             className="hidden sm:flex items-center gap-2 bg-[#15171A] text-[#00E7C3] px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#2a2d32] transition-colors"
           >
-            Book a call
+            Contact us
             <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+          </a>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="md:hidden p-2"
@@ -173,13 +173,13 @@ const HeaderV3 = () => {
             )
           )}
           <div className="flex items-center gap-3 pt-3 border-t border-gray-100 mt-2">
-            <Link
-              to="/consultation"
+            <a
+              href="mailto:info@epiphinyflow.com?subject=Epiphiny%20Flow%20enquiry"
               className="flex items-center gap-2 bg-[#15171A] text-[#00E7C3] px-6 py-2.5 rounded-full text-sm font-semibold"
             >
-              Book a call
+              Contact us
               <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+            </a>
           </div>
         </div>
       )}

@@ -190,19 +190,19 @@ const AdvisoryV3 = () => {
               Ready to grow?
             </h2>
             <p className="text-white/50 text-[17px] leading-[1.75] max-w-[480px] mb-10">
-              Book a call with our advisory team and take the first step toward
+              Email our advisory team and take the first step toward
               diaspora-powered growth. No obligation, just a conversation.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4">
-              <Link
-                to="/consultation"
+              <a
+                href="mailto:info@epiphinyflow.com?subject=Advisory%20enquiry"
                 className="inline-flex items-center gap-3 bg-[#00E7C3] text-[#15171A] pl-8 pr-6 py-4 rounded-full text-[15px] font-semibold hover:bg-[#00d4b3] transition-colors group"
               >
-                Book a call
+                Contact us
                 <span className="w-8 h-8 rounded-full bg-[#15171A]/10 flex items-center justify-center group-hover:bg-[#15171A]/20 transition-colors">
                   <ArrowRight className="w-4 h-4" />
                 </span>
-              </Link>
+              </a>
               <Link
                 to="/advisory/board"
                 className="inline-flex items-center gap-2 border border-white/20 text-white/70 px-8 py-4 rounded-full text-[15px] font-medium hover:border-white/40 hover:text-white transition-colors"

@@ -70,20 +70,12 @@ const CommunityV3 = () => {
                 </div>
               </blockquote>
 
-              {/* Was href="/community", which is a LEGACY page: old header, old
-                  "Investment" nav, Join Platform CTA and four /auth links. This
-                  button is on the home page, so it was a one-click path from the
-                  new site into the old one. It also invited people to "join" a
-                  community the card above now marks as in development. */}
-              <a
-                href="/consultation"
-                className="inline-flex items-center gap-3 bg-[#00E7C3] text-[#15171A] pl-8 pr-6 py-4 rounded-full text-sm font-semibold hover:bg-[#00d4b3] transition-colors w-fit mt-4 group"
-              >
-                Register your interest
-                <span className="w-7 h-7 rounded-full bg-[#15171A]/10 flex items-center justify-center group-hover:bg-[#15171A]/20 transition-colors">
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </span>
-              </a>
+              {/* Community CTA removed entirely, Siba 2026-09-02. It pointed at
+                  /community, a legacy page, so it was a one-click path from the
+                  home page into the old site; briefly repointed at the
+                  consultation form, now gone. The Community card is marked "in
+                  development", so there is nothing here to invite anyone into,
+                  and the page already carries a Contact us button. */}
             </div>
 
             {/* Right column — editorial photo stack, 5 cols */}

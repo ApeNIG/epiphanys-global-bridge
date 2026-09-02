@@ -227,22 +227,26 @@ const InvestmentV3 = () => {
             <h2 className="font-serif text-[clamp(2rem,5vw,3.5rem)] text-white leading-[1.1] tracking-[-0.01em] max-w-[640px] mb-10">
               Register your interest in the fund
             </h2>
+            {/* These two were the last links into the consultation form. The
+                site now contacts by email throughout, so they do too; the two
+                distinct intents are preserved in the subject line rather than
+                in a form field. */}
             <div className="flex flex-col sm:flex-row items-start gap-4">
-              <Link
-                to="/consultation"
+              <a
+                href="mailto:info@epiphinyflow.com?subject=Our%20Fund%20-%20register%20as%20a%20backer"
                 className="inline-flex items-center gap-3 bg-[#00E7C3] text-[#15171A] pl-8 pr-6 py-4 rounded-full text-[15px] font-semibold hover:bg-[#00d4b3] transition-colors group"
               >
                 Register as a backer
                 <span className="w-8 h-8 rounded-full bg-[#15171A]/10 flex items-center justify-center group-hover:bg-[#15171A]/20 transition-colors">
                   <ArrowRight className="w-4 h-4" />
                 </span>
-              </Link>
-              <Link
-                to="/consultation"
+              </a>
+              <a
+                href="mailto:info@epiphinyflow.com?subject=Our%20Fund%20-%20about%20my%20business"
                 className="inline-flex items-center gap-2 border border-white/20 text-white/70 px-8 py-4 rounded-full text-[15px] font-medium hover:border-white/40 hover:text-white transition-colors"
               >
                 Tell us about your business
-              </Link>
+              </a>
             </div>
           </div>
         </section>
