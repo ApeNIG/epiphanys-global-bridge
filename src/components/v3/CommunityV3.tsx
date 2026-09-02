@@ -70,11 +70,16 @@ const CommunityV3 = () => {
                 </div>
               </blockquote>
 
+              {/* Was href="/community", which is a LEGACY page: old header, old
+                  "Investment" nav, Join Platform CTA and four /auth links. This
+                  button is on the home page, so it was a one-click path from the
+                  new site into the old one. It also invited people to "join" a
+                  community the card above now marks as in development. */}
               <a
-                href="/community"
+                href="/consultation"
                 className="inline-flex items-center gap-3 bg-[#00E7C3] text-[#15171A] pl-8 pr-6 py-4 rounded-full text-sm font-semibold hover:bg-[#00d4b3] transition-colors w-fit mt-4 group"
               >
-                Join the Community
+                Register your interest
                 <span className="w-7 h-7 rounded-full bg-[#15171A]/10 flex items-center justify-center group-hover:bg-[#15171A]/20 transition-colors">
                   <ArrowRight className="w-3.5 h-3.5" />
                 </span>
