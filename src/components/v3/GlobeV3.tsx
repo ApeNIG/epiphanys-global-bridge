@@ -24,10 +24,23 @@ const ARCS = [
   // Corridor closes the triangle: USA ↔ Africa
   { startLat: 40.7, startLng: -74.0, endLat: 6.5, endLng: 3.4 },    // New York → Lagos
   { startLat: 29.8, startLng: -95.4, endLat: 5.6, endLng: -0.2 },   // Houston → Accra
+  // Caribbean leg. These exist to carry ink across the lower-left of the disc,
+  // which was bare in every frame of the cycle, and they are honest routes
+  // rather than decoration: the Caribbean diaspora is core to the remit.
+  { startLat: 40.7, startLng: -74.0, endLat: 18.0, endLng: -76.8 }, // New York → Kingston
+  { startLat: 18.0, startLng: -76.8, endLat: 5.6, endLng: -0.2 },   // Kingston → Accra
+  { startLat: 34.1, startLng: -118.2, endLat: 40.7, endLng: -74.0 },// Los Angeles → New York
+  { startLat: -26.2, startLng: 28.0, endLat: -1.3, endLng: 36.8 },  // Johannesburg → Nairobi
   // Rest of world
   { startLat: 51.5, startLng: -0.1, endLat: 25.2, endLng: 55.3 },   // London → Dubai
   { startLat: 51.5, startLng: -0.1, endLat: 18.0, endLng: -76.8 },  // London → Kingston
-];
+].map((a, i) => ({
+  // Stagger each arc's starting position in the dash cycle. Every arc shared one
+  // animate time, so all eighteen travelled in lockstep and hit the London hub
+  // together, which is what read as a hairball rather than a network.
+  ...a,
+  gap: (i * 0.37) % 1,
+}));
 
 /* ── City markers — larger, bolder ── */
 const POINTS = [
@@ -60,24 +73,39 @@ const RINGS = [
 
 const GLOBE_SIZE = 520;
 
+/* ── Camera ──
+   Centred so the London hub sits inside the disc rather than up against the
+   right limb, which is what made the arcs look like they were spilling off the
+   edge. At altitude 2.1 roughly 80 degrees of longitude either side of centre
+   is visible, so centring on -30 keeps Houston and New York on the left,
+   London and Lagos through the middle, and Cape Town and Nairobi on the right.
+   Latitude 15 sits between London at 51.5N and Cape Town at 33.9S so neither
+   is pushed to a pole. */
+const VIEW_LAT = 15;
+const VIEW_LNG = -30;
+const SWAY_DEGREES = 18; // never enough to bring the empty Pacific into frame
+const SWAY_PERIOD_MS = 44000;
+
 const GlobeV3 = () => {
   const globeRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const frameRef = useRef<number>();
 
   const setupGlobe = useCallback(() => {
     const globe = globeRef.current;
     if (!globe) return;
 
-    // Atlantic-centred so all three corridors are in one frame: the USA on the
-    // left, the UK hub top-centre, Africa down the right. Was lat 38 / lng 5
-    // (UK + Africa only) before the USA arcs were added.
-    globe.pointOfView({ lat: 25, lng: -25, altitude: 2.1 }, 0);
+    globe.pointOfView({ lat: VIEW_LAT, lng: VIEW_LNG, altitude: 2.1 }, 0);
 
-    // Barely-there rotation — premium feel
+    // FREE ROTATION IS OFF, DELIBERATELY. Every node on this globe sits in one
+    // Atlantic band — the Americas, the UK, Africa — so a full 360 spin spends
+    // half its cycle showing empty Pacific with the arcs bunched off the limb.
+    // That is exactly what it did: autoRotate meant the framing set above was
+    // only a starting position, and a minute later the hero was a black sphere.
+    // Replaced with a bounded sway that never leaves the populated face.
     const controls = globe.controls();
     if (controls) {
-      controls.autoRotate = true;
-      controls.autoRotateSpeed = 0.15;
+      controls.autoRotate = false;
       controls.enableZoom = false;
       controls.enablePan = false;
       controls.enableRotate = false;
@@ -102,11 +130,26 @@ const GlobeV3 = () => {
         }
       });
     }
+
+    // The bounded sway. A slow sine on longitude only, so the globe still feels
+    // alive but the camera is mathematically incapable of leaving the corridor:
+    // longitude stays within VIEW_LNG +/- SWAY_DEGREES, i.e. -48 to -12.
+    const start = performance.now();
+    const step = (now: number) => {
+      const phase = ((now - start) % SWAY_PERIOD_MS) / SWAY_PERIOD_MS;
+      const lng = VIEW_LNG + SWAY_DEGREES * Math.sin(phase * 2 * Math.PI);
+      globe.pointOfView({ lat: VIEW_LAT, lng, altitude: 2.1 }, 0);
+      frameRef.current = requestAnimationFrame(step);
+    };
+    frameRef.current = requestAnimationFrame(step);
   }, []);
 
   useEffect(() => {
     const timer = setTimeout(setupGlobe, 100);
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      if (frameRef.current) cancelAnimationFrame(frameRef.current);
+    };
   }, [setupGlobe]);
 
   return (
@@ -133,10 +176,11 @@ const GlobeV3 = () => {
         arcsData={ARCS}
         arcColor={() => ["rgba(0,231,195,0.85)", "rgba(0,212,179,0.6)"]}
         arcStroke={0.9}
-        arcDashLength={0.6}
-        arcDashGap={0.25}
-        arcDashAnimateTime={3000}
-        arcAltitudeAutoScale={0.3}
+        arcDashLength={0.5}
+        arcDashGap={0.3}
+        arcDashInitialGap={(d: any) => d.gap}
+        arcDashAnimateTime={4200}
+        arcAltitudeAutoScale={0.22}
         // Points — bold city nodes
         pointsData={POINTS}
         pointLat="lat"
