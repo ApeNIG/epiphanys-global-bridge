@@ -122,7 +122,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Send notification email to Robert
     const emailResponse = await resend.emails.send({
       from: "Epiphiny Flow <notifications@epiphinyflow.com>",
-      to: ["robert@epiphinyflow.com"],
+      to: ["info@epiphinyflow.com"],
       subject: `New Consultation Request from ${consultationData.full_name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
@@ -218,7 +218,7 @@ const handler = async (req: Request): Promise<Response> => {
           <p style="color: #6b7280; font-size: 14px;">
             Best regards,<br>
             The Epiphiny Flow Team<br>
-            <a href="mailto:robert@epiphinyflow.com">robert@epiphinyflow.com</a>
+            <a href="mailto:info@epiphinyflow.com">info@epiphinyflow.com</a>
           </p>
         </div>
       `,

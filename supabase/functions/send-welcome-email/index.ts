@@ -97,7 +97,7 @@ const handler = async (req: Request): Promise<Response> => {
           <p style="color: #6b7280; font-size: 14px; line-height: 1.6;">
             <strong>With gratitude,</strong><br>
             The Epiphiny Flow Team<br>
-            <a href="mailto:robert@epiphinyflow.com" style="color: #2563eb; text-decoration: none;">robert@epiphinyflow.com</a>
+            <a href="mailto:info@epiphinyflow.com" style="color: #2563eb; text-decoration: none;">info@epiphinyflow.com</a>
           </p>
 
           <p style="color: #9ca3af; font-size: 12px; text-align: center; margin-top: 30px;">

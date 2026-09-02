@@ -2,8 +2,12 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+// V3 shell. This page is where every "Book a call" button on the site lands,
+// and it was still rendering the legacy Header/Footer: the pre-rename
+// "Investment" nav item, legacy Community/Global links, a "Join Platform" CTA
+// and two /auth links, months after all of those were removed elsewhere.
+import Header from "@/components/v3/HeaderV3";
+import Footer from "@/components/v3/FooterV3";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
