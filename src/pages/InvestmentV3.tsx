@@ -215,7 +215,7 @@ const InvestmentV3 = () => {
                 <div className="rounded-[20px] overflow-hidden h-[320px] md:h-[380px]">
                   <img
                     src={founderSoftware}
-                    alt="The founder of a software company in a modern studio office"
+                    alt="A founder walking the floor of her mill unit past a pallet of stock"
                     className="w-full h-full object-cover"
                     style={{ objectPosition: "center 30%" }}
                   />

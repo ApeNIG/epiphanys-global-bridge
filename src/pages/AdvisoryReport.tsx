@@ -81,7 +81,7 @@ const AdvisoryReport = () => (
               <div className="rounded-[20px] overflow-hidden h-[320px] md:h-[440px]">
                 <img
                   src={founderResearcher}
-                  alt="A researcher reading a printed report by a window"
+                  alt="Comparing two charted pages of the report in a reading room"
                   className="w-full h-full object-cover"
                   style={{ objectPosition: "center 35%" }}
                 />
