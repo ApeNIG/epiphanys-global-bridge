@@ -9,7 +9,6 @@ import {
 import { Link } from "react-router-dom";
 import HeaderV3 from "@/components/v3/HeaderV3";
 import FooterV3 from "@/components/v3/FooterV3";
-import founderSoftware from "@/assets/v3/founder-software.jpg";
 
 const Overline = ({ label }: { label: string }) => (
   <div className="flex items-center gap-4 mb-6">
@@ -198,29 +197,21 @@ const InvestmentV3 = () => {
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <Overline label="For Businesses" />
 
-            {/* Portrait sits with the copy about businesses, so the picture is
-                doing the same job as the words rather than decorating them. */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-end mb-16">
-              <div className="lg:col-span-7">
-                <h2 className="font-serif text-3xl md:text-[42px] text-[#15171A] leading-[1.2] max-w-[560px] mb-6">
-                  Backing businesses at every stage
-                </h2>
-                <p className="text-gray-500 text-[16px] leading-[1.8] max-w-[520px]">
-                  From a first shopfront to a business ready to scale nationally,
-                  the fund is being built for founders who already have a trade and
-                  need the door on the other side opened.
-                </p>
-              </div>
-              <div className="lg:col-span-5">
-                <div className="rounded-[20px] overflow-hidden h-[320px] md:h-[380px]">
-                  <img
-                    src={founderSoftware}
-                    alt="A founder walking the floor of her mill unit past a pallet of stock"
-                    className="w-full h-full object-cover"
-                    style={{ objectPosition: "center 30%" }}
-                  />
-                </div>
-              </div>
+            {/* NO PHOTOGRAPH ON THIS PAGE, deliberately. An invented person
+                beside "Backing businesses at every stage" reads as an
+                Epiphiny-backed founder or a portfolio business. Neither exists.
+                The challenger called it "the clearest example of AI imagery
+                moving from illustrative to dishonest", and it is right.
+                This section is reserved for a capital-flow diagram. */}
+            <div className="mb-16 max-w-[720px]">
+              <h2 className="font-serif text-3xl md:text-[42px] text-[#15171A] leading-[1.2] max-w-[560px] mb-6">
+                Backing businesses at every stage
+              </h2>
+              <p className="text-gray-500 text-[16px] leading-[1.8] max-w-[560px]">
+                From a first shopfront to a business ready to scale nationally,
+                the fund is being built for founders who already have a trade and
+                need the door on the other side opened.
+              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
