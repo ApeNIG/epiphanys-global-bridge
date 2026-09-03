@@ -1,14 +1,8 @@
-import {
-  Sparkles,
-  Shield,
-  BarChart3,
-  Globe,
-  ArrowRight,
-  CheckCircle2,
-} from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import HeaderV3 from "@/components/v3/HeaderV3";
 import FooterV3 from "@/components/v3/FooterV3";
+import CapitalFlowV3 from "@/components/v3/CapitalFlowV3";
+import StatusBadge from "@/components/v3/StatusBadge";
 
 const Overline = ({ label }: { label: string }) => (
   <div className="flex items-center gap-4 mb-6">
@@ -19,36 +13,13 @@ const Overline = ({ label }: { label: string }) => (
   </div>
 );
 
-const howItWorks = [
-  {
-    icon: Sparkles,
-    title: "Considered Matching",
-    description:
-      "We will match investment-ready businesses with the right capital, based on sector, stage, impact and fit, with a focus on diaspora communities across the UK.",
-    accent: "#00E7C3",
-  },
-  {
-    icon: Shield,
-    title: "Rigorous Due Diligence",
-    description:
-      "Every business will go through careful vetting, financial review and risk assessment before any investment. The fund is being designed to meet the relevant UK regulatory standards.",
-    accent: "#8B5CF6",
-  },
-  {
-    icon: BarChart3,
-    title: "Transparent Reporting",
-    description:
-      "Backers will receive clear, honest reporting on how their capital is put to work and the growth and impact it helps create.",
-    accent: "#00E7C3",
-  },
-  {
-    icon: Globe,
-    title: "Rooted in the UK",
-    description:
-      "The fund will back diaspora-led businesses across the UK, connected to opportunity locally, nationally and globally.",
-    accent: "#8B5CF6",
-  },
-];
+/* howItWorks and businessTypes are gone, not moved. They were four cards and
+   three cards restating what the capital-flow diagram now shows in one figure,
+   and the challenger's second ranked fix was "cut at least half the card grids;
+   where information expresses sequence or relationship, draw the relationship".
+   Restating a diagram as cards underneath it is the exact habit it flagged.
+   The one claim that lived only in those cards, UK regulatory standards, is
+   preserved in the diagram's introduction below. */
 
 const investorTypes = [
   {
@@ -75,27 +46,6 @@ const investorTypes = [
   },
 ];
 
-const businessTypes = [
-  {
-    title: "Startups",
-    stage: "Early stage",
-    description:
-      "Early-stage, investment-ready ventures with diaspora market insight, looking for the capital and guidance to get off the ground.",
-  },
-  {
-    title: "Scale-ups",
-    stage: "Growth stage",
-    description:
-      "Growth-stage businesses ready to expand, seeking capital, strategic partners and market intelligence to scale across the UK and beyond.",
-  },
-  {
-    title: "SMEs",
-    stage: "Established",
-    description:
-      "Established small and medium enterprises seeking capital for expansion, modernisation or reaching new markets.",
-  },
-];
-
 const InvestmentV3 = () => {
   return (
     <div
@@ -115,42 +65,39 @@ const InvestmentV3 = () => {
               <br />
               diaspora businesses
             </h1>
-            <p className="text-gray-500 text-[17px] md:text-[19px] leading-[1.75] max-w-[620px]">
+            <p className="text-gray-500 text-[17px] md:text-[19px] leading-[1.75] max-w-[620px] mb-8">
               Our prospective fund will invest in investment-ready diasporic
               community businesses to fuel growth across the UK. We are building it
               in partnership with public and private stakeholders.
             </p>
+            {/* Stated at the top of the page, not buried at the bottom. A diagram
+                this concrete is exactly the kind of thing a reader mistakes for
+                something already running. */}
+            <StatusBadge status="prospective" />
           </div>
         </section>
 
-        {/* ── How It Works ── */}
+        {/* ── The capital flow ── */}
         <section className="bg-[#F5F0E8] py-20 md:py-28">
+          {/* Same container as every other section on the page. The diagram was
+              briefly in a narrower one, which broke the left margin the whole
+              page is aligned to. */}
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
-            <Overline label="How It Will Work" />
-            <h2 className="font-serif text-3xl md:text-[42px] text-[#15171A] leading-[1.2] max-w-[560px] mb-16">
-              How the fund will work
+            <Overline label="Our Capital Flow" />
+            <h2 className="font-serif text-3xl md:text-[42px] text-[#15171A] leading-[1.2] max-w-[620px] mb-5">
+              How capital will move from backers to businesses
             </h2>
+            <p className="text-gray-500 text-[16px] leading-[1.8] max-w-[620px] mb-16">
+              This is the mechanism we are building, described end to end. Every
+              business will go through vetting, financial review and risk
+              assessment before any capital moves, and the fund is being designed
+              to meet the relevant UK regulatory standards.
+            </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-              {howItWorks.map((item) => (
-                <div
-                  key={item.title}
-                  className="bg-white rounded-[20px] p-7 flex flex-col hover:shadow-lg transition-shadow duration-300"
-                >
-                  <div
-                    className="w-11 h-11 rounded-full flex items-center justify-center mb-6"
-                    style={{ backgroundColor: `${item.accent}18` }}
-                  >
-                    <item.icon className="w-5 h-5" style={{ color: item.accent }} />
-                  </div>
-                  <h3 className="font-serif text-[18px] text-[#15171A] mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-[13px] text-gray-500 leading-[1.75]">
-                    {item.description}
-                  </p>
-                </div>
-              ))}
+            {/* Left-aligned to the heading rather than centred, so the figure
+                reads as part of the argument instead of a floating illustration. */}
+            <div className="max-w-[1080px]">
+              <CapitalFlowV3 />
             </div>
           </div>
         </section>
@@ -192,50 +139,7 @@ const InvestmentV3 = () => {
           </div>
         </section>
 
-        {/* ── For Businesses ── */}
-        <section className="bg-[#F5F0E8] py-20 md:py-28">
-          <div className="max-w-[1440px] mx-auto px-6 md:px-20">
-            <Overline label="For Businesses" />
-
-            {/* NO PHOTOGRAPH ON THIS PAGE, deliberately. An invented person
-                beside "Backing businesses at every stage" reads as an
-                Epiphiny-backed founder or a portfolio business. Neither exists.
-                The challenger called it "the clearest example of AI imagery
-                moving from illustrative to dishonest", and it is right.
-                This section is reserved for a capital-flow diagram. */}
-            <div className="mb-16 max-w-[720px]">
-              <h2 className="font-serif text-3xl md:text-[42px] text-[#15171A] leading-[1.2] max-w-[560px] mb-6">
-                Backing businesses at every stage
-              </h2>
-              <p className="text-gray-500 text-[16px] leading-[1.8] max-w-[560px]">
-                From a first shopfront to a business ready to scale nationally,
-                the fund is being built for founders who already have a trade and
-                need the door on the other side opened.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {businessTypes.map((biz) => (
-                <div
-                  key={biz.title}
-                  className="bg-white rounded-[20px] p-7 flex flex-col hover:shadow-lg transition-shadow duration-300"
-                >
-                  <span className="text-[10px] font-semibold tracking-[2.5px] uppercase text-[#8B5CF6] mb-3">
-                    {biz.stage}
-                  </span>
-                  <h3 className="font-serif text-[20px] text-[#15171A] mb-3">
-                    {biz.title}
-                  </h3>
-                  <p className="text-[13px] text-gray-500 leading-[1.75]">
-                    {biz.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── CTA — dark accent block ── */}
+        {/* ── CTA, dark accent block ── */}
         <section className="bg-[#15171A] py-20 md:py-28">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <h2 className="font-serif text-[clamp(2rem,5vw,3.5rem)] text-white leading-[1.1] tracking-[-0.01em] max-w-[640px] mb-10">
