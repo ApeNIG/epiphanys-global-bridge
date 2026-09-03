@@ -1,37 +1,15 @@
-import { Search, Target, ShieldCheck, Handshake, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import HeaderV3 from "@/components/v3/HeaderV3";
 import FooterV3 from "@/components/v3/FooterV3";
+import DealPipelineV3 from "@/components/v3/DealPipelineV3";
+import StatusBadge from "@/components/v3/StatusBadge";
 
-const capabilities = [
-  {
-    icon: Search,
-    title: "Curated deal flow",
-    description:
-      "Surfacing investment-ready diaspora and minority-led businesses to the right public and private backers.",
-    accent: "#00E7C3",
-  },
-  {
-    icon: Target,
-    title: "Investment readiness",
-    description:
-      "Helping founders and businesses prepare, package and present so they are ready to raise.",
-    accent: "#8B5CF6",
-  },
-  {
-    icon: ShieldCheck,
-    title: "A transparent process",
-    description:
-      "Clear, honest information for both sides, built to the relevant UK standards as the platform develops.",
-    accent: "#00E7C3",
-  },
-  {
-    icon: Handshake,
-    title: "Built with partners",
-    description:
-      "Developed in partnership with public and private stakeholders across the UK ecosystem.",
-    accent: "#E89B3E",
-  },
-];
+/* The four capability cards are gone. They still exist as claims, but they now
+   live inside DealPipelineV3 attached to the stage each one describes, which is
+   the challenger's point: "you currently have the right concepts and the wrong
+   grammar." A grid of four cards states four promises; the pipeline shows the
+   process those promises are about. One of the four also carried an orange
+   #E89B3E that appears nowhere else in the palette, and it went with it. */
 
 const DealFlowPlatform = () => (
   <div
@@ -63,6 +41,10 @@ const DealFlowPlatform = () => (
             hear from you early.
           </p>
 
+          <div className="mt-8">
+            <StatusBadge status="development" />
+          </div>
+
           <a
             href="mailto:info@epiphinyflow.com?subject=Deal%20Flow%20Platform%20-%20register%20my%20interest"
             className="inline-flex items-center gap-3 bg-[#15171A] text-[#00E7C3] pl-8 pr-6 py-4 rounded-full text-[15px] font-semibold hover:bg-[#2a2d32] transition-colors group w-fit mt-10"
@@ -84,34 +66,20 @@ const DealFlowPlatform = () => (
               In development
             </span>
           </div>
-          <h2 className="font-serif text-3xl md:text-[42px] text-[#15171A] leading-[1.2] max-w-[620px] mb-14">
-            What the platform will do
+          <h2 className="font-serif text-3xl md:text-[42px] text-[#15171A] leading-[1.2] max-w-[620px] mb-5">
+            From opportunity to investment
           </h2>
+          <p className="text-gray-500 text-[16px] leading-[1.8] max-w-[620px] mb-16">
+            This is the process the platform is being built to run. Nothing here
+            is live yet, and the stages will change as we build with the founders
+            and backers who will actually use it.
+          </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {capabilities.map((c) => (
-              <div
-                key={c.title}
-                className="bg-white rounded-[20px] p-8 border border-transparent hover:shadow-lg transition-shadow duration-300"
-              >
-                <div
-                  className="w-11 h-11 rounded-full flex items-center justify-center mb-6"
-                  style={{ backgroundColor: `${c.accent}1a` }}
-                >
-                  <c.icon className="w-5 h-5" style={{ color: c.accent }} />
-                </div>
-                <h3 className="font-serif text-[22px] text-[#15171A] mb-3">
-                  {c.title}
-                </h3>
-                <p className="text-[14px] text-gray-500 leading-[1.75]">
-                  {c.description}
-                </p>
-              </div>
-            ))}
-          </div>
+          <DealPipelineV3 />
 
-          <p className="text-[14px] text-gray-400 leading-[1.7] mt-10 max-w-[640px]">
-            Features are indicative and will evolve as the platform is built.
+          <p className="text-[14px] text-gray-400 leading-[1.7] mt-14 max-w-[640px]">
+            Stages and features are indicative and will evolve as the platform is
+            built.
           </p>
         </div>
       </section>
