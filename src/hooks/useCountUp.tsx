@@ -64,13 +64,22 @@ export const useCountUp = ({ end, duration = 2000, start = 0, suffix = '', prefi
 };
 
 // Helper to parse stat values like "15,000+" into { number: 15000, suffix: "+" }
+/**
+ * Split a display stat like "£74bn", "17%" or "£18.5bn" into its parts.
+ *
+ * The decimal point used to be stripped along with every other non-digit, so
+ * "£18.5bn" parsed to 185 and the hero rendered "£185bn": an order of magnitude
+ * out, and a claim the source does not make. Decimals and thousands separators
+ * are now preserved.
+ */
 export const parseStatValue = (value: string): { number: number; suffix: string; prefix: string } => {
-  const prefix = value.match(/^[^\d]*/)?.[0] || '';
-  const suffix = value.match(/[^\d]*$/)?.[0] || '';
-  const numberStr = value.replace(/[^\d]/g, '');
-  return { 
-    number: parseInt(numberStr, 10) || 0, 
-    suffix,
-    prefix
+  const match = value.match(/[\d,]+(?:\.\d+)?/);
+  if (!match) return { number: 0, suffix: '', prefix: value };
+  const numberStr = match[0];
+  const at = match.index ?? 0;
+  return {
+    number: parseFloat(numberStr.replace(/,/g, '')) || 0,
+    prefix: value.slice(0, at),
+    suffix: value.slice(at + numberStr.length),
   };
 };

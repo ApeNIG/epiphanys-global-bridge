@@ -32,11 +32,18 @@ const AnimatedStat = ({
           const duration = 1800;
           const start = performance.now();
 
+          // Keep the source's decimal places. Math.floor alone rendered
+          // "£18.5bn" as "£18bn", which is a different and wrong figure.
+          const decimals = (String(number).split(".")[1] || "").length;
+
           const tick = (now: number) => {
             const t = Math.min((now - start) / duration, 1);
             const ease = 1 - Math.pow(1 - t, 3); // cubic ease-out
-            const val = Math.floor(number * ease);
-            setDisplay(`${prefix}${val.toLocaleString()}${suffix}`);
+            const raw = number * ease;
+            const val = decimals
+              ? raw.toFixed(decimals)
+              : Math.floor(raw).toLocaleString();
+            setDisplay(`${prefix}${val}${suffix}`);
             if (t < 1) requestAnimationFrame(tick);
           };
           requestAnimationFrame(tick);
@@ -540,9 +547,15 @@ const HeroV3 = () => {
         {/* Stat bar — staggered entrance + counter animation */}
         <div className="mt-14 flex flex-wrap items-baseline gap-x-12 gap-y-4 border-t border-gray-200 pt-8">
           {[
+            // All five from one source, so the set cannot drift: "Minority
+            // Businesses Matter", Legrain and Fitzgerald, OPEN, October 2021,
+            // commissioned by MSDUK. GVA, share and employment are 2019-20;
+            // the innovation figure is 2018; exports are 2019-20.
             { num: "£74bn", label: "Added to the UK economy a year" },
             { num: "17%", label: "Of UK businesses are minority-led" },
             { num: "3M", label: "People employed" },
+            { num: "30%", label: "Launch new products, against 18% of white-led firms" },
+            { num: "£18.5bn", label: "Sold abroad by the top 100 minority-led businesses" },
           ].map((stat, i) => (
             <AnimatedStat
               key={stat.label}
