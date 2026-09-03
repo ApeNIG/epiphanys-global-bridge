@@ -1,21 +1,56 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-import mccLogo from "@/assets/partners/mcc-logo.png";
+import manchesterCityCouncilLogo from "@/assets/partners/manchester-city-council-logo.png";
 import gmcaLogo from "@/assets/partners/gmca-logo.png";
 import gmGrowthHubLogo from "@/assets/partners/gm-growth-hub-logo.png";
 import ukBlackTechLogo from "@/assets/partners/uk-black-tech-logo.png";
 import ourBusinessGmLogo from "@/assets/partners/our-business-gm-logo.png";
 import universitySalfordLogo from "@/assets/partners/university-salford-logo.png";
 import factoryInternationalLogo from "@/assets/partners/factory-international-logo.png";
+import mc2Logo from "@/assets/partners/mc2-logo.svg";
+import inclusiveNorthLogo from "@/assets/partners/inclusive-north-logo.png";
+import betterSocietyCapitalLogo from "@/assets/partners/better-society-capital-logo.svg";
+import goodFinanceLogo from "@/assets/partners/good-finance-logo.png";
+import socialInvestmentBusinessLogo from "@/assets/partners/social-investment-business-logo.png";
 
-const partners = [
-  { name: "MC2", logo: mccLogo },
-  { name: "GMCA", logo: gmcaLogo },
-  { name: "Factory International", logo: factoryInternationalLogo },
-  { name: "GM Growth Hub", logo: gmGrowthHubLogo },
-  { name: "UK Black Tech", logo: ukBlackTechLogo },
-  { name: "Our Business GM", logo: ourBusinessGmLogo },
-  { name: "University of Salford", logo: universitySalfordLogo },
+/* Grouped exactly as the client's Drive folders are grouped, which is the
+   client's own statement of who belongs where:
+   Epiphiny Flow Website / Grow Scale Boost {Sponsors, Partners, Supporters}.
+
+   Note on MC2 and MCC, because this cost two wrong turns. The repo file called
+   mcc-logo.png actually CONTAINED the MC2 mark, so the original code labelling
+   it "MC2" was correct and the FILE was misnamed. Manchester City Council's real
+   logo was never in the repo at all; it came from the client's Drive. The file
+   is now renamed mc2-logo-legacy.png and is unused, MC2 uses its own SVG, and
+   MCC uses its own mark. */
+const groups: { heading: string; logos: { name: string; logo: string }[] }[] = [
+  {
+    heading: "Sponsors",
+    logos: [
+      { name: "MC2", logo: mc2Logo },
+      { name: "University of Salford", logo: universitySalfordLogo },
+      { name: "Factory International", logo: factoryInternationalLogo },
+      { name: "Our Business GM", logo: ourBusinessGmLogo },
+      { name: "Inclusive North", logo: inclusiveNorthLogo },
+    ],
+  },
+  {
+    heading: "Partners",
+    logos: [
+      { name: "Better Society Capital", logo: betterSocietyCapitalLogo },
+      { name: "Good Finance", logo: goodFinanceLogo },
+      { name: "Social Investment Business", logo: socialInvestmentBusinessLogo },
+      { name: "GM Business Growth Hub", logo: gmGrowthHubLogo },
+    ],
+  },
+  {
+    heading: "Supporters",
+    logos: [
+      { name: "Manchester City Council", logo: manchesterCityCouncilLogo },
+      { name: "UK Black Tech", logo: ukBlackTechLogo },
+      { name: "Greater Manchester Combined Authority", logo: gmcaLogo },
+    ],
+  },
 ];
 
 const TrustStripV3 = () => {
@@ -67,20 +102,40 @@ const TrustStripV3 = () => {
             />
           </div>
 
-          {/* Partners — real logos, editorial grayscale */}
-          <div className="mt-14 border-t border-[#D4CCBA] pt-8">
-            <span className="text-[10px] font-semibold tracking-[3px] uppercase text-gray-400 block mb-6">
-              Trusted Partners
-            </span>
-            <div className="flex flex-wrap items-center gap-x-10 gap-y-6">
-              {partners.map((partner) => (
-                <img
-                  key={partner.name}
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="h-10 md:h-14 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
-                />
-              ))}
+          {/* ONE endless row, not three. The headings ride INSIDE the track
+              with their own group, so Rob's "logos with specified headings" and
+              a single continuous loop are both satisfied. The track holds the
+              whole sequence twice, so translating -50% wraps seamlessly.
+              Pauses on hover so a name can be read. */}
+          <div className="mt-14 border-t border-[#D4CCBA] pt-10">
+            <div className="logo-marquee overflow-hidden">
+              <div className="logo-track flex items-center gap-x-10" style={{ animationDuration: "46s" }}>
+                {[0, 1].map((pass) =>
+                  groups.map((group) => (
+                    <div key={`${group.heading}-${pass}`} className="flex items-center gap-x-10 shrink-0">
+                      <span
+                        aria-hidden={pass === 1}
+                        className="text-[10px] font-semibold tracking-[3px] uppercase text-gray-400 shrink-0 border-l border-[#D4CCBA] pl-6"
+                      >
+                        {group.heading}
+                      </span>
+                      {group.logos.map((partner) => (
+                        <div
+                          key={`${partner.name}-${pass}`}
+                          aria-hidden={pass === 1}
+                          className="shrink-0 bg-white rounded-lg px-6 py-4 flex items-center justify-center h-[74px] md:h-[84px]"
+                        >
+                          <img
+                            src={partner.logo}
+                            alt={partner.name}
+                            className="h-8 md:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-[filter]"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  ))
+                )}
+              </div>
             </div>
           </div>
         </div>

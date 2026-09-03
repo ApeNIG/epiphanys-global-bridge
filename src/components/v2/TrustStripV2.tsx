@@ -1,6 +1,6 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import boardroomMeeting from "@/assets/v2/boardroom-meeting.jpg";
-import mccLogo from "@/assets/partners/mcc-logo.png";
+import mccLogo from "@/assets/partners/mc2-logo-legacy.png";
 import gmcaLogo from "@/assets/partners/gmca-logo.png";
 import gmGrowthHubLogo from "@/assets/partners/gm-growth-hub-logo.png";
 import ukBlackTechLogo from "@/assets/partners/uk-black-tech-logo.png";

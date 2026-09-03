@@ -413,3 +413,21 @@ All colors MUST be HSL.
   .stagger-lines.revealed > *:nth-child(4) { transition-delay: 360ms; opacity: 1; transform: translateY(0); }
   .stagger-lines.revealed > *:nth-child(5) { transition-delay: 480ms; opacity: 1; transform: translateY(0); }
 }
+/* Rolling logo rails on the home page trust strip. The track contains the logo
+   list twice, so translating by exactly -50% wraps seamlessly. Paused on hover
+   so a visitor can read a name, and disabled entirely for anyone who has asked
+   for reduced motion. */
+@keyframes logoMarquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.logo-track {
+  width: max-content;
+  animation-name: logoMarquee;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.logo-marquee:hover .logo-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .logo-track { animation: none; flex-wrap: wrap; }
+}

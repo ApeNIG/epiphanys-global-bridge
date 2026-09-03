@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, CheckCircle, Lock, Users, Award } from "lucide-react";
-import mccLogo from "@/assets/partners/mcc-logo.png";
+import mccLogo from "@/assets/partners/mc2-logo-legacy.png";
 import gmcaLogo from "@/assets/partners/gmca-logo.png";
 import gmGrowthHubLogo from "@/assets/partners/gm-growth-hub-logo.png";
 import ukBlackTechLogo from "@/assets/partners/uk-black-tech-logo.png";
