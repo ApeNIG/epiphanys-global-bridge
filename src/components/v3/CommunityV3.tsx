@@ -23,7 +23,7 @@ const CommunityV3 = () => {
         />
       </svg>
 
-      <div className="bg-[#15171A] pt-10 md:pt-20 pb-0">
+      <div className="bg-[#15171A] pt-4 md:pt-8 pb-0">
         <div className="max-w-[1440px] mx-auto px-6 md:px-20 relative z-10">
           {/* Editorial overline */}
           <div className="flex items-center gap-4 mb-10">
@@ -43,7 +43,7 @@ const CommunityV3 = () => {
               <h2 className="font-serif text-[clamp(1.75rem,3.5vw,2.75rem)] text-white leading-[1.3]">
                 Built by the community,{" "}
                 <em className="not-italic text-[#00E7C3]">for</em> the
-                community — with authentic cultural understanding and a
+                community, with authentic cultural understanding and a
                 commitment to{" "}
                 <em className="not-italic text-[#00E7C3]">inclusive growth</em>.
               </h2>
@@ -124,7 +124,7 @@ const CommunityV3 = () => {
         </div>
 
         {/* Gradient bleed into CTA — seamless transition */}
-        <div className="h-20 md:h-28 bg-gradient-to-b from-[#15171A] to-[#1a0f2e]" />
+        <div className="h-8 md:h-12 bg-gradient-to-b from-[#15171A] to-[#1a0f2e]" />
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { parseStatValue } from "@/hooks/useCountUp";
-import heroPortrait from "@/assets/v3/cta-boardroom.png";
+import heroPortrait from "@/assets/v3/cta-boardroom-cropped.png";
 
 import heroManchester from "@/assets/v2/spiral-staircase-man.jpg";
 import GlobeV3 from "./GlobeV3";
@@ -568,11 +568,11 @@ const HeroV3 = () => {
       </div>
 
       {/* Photo Strip — staggered reveal */}
-      <div className="relative z-10 -mb-28 md:-mb-36 mt-14">
+      <div className="relative z-10 mt-10 md:mt-12">
         <div className="max-w-[1440px] mx-auto px-6 md:px-20">
         <div className="grid grid-cols-12 gap-3">
           <div
-            className="col-span-12 md:col-span-7 rounded-2xl overflow-hidden h-[300px] md:h-[480px] group opacity-0 relative"
+            className="col-span-12 md:col-span-7 rounded-2xl overflow-hidden h-[200px] md:h-auto md:aspect-[2.533/1] group opacity-0 relative bg-[#15171A]"
             style={{
               animation:
                 "heroPhotoReveal 1s cubic-bezier(0.16,1,0.3,1) 1100ms forwards",
@@ -581,8 +581,8 @@ const HeroV3 = () => {
             <div className="w-full h-full">
               <img
                 src={heroPortrait}
-                alt="Diaspora investor overlooking the City of London"
-                className="w-full h-full object-cover [transform-origin:42%_64%] [transform:scale(1.28)] md:[transform-origin:40%_100%] md:[transform:scale(1.5)]"
+                alt="Three professionals in conversation around a boardroom table"
+                className="w-full h-full object-contain"
               />
             </div>
             {/* Editorial text overlay — top-left for visibility */}
@@ -600,7 +600,7 @@ const HeroV3 = () => {
 
           </div>
           <div
-            className="col-span-6 md:col-span-3 rounded-2xl overflow-hidden h-[200px] md:h-[480px] opacity-0 relative bg-[#F5F0E8] flex flex-col items-center justify-start"
+            className="col-span-6 md:col-span-3 rounded-2xl overflow-hidden h-[200px] md:h-auto md:aspect-[1.086/1] opacity-0 relative bg-[#F5F0E8] flex flex-col items-center justify-start"
             style={{
               animation:
                 "heroPhotoReveal 1s cubic-bezier(0.16,1,0.3,1) 1300ms forwards",
@@ -631,7 +631,7 @@ const HeroV3 = () => {
             </div>
           </div>
           <div
-            className="col-span-6 md:col-span-2 rounded-2xl overflow-hidden h-[200px] md:h-[480px] group relative opacity-0"
+            className="col-span-6 md:col-span-2 rounded-2xl overflow-hidden h-[200px] md:h-auto md:aspect-[0.707/1] group relative opacity-0"
             style={{
               animation:
                 "heroPhotoReveal 1s cubic-bezier(0.16,1,0.3,1) 1500ms forwards",

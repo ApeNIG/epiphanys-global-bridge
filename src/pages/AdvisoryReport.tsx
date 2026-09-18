@@ -1,7 +1,7 @@
 import { TrendingUp, Target, Landmark, Users, ArrowRight } from "lucide-react";
 import HeaderV3 from "@/components/v3/HeaderV3";
 import FooterV3 from "@/components/v3/FooterV3";
-import founderResearcher from "@/assets/v3/founder-researcher.jpg";
+import reportWorkspace from "@/assets/v3/advisory-report-coworking.jpg";
 
 const topics = [
   {
@@ -44,7 +44,7 @@ const AdvisoryReport = () => (
 
     <main>
       {/* ── Hero ── */}
-      <section className="bg-white pt-32 md:pt-44 pb-16 md:pb-20">
+      <section className="bg-white v3-page-intro">
         <div className="max-w-[1440px] mx-auto px-6 md:px-20">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-[2px] bg-[#00E7C3]" />
@@ -73,33 +73,41 @@ const AdvisoryReport = () => (
         </div>
       </section>
 
-      {/* The report being read. The picture is the page's subject, not scenery. */}
-      <section className="bg-white pb-16 md:pb-24">
+      {/* Documentary workspace scene with the report's central argument embedded
+          in the image treatment. */}
+      <section className="bg-white v3-related-tail">
         <div className="max-w-[1440px] mx-auto px-6 md:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            <div className="lg:col-span-7">
-              <div className="rounded-[20px] overflow-hidden h-[320px] md:h-[440px]">
-                <img
-                  src={founderResearcher}
-                  alt="Comparing two charted pages of the report in a reading room"
-                  className="w-full h-full object-cover"
-                  style={{ objectPosition: "center 35%" }}
-                />
+          <div className="relative rounded-[20px] overflow-hidden h-[560px] md:h-[540px] lg:h-[620px] bg-[#070B11]">
+            <img
+              src={reportWorkspace}
+              alt="People working together in a bright coworking space"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+            <div className="advisory-report-image-gradient absolute inset-0" />
+
+            <div className="absolute inset-0 flex items-end md:items-center">
+              <div className="w-full md:w-[48%] md:ml-auto p-7 sm:p-9 md:p-12 lg:p-16">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-10 h-[2px] bg-[#00E7C3]" />
+                  <span className="text-[10px] md:text-[11px] font-semibold tracking-[2.5px] uppercase text-[#00E7C3]">
+                    Inside the Advisory Report
+                  </span>
+                </div>
+                <h2 className="font-serif text-[clamp(2.25rem,4.2vw,3.5rem)] text-white leading-[1.08] tracking-[-0.02em] mb-6">
+                  What it really takes to unlock investment.
+                </h2>
+                <p className="text-white/70 text-[15px] md:text-[17px] leading-[1.75] max-w-[500px]">
+                  The barriers diaspora founders face, what genuinely shifts them,
+                  and where the gaps remain.
+                </p>
               </div>
-            </div>
-            <div className="lg:col-span-5">
-              <p className="text-gray-500 text-[16px] leading-[1.8]">
-                The report gathers what the diaspora business community already
-                knows and puts it somewhere it can be argued with: the barriers to
-                capital, what actually unlocks it, and where the gaps sit.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── What it will cover ── */}
-      <section className="bg-[#F5F0E8] py-20 md:py-28">
+      <section className="bg-[#F5F0E8] v3-section">
         <div className="max-w-[1440px] mx-auto px-6 md:px-20">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-[2px] bg-[#00E7C3]" />

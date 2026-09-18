@@ -29,8 +29,9 @@ const sections: { heading: string; body: React.ReactNode }[] = [
     body: (
       <>
         <strong>Epiphiny Flow Ltd</strong> is a company registered in England and
-        Wales under company number 16241884, with its registered office at 153
-        Barkway Road, Stretford, Manchester, England, M32 9DX. For the purposes
+        Wales under company number 16241884, with its registered office at C/O
+        SCCS, Building 1, Suite 1A, 1st Floor, Wilsons Park, Monsall Road,
+        Manchester, England, M40 8WN. For the purposes
         of data protection law we are the <strong>data controller</strong> of the
         personal information described in this policy, which means we decide how
         and why your information is used.
@@ -86,18 +87,18 @@ const sections: { heading: string; body: React.ReactNode }[] = [
         personal information.
         <br />
         <br />
-        <strong>Responding to enquiries and intro meeting requests</strong> — our
+        <strong>Responding to enquiries and intro meeting requests</strong>: our
         legitimate interest in running our business and communicating with people
         who contact us.
         <br />
-        <strong>Sending you our newsletter or updates</strong> — your consent,
+        <strong>Sending you our newsletter or updates</strong>: your consent,
         given when you sign up. You can withdraw it at any time.
         <br />
-        <strong>Keeping the website secure and preventing misuse</strong> — our
+        <strong>Keeping the website secure and preventing misuse</strong>: our
         legitimate interest in protecting our systems and users.
         <br />
         <strong>Meeting our legal obligations</strong>, for example responding to
-        a lawful request from a regulator — compliance with a legal obligation.
+        a lawful request from a regulator: compliance with a legal obligation.
         <br />
         <br />
         Where we rely on legitimate interests, we have considered whether our use
@@ -250,7 +251,7 @@ const Privacy = () => (
     <HeaderV3 />
 
     <main>
-      <section className="bg-white pt-32 md:pt-44 pb-8">
+      <section className="bg-white v3-page-intro">
         <div className="max-w-[820px] mx-auto px-6 md:px-20">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-[2px] bg-[#00E7C3]" />
@@ -261,14 +262,14 @@ const Privacy = () => (
           <h1 className="font-serif text-[clamp(2.25rem,5vw,3.5rem)] text-[#15171A] leading-[1.1] tracking-[-0.02em] mb-4">
             Privacy Policy
           </h1>
-          <p className="text-gray-400 text-[14px]">Last updated: 2 September 2026</p>
+          <p className="text-gray-400 text-[14px]">Last updated: 18 September 2026</p>
         </div>
       </section>
 
-      <section className="bg-white pb-20 md:pb-28">
+      <section className="bg-white v3-related-tail">
         <div className="max-w-[820px] mx-auto px-6 md:px-20">
           {sections.map((s) => (
-            <div key={s.heading} className="mb-9">
+            <div key={s.heading} className="mb-9 last:mb-0">
               <h2 className="font-serif text-[22px] text-[#15171A] mb-3">
                 {s.heading}
               </h2>

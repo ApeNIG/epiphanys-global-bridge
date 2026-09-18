@@ -57,7 +57,7 @@ const InvestmentV3 = () => {
 
       <main>
         {/* ── Hero ── */}
-        <section className="bg-white pt-32 md:pt-44 pb-20 md:pb-28">
+        <section className="bg-white v3-page-intro">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <Overline label="Our Fund" />
             <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4rem)] text-[#15171A] leading-[1.08] tracking-[-0.02em] max-w-[820px] mb-6">
@@ -74,11 +74,27 @@ const InvestmentV3 = () => {
                 this concrete is exactly the kind of thing a reader mistakes for
                 something already running. */}
             <StatusBadge status="prospective" />
+            <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-3">
+              <a
+                href="mailto:info@epiphinyflow.com?subject=Our%20Fund%20-%20register%20as%20a%20backer"
+                className="inline-flex items-center gap-3 bg-[#15171A] text-[#00E7C3] pl-7 pr-5 py-3.5 rounded-full text-[14px] font-semibold hover:bg-[#2a2d32] transition-colors group w-fit"
+              >
+                Get involved as a backer
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <a
+                href="mailto:info@epiphinyflow.com?subject=Our%20Fund%20-%20about%20my%20business"
+                className="inline-flex items-center gap-2 text-[#2A9D8F] px-2 py-3 text-[14px] font-semibold hover:text-[#15171A] transition-colors w-fit"
+              >
+                Tell us about your business
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
           </div>
         </section>
 
         {/* ── The capital flow ── */}
-        <section className="bg-[#F5F0E8] py-20 md:py-28">
+        <section className="bg-[#F5F0E8] v3-section">
           {/* Same container as every other section on the page. The diagram was
               briefly in a narrower one, which broke the left margin the whole
               page is aligned to. */}
@@ -103,7 +119,7 @@ const InvestmentV3 = () => {
         </section>
 
         {/* ── For Investors ── */}
-        <section className="bg-white py-20 md:py-28">
+        <section className="bg-white v3-section">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <Overline label="For Backers" />
             <h2 className="font-serif text-3xl md:text-[42px] text-[#15171A] leading-[1.2] max-w-[560px] mb-16">
@@ -140,7 +156,7 @@ const InvestmentV3 = () => {
         </section>
 
         {/* ── CTA, dark accent block ── */}
-        <section className="bg-[#15171A] py-20 md:py-28">
+        <section className="bg-[#15171A] v3-section">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <h2 className="font-serif text-[clamp(2rem,5vw,3.5rem)] text-white leading-[1.1] tracking-[-0.01em] max-w-[640px] mb-10">
               Register your interest in the fund

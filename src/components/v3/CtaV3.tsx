@@ -12,7 +12,7 @@ const CtaV3 = () => {
 
       <div
         ref={ref}
-        className="reveal-up max-w-[1440px] mx-auto px-6 md:px-20 py-24 md:py-36 relative z-10"
+        className="reveal-up max-w-[1440px] mx-auto px-6 md:px-20 v3-section relative z-10"
       >
         {/* Video card with text overlaid */}
         <div className="relative rounded-2xl overflow-hidden min-h-[400px] md:min-h-[500px] flex items-end">

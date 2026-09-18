@@ -38,6 +38,7 @@ import Events from "./pages/Events";
 import FAQ from "./pages/FAQ";
 import Privacy from "./pages/Privacy";
 import Cookies from "./pages/Cookies";
+import CommunityV3 from "./pages/CommunityV3";
 import PosterGallery from "./components/posters/PosterGallery";
 
 const queryClient = new QueryClient();
@@ -77,7 +78,7 @@ const App = () => (
                 bookmarks and typed URLs landed on the old website. The page
                 components remain in the repo; restore by swapping the element
                 back. */}
-            <Route path="/community" element={<Navigate to="/" replace />} />
+            <Route path="/community" element={<CommunityV3 />} />
             <Route path="/about" element={<AboutV3 />} />
             <Route path="/legacy-about" element={<About />} />
             <Route path="/investment-hub" element={<Navigate to="/" replace />} />

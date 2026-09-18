@@ -68,15 +68,15 @@ const advisors: Advisor[] = [
   {
     name: "Arnab Dutt",
     honours: "OBE",
-    role: "CEO, Divine Ox · FSB Policy Champion, procurement & social value",
+    role: "CEO, Divine Ox · FSB Director and Policy Champion, procurement & social value",
     summary:
-      "CEO of Divine Ox and FSB Policy Champion for procurement and social value.",
+      "CEO of Divine Ox and FSB Director and Policy Champion for procurement and social value.",
     photo: arnabPhoto,
     initials: "AD",
     bg: "#14243d",
     photoPos: "center 15%",
     fullBio: [
-      "CEO of Divine Ox, Oxford University's expert venture hub. FSB Policy Champion for Procurement and Social Value, an advisor to the Cabinet Office on social value policy, and a Trustee of the Anti-Racist Alliance Trust.",
+      "CEO of Divine Ox, Oxford University's expert venture hub. FSB Director and Policy Champion for Procurement and Social Value, an advisor to the Cabinet Office on social value policy, and a Trustee of the Anti-Racist Alliance Trust.",
     ],
   },
   {
@@ -121,15 +121,15 @@ const advisors: Advisor[] = [
   {
     name: "Muna Yassin",
     honours: "MBE",
-    role: "CEO, Rooted Finance · 20+ yrs financial inclusion",
+    role: "CEO, Rooted Finance · FCA-regulated debt advice · 20+ yrs financial inclusion",
     summary:
-      "CEO of Rooted Finance with over 20 years in financial inclusion; awarded an MBE.",
+      "CEO of Rooted Finance, delivering FCA-regulated debt advice, with over 20 years in financial inclusion; awarded an MBE.",
     photo: munaPhoto,
     initials: "MY",
     bg: "#14243d",
     photoPos: "center 15%",
     fullBio: [
-      "CEO of Rooted Finance, a London charity providing specialist debt advice to diverse ethnic communities, with over 20 years in financial inclusion. Awarded an MBE in the 2021 Queen's Birthday Honours for charitable financial services to disadvantaged people during Covid-19.",
+      "CEO of Rooted Finance, a London charity providing FCA-regulated specialist debt advice to diverse ethnic communities, with over 20 years in financial inclusion. Awarded an MBE in the 2021 Queen's Birthday Honours for charitable financial services to disadvantaged people during Covid-19.",
       "She has served on the government's VCSE Advisory Panel, joined the Board of the Money Advice Liaison Group in 2025, and previously been a Trustee of Toynbee Hall and a board member of Women Advancing Microfinance UK.",
     ],
   },
@@ -157,7 +157,7 @@ const BoardOfAdvisors = () => {
 
   return (
     <>
-      <section className="bg-white py-20 md:py-28">
+      <section className="bg-white v3-section">
         <div className="max-w-[1440px] mx-auto px-6 md:px-20">
           {/* Header row */}
           <div className="flex items-end justify-between mb-12">

@@ -1,4 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import type { CSSProperties } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import metaphorDiscover from "@/assets/v3/metaphor-advisory-woman.jpg";
 import metaphorStaircase from "@/assets/v2/metaphor-staircase.jpg";
@@ -8,6 +10,7 @@ const features = [
   {
     num: "01",
     title: "Advisory",
+    href: "/advisory",
     description:
       "Our expert advisory board helps you gain guidance on access to investment and funding, investment readiness, marketing tools, intellectual property and partnerships, all tailored to your vision.",
     stat: "8",
@@ -20,6 +23,7 @@ const features = [
   {
     num: "02",
     title: "Our Fund",
+    href: "/fund",
     description:
       "Our prospective fund will invest in investment-ready diasporic community businesses to fuel growth across the UK.",
     stat: "Soon",
@@ -32,6 +36,7 @@ const features = [
   {
     num: "03",
     title: "Community",
+    href: "/community",
     description:
       "Join a trusted network of diaspora founders, businesses and institutions. Real relationships that open doors, not cold pitches.",
     stat: "Soon",
@@ -47,7 +52,7 @@ const FeaturesV3 = () => {
   const gridRef = useScrollReveal<HTMLDivElement>({ threshold: 0.1 });
 
   return (
-    <section className="bg-white pt-16 md:pt-20 pb-16 md:pb-20 relative overflow-hidden">
+    <section className="bg-white v3-section relative overflow-hidden">
       <style>{`
         .feature-card .accent-line {
           width: 0;
@@ -99,13 +104,15 @@ const FeaturesV3 = () => {
           className="stagger-children grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           {features.map((feature) => (
-            <div
+            <Link
               key={feature.title}
-              className="feature-card reveal-up group relative rounded-[20px] overflow-hidden bg-[#FAFAF5] border border-transparent hover:-translate-y-2 transition-all duration-500 ease-out flex flex-col cursor-pointer"
+              to={feature.href}
+              aria-label={`Explore ${feature.title}`}
+              className="feature-card reveal-up group relative rounded-[20px] overflow-hidden bg-[#FAFAF5] border border-transparent hover:-translate-y-2 focus-visible:-translate-y-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00E7C3] focus-visible:ring-offset-4 transition-all duration-500 ease-out flex flex-col cursor-pointer"
               style={{
-                ["--card-accent" as any]: feature.accent,
-                ["--card-hover-shadow" as any]: feature.accentHover,
-              }}
+                "--card-accent": feature.accent,
+                "--card-hover-shadow": feature.accentHover,
+              } as CSSProperties}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = `${feature.accent}33`;
                 e.currentTarget.style.boxShadow = `0 8px 40px -12px ${feature.accentHover}`;
@@ -154,7 +161,7 @@ const FeaturesV3 = () => {
                   </span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

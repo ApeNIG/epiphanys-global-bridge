@@ -429,5 +429,80 @@ All colors MUST be HSL.
 }
 .logo-marquee:hover .logo-track { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
-  .logo-track { animation: none; flex-wrap: wrap; }
+  .logo-marquee { overflow: hidden; }
+  .logo-track {
+    width: 100%;
+    animation: none;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+  }
+  .logo-track > [data-marquee-copy="0"] {
+    width: 100%;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+  }
+  .logo-track > [data-marquee-copy="1"] { display: none; }
+  .reveal-up,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale,
+  .stagger-children > .reveal-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* V3 spacing contract. The sticky header remains in normal document flow, so
+   page introductions do not need a second header-height spacer. Adjacent major
+   sections each contribute one compact edge: 64px total on mobile, 96px on
+   desktop. Related same-background sections use one edge only. */
+.v3-page-intro {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+.v3-section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.v3-related-tail {
+  padding-bottom: 2rem;
+}
+@media (min-width: 768px) {
+  .v3-page-intro {
+    padding-top: 4.5rem;
+    padding-bottom: 3rem;
+  }
+  .v3-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  .v3-related-tail {
+    padding-bottom: 3rem;
+  }
+}
+
+/* Advisory Report: fade a documentary workspace scene into a high-contrast
+   reading surface. On mobile the fade runs downward to preserve the subject. */
+.advisory-report-image-gradient {
+  background: linear-gradient(
+    to bottom,
+    rgba(7, 11, 17, 0) 24%,
+    rgba(7, 11, 17, 0.28) 42%,
+    rgba(7, 11, 17, 0.95) 72%,
+    #070b11 100%
+  );
+}
+
+@media (min-width: 768px) {
+  .advisory-report-image-gradient {
+    background: linear-gradient(
+      to right,
+      rgba(7, 11, 17, 0) 32%,
+      rgba(7, 11, 17, 0.2) 45%,
+      rgba(7, 11, 17, 0.9) 67%,
+      #070b11 88%
+    );
+  }
 }

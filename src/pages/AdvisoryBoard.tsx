@@ -13,7 +13,7 @@ const AdvisoryBoard = () => (
 
     <main>
       {/* ── Hero ── */}
-      <section className="bg-white pt-32 md:pt-44 pb-2 md:pb-6">
+      <section className="bg-white v3-page-intro">
         <div className="max-w-[1440px] mx-auto px-6 md:px-20">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-[2px] bg-[#00E7C3]" />
@@ -36,7 +36,7 @@ const AdvisoryBoard = () => (
       <BoardOfAdvisors />
 
       {/* ── CTA ── */}
-      <section className="bg-[#15171A] py-20 md:py-28">
+      <section className="bg-[#15171A] v3-section">
         <div className="max-w-[1440px] mx-auto px-6 md:px-20">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-[2px] bg-[#00E7C3]" />

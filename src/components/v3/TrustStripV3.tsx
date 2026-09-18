@@ -1,5 +1,3 @@
-import { useScrollReveal } from "@/hooks/useScrollReveal";
-
 import manchesterCityCouncilLogo from "@/assets/partners/manchester-city-council-logo.png";
 import gmcaLogo from "@/assets/partners/gmca-logo.png";
 import gmGrowthHubLogo from "@/assets/partners/gm-growth-hub-logo.png";
@@ -12,6 +10,11 @@ import inclusiveNorthLogo from "@/assets/partners/inclusive-north-logo.png";
 import betterSocietyCapitalLogo from "@/assets/partners/better-society-capital-logo.svg";
 import goodFinanceLogo from "@/assets/partners/good-finance-logo.png";
 import socialInvestmentBusinessLogo from "@/assets/partners/social-investment-business-logo.png";
+import bruntwoodSciTechLogo from "@/assets/partners/bruntwood-scitech-logo.png";
+import bruntwoodRaceNetworkLogo from "@/assets/partners/bruntwood-race-network-logo.png";
+import manchesterMetropolitanUniversityLogo from "@/assets/partners/manchester-metropolitan-university-logo.png";
+import proManchesterLogo from "@/assets/partners/pro-manchester-logo.png";
+import greaterManchesterChamberLogo from "@/assets/partners/greater-manchester-chamber-logo.png";
 
 /* Grouped exactly as the client's Drive folders are grouped, which is the
    client's own statement of who belongs where:
@@ -32,6 +35,8 @@ const groups: { heading: string; logos: { name: string; logo: string }[] }[] = [
       { name: "Factory International", logo: factoryInternationalLogo },
       { name: "Our Business GM", logo: ourBusinessGmLogo },
       { name: "Inclusive North", logo: inclusiveNorthLogo },
+      { name: "Bruntwood SciTech", logo: bruntwoodSciTechLogo },
+      { name: "Bruntwood Race Network", logo: bruntwoodRaceNetworkLogo },
     ],
   },
   {
@@ -41,6 +46,9 @@ const groups: { heading: string; logos: { name: string; logo: string }[] }[] = [
       { name: "Good Finance", logo: goodFinanceLogo },
       { name: "Social Investment Business", logo: socialInvestmentBusinessLogo },
       { name: "GM Business Growth Hub", logo: gmGrowthHubLogo },
+      { name: "Manchester Metropolitan University", logo: manchesterMetropolitanUniversityLogo },
+      { name: "pro-manchester", logo: proManchesterLogo },
+      { name: "Greater Manchester Chamber of Commerce", logo: greaterManchesterChamberLogo },
     ],
   },
   {
@@ -54,15 +62,10 @@ const groups: { heading: string; logos: { name: string; logo: string }[] }[] = [
 ];
 
 const TrustStripV3 = () => {
-  const ref = useScrollReveal<HTMLDivElement>();
-
   return (
     <section className="relative">
-      <div className="bg-[#F5F0E8] pt-36 md:pt-44 pb-20 md:pb-24">
-        <div
-          ref={ref}
-          className="reveal-up max-w-[1440px] mx-auto px-6 md:px-20"
-        >
+      <div className="bg-[#F5F0E8] pt-6 md:pt-8 pb-8 md:pb-12">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-20">
           {/* Editorial pull-quote style — big, confident, magazine-feel */}
           <div className="max-w-[1000px]">
             <div className="flex items-center gap-4 mb-8">
@@ -112,7 +115,11 @@ const TrustStripV3 = () => {
               <div className="logo-track flex items-center gap-x-10" style={{ animationDuration: "46s" }}>
                 {[0, 1].map((pass) =>
                   groups.map((group) => (
-                    <div key={`${group.heading}-${pass}`} className="flex items-center gap-x-10 shrink-0">
+                    <div
+                      key={`${group.heading}-${pass}`}
+                      data-marquee-copy={pass}
+                      className="flex items-center gap-x-10 shrink-0"
+                    >
                       <span
                         aria-hidden={pass === 1}
                         className="text-[10px] font-semibold tracking-[3px] uppercase text-gray-400 shrink-0 border-l border-[#D4CCBA] pl-6"
@@ -128,7 +135,11 @@ const TrustStripV3 = () => {
                           <img
                             src={partner.logo}
                             alt={partner.name}
-                            className="h-8 md:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-[filter]"
+                            className={
+                              partner.name === "Our Business GM"
+                                ? "h-6 max-w-[220px] w-auto object-contain grayscale hover:grayscale-0 transition-[filter]"
+                                : "h-8 md:h-10 max-w-[180px] md:max-w-[220px] w-auto object-contain grayscale hover:grayscale-0 transition-[filter]"
+                            }
                           />
                         </div>
                       ))}

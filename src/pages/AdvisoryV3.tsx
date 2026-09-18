@@ -73,7 +73,7 @@ const processSteps = [
     title: "Implementation Support",
     timeline: "Ongoing",
     description:
-      "We work alongside your team to execute the strategy — facilitating introductions, navigating cultural nuances, and ensuring measurable progress.",
+      "We work alongside your team to execute the strategy, facilitating introductions, navigating cultural nuances, and ensuring measurable progress.",
   },
   {
     number: "04",
@@ -95,7 +95,7 @@ const AdvisoryV3 = () => {
 
       <main>
         {/* ── Hero ── */}
-        <section className="bg-white pt-32 md:pt-44 pb-20 md:pb-28">
+        <section className="bg-white v3-page-intro">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <Overline label="Advisory Services" />
             <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4rem)] text-[#15171A] leading-[1.08] tracking-[-0.02em] max-w-[820px] mb-6">
@@ -113,7 +113,7 @@ const AdvisoryV3 = () => {
 
         {/* The picture does the same job as the copy: someone being advised,
             in the room where it happens. Not decoration. */}
-        <section className="bg-white pb-20 md:pb-28">
+        <section className="bg-white v3-related-tail">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               <div className="lg:col-span-7">
@@ -143,7 +143,7 @@ const AdvisoryV3 = () => {
         </section>
 
         {/* ── Advisory by Org Type ── */}
-        <section className="bg-white pb-20 md:pb-28">
+        <section className="bg-white v3-related-tail">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <Overline label="Solutions" />
             <h2 className="font-serif text-3xl md:text-[42px] text-[#15171A] leading-[1.2] max-w-[560px] mb-16">
@@ -180,7 +180,7 @@ const AdvisoryV3 = () => {
         </section>
 
         {/* ── Process ── */}
-        <section className="bg-[#F5F0E8] py-20 md:py-28">
+        <section className="bg-[#F5F0E8] v3-section">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <Overline label="Our Process" />
             <h2 className="font-serif text-3xl md:text-[42px] text-[#15171A] leading-[1.2] max-w-[560px] mb-16">
@@ -216,7 +216,7 @@ const AdvisoryV3 = () => {
         </section>
 
         {/* ── CTA — dark accent block ── */}
-        <section className="bg-[#15171A] py-20 md:py-28">
+        <section className="bg-[#15171A] v3-section">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <h2 className="font-serif text-[clamp(2rem,5vw,3.5rem)] text-white leading-[1.1] tracking-[-0.01em] max-w-[580px] mb-6">
               Ready to grow?

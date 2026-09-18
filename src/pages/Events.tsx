@@ -3,6 +3,7 @@ import FooterV3 from "@/components/v3/FooterV3";
 import { Calendar, MapPin, Mail, TrendingUp, ArrowRight } from "lucide-react";
 import gsbPoster from "@/assets/events/gsb-2026-poster.jpg";
 import gsbAttendees from "@/assets/events/gsb-2025-attendees.jpg";
+import gmcaLogo from "@/assets/partners/gmca-logo.png";
 
 const details = [
   {
@@ -33,7 +34,7 @@ const Events = () => (
 
     <main>
       {/* ── Hero ── */}
-      <section className="bg-white pt-32 md:pt-44 pb-6 md:pb-10">
+      <section className="bg-white v3-page-intro">
         <div className="max-w-[1440px] mx-auto px-6 md:px-20">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-[2px] bg-[#00E7C3]" />
@@ -53,7 +54,7 @@ const Events = () => (
       </section>
 
       {/* ── Poster + details ── */}
-      <section className="bg-white pb-20 md:pb-28">
+      <section className="bg-white v3-related-tail">
         <div className="max-w-[1440px] mx-auto px-6 md:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,520px)_1fr] gap-12 lg:gap-20 items-start">
             {/* Poster */}
@@ -146,7 +147,7 @@ const Events = () => (
       </section>
 
       {/* ── 2025 attendees ── */}
-      <section className="bg-[#F5F0E8] py-20 md:py-28">
+      <section className="bg-[#F5F0E8] v3-section">
         <div className="max-w-[1440px] mx-auto px-6 md:px-20">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-[2px] bg-[#00E7C3]" />
@@ -157,12 +158,22 @@ const Events = () => (
           <h2 className="font-serif text-3xl md:text-[42px] text-[#15171A] leading-[1.2] max-w-[620px] mb-12">
             Who attended in 2025
           </h2>
-          <div className="rounded-2xl overflow-hidden bg-white ring-1 ring-black/5 shadow-sm">
+          <div className="relative rounded-2xl overflow-hidden bg-white ring-1 ring-black/5 shadow-sm">
             <img
               src={gsbAttendees}
               alt="2025 attendees: British Business Bank, GMCA, Shore Capital, GC Angels, Manchester City Council, UK Black Tech, PXN Group, Business Growth Hub, Factory International, Pathway Fund, London Stock Exchange Group, University of Salford"
               className="w-full h-auto block"
             />
+            {/* The supplied attendee panel baked “GMCA” in as plain text. Overlay
+                the approved Combined Authority lockup in the same grid position
+                without substituting the separately supplied Chamber of Commerce. */}
+            <div className="absolute left-[38.5%] top-[24%] w-[22%] h-[18%] bg-[#4AAFC0] flex items-center justify-center px-[2%]">
+              <img
+                src={gmcaLogo}
+                alt="Greater Manchester Combined Authority"
+                className="w-full h-auto object-contain"
+              />
+            </div>
           </div>
         </div>
       </section>

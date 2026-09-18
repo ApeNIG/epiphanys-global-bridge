@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import HeaderV3 from "@/components/v3/HeaderV3";
+import CurrentStatusV3 from "@/components/v3/CurrentStatusV3";
 import FooterV3 from "@/components/v3/FooterV3";
 
 type QA = { q: string; a: React.ReactNode };
@@ -143,7 +144,7 @@ const FAQ = () => (
 
     <main>
       {/* ── Hero ── */}
-      <section className="bg-white pt-32 md:pt-44 pb-10 md:pb-14">
+      <section className="bg-white v3-page-intro">
         <div className="max-w-[1440px] mx-auto px-6 md:px-20">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-[2px] bg-[#00E7C3]" />
@@ -161,8 +162,24 @@ const FAQ = () => (
         </div>
       </section>
 
+      {/* ── Current status, before any question is asked ──
+          The challenger: an FAQ treats every question as equal, which buries
+          the one thing a first-time reader most needs to know. Saying what is
+          and is not built, up front and unprompted, answers the riskiest
+          questions before they have to be looked for. Full width rather than
+          the 860px question column, because it is a statement and not an
+          answer. */}
+      <section className="bg-white v3-related-tail">
+        {/* SAME 860px column as the questions, two by two. It was briefly full
+            width, which put it at a different left edge from everything above
+            and below and ran two alignment systems on one page. */}
+        <div className="max-w-[860px] mx-auto px-6 md:px-20">
+          <CurrentStatusV3 layout="grid" />
+        </div>
+      </section>
+
       {/* ── Q&A ── */}
-      <section className="bg-white pb-20 md:pb-28">
+      <section className="bg-white v3-related-tail">
         <div className="max-w-[860px] mx-auto px-6 md:px-20">
           {groups.map((group) => (
             <div key={group.label} className="mb-14 last:mb-0">
@@ -180,7 +197,7 @@ const FAQ = () => (
       </section>
 
       {/* ── Still have questions ── */}
-      <section className="bg-[#F5F0E8] py-16 md:py-20">
+      <section className="bg-[#F5F0E8] v3-section">
         <div className="max-w-[860px] mx-auto px-6 md:px-20 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
             <h2 className="font-serif text-2xl md:text-[30px] text-[#15171A] leading-[1.2] mb-2">

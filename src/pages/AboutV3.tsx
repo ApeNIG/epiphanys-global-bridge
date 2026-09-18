@@ -258,7 +258,7 @@ const TeamAccordion = () => {
 
   return (
     <>
-    <section className="bg-white py-14 md:py-20">
+    <section className="bg-white v3-section">
       <div className="max-w-[1440px] mx-auto px-6 md:px-20">
         {/* Header row */}
         <div className="flex items-end justify-between mb-12">
@@ -518,7 +518,7 @@ const AboutV3 = () => {
 
       <main>
         {/* ── Hero ── */}
-        <section className="bg-white pt-32 md:pt-44 pb-20 md:pb-28">
+        <section className="bg-white v3-page-intro">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <Overline label="About Us" />
             <h1 className="font-serif text-[clamp(2.5rem,5.5vw,4rem)] text-[#15171A] leading-[1.08] tracking-[-0.02em] max-w-[820px] mb-6">
@@ -538,7 +538,7 @@ const AboutV3 = () => {
         <TeamAccordion />
 
         {/* ── Mission ── */}
-        <section className="bg-[#F5F0E8] py-14 md:py-20">
+        <section className="bg-[#F5F0E8] v3-section">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <Overline label="Our Mission" />
 
@@ -559,7 +559,7 @@ const AboutV3 = () => {
               <Card
                 icon={Users}
                 title="Community-Centric"
-                description="Built with and for the community — ensuring voices are heard, needs are met, and growth is shared collectively."
+                description="Built with and for the community, so voices are heard, needs are met, and growth is shared collectively."
               />
               <Card
                 icon={Globe}
@@ -571,7 +571,7 @@ const AboutV3 = () => {
         </section>
 
         {/* ── Vision ── */}
-        <section className="bg-white py-14 md:py-20">
+        <section className="bg-white v3-section">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <Overline label="Our Vision" />
 
@@ -619,7 +619,7 @@ const AboutV3 = () => {
         </section>
 
         {/* ── Values ── */}
-        <section className="bg-[#F5F0E8] py-14 md:py-20">
+        <section className="bg-[#F5F0E8] v3-section">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
             <Overline label="Our Values" />
 
@@ -633,7 +633,7 @@ const AboutV3 = () => {
                   icon: Heart,
                   title: "Inclusivity First",
                   description:
-                    "We design for everyone — ensuring no community is left behind in the digital economy.",
+                    "We design for everyone, so no community is left behind in the digital economy.",
                   accent: "#00E7C3",
                 },
                 {
@@ -668,7 +668,7 @@ const AboutV3 = () => {
         <section className="relative overflow-hidden bg-[#15171A]">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] bg-[#8B5CF6]/[0.06] rounded-full blur-[150px] pointer-events-none" />
 
-          <div className="max-w-[1440px] mx-auto px-6 md:px-20 py-16 md:py-24 relative z-10">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-20 v3-section relative z-10">
             <div className="max-w-[760px]">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-[2px] bg-[#00E7C3]" />
@@ -684,7 +684,7 @@ const AboutV3 = () => {
               <div className="space-y-6 mb-14">
                 <p className="text-white/50 text-[17px] leading-[1.85]">
                   Diaspora communities represent one of the most powerful
-                  economic forces on the planet — contributing over{" "}
+                  economic forces on the planet, contributing over{" "}
                   <span className="text-[#00E7C3] font-medium">
                     £685 billion
                   </span>{" "}
@@ -696,7 +696,7 @@ const AboutV3 = () => {
                 <p className="text-white/50 text-[17px] leading-[1.85]">
                   Epiphiny Flow exists to change that. We are building the
                   digital infrastructure that connects diaspora talent with
-                  meaningful opportunities — from public sector tenders and
+                  meaningful opportunities: from public sector tenders and
                   private investment to business advisory and community-led
                   growth initiatives.
                 </p>
