@@ -64,7 +64,7 @@ const groups: { heading: string; logos: { name: string; logo: string }[] }[] = [
 const TrustStripV3 = () => {
   return (
     <section className="relative">
-      <div className="bg-[#F5F0E8] pt-6 md:pt-8 pb-8 md:pb-12">
+      <div className="relative z-10 bg-[#F5F0E8] pt-6 md:pt-8 pb-8 md:pb-12">
         <div className="max-w-[1440px] mx-auto px-6 md:px-20">
           {/* Editorial pull-quote style — big, confident, magazine-feel */}
           <div className="max-w-[1000px]">
@@ -154,7 +154,7 @@ const TrustStripV3 = () => {
 
       {/* Curved bottom edge — organic transition to features */}
       <svg
-        className="absolute bottom-0 left-0 w-full h-16 md:h-24"
+        className="absolute z-0 bottom-0 left-0 w-full h-16 md:h-24 pointer-events-none"
         viewBox="0 0 1440 96"
         preserveAspectRatio="none"
         fill="none"
