@@ -29,7 +29,7 @@ const FooterV2 = () => {
     <footer className="bg-[#15171A] pt-16 pb-8 border-t border-white/[0.06]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-20">
         {/* Editorial headline */}
-        <p className="font-serif text-[clamp(1.5rem,3vw,2.25rem)] text-white/10 leading-[1.3] max-w-[600px] mb-14">
+        <p className="font-serif text-[clamp(1.5rem,3vw,2.25rem)] text-[#00E7C3] leading-[1.3] max-w-[600px] mb-14">
           Building bridges between heritage and opportunity.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">

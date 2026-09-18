@@ -1,6 +1,6 @@
 import manchesterCityCouncilLogo from "@/assets/partners/manchester-city-council-logo.png";
 import gmcaLogo from "@/assets/partners/gmca-logo.png";
-import gmGrowthHubLogo from "@/assets/partners/gm-growth-hub-logo.png";
+import gmGrowthHubLogo from "@/assets/partners/gm-business-growth-hub-logo.svg";
 import ukBlackTechLogo from "@/assets/partners/uk-black-tech-logo.png";
 import ourBusinessGmLogo from "@/assets/partners/our-business-gm-logo.png";
 import universitySalfordLogo from "@/assets/partners/university-salford-logo.png";
@@ -13,8 +13,8 @@ import socialInvestmentBusinessLogo from "@/assets/partners/social-investment-bu
 import bruntwoodSciTechLogo from "@/assets/partners/bruntwood-scitech-logo.png";
 import bruntwoodRaceNetworkLogo from "@/assets/partners/bruntwood-race-network-logo.png";
 import manchesterMetropolitanUniversityLogo from "@/assets/partners/manchester-metropolitan-university-logo.png";
-import proManchesterLogo from "@/assets/partners/pro-manchester-logo.png";
-import greaterManchesterChamberLogo from "@/assets/partners/greater-manchester-chamber-logo.png";
+import proManchesterLogo from "@/assets/partners/pro-manchester-logo-display.png";
+import greaterManchesterChamberLogo from "@/assets/partners/greater-manchester-chamber-logo-display.png";
 
 /* Grouped exactly as the client's Drive folders are grouped, which is the
    client's own statement of who belongs where:
@@ -35,6 +35,8 @@ const groups: { heading: string; logos: { name: string; logo: string }[] }[] = [
       { name: "Factory International", logo: factoryInternationalLogo },
       { name: "Our Business GM", logo: ourBusinessGmLogo },
       { name: "Inclusive North", logo: inclusiveNorthLogo },
+      { name: "Better Society Capital", logo: betterSocietyCapitalLogo },
+      { name: "Good Finance", logo: goodFinanceLogo },
       { name: "Bruntwood SciTech", logo: bruntwoodSciTechLogo },
       { name: "Bruntwood Race Network", logo: bruntwoodRaceNetworkLogo },
     ],
@@ -42,8 +44,6 @@ const groups: { heading: string; logos: { name: string; logo: string }[] }[] = [
   {
     heading: "Partners",
     logos: [
-      { name: "Better Society Capital", logo: betterSocietyCapitalLogo },
-      { name: "Good Finance", logo: goodFinanceLogo },
       { name: "Social Investment Business", logo: socialInvestmentBusinessLogo },
       { name: "GM Business Growth Hub", logo: gmGrowthHubLogo },
       { name: "Manchester Metropolitan University", logo: manchesterMetropolitanUniversityLogo },
@@ -130,16 +130,22 @@ const TrustStripV3 = () => {
                         <div
                           key={`${partner.name}-${pass}`}
                           aria-hidden={pass === 1}
-                          className="shrink-0 bg-white rounded-lg px-6 py-4 flex items-center justify-center h-[74px] md:h-[84px]"
+                          className={`shrink-0 rounded-lg px-5 py-4 flex items-center justify-center h-[88px] md:h-[100px] ${
+                            partner.name === "UK Black Tech" ? "bg-[#15171A]" : "bg-white"
+                          }`}
                         >
                           <img
                             src={partner.logo}
                             alt={partner.name}
-                            className={
+                            className={`w-auto object-contain ${
                               partner.name === "Our Business GM"
-                                ? "h-6 max-w-[220px] w-auto object-contain grayscale hover:grayscale-0 transition-[filter]"
-                                : "h-8 md:h-10 max-w-[180px] md:max-w-[220px] w-auto object-contain grayscale hover:grayscale-0 transition-[filter]"
-                            }
+                                ? "h-7 md:h-8 max-w-[260px]"
+                                : partner.name === "Bruntwood Race Network"
+                                  ? "h-14 md:h-16 max-w-[100px]"
+                                  : partner.name === "Manchester Metropolitan University"
+                                    ? "h-12 md:h-14 max-w-[240px]"
+                                    : "h-10 md:h-12 max-w-[220px] md:max-w-[270px]"
+                            }`}
                           />
                         </div>
                       ))}

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight } from "lucide-react";
 import { parseStatValue } from "@/hooks/useCountUp";
 import heroPortrait from "@/assets/v3/cta-boardroom-cropped.png";
 
@@ -519,9 +518,9 @@ const HeroV3 = () => {
           </span>
         </h1>
 
-        {/* Sub-copy + CTA — entrance 3 */}
+        {/* Sub-copy — entrance 3. Contact remains in the persistent header. */}
         <div
-          className="flex flex-col lg:flex-row lg:items-end lg:justify-between mt-12 gap-8 lg:gap-16 opacity-0"
+          className="mt-12 opacity-0"
           style={{
             animation:
               "heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 700ms forwards",
@@ -533,15 +532,6 @@ const HeroV3 = () => {
             can scale locally, nationally and globally.
           </p>
 
-          <a
-            href="mailto:info@epiphinyflow.com?subject=Epiphiny%20Flow%20enquiry"
-            className="inline-flex items-center gap-3 bg-[#15171A] text-[#00E7C3] pl-8 pr-6 py-4 rounded-full text-[15px] font-semibold hover:bg-[#2a2d32] transition-colors group w-fit"
-          >
-            Contact us
-            <span className="w-8 h-8 rounded-full bg-[#00E7C3]/10 flex items-center justify-center group-hover:bg-[#00E7C3]/20 transition-colors">
-              <ArrowRight className="w-4 h-4" />
-            </span>
-          </a>
         </div>
 
         {/* Stat bar — staggered entrance + counter animation */}
