@@ -2,6 +2,7 @@ import { ArrowRight, Globe2, Network, Users } from "lucide-react";
 import HeaderV3 from "@/components/v3/HeaderV3";
 import FooterV3 from "@/components/v3/FooterV3";
 import StatusBadge from "@/components/v3/StatusBadge";
+import communityCanaryWharf from "@/assets/v2/networking-canary-wharf.jpg";
 
 const CommunityV3 = () => (
   <div
@@ -30,6 +31,38 @@ const CommunityV3 = () => (
             opportunities that support inclusive growth.
           </p>
           <StatusBadge status="development" />
+        </div>
+      </section>
+
+      <section className="bg-white v3-related-tail">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-20">
+          <div className="relative rounded-[20px] overflow-hidden h-[480px] md:h-[500px]">
+            <img
+              src={communityCanaryWharf}
+              alt="Diaspora professionals connecting at a Canary Wharf event"
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ objectPosition: "center 42%" }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#101316]/95 via-[#15191D]/80 to-transparent" />
+            <div className="absolute inset-0 flex items-end">
+              <div className="max-w-[620px] p-7 md:p-16">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-9 h-[2px] bg-[#00E7C3]" />
+                  <span className="text-[11px] font-semibold tracking-[3px] uppercase text-[#00E7C3]">
+                    The network
+                  </span>
+                </div>
+                <h2 className="font-serif text-[30px] md:text-[40px] text-white leading-[1.16] tracking-[-0.02em] mb-5">
+                  Trusted relationships. Shared knowledge. Local to global.
+                </h2>
+                <p className="text-white/70 text-[15px] md:text-[16px] leading-[1.8]">
+                  Meaningful introductions rather than cold outreach, practical
+                  insight from across the network and connections across regions
+                  and borders.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

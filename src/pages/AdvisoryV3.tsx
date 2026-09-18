@@ -111,32 +111,37 @@ const AdvisoryV3 = () => {
           </div>
         </section>
 
-        {/* The picture does the same job as the copy: someone being advised,
-            in the room where it happens. Not decoration. */}
+        {/* The picture and argument share one editorial frame. The gradient moves
+            toward the copy, leaving the founder's face unobscured. */}
         <section className="bg-white v3-related-tail">
           <div className="max-w-[1440px] mx-auto px-6 md:px-20">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-              <div className="lg:col-span-7">
-                <div className="rounded-[20px] overflow-hidden h-[320px] md:h-[440px]">
-                  <img
-                    src={founderConsultancy}
-                    alt="A founder mid-answer across a table from an advisor, a single sheet between them"
-                    className="w-full h-full object-cover"
-                    style={{ objectPosition: "center 30%" }}
-                  />
+            <div className="relative rounded-[20px] overflow-hidden h-[480px] md:h-[500px]">
+              <img
+                src={founderConsultancy}
+                alt="A founder mid-answer across a table from an advisor, a single sheet between them"
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ objectPosition: "center 30%" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#101316]/95 via-[#15191D]/80 to-transparent" />
+              <div className="absolute inset-0 flex items-end">
+                <div className="max-w-[620px] p-7 md:p-16">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-9 h-[2px] bg-[#00E7C3]" />
+                    <span className="text-[11px] font-semibold tracking-[3px] uppercase text-[#00E7C3]">
+                      In the room
+                    </span>
+                  </div>
+                  <h2 className="font-serif text-[30px] md:text-[40px] text-white leading-[1.16] tracking-[-0.02em] mb-5">
+                    Most founders do not need a pitch deck. They need the right
+                    introduction.
+                  </h2>
+                  <p className="text-white/70 text-[15px] md:text-[16px] leading-[1.8]">
+                    Our advisory board covers access to investment and funding,
+                    investment readiness, marketing, intellectual property and
+                    partnerships. You get the specialists your situation actually
+                    calls for, not a generic package.
+                  </p>
                 </div>
-              </div>
-              <div className="lg:col-span-5">
-                <h2 className="font-serif text-[26px] md:text-[32px] text-[#15171A] leading-[1.25] mb-5">
-                  Most founders do not need a pitch deck. They need the right
-                  introduction.
-                </h2>
-                <p className="text-gray-500 text-[16px] leading-[1.8]">
-                  Our advisory board covers access to investment and funding,
-                  investment readiness, marketing, intellectual property and
-                  partnerships. You get the specialists your situation actually
-                  calls for, not a generic package.
-                </p>
               </div>
             </div>
           </div>

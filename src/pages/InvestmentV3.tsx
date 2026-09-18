@@ -3,6 +3,7 @@ import HeaderV3 from "@/components/v3/HeaderV3";
 import FooterV3 from "@/components/v3/FooterV3";
 import CapitalFlowV3 from "@/components/v3/CapitalFlowV3";
 import StatusBadge from "@/components/v3/StatusBadge";
+import fundAsianProfessional from "@/assets/v3/fund-asian-professional-vitaly-gariev-unsplash.jpg";
 
 const Overline = ({ label }: { label: string }) => (
   <div className="flex items-center gap-4 mb-6">
@@ -89,6 +90,39 @@ const InvestmentV3 = () => {
                 Tell us about your business
                 <ArrowRight className="w-4 h-4" />
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Photo: Vitaly Gariev / Unsplash, free under the Unsplash License.
+            Source: https://unsplash.com/photos/Sc2iIlwScic */}
+        <section className="bg-white v3-related-tail">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-20">
+            <div className="relative rounded-[20px] overflow-hidden h-[480px] md:h-[500px]">
+              <img
+                src={fundAsianProfessional}
+                alt="Asian female professional working at a laptop in a modern office"
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ objectPosition: "center 44%" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#101316]/95 via-[#15191D]/80 to-transparent" />
+              <div className="absolute inset-0 flex items-end">
+                <div className="max-w-[620px] p-7 md:p-16">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-9 h-[2px] bg-[#00E7C3]" />
+                    <span className="text-[11px] font-semibold tracking-[3px] uppercase text-[#00E7C3]">
+                      The opportunity
+                    </span>
+                  </div>
+                  <h2 className="font-serif text-[30px] md:text-[40px] text-white leading-[1.16] tracking-[-0.02em] mb-5">
+                    A proposed route from backers to businesses ready to grow.
+                  </h2>
+                  <p className="text-white/70 text-[15px] md:text-[16px] leading-[1.8]">
+                    The model is being designed to connect patient capital with
+                    investment-ready diasporic businesses across the UK.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
