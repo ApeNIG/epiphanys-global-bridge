@@ -49,6 +49,14 @@ type TeamMember = {
 };
 
 const teamMembers: TeamMember[] = [
+  /* Ordered to alternate man, woman, man, starting with Robert Croll
+     (Siba's instruction, 2026-09-20). The board is seven men and five
+     women, so the first ten alternate and the last two are both men;
+     twelve cannot alternate perfectly from an uneven split. Gender was
+     taken from the pronouns in each person's own bio below, and Rob's
+     from the He/Him in his email signature. Within each gender the
+     previous relative order is unchanged. If a member is added or
+     removed, re-derive this order rather than appending to the end. */
   {
     name: "Robert Croll",
     role: "Founder & Director",
@@ -63,6 +71,21 @@ const teamMembers: TeamMember[] = [
     overlay: "bg-black/45",
   },
   {
+    name: "Martina Witter",
+    role: "Non-Executive Director",
+    bio: "Therapy and health and wellbeing expert, and CEO of TEDx Trafford.",
+    fullBio: [
+      "Martina Witter is Director of the award-winning Rapha Therapy & Training Services, a BABCP-accredited Cognitive Behaviour Therapist, keynote speaker, confidence coach, health and wellbeing consultant, author, podcast host (Rivers to Resilience) and resilience expert. She is Founder of Black Mental Wealth and co-founder of the Black Women in Business and Professionals Network, Vice Chair of the Greater Manchester Combined Authority Race Equality Panel, a CIPD Manchester Committee member leading on Diversity, Equity and Inclusion, Chair of the Pro-Manchester Wellbeing Champions Committee, and TEDxTrafford Curator and Lead Speaker Coach.",
+      "With over 20 years' experience in the wellbeing and mental health field, Martina empowers diverse individuals and organisations to leverage resilience and develop sustainable, strong mindsets that turn bottlenecks into breakthroughs and increase performance and productivity. Her contributions have been featured in HuffPost, Thrive Global, Metro, The Voice, the Financial Times and on BBC Radio Manchester, and she has worked with global brands including AMEX, the JD Group and Oliver Wyman.",
+      "Martina delivers transformational, dynamic and experiential training, coaching and psychological therapy in innovative and accessible ways, drawing on her own life experiences to connect with, empathise with and empower her audiences and clients. Her passion for business, inclusivity and collaboration is evident through Black Mental Wealth, a platform for Black and mixed-heritage individuals that challenges stigma and raises awareness of culturally appropriate solutions, and through the Black Women in Business and Professionals Network, which expands networks, creates access to Black female role models and builds community through quarterly events in Manchester.",
+    ],
+    initials: "MW",
+    bg: "#2a1e2a",
+    photo: martinaWitter,
+    photoPos: "center 6%",
+    overlay: "bg-black/45",
+  },
+  {
     name: "Abayomi Alemoru",
     role: "Non-Executive Director",
     bio: "Exited law firm owner and a solicitor of 30 years, specialising in employment.",
@@ -74,6 +97,21 @@ const teamMembers: TeamMember[] = [
     bg: "#1e2a3a",
     photo: abayomiAlemoru,
     photoPos: "center 20%",
+    overlay: "bg-black/45",
+  },
+  {
+    name: "Diana Chrouch OBE",
+    role: "Non-Executive Director",
+    bio: "APPG Special Advisor on ethnic minority businesses and Chair of Ethnic Minority Business Policy.",
+    fullBio: [
+      "Diana Chrouch OBE is a marketing professional and customer-engagement consultant, specialising in proactive digital and traditional media marketing strategies that have taken brands from loss-making to prominence and profitability. A problem-solver known for business and project turnaround, she has worked across sectors from multinational blue chips to SMEs and professional firms, as well as renowned international charities.",
+      "She holds a leading position on the UK Economic Blueprint for Women, creating corporate partnerships for a national strategy to support women-led start-ups and scale-ups, an initiative spearheaded by the Pink Shoe Club. A first-class graduate who trained in marketing in the UK, she studied stakeholder engagement at Dartmouth College in the US and new media at the BBC, with more recent training in big-data strategies and customer relationship management.",
+      "She is the author and creator of The Marketing Toolkit, developed in partnership with the National Association of Women in Construction, and serves as Special Advisor to the All-Party Parliamentary Group for Ethnic Minority Business Owners and Chair of National Ethnic Minority Business Policy for the Federation of Small Businesses.",
+    ],
+    initials: "DC",
+    bg: "#1e2a3a",
+    photo: dianaChrouch,
+    photoPos: "center 15%",
     overlay: "bg-black/45",
   },
   {
@@ -93,6 +131,21 @@ const teamMembers: TeamMember[] = [
     overlay: "bg-black/45",
   },
   {
+    name: "Nadia Shiraz",
+    role: "Non-Executive Director",
+    bio: "Operations Manager at Inclusive North, specialising in high-value programme delivery, governance and cross-sector partnerships.",
+    fullBio: [
+      "Nadia Shiraz is Operations Manager at Inclusive North, with extensive experience in leading high-value projects and managing complex programmes and contracts. She plays a key role in translating organisational strategy into effective delivery, ensuring strong governance, robust systems and consistently high standards across the organisation.",
+      "She has a strong track record of developing and maintaining strategic partnerships across the public, private and voluntary sectors, and is experienced in managing complex stakeholder relationships, coordinating competing priorities and ensuring programmes deliver against agreed outcomes, contractual requirements and organisational objectives.",
+      "With a strong focus on operational excellence, collaboration and continuous improvement, Nadia brings a practical and solutions-focused approach to her role.",
+    ],
+    initials: "NS",
+    bg: "#1e2e2a",
+    photo: nadiaShiraz,
+    photoPos: "center 14%",
+    overlay: "bg-black/45",
+  },
+  {
     name: "Saj Purkayastha",
     role: "Non-Executive Director",
     bio: "Marketing expert and entrepreneur who has driven over $100M in marketing sales for business income.",
@@ -108,18 +161,17 @@ const teamMembers: TeamMember[] = [
     overlay: "bg-black/50",
   },
   {
-    name: "Martina Witter",
+    name: "Naz Zaman",
     role: "Non-Executive Director",
-    bio: "Therapy and health and wellbeing expert, and CEO of TEDx Trafford.",
+    bio: "CEO of Inclusive North, leading fund deployment for the Phoenix Way and Pathway Fund for diaspora community-owned business, and a social impact and fundraising specialist.",
     fullBio: [
-      "Martina Witter is Director of the award-winning Rapha Therapy & Training Services, a BABCP-accredited Cognitive Behaviour Therapist, keynote speaker, confidence coach, health and wellbeing consultant, author, podcast host (Rivers to Resilience) and resilience expert. She is Founder of Black Mental Wealth and co-founder of the Black Women in Business and Professionals Network, Vice Chair of the Greater Manchester Combined Authority Race Equality Panel, a CIPD Manchester Committee member leading on Diversity, Equity and Inclusion, Chair of the Pro-Manchester Wellbeing Champions Committee, and TEDxTrafford Curator and Lead Speaker Coach.",
-      "With over 20 years' experience in the wellbeing and mental health field, Martina empowers diverse individuals and organisations to leverage resilience and develop sustainable, strong mindsets that turn bottlenecks into breakthroughs and increase performance and productivity. Her contributions have been featured in HuffPost, Thrive Global, Metro, The Voice, the Financial Times and on BBC Radio Manchester, and she has worked with global brands including AMEX, the JD Group and Oliver Wyman.",
-      "Martina delivers transformational, dynamic and experiential training, coaching and psychological therapy in innovative and accessible ways, drawing on her own life experiences to connect with, empathise with and empower her audiences and clients. Her passion for business, inclusivity and collaboration is evident through Black Mental Wealth, a platform for Black and mixed-heritage individuals that challenges stigma and raises awareness of culturally appropriate solutions, and through the Black Women in Business and Professionals Network, which expands networks, creates access to Black female role models and builds community through quarterly events in Manchester.",
+      "Naz Zaman brings over 20 years of experience in voluntary sector management and strategic leadership. She is Founder of the Independent Race & Equality Partnership for Lancashire and South Cumbria (IREP) and one of the founding members of The Phoenix Way, a national collaborative of Black, Asian and racially-minoritised leaders working to address the inequity in funding and investment in Black and racially minoritised communities.",
+      "A member of the Chartered Management Institute, she is skilled in income generation, business development, and strategic and operational management. She holds a Postgraduate Certificate in Voluntary Sector Management and is qualified to ILM Level 7 in Leadership and Management, with a deep interest in and passion for equality, diversity and inclusion.",
     ],
-    initials: "MW",
-    bg: "#2a1e2a",
-    photo: martinaWitter,
-    photoPos: "center 6%",
+    initials: "NZ",
+    bg: "#2a2a1e",
+    photo: nazZaman,
+    photoPos: "center 10%",
     overlay: "bg-black/45",
   },
   {
@@ -138,47 +190,22 @@ const teamMembers: TeamMember[] = [
     overlay: "bg-black/45",
   },
   {
-    name: "Diana Chrouch OBE",
+    // Added 2026-09-02. She has had a profile and a headshot in the client's
+    // Drive NED Board folder since 30 August and was on no version of this page:
+    // the folder holds twelve people and the site held eleven.
+    name: "Prof Erinma Bell MBE DL",
     role: "Non-Executive Director",
-    bio: "APPG Special Advisor on ethnic minority businesses and Chair of Ethnic Minority Business Policy.",
+    bio: "Peace activist, community leader and educator, and Chair of the Greater Manchester Police Force Independent Advisory Committee.",
     fullBio: [
-      "Diana Chrouch OBE is a marketing professional and customer-engagement consultant, specialising in proactive digital and traditional media marketing strategies that have taken brands from loss-making to prominence and profitability. A problem-solver known for business and project turnaround, she has worked across sectors from multinational blue chips to SMEs and professional firms, as well as renowned international charities.",
-      "She holds a leading position on the UK Economic Blueprint for Women, creating corporate partnerships for a national strategy to support women-led start-ups and scale-ups, an initiative spearheaded by the Pink Shoe Club. A first-class graduate who trained in marketing in the UK, she studied stakeholder engagement at Dartmouth College in the US and new media at the BBC, with more recent training in big-data strategies and customer relationship management.",
-      "She is the author and creator of The Marketing Toolkit, developed in partnership with the National Association of Women in Construction, and serves as Special Advisor to the All-Party Parliamentary Group for Ethnic Minority Business Owners and Chair of National Ethnic Minority Business Policy for the Federation of Small Businesses.",
+      "Professor Erinma Bell MBE DL is a prominent peace activist, community leader and educator dedicated to fostering positive change in the Greater Manchester area. With a passion for social justice and community empowerment, Erinma has dedicated her life to bridging divides and promoting unity among diverse communities.",
+      "As Chair of the Greater Manchester Police Force Independent Advisory Committee, she has been instrumental in building trust and collaboration between law enforcement and the communities they serve, work that has led to significant advances in community policing and in dialogue and understanding.",
+      "Alongside that work she is Chair of the Fabric Advisory Committee of Manchester Cathedral and a Trustee of Emerge 3Rs, Chair of the Ethics Committee of Trinity High School and Chair of the Nostalgia Trust, and a founding member and Trustee of Bishopthorpe Charitable Partner's Trust, further demonstrating her commitment to education and community development.",
+      "Her dedication to peace and social justice has earned her numerous accolades, including Member of the Order of the British Empire (MBE) and the title of Deputy Lieutenant (DL). Her leadership, compassion and vision continue to inspire positive change across Greater Manchester and beyond.",
     ],
-    initials: "DC",
-    bg: "#1e2a3a",
-    photo: dianaChrouch,
-    photoPos: "center 15%",
-    overlay: "bg-black/45",
-  },
-  {
-    name: "Nadia Shiraz",
-    role: "Non-Executive Director",
-    bio: "Operations Manager at Inclusive North, specialising in high-value programme delivery, governance and cross-sector partnerships.",
-    fullBio: [
-      "Nadia Shiraz is Operations Manager at Inclusive North, with extensive experience in leading high-value projects and managing complex programmes and contracts. She plays a key role in translating organisational strategy into effective delivery, ensuring strong governance, robust systems and consistently high standards across the organisation.",
-      "She has a strong track record of developing and maintaining strategic partnerships across the public, private and voluntary sectors, and is experienced in managing complex stakeholder relationships, coordinating competing priorities and ensuring programmes deliver against agreed outcomes, contractual requirements and organisational objectives.",
-      "With a strong focus on operational excellence, collaboration and continuous improvement, Nadia brings a practical and solutions-focused approach to her role.",
-    ],
-    initials: "NS",
-    bg: "#1e2e2a",
-    photo: nadiaShiraz,
-    photoPos: "center 14%",
-    overlay: "bg-black/45",
-  },
-  {
-    name: "Naz Zaman",
-    role: "Non-Executive Director",
-    bio: "CEO of Inclusive North, leading fund deployment for the Phoenix Way and Pathway Fund for diaspora community-owned business, and a social impact and fundraising specialist.",
-    fullBio: [
-      "Naz Zaman brings over 20 years of experience in voluntary sector management and strategic leadership. She is Founder of the Independent Race & Equality Partnership for Lancashire and South Cumbria (IREP) and one of the founding members of The Phoenix Way, a national collaborative of Black, Asian and racially-minoritised leaders working to address the inequity in funding and investment in Black and racially minoritised communities.",
-      "A member of the Chartered Management Institute, she is skilled in income generation, business development, and strategic and operational management. She holds a Postgraduate Certificate in Voluntary Sector Management and is qualified to ILM Level 7 in Leadership and Management, with a deep interest in and passion for equality, diversity and inclusion.",
-    ],
-    initials: "NZ",
-    bg: "#2a2a1e",
-    photo: nazZaman,
-    photoPos: "center 10%",
+    initials: "EB",
+    bg: "#2e2436",
+    photo: erinmaBell,
+    photoPos: "center 16%",
     overlay: "bg-black/45",
   },
   {
@@ -213,25 +240,6 @@ const teamMembers: TeamMember[] = [
     bg: "#22331e",
     photo: steveConway,
     photoPos: "center 22%",
-    overlay: "bg-black/45",
-  },
-  {
-    // Added 2026-09-02. She has had a profile and a headshot in the client's
-    // Drive NED Board folder since 30 August and was on no version of this page:
-    // the folder holds twelve people and the site held eleven.
-    name: "Prof Erinma Bell MBE DL",
-    role: "Non-Executive Director",
-    bio: "Peace activist, community leader and educator, and Chair of the Greater Manchester Police Force Independent Advisory Committee.",
-    fullBio: [
-      "Professor Erinma Bell MBE DL is a prominent peace activist, community leader and educator dedicated to fostering positive change in the Greater Manchester area. With a passion for social justice and community empowerment, Erinma has dedicated her life to bridging divides and promoting unity among diverse communities.",
-      "As Chair of the Greater Manchester Police Force Independent Advisory Committee, she has been instrumental in building trust and collaboration between law enforcement and the communities they serve, work that has led to significant advances in community policing and in dialogue and understanding.",
-      "Alongside that work she is Chair of the Fabric Advisory Committee of Manchester Cathedral and a Trustee of Emerge 3Rs, Chair of the Ethics Committee of Trinity High School and Chair of the Nostalgia Trust, and a founding member and Trustee of Bishopthorpe Charitable Partner's Trust, further demonstrating her commitment to education and community development.",
-      "Her dedication to peace and social justice has earned her numerous accolades, including Member of the Order of the British Empire (MBE) and the title of Deputy Lieutenant (DL). Her leadership, compassion and vision continue to inspire positive change across Greater Manchester and beyond.",
-    ],
-    initials: "EB",
-    bg: "#2e2436",
-    photo: erinmaBell,
-    photoPos: "center 16%",
     overlay: "bg-black/45",
   },
 ];

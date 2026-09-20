@@ -1,6 +1,6 @@
 import HeaderV3 from "@/components/v3/HeaderV3";
 import FooterV3 from "@/components/v3/FooterV3";
-import { Calendar, MapPin, Mail, TrendingUp, ArrowRight } from "lucide-react";
+import { Calendar, MapPin, Mail, TrendingUp } from "lucide-react";
 import gsbPoster from "@/assets/events/gsb-2026-poster.jpg";
 import gsbAttendees from "@/assets/events/gsb-2025-attendees.jpg";
 import gmcaLogo from "@/assets/partners/gmca-logo.png";
@@ -18,9 +18,9 @@ const details = [
   },
   {
     icon: Mail,
-    label: "Register your interest",
+    label: "Enquiries",
     value: "info@epiphinyflow.com",
-    href: "mailto:info@epiphinyflow.com?subject=Grow%20Scale%20Boost%202026%20-%20Register%20my%20interest",
+    href: "mailto:info@epiphinyflow.com?subject=Grow%20Scale%20Boost%202026%20-%20Enquiry",
   },
 ];
 
@@ -74,9 +74,17 @@ const Events = () => (
 
             {/* Details */}
             <div className="lg:pt-4">
-              <span className="inline-block text-[11px] font-bold tracking-[2px] uppercase text-[#2A9D8F] bg-[#00E7C3]/10 px-3 py-1.5 rounded-full mb-6">
-                Save the date
-              </span>
+              {/* Invite only, and the removal of the register CTA below it, are
+                  Robert Croll's instruction of 2026-09-20. The event is not
+                  open for registration, so nothing on this page may invite it. */}
+              <div className="flex flex-wrap items-center gap-2 mb-6">
+                <span className="inline-block text-[11px] font-bold tracking-[2px] uppercase text-[#2A9D8F] bg-[#00E7C3]/10 px-3 py-1.5 rounded-full">
+                  Save the date
+                </span>
+                <span className="inline-block text-[11px] font-bold tracking-[2px] uppercase text-[#6D3FD4] bg-[#8B5CF6]/10 px-3 py-1.5 rounded-full">
+                  Invite only
+                </span>
+              </div>
 
               <div className="space-y-6 mb-10">
                 {details.map((d) => {
@@ -127,20 +135,11 @@ const Events = () => (
                 </div>
               </div>
 
-              <p className="text-[15px] text-gray-500 leading-[1.7] mb-8">
-                Places are extremely limited due to the nature of this event.
-                Register your interest early to be considered.
+              <p className="text-[15px] text-gray-500 leading-[1.7]">
+                This event is invite only. Places are extremely limited due to
+                the nature of the event, and attendance is by invitation from
+                the Epiphiny Flow team.
               </p>
-
-              <a
-                href="mailto:info@epiphinyflow.com?subject=Grow%20Scale%20Boost%202026%20-%20Register%20my%20interest"
-                className="inline-flex items-center gap-3 bg-[#15171A] text-[#00E7C3] pl-8 pr-6 py-4 rounded-full text-[15px] font-semibold hover:bg-[#2a2d32] transition-colors group w-fit"
-              >
-                Register your interest
-                <span className="w-8 h-8 rounded-full bg-[#00E7C3]/10 flex items-center justify-center group-hover:bg-[#00E7C3]/20 transition-colors">
-                  <ArrowRight className="w-4 h-4" />
-                </span>
-              </a>
             </div>
           </div>
         </div>

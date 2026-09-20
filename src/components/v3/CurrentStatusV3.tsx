@@ -46,8 +46,8 @@ const ITEMS: Item[] = [
   {
     state: "live",
     name: "Events",
-    body: "Grow Scale Boost ran in 2025 and returns to Factory International, Manchester, on 27 October 2026.",
-    action: "Register your interest",
+    body: "Grow Scale Boost ran in 2025 and returns to Factory International, Manchester, on 27 October 2026. It is invite only.",
+    action: "See the event",
     href: "/events",
     internal: true,
   },

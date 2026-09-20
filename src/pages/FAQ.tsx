@@ -93,7 +93,7 @@ const groups: Group[] = [
       },
       {
         q: "How do I attend the event?",
-        a: "Places are extremely limited due to the nature of the event. Register your interest by email at info@epiphinyflow.com and we will be in touch.",
+        a: "Grow Scale Boost 2026 is invite only. Places are extremely limited due to the nature of the event, and attendance is by invitation from the Epiphiny Flow team. For any enquiry, email info@epiphinyflow.com.",
       },
       {
         q: "How do I get in touch?",
