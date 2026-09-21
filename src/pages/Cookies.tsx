@@ -158,7 +158,14 @@ const Cookies = () => (
           <h1 className="font-serif text-[clamp(2.25rem,5vw,3.5rem)] text-[#15171A] leading-[1.1] tracking-[-0.02em] mb-4">
             Cookie Policy
           </h1>
+          {/* Authorship line added on Robert Croll's instruction, 2026-09-21.
+              His email spelled the middle name "Alabi Sibagun"; the correct
+              spelling is Alabi Ibagun, which is what the board entry on /about
+              has always used. */}
           <p className="text-gray-400 text-[14px]">Last updated: 18 September 2026</p>
+          <p className="text-gray-400 text-[14px] mt-1">
+            Authored by Edwin Luther, Alabi Ibagun and Robert Croll
+          </p>
         </div>
       </section>
 

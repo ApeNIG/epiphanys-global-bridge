@@ -23,11 +23,11 @@ import abayomiAlemoru from "@/assets/team/abayomi-alemoru.jpg";
 import nazZaman from "@/assets/team/naz-zaman.jpg";
 import alabiIbagun from "@/assets/team/alabi-ibagun.jpg";
 import kashifAshraf from "@/assets/team/kashif-ashraf.jpg";
-import dianaChrouch from "@/assets/advisors/diana.jpg";
 import robertCroll from "@/assets/team/robert-croll.jpg";
 import nadiaShiraz from "@/assets/team/nadia-shiraz.jpg";
 import steveConway from "@/assets/team/steve-conway.jpg";
 import erinmaBell from "@/assets/team/erinma-bell.jpg";
+import paulaWatt from "@/assets/team/paula-watt.jpg";
 
 /* The closed strip labels each member by first name. Taking name.split(" ")[0]
    raw made Prof Erinma Bell's label read "PROF" while every other label was a
@@ -100,18 +100,28 @@ const teamMembers: TeamMember[] = [
     overlay: "bg-black/45",
   },
   {
-    name: "Diana Chrouch OBE",
+    // Paula Watt replaces Diana Chrouch in this slot, Robert Croll's
+    // instruction of 2026-09-21: "Please take Diana off NED but leave on
+    // Advisory for now." Diana remains on /advisory/board, untouched. The
+    // swap is woman-for-woman, so the man/woman alternation described above
+    // is unchanged and the board is still twelve.
+    //
+    // Rob supplied two different bios in the same email: this one, pasted
+    // under "bio below" in the instruction itself, and an earlier ~100-word
+    // version forwarded beneath it that opens on her being a mother of two
+    // adult children. The later, deliberate one is used here. Split into two
+    // paragraphs to match the other entries; wording is his, unchanged.
+    name: "Paula Watt",
     role: "Non-Executive Director",
-    bio: "APPG Special Advisor on ethnic minority businesses and Chair of Ethnic Minority Business Policy.",
+    bio: "SEND, equality and inclusion specialist, school governor and youth mentor, and Chair of the WLL Alumni Network.",
     fullBio: [
-      "Diana Chrouch OBE is a marketing professional and customer-engagement consultant, specialising in proactive digital and traditional media marketing strategies that have taken brands from loss-making to prominence and profitability. A problem-solver known for business and project turnaround, she has worked across sectors from multinational blue chips to SMEs and professional firms, as well as renowned international charities.",
-      "She holds a leading position on the UK Economic Blueprint for Women, creating corporate partnerships for a national strategy to support women-led start-ups and scale-ups, an initiative spearheaded by the Pink Shoe Club. A first-class graduate who trained in marketing in the UK, she studied stakeholder engagement at Dartmouth College in the US and new media at the BBC, with more recent training in big-data strategies and customer relationship management.",
-      "She is the author and creator of The Marketing Toolkit, developed in partnership with the National Association of Women in Construction, and serves as Special Advisor to the All-Party Parliamentary Group for Ethnic Minority Business Owners and Chair of National Ethnic Minority Business Policy for the Federation of Small Businesses.",
+      "Paula is a Manchester-born leader, governor, mentor and advocate with extensive expertise in Special Educational Needs and Disabilities (SEND), Equality, Inclusion and Diversity. She brings a strong strategic focus on advancing equity, widening opportunity and creating inclusive environments where individuals and communities can thrive.",
+      "As Chair of the WLL Alumni Network, Paula is committed to developing excellent global majority leaders across Greater Manchester, strengthening leadership pipelines and creating opportunities for emerging talent. She also serves as a school governor and youth mentor, supporting educational outcomes and empowering young people to realise their potential. As an ambassador for race equity and inclusion, Paula combines strategic leadership with a deep commitment to meaningful, sustainable change.",
     ],
-    initials: "DC",
-    bg: "#1e2a3a",
-    photo: dianaChrouch,
-    photoPos: "center 15%",
+    initials: "PW",
+    bg: "#2b2333",
+    photo: paulaWatt,
+    photoPos: "center 12%",
     overlay: "bg-black/45",
   },
   {

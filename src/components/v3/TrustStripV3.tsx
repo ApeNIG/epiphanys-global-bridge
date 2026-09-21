@@ -15,6 +15,11 @@ import bruntwoodRaceNetworkLogo from "@/assets/partners/bruntwood-race-network-l
 import manchesterMetropolitanUniversityLogo from "@/assets/partners/manchester-metropolitan-university-logo.png";
 import proManchesterLogo from "@/assets/partners/pro-manchester-logo-display.png";
 import greaterManchesterChamberLogo from "@/assets/partners/greater-manchester-chamber-logo-display.png";
+/* Frame pulled from hero-video.mp4 at t=5, the same offset the video starts at,
+   so a refused autoplay holds the exact frame playback would have begun on.
+   Unfiltered on purpose: the element's CSS grayscale/brightness filter applies
+   to the poster too, so a pre-graded still would be graded twice. */
+import missionVideoPoster from "@/assets/v3/mission-video-poster.jpg";
 
 /* Grouped exactly as the client's Drive folders are grouped, which is the
    client's own statement of who belongs where:
@@ -88,16 +93,56 @@ const TrustStripV3 = () => {
             </h2>
           </div>
 
-          {/* Editorial video — B&W, below mission text */}
-          <div className="rounded-2xl overflow-hidden h-[240px] md:h-[360px] mt-14 relative">
+          {/* Editorial video — B&W, below mission text.
+
+              Robert Croll reported it missing on iPad and phone, 2026-09-21.
+              Probed against the live site with device emulation: iPad played,
+              iPhone did not (paused, readyState 1, never buffered past
+              metadata), and the section rendered as an empty cream box. Three
+              causes, all addressed here:
+
+              1. The `muted` ATTRIBUTE was absent from the DOM. React applies
+                 muted as a PROPERTY only, and iOS Safari decides whether to
+                 allow unattended playback by reading the attribute as the
+                 element loads. The ref below sets the real attribute before
+                 the first play attempt. This is the one that actually blocks
+                 iOS, and it is invisible in the JSX — `muted` is right there
+                 in the old code and still never reached the DOM.
+              2. No `poster`. When autoplay is refused for any reason — Low
+                 Power Mode, Data Saver, a policy we do not control — the
+                 element paints nothing. A poster means the worst case is a
+                 still frame rather than a hole in the page.
+              3. The `#t=5` media fragment. iOS is unreliable about seeking a
+                 fragment on an autoplaying element; the start offset is now
+                 applied in JS on loadedmetadata instead, which is the same
+                 intent expressed in a way every browser honours. */}
+          <div className="rounded-2xl overflow-hidden h-[240px] md:h-[360px] mt-14 relative bg-[#1d1f22]">
             <video
+              ref={(el) => {
+                if (!el) return;
+                el.setAttribute("muted", "");
+                el.muted = true;
+                el.defaultMuted = true;
+              }}
               className="w-full h-full object-cover object-[center_20%]"
-              src="/videos/hero-video.mp4#t=5"
+              src="/videos/hero-video.mp4"
+              poster={missionVideoPoster}
               autoPlay
               loop
               muted
               playsInline
+              preload="metadata"
+              aria-label="Epiphiny Flow community footage"
               style={{ filter: "grayscale(100%) brightness(0.7)" }}
+              onLoadedMetadata={(e) => {
+                const vid = e.currentTarget;
+                if (vid.currentTime < 5) vid.currentTime = 5;
+                /* Autoplay can still be refused. Ask once, and swallow the
+                   rejection: the poster is already the fallback, and an
+                   unhandled rejection here would surface in the console on
+                   every phone visit. */
+                void vid.play().catch(() => {});
+              }}
               onTimeUpdate={(e) => {
                 const vid = e.currentTarget;
                 if (vid.currentTime < 5 || vid.currentTime > 35.7) vid.currentTime = 5;

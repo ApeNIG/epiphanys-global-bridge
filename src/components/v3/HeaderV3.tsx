@@ -71,12 +71,32 @@ const HeaderV3 = () => {
       }`}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-20 flex items-center justify-between h-[72px]">
-        <Link to="/" className="flex items-center gap-1.5">
-          <img src={logo} alt="Epiphiny Flow" className="w-9 h-9 object-contain" />
-          <span className="text-xl tracking-wide text-[#15171A]" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600 }}>
-            Epiphiny Flow
+        <div className="flex items-center gap-2 md:gap-2.5 min-w-0">
+          <Link to="/" className="flex items-center gap-1.5 min-w-0">
+            <img src={logo} alt="Epiphiny Flow" className="w-9 h-9 object-contain shrink-0" />
+            <span className="text-xl tracking-wide text-[#15171A] truncate" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600 }}>
+              Epiphiny Flow
+            </span>
+          </Link>
+          {/* BETA marker, Robert Croll's instruction of 2026-09-21: "insert
+              'BETA' in a clear coloured box on the website pages". It lives in
+              the header rather than on each page so it cannot fall out of sync
+              across pages, and sits OUTSIDE the home Link so it is a label
+              rather than a second click target on the wordmark.
+
+              Purple, not teal: teal is this site's action colour (CTAs, section
+              rules), and a teal chip would read as a promoted feature rather
+              than a status. Purple already carries system/status meaning here,
+              as on the Events page "Invite only" chip, whose type scale this
+              deliberately matches one step down so it never competes with the
+              wordmark it sits beside. */}
+          <span
+            title="This site is in beta"
+            className="shrink-0 inline-block text-[10px] font-bold tracking-[1.5px] uppercase text-[#6D3FD4] bg-[#8B5CF6]/10 ring-1 ring-[#8B5CF6]/25 px-2 py-[3px] rounded-full leading-none"
+          >
+            Beta
           </span>
-        </Link>
+        </div>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6">
