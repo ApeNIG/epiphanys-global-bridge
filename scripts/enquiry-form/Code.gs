@@ -1,5 +1,5 @@
 /**
- * Epiphiny Flow — website contact form receiver.
+ * Epiphiny Flow, website contact form receiver.
  *
  * Google Apps Script bound to a Google Sheet. Receives a submission from the
  * "Contact us" form on epiphinyflow.com, appends it as a row, and emails
@@ -11,7 +11,7 @@
  * would need someone else to query.
  *
  * ── SETUP, once ──────────────────────────────────────────────────────────
- * 1. Create a Google Sheet, name it e.g. "Epiphiny Flow — website enquiries".
+ * 1. Create a Google Sheet, name it e.g. "Epiphiny Flow, website enquiries".
  * 2. Extensions → Apps Script. Delete the placeholder, paste this file.
  * 3. Run `setup` once from the editor. It creates the header row and asks for
  *    the permissions this needs (edit the Sheet, send mail as you). Approve.
