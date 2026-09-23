@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import ctaBoardroom from "@/assets/v2/manchester-street-portrait.jpg";
+import ContactDialog from "@/components/v3/ContactDialog";
 
 const CtaV3 = () => {
   const ref = useScrollReveal<HTMLDivElement>();
+  const [contactOpen, setContactOpen] = useState(false);
 
   return (
     <section className="relative overflow-hidden bg-[#1a0f2e]">
@@ -54,20 +57,22 @@ const CtaV3 = () => {
                   that the site contacts by email, keeping both would have put
                   two email buttons side by side saying the same thing. */}
               <div className="flex flex-col sm:flex-row items-start gap-4 mt-12">
-                <a
-                  href="mailto:info@epiphinyflow.com?subject=Epiphiny%20Flow%20enquiry"
+                <button
+                  type="button"
+                  onClick={() => setContactOpen(true)}
                   className="inline-flex items-center gap-3 bg-[#00E7C3] text-[#15171A] pl-8 pr-6 py-4 rounded-full text-[15px] font-semibold hover:bg-[#00d4b3] transition-colors group"
                 >
                   Contact us
                   <span className="w-8 h-8 rounded-full bg-[#15171A]/10 flex items-center justify-center group-hover:bg-[#15171A]/20 transition-colors">
                     <ArrowRight className="w-4 h-4" />
                   </span>
-                </a>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <ContactDialog open={contactOpen} onClose={() => setContactOpen(false)} />
     </section>
   );
 };

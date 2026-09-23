@@ -628,10 +628,18 @@ const HeroV3 = () => {
             }}
           >
             <div className="w-full h-full">
+              {/* object-position 40%, not the default 50%: Robert Croll asked on
+                  2026-09-22 to "move the man to the right a little more". The
+                  tile crops a landscape source to a portrait box, so showing
+                  MORE of the image's left pushes the subject right. Compared at
+                  the real tile aspect at 50/45/40/35: 35 crowded the right edge
+                  and clipped his hand on the rail, 40 moves him clearly and
+                  also carries his head out from under the "Boost" label in the
+                  top-left corner. */}
               <img
                 src={heroManchester}
                 alt="Entrepreneur in Manchester"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                className="w-full h-full object-cover object-[40%_center] transition-transform duration-700 group-hover:scale-[1.03]"
               />
             </div>
             {/* Editorial text overlay */}
@@ -646,11 +654,11 @@ const HeroV3 = () => {
                 <em className="not-italic text-[#00E7C3]">borders</em>
               </p>
             </div>
-            <div className="absolute bottom-4 left-4 right-4">
-              <span className="text-[9px] font-semibold tracking-[2px] uppercase text-white/60 drop-shadow-lg">
-                Manchester · London · Lagos
-              </span>
-            </div>
+            {/* The "Manchester · London · Lagos" caption was removed here on
+                Robert Croll's instruction, 2026-09-22. The whole absolutely
+                positioned block goes, not just its text, so nothing is left
+                sitting over the photograph. The same string still exists in
+                HeroV2, which is not the live hero. */}
           </div>
         </div>
         </div>

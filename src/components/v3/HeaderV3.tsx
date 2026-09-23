@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo.png";
+import ContactDialog from "@/components/v3/ContactDialog";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -43,6 +44,7 @@ const HeaderV3 = () => {
   const [scrolled, setScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [contactOpen, setContactOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -132,13 +134,14 @@ const HeaderV3 = () => {
         </nav>
 
         <div className="flex items-center gap-4">
-          <a
-            href="mailto:info@epiphinyflow.com?subject=Epiphiny%20Flow%20enquiry"
+          <button
+            type="button"
+            onClick={() => setContactOpen(true)}
             className="hidden sm:flex items-center gap-2 bg-[#15171A] text-[#00E7C3] px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#2a2d32] transition-colors"
           >
             Contact us
             <ArrowRight className="w-3.5 h-3.5" />
-          </a>
+          </button>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="md:hidden p-2"
@@ -193,16 +196,21 @@ const HeaderV3 = () => {
             )
           )}
           <div className="flex items-center gap-3 pt-3 border-t border-gray-100 mt-2">
-            <a
-              href="mailto:info@epiphinyflow.com?subject=Epiphiny%20Flow%20enquiry"
+            <button
+              type="button"
+              onClick={() => {
+                setMobileOpen(false);
+                setContactOpen(true);
+              }}
               className="flex items-center gap-2 bg-[#15171A] text-[#00E7C3] px-6 py-2.5 rounded-full text-sm font-semibold"
             >
               Contact us
               <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            </button>
           </div>
         </div>
       )}
+      <ContactDialog open={contactOpen} onClose={() => setContactOpen(false)} />
     </header>
   );
 };
