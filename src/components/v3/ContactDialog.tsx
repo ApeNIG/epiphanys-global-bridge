@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { X, Send, Check } from "lucide-react";
-import { submitEnquiry, type Enquiry } from "@/lib/submitEnquiry";
+import {
+  submitEnquiry,
+  buildMailto,
+  type Enquiry,
+  type SubmitResult,
+} from "@/lib/submitEnquiry";
 
 /**
  * Contact enquiry dialog, Robert Croll's instruction of 2026-09-22: turn the
@@ -51,6 +56,7 @@ const ContactDialog = ({
      accessibility tree instead. */
   const [website, setWebsite] = useState("");
   const [status, setStatus] = useState<Status>("idle");
+  const [route, setRoute] = useState<SubmitResult>("stored");
   const [errors, setErrors] = useState<Partial<Record<keyof Enquiry, string>>>({});
   const panelRef = useRef<HTMLDivElement>(null);
   const firstFieldRef = useRef<HTMLInputElement>(null);
@@ -104,7 +110,7 @@ const ContactDialog = ({
     if (!validate()) return;
     setStatus("sending");
     try {
-      await submitEnquiry(form);
+      setRoute(await submitEnquiry(form));
       setStatus("sent");
     } catch {
       setStatus("error");
@@ -142,16 +148,52 @@ const ContactDialog = ({
               <div className="w-14 h-14 rounded-full bg-[#00E7C3]/15 flex items-center justify-center mx-auto mb-5">
                 <Check className="w-6 h-6 text-[#2A9D8F]" />
               </div>
+              {/* The wording MUST follow the route actually taken. Until a
+                  backend exists, all that has happened is that a mail draft was
+                  opened, which the visitor still has to send — and on a machine
+                  with no mail client configured, nothing happens at all. Saying
+                  "on its way" in that case is simply untrue, and it is the one
+                  respect in which this would be worse than the plain mailto
+                  link it replaced. */}
               <h2
                 id="contact-dialog-title"
                 className="font-serif text-[26px] text-[#15171A] mb-3"
               >
-                Thank you
+                {route === "stored" ? "Thank you" : "One last step"}
               </h2>
-              <p className="text-[15px] text-gray-600 leading-[1.7] max-w-[380px] mx-auto">
-                Your enquiry is on its way to the Epiphiny Flow team. We aim to
-                come back to you within a few working days.
-              </p>
+              {route === "stored" ? (
+                <p className="text-[15px] text-gray-600 leading-[1.7] max-w-[380px] mx-auto">
+                  Your enquiry is on its way to the Epiphiny Flow team. We aim to
+                  come back to you within a few working days.
+                </p>
+              ) : (
+                <div className="text-[15px] text-gray-600 leading-[1.7] max-w-[420px] mx-auto">
+                  <p>
+                    We have opened your email app with your enquiry ready to go.{" "}
+                    <strong className="text-[#15171A]">
+                      Please press send there to reach us.
+                    </strong>
+                  </p>
+                  <p className="mt-4 text-[14px]">
+                    Nothing happened? Your device may not have an email app set
+                    up. You can{" "}
+                    <a
+                      href={buildMailto(form)}
+                      className="underline font-medium text-[#2A9D8F] hover:text-[#15171A]"
+                    >
+                      try again
+                    </a>{" "}
+                    or email us directly at{" "}
+                    <a
+                      href="mailto:info@epiphinyflow.com"
+                      className="underline font-medium text-[#2A9D8F] hover:text-[#15171A]"
+                    >
+                      info@epiphinyflow.com
+                    </a>
+                    .
+                  </p>
+                </div>
+              )}
               <button
                 type="button"
                 onClick={onClose}
